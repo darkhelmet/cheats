@@ -15,6 +15,11 @@ A collection of quick reference guides and cheat sheets for various programming 
 - [PyTorch](docs/python/pytorch.md) - Deep learning framework for tensors, neural networks, and training
 - [TensorFlow](docs/python/tensorflow.md) - Machine learning platform with Keras integration
 - [Keras](docs/python/keras.md) - High-level neural networks API with multi-backend support
+- [NLTK](docs/python/nltk.md) - Natural Language Toolkit for text processing and analysis
+- [Transformers](docs/python/transformers.md) - Hugging Face transformers for modern NLP
+- [Sentence-Transformers](docs/python/sentence-transformers.md) - Semantic similarity and text embeddings
+- [TorchVision](docs/python/torchvision.md) - Computer vision utilities and pre-trained models
+- [Pillow](docs/python/pillow.md) - Python Image Library for image processing
 
 ## Contributing
 
