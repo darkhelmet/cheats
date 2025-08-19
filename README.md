@@ -18,6 +18,8 @@ A collection of quick reference guides and cheat sheets for various programming 
 - [NLTK](docs/python/nltk.md) - Natural Language Toolkit for text processing and analysis
 - [Transformers](docs/python/transformers.md) - Hugging Face transformers for modern NLP
 - [Sentence-Transformers](docs/python/sentence-transformers.md) - Semantic similarity and text embeddings
+- [LangExtract](docs/python/langextract.md) - Google's language detection and information extraction
+- [LangChain](docs/python/langchain.md) - Framework for building LLM-powered applications
 - [TorchVision](docs/python/torchvision.md) - Computer vision utilities and pre-trained models
 - [Pillow](docs/python/pillow.md) - Python Image Library for image processing
 
