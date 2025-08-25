@@ -29,6 +29,7 @@ Welcome to the cheat sheets collection - a comprehensive set of quick reference 
 - [Transformers](python/transformers.md) - Hugging Face transformers for modern NLP
 
 ### Tools & Editors
+- [ripgrep](tools/ripgrep.md) - Fast text search tool with regex support
 - [Vim/Neovim with LazyVim](tools/vim-lazyvim.md) - Text editing with Vim motions and LazyVim enhancements
 
 ## Contributing

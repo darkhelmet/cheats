@@ -22,6 +22,11 @@ A collection of quick reference guides and cheat sheets for various programming 
 - [LangChain](docs/python/langchain.md) - Framework for building LLM-powered applications
 - [TorchVision](docs/python/torchvision.md) - Computer vision utilities and pre-trained models
 - [Pillow](docs/python/pillow.md) - Python Image Library for image processing
+- [Inquirer](docs/python/inquirer.md) - Interactive command-line prompts and user interfaces
+
+### Tools
+- [ripgrep](docs/tools/ripgrep.md) - Fast text search tool with regex support
+- [Vim/Neovim with LazyVim](docs/tools/vim-lazyvim.md) - Text editing with Vim motions and LazyVim enhancements
 
 ## Contributing
 
@@ -35,4 +40,5 @@ Feel free to add new cheat sheets or improve existing ones. Each cheat sheet sho
 
 Cheat sheets are organized by topic in the `docs/` directory:
 - `docs/python/` - Python-related libraries and tools
+- `docs/tools/` - Development tools and editors
 - Additional directories can be added for other languages/topics as needed
