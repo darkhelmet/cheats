@@ -412,10 +412,11 @@ class Person:
     def greet(self):
         return f"Hello, I'm {self.name}"
     
-    # String representation
+    # Human-readable string representation
     def __str__(self):
-        return f"Person(name='{self.name}', age={self.age})"
+        return f"Person named {self.name}, age {self.age}"
     
+    # Developer-friendly string representation
     def __repr__(self):
         return f"Person('{self.name}', {self.age})"
 
@@ -462,7 +463,262 @@ class Employee(Person):
         self.employee_id = employee_id
 ```
 
-### Special Methods (Magic Methods)
+## Dunder Methods (Magic Methods)
+
+Dunder methods (double underscore methods) are special methods that allow Python objects to implement or modify built-in behaviors. They define how objects interact with operators, built-in functions, and language constructs.
+
+### Object Representation
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def __str__(self):
+        # Human-readable string representation
+        # Called by str() and print()
+        return f"Person named {self.name}, age {self.age}"
+    
+    def __repr__(self):
+        # Unambiguous string representation for developers
+        # Called by repr() and in interactive shell
+        # Should ideally be valid Python code to recreate the object
+        return f"Person('{self.name}', {self.age})"
+
+# Usage
+person = Person("Alice", 30)
+print(person)        # Uses __str__: Person named Alice, age 30
+repr(person)         # Uses __repr__: Person('Alice', 30)
+str(person)          # Uses __str__: Person named Alice, age 30
+
+# In interactive shell or debugger, __repr__ is used by default
+```
+
+### Object Initialization and Creation
+```python
+class DatabaseConnection:
+    def __new__(cls, host, port):
+        # Controls object creation (rarely overridden)
+        # Called before __init__
+        print(f"Creating connection to {host}:{port}")
+        instance = super().__new__(cls)
+        return instance
+    
+    def __init__(self, host, port):
+        # Object initialization after creation
+        # Most commonly used constructor method
+        self.host = host
+        self.port = port
+        print(f"Initialized connection to {host}:{port}")
+
+# Example of when __new__ is useful (Singleton pattern)
+class Singleton:
+    _instance = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+```
+
+### Container-like Behavior
+```python
+class CustomList:
+    def __init__(self, items=None):
+        self.items = items or []
+    
+    def __len__(self):
+        # Called by len()
+        return len(self.items)
+    
+    def __bool__(self):
+        # Called by bool() and in boolean contexts
+        # If not defined, __len__ is used (0 is False)
+        return len(self.items) > 0
+    
+    def __getitem__(self, key):
+        # Called for indexing: obj[key]
+        return self.items[key]
+    
+    def __setitem__(self, key, value):
+        # Called for item assignment: obj[key] = value
+        self.items[key] = value
+    
+    def __delitem__(self, key):
+        # Called for item deletion: del obj[key]
+        del self.items[key]
+    
+    def __contains__(self, item):
+        # Called by 'in' operator
+        return item in self.items
+
+# Usage
+custom_list = CustomList([1, 2, 3, 4])
+print(len(custom_list))      # 4
+print(bool(custom_list))     # True
+print(custom_list[0])        # 1
+custom_list[0] = 10         # Sets first item to 10
+del custom_list[1]          # Removes second item
+print(2 in custom_list)     # False (was deleted)
+```
+
+### Iterator Protocol
+```python
+class NumberSequence:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+    
+    def __iter__(self):
+        # Returns iterator object (often self)
+        # Called by iter() and in for loops
+        self.current = self.start
+        return self
+    
+    def __next__(self):
+        # Returns next item in iteration
+        # Called by next() and automatically in for loops
+        if self.current < self.end:
+            num = self.current
+            self.current += 1
+            return num
+        else:
+            raise StopIteration
+
+# Usage
+sequence = NumberSequence(1, 5)
+for num in sequence:        # Uses __iter__ and __next__
+    print(num)              # Prints 1, 2, 3, 4
+
+# Manual iteration
+iterator = iter(sequence)   # Calls __iter__
+print(next(iterator))       # Calls __next__
+```
+
+### Context Manager Protocol
+```python
+class FileManager:
+    def __init__(self, filename, mode):
+        self.filename = filename
+        self.mode = mode
+        self.file = None
+    
+    def __enter__(self):
+        # Called when entering 'with' block
+        # Return value is assigned to 'as' variable
+        print(f"Opening {self.filename}")
+        self.file = open(self.filename, self.mode)
+        return self.file
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        # Called when exiting 'with' block
+        # Parameters contain exception info if one occurred
+        print(f"Closing {self.filename}")
+        if self.file:
+            self.file.close()
+        
+        # Return False to propagate exceptions
+        # Return True to suppress exceptions
+        return False
+
+# Usage
+with FileManager("data.txt", "w") as f:
+    f.write("Hello, World!")
+# File is automatically closed
+
+# Another example: Timer context manager
+import time
+
+class Timer:
+    def __enter__(self):
+        self.start_time = time.time()
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        elapsed = time.time() - self.start_time
+        print(f"Elapsed time: {elapsed:.2f} seconds")
+        return False
+
+with Timer():
+    # Some time-consuming operation
+    time.sleep(1)
+```
+
+### Callable Objects
+```python
+class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+    
+    def __call__(self, value):
+        # Makes the object callable like a function
+        return value * self.factor
+
+# Usage
+double = Multiplier(2)
+triple = Multiplier(3)
+
+print(double(5))        # 10 (calls __call__)
+print(triple(4))        # 12
+
+# Check if object is callable
+print(callable(double))  # True
+
+# Useful for creating function-like objects with state
+class Counter:
+    def __init__(self):
+        self.count = 0
+    
+    def __call__(self):
+        self.count += 1
+        return self.count
+
+counter = Counter()
+print(counter())        # 1
+print(counter())        # 2
+```
+
+### Hashing and Equality
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __eq__(self, other):
+        # Defines equality (==)
+        # Also affects !=, which returns the opposite
+        if not isinstance(other, Point):
+            return False
+        return self.x == other.x and self.y == other.y
+    
+    def __hash__(self):
+        # Makes object hashable (can be used as dict key or in set)
+        # Objects that compare equal must have same hash value
+        # Immutable objects should implement this
+        return hash((self.x, self.y))
+    
+    def __repr__(self):
+        return f"Point({self.x}, {self.y})"
+
+# Usage
+p1 = Point(1, 2)
+p2 = Point(1, 2)
+p3 = Point(2, 3)
+
+print(p1 == p2)         # True
+print(p1 == p3)         # False
+
+# Can be used as dictionary keys
+points_dict = {p1: "origin area", p3: "far point"}
+print(points_dict[p2])  # "origin area" (p1 == p2)
+
+# Can be added to sets
+point_set = {p1, p2, p3}  # Only p1 and p3 (p1 == p2)
+print(len(point_set))    # 2
+```
+
+### Arithmetic Operators
 ```python
 class Vector:
     def __init__(self, x, y):
@@ -470,22 +726,526 @@ class Vector:
         self.y = y
     
     def __add__(self, other):
+        # Addition: self + other
         return Vector(self.x + other.x, self.y + other.y)
     
     def __sub__(self, other):
+        # Subtraction: self - other
         return Vector(self.x - other.x, self.y - other.y)
     
-    def __mul__(self, scalar):
-        return Vector(self.x * scalar, self.y * scalar)
+    def __mul__(self, other):
+        # Multiplication: self * other
+        if isinstance(other, (int, float)):
+            # Scalar multiplication
+            return Vector(self.x * other, self.y * other)
+        else:
+            # Dot product with another vector
+            return self.x * other.x + self.y * other.y
     
-    def __len__(self):
-        return (self.x**2 + self.y**2)**0.5  # Return magnitude as float
+    def __rmul__(self, other):
+        # Right multiplication: other * self
+        # Called when left operand doesn't support operation
+        return self.__mul__(other)
     
-    def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
+    def __truediv__(self, scalar):
+        # Division: self / other
+        return Vector(self.x / scalar, self.y / scalar)
+    
+    def __floordiv__(self, scalar):
+        # Floor division: self // other
+        return Vector(self.x // scalar, self.y // scalar)
+    
+    def __mod__(self, scalar):
+        # Modulus: self % other
+        return Vector(self.x % scalar, self.y % scalar)
+    
+    def __pow__(self, power):
+        # Exponentiation: self ** other
+        return Vector(self.x ** power, self.y ** power)
+    
+    def __abs__(self):
+        # Absolute value: abs(self)
+        return (self.x**2 + self.y**2)**0.5
+    
+    def __neg__(self):
+        # Unary minus: -self
+        return Vector(-self.x, -self.y)
     
     def __str__(self):
         return f"Vector({self.x}, {self.y})"
+
+# Usage
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+
+print(v1 + v2)          # Vector(4, 6)
+print(v1 - v2)          # Vector(2, 2)
+print(v1 * 2)           # Vector(6, 8) - scalar multiplication
+print(3 * v1)           # Vector(9, 12) - uses __rmul__
+print(v1 * v2)          # 11 - dot product
+print(v1 / 2)           # Vector(1.5, 2.0)
+print(abs(v1))          # 5.0 - magnitude
+print(-v1)              # Vector(-3, -4)
+```
+
+### Comparison Operators
+```python
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+    
+    def __eq__(self, other):
+        return self.grade == other.grade
+    
+    def __lt__(self, other):
+        # Less than: self < other
+        return self.grade < other.grade
+    
+    def __le__(self, other):
+        # Less than or equal: self <= other
+        return self.grade <= other.grade
+    
+    def __gt__(self, other):
+        # Greater than: self > other
+        return self.grade > other.grade
+    
+    def __ge__(self, other):
+        # Greater than or equal: self >= other
+        return self.grade >= other.grade
+    
+    def __ne__(self, other):
+        # Not equal: self != other (usually auto-generated from __eq__)
+        return not self.__eq__(other)
+    
+    def __repr__(self):
+        return f"Student('{self.name}', {self.grade})"
+
+# Usage
+alice = Student("Alice", 85)
+bob = Student("Bob", 92)
+charlie = Student("Charlie", 85)
+
+print(alice < bob)      # True
+print(alice == charlie) # True
+print(bob >= alice)     # True
+
+# Can be sorted
+students = [bob, alice, charlie]
+sorted_students = sorted(students)  # Sorts by grade using __lt__
+```
+
+## Python Slang and Terminology
+
+Understanding Python's unique terminology and idioms is essential for reading code, documentation, and communicating with other Python developers.
+
+### Core Python Terminology
+
+#### Dunder (Double Underscore)
+```python
+# "Dunder" refers to methods with double underscores before and after
+class MyClass:
+    def __init__(self):      # "dunder init"
+        pass
+    
+    def __str__(self):       # "dunder str"
+        return "MyClass"
+    
+    def __len__(self):       # "dunder len"
+        return 0
+
+# Also applies to built-in variables
+print(__name__)              # "dunder name"
+print(__file__)              # "dunder file"
+```
+
+#### Pythonic
+Writing code that follows Python idioms and conventions. Emphasizes readability, simplicity, and following "The Zen of Python."
+
+```python
+# Non-Pythonic
+numbers = [1, 2, 3, 4, 5]
+squares = []
+for num in numbers:
+    squares.append(num ** 2)
+
+# Pythonic
+squares = [num ** 2 for num in numbers]
+
+# Non-Pythonic
+if len(my_list) == 0:
+    print("List is empty")
+
+# Pythonic
+if not my_list:
+    print("List is empty")
+
+# Non-Pythonic
+for i in range(len(items)):
+    print(f"{i}: {items[i]}")
+
+# Pythonic
+for i, item in enumerate(items):
+    print(f"{i}: {item}")
+```
+
+### Programming Philosophies
+
+#### EAFP (Easier to Ask for Forgiveness than Permission)
+Python's preferred approach: try the operation and handle exceptions rather than checking conditions first.
+
+```python
+# EAFP - Pythonic approach
+def get_value(dictionary, key):
+    try:
+        return dictionary[key]
+    except KeyError:
+        return None
+
+def process_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        return "File not found"
+
+# Example with attribute access
+try:
+    result = obj.some_method()
+except AttributeError:
+    result = "Method not available"
+```
+
+#### LBYL (Look Before You Leap)
+The alternative approach: check conditions before performing operations.
+
+```python
+# LBYL - Less Pythonic in most cases
+def get_value(dictionary, key):
+    if key in dictionary:
+        return dictionary[key]
+    else:
+        return None
+
+def process_file(filename):
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            return file.read()
+    else:
+        return "File not found"
+
+# Example with attribute access
+if hasattr(obj, 'some_method'):
+    result = obj.some_method()
+else:
+    result = "Method not available"
+
+# When LBYL is appropriate:
+# - Performance critical code where exceptions are expensive
+# - When checking is much faster than trying and failing
+```
+
+### Type System Concepts
+
+#### Duck Typing
+"If it walks like a duck and quacks like a duck, then it's a duck." Objects are judged by their behavior, not their type.
+
+```python
+# Duck typing example
+def make_sound(animal):
+    # We don't care what type animal is
+    # We just call its sound() method
+    animal.sound()
+
+class Dog:
+    def sound(self):
+        return "Woof!"
+
+class Cat:
+    def sound(self):
+        return "Meow!"
+
+class Robot:
+    def sound(self):
+        return "Beep!"
+
+# All work with make_sound function
+make_sound(Dog())    # Works because Dog has sound()
+make_sound(Cat())    # Works because Cat has sound()
+make_sound(Robot())  # Works because Robot has sound()
+
+# Another example: file-like objects
+def process_data(file_obj):
+    # Works with any object that has read() method
+    return file_obj.read()
+
+# Works with files, StringIO, BytesIO, etc.
+with open('data.txt') as f:
+    process_data(f)
+
+from io import StringIO
+string_file = StringIO("Hello, World!")
+process_data(string_file)
+```
+
+#### Monkey Patching
+Dynamically modifying classes or modules at runtime.
+
+```python
+# Monkey patching example
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+# Add a new method to the class
+def subtract(self, a, b):
+    return a - b
+
+Calculator.subtract = subtract
+
+# Now all Calculator instances have subtract method
+calc = Calculator()
+print(calc.add(5, 3))      # 8
+print(calc.subtract(5, 3))  # 2
+
+# Monkey patching built-in modules
+import datetime
+
+# Add a custom method to datetime
+def is_weekend(self):
+    return self.weekday() >= 5
+
+datetime.date.is_weekend = is_weekend
+
+# Now all dates have is_weekend method
+today = datetime.date.today()
+print(today.is_weekend())
+
+# Be cautious with monkey patching:
+# - Can make code harder to understand
+# - Can break if the original implementation changes
+# - Use sparingly and document well
+```
+
+### Data Structure Terminology
+
+#### List Comprehension vs Generator Expression
+```python
+# List comprehension - creates a list immediately
+squares_list = [x**2 for x in range(10)]
+print(type(squares_list))  # <class 'list'>
+print(squares_list)        # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Generator expression - creates a generator (lazy evaluation)
+squares_gen = (x**2 for x in range(10))
+print(type(squares_gen))   # <class 'generator'>
+print(squares_gen)         # <generator object at 0x...>
+
+# Generator values are produced on-demand
+for square in squares_gen:
+    print(square)          # Prints one at a time
+
+# Memory comparison
+import sys
+large_list = [x for x in range(1000000)]
+large_gen = (x for x in range(1000000))
+print(f"List size: {sys.getsizeof(large_list)} bytes")
+print(f"Generator size: {sys.getsizeof(large_gen)} bytes")
+```
+
+### Language Features
+
+#### GIL (Global Interpreter Lock)
+Python's mechanism that allows only one thread to execute Python code at a time.
+
+```python
+import threading
+import time
+
+# The GIL affects CPU-bound tasks
+def cpu_bound_task():
+    # This won't run in parallel due to GIL
+    total = 0
+    for i in range(10000000):
+        total += i
+    return total
+
+# Multiple threads won't speed up CPU-bound work
+start_time = time.time()
+threads = []
+for _ in range(4):
+    thread = threading.Thread(target=cpu_bound_task)
+    threads.append(thread)
+    thread.start()
+
+for thread in threads:
+    thread.join()
+print(f"Multi-threaded time: {time.time() - start_time}")
+
+# For CPU-bound work, use multiprocessing instead
+from multiprocessing import Pool
+
+def parallel_cpu_work():
+    with Pool() as pool:
+        results = pool.map(lambda x: sum(range(x)), [1000000] * 4)
+    return results
+
+# GIL doesn't affect I/O-bound tasks
+import asyncio
+import aiohttp
+
+async def io_bound_task(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text()
+
+# This can run concurrently despite the GIL
+```
+
+### Advanced Concepts
+
+#### Descriptor Protocol
+Objects that define how attribute access is handled.
+
+```python
+class Descriptor:
+    def __get__(self, obj, objtype=None):
+        return "Getting attribute"
+    
+    def __set__(self, obj, value):
+        print(f"Setting attribute to {value}")
+    
+    def __delete__(self, obj):
+        print("Deleting attribute")
+
+class MyClass:
+    attr = Descriptor()
+
+obj = MyClass()
+print(obj.attr)        # "Getting attribute"
+obj.attr = "new value" # "Setting attribute to new value"
+del obj.attr          # "Deleting attribute"
+```
+
+#### Context Manager
+Objects that define runtime context for executing code blocks (used with `with` statements).
+
+```python
+# Built-in context managers
+with open('file.txt', 'r') as f:  # File is a context manager
+    content = f.read()
+# File is automatically closed
+
+# Custom context manager using contextlib
+from contextlib import contextmanager
+
+@contextmanager
+def temporary_change(obj, attr, new_value):
+    old_value = getattr(obj, attr)
+    setattr(obj, attr, new_value)
+    try:
+        yield obj
+    finally:
+        setattr(obj, attr, old_value)
+
+# Usage
+class Config:
+    debug = False
+
+config = Config()
+with temporary_change(config, 'debug', True):
+    print(config.debug)  # True
+print(config.debug)      # False (restored)
+```
+
+#### Metaclass
+Classes whose instances are classes themselves. "Classes that create classes."
+
+```python
+# Simple metaclass example
+class SingletonMeta(type):
+    _instances = {}
+    
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super().__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class Singleton(metaclass=SingletonMeta):
+    def __init__(self, value):
+        self.value = value
+
+# Both variables refer to the same instance
+s1 = Singleton("first")
+s2 = Singleton("second")
+print(s1 is s2)  # True
+print(s1.value)  # "first" (unchanged)
+```
+
+### Common Patterns and Idioms
+
+#### Unpacking and Packing
+```python
+# Tuple unpacking
+point = (3, 4)
+x, y = point
+
+# Extended unpacking (Python 3+)
+first, *middle, last = [1, 2, 3, 4, 5]
+print(first)   # 1
+print(middle)  # [2, 3, 4]
+print(last)    # 5
+
+# Function argument unpacking
+def greet(name, age, city):
+    print(f"{name} is {age} years old and lives in {city}")
+
+person_info = ("Alice", 30, "New York")
+greet(*person_info)  # Unpacks tuple as arguments
+
+person_dict = {"name": "Bob", "age": 25, "city": "Boston"}
+greet(**person_dict)  # Unpacks dictionary as keyword arguments
+```
+
+#### Walrus Operator (Assignment Expression)
+```python
+# Walrus operator := (Python 3.8+)
+# Assigns and returns a value in one expression
+
+# Traditional approach
+numbers = [1, 2, 3, 4, 5]
+squared = []
+for num in numbers:
+    square = num ** 2
+    if square > 10:
+        squared.append(square)
+
+# With walrus operator
+squared = [square for num in numbers if (square := num ** 2) > 10]
+
+# Useful in while loops
+import random
+while (dice := random.randint(1, 6)) != 6:
+    print(f"Rolled {dice}, try again")
+print("Finally rolled a 6!")
+
+# In conditional statements
+if (match := some_pattern.search(text)):
+    print(f"Found match: {match.group()}")
+```
+
+### Understanding Python Culture
+
+#### The Zen of Python
+```python
+import this  # Prints "The Zen of Python"
+
+# Key principles:
+# - Beautiful is better than ugly
+# - Explicit is better than implicit
+# - Simple is better than complex
+# - Readability counts
+# - There should be one obvious way to do it
 ```
 
 ## Exception Handling
