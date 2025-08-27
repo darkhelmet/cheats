@@ -8,6 +8,7 @@ A collection of quick reference guides and cheat sheets for various programming 
 - [Python](docs/python/python.md) - Core Python language syntax, data structures, and built-in features
 - [NumPy](docs/python/numpy.md) - Numerical computing basics and advanced operations
 - [Pandas](docs/python/pandas.md) - Data manipulation and analysis fundamentals
+- [Polars](docs/python/polars.md) - Blazingly fast DataFrame library with lazy evaluation and powerful expressions
 - [Matplotlib](docs/python/matplotlib.md) - Core plotting and data visualization library
 - [Seaborn](docs/python/seaborn.md) - Statistical data visualization with elegant defaults
 - [SciPy](docs/python/scipy.md) - Scientific computing algorithms and mathematical functions
@@ -23,6 +24,9 @@ A collection of quick reference guides and cheat sheets for various programming 
 - [TorchVision](docs/python/torchvision.md) - Computer vision utilities and pre-trained models
 - [Pillow](docs/python/pillow.md) - Python Image Library for image processing
 - [Inquirer](docs/python/inquirer.md) - Interactive command-line prompts and user interfaces
+
+### Machine Learning & Data Science
+- [Machine Learning Algorithms](docs/machine-learning-algorithms.md) - Comprehensive guide to ML algorithms, their use cases, and selection criteria
 
 ### Tools
 - [ripgrep](docs/tools/ripgrep.md) - Fast text search tool with regex support
@@ -40,5 +44,6 @@ Feel free to add new cheat sheets or improve existing ones. Each cheat sheet sho
 
 Cheat sheets are organized by topic in the `docs/` directory:
 - `docs/python/` - Python-related libraries and tools
+- `docs/machine-learning-algorithms.md` - General machine learning and data science concepts
 - `docs/tools/` - Development tools and editors
 - Additional directories can be added for other languages/topics as needed

@@ -18,6 +18,7 @@ Welcome to the cheat sheets collection - a comprehensive set of quick reference 
 - [NumPy](python/numpy.md) - Numerical computing basics and advanced operations
 - [Pandas](python/pandas.md) - Data manipulation and analysis fundamentals
 - [Pillow](python/pillow.md) - Python Image Library for image processing
+- [Polars](python/polars.md) - Blazingly fast DataFrame library with lazy evaluation and powerful expressions
 - [Python](python/python.md) - Core Python language syntax, data structures, and built-in features
 - [PyTorch](python/pytorch.md) - Deep learning framework for tensors, neural networks, and training
 - [Scikit-learn](python/scikit-learn.md) - Machine learning workflows, algorithms, and model evaluation
@@ -27,6 +28,9 @@ Welcome to the cheat sheets collection - a comprehensive set of quick reference 
 - [TensorFlow](python/tensorflow.md) - Machine learning platform with Keras integration
 - [TorchVision](python/torchvision.md) - Computer vision utilities and pre-trained models
 - [Transformers](python/transformers.md) - Hugging Face transformers for modern NLP
+
+### Machine Learning & Data Science
+- [Machine Learning Algorithms](machine-learning-algorithms.md) - Comprehensive guide to ML algorithms, their use cases, and selection criteria
 
 ### Tools & Editors
 - [ripgrep](tools/ripgrep.md) - Fast text search tool with regex support
@@ -46,6 +50,7 @@ Each cheat sheet should include:
 
 Cheat sheets are organized by topic:
 - `python/` - Python-related libraries and tools
+- `machine-learning-algorithms.md` - General machine learning and data science concepts
 - `tools/` - Development tools and editors
 - Additional directories can be added for other languages/topics as needed
 
