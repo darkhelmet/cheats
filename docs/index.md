@@ -36,6 +36,9 @@ Welcome to the cheat sheets collection - a comprehensive set of quick reference 
 ### Machine Learning & Data Science
 - [Machine Learning Algorithms](machine-learning-algorithms.md) - Comprehensive guide to ML algorithms, their use cases, and selection criteria
 
+### GPU Computing
+- [CUDA](gpu/cuda.md) - Comprehensive CUDA C/C++ programming reference for GPU computing
+
 ### Tools & Editors
 - [Protocol Buffers](tools/protobuf.md) - Schema definition and code generation with protoc compiler
 - [ripgrep](tools/ripgrep.md) - Fast text search tool with regex support
@@ -57,6 +60,7 @@ Cheat sheets are organized by topic:
 - `python/` - Python-related libraries and tools
 - `javascript/` - JavaScript frameworks and libraries
 - `machine-learning-algorithms.md` - General machine learning and data science concepts
+- `gpu/` - GPU computing and parallel programming
 - `tools/` - Development tools and editors
 - Additional directories can be added for other languages/topics as needed
 
