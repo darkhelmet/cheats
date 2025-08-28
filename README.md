@@ -28,7 +28,12 @@ A collection of quick reference guides and cheat sheets for various programming 
 ### Machine Learning & Data Science
 - [Machine Learning Algorithms](docs/machine-learning-algorithms.md) - Comprehensive guide to ML algorithms, their use cases, and selection criteria
 
+### JavaScript & Frameworks
+- [React](docs/javascript/react.md) - Component-based UI library with hooks, state management, and modern patterns
+- [Next.js](docs/javascript/nextjs.md) - Full-stack React framework with App Router, SSR/SSG, and API routes
+
 ### Tools
+- [Protocol Buffers](docs/tools/protobuf.md) - Schema definition and code generation with protoc compiler
 - [ripgrep](docs/tools/ripgrep.md) - Fast text search tool with regex support
 - [Vim/Neovim with LazyVim](docs/tools/vim-lazyvim.md) - Text editing with Vim motions and LazyVim enhancements
 
@@ -44,6 +49,7 @@ Feel free to add new cheat sheets or improve existing ones. Each cheat sheet sho
 
 Cheat sheets are organized by topic in the `docs/` directory:
 - `docs/python/` - Python-related libraries and tools
+- `docs/javascript/` - JavaScript frameworks and libraries
 - `docs/machine-learning-algorithms.md` - General machine learning and data science concepts
 - `docs/tools/` - Development tools and editors
 - Additional directories can be added for other languages/topics as needed

@@ -29,10 +29,15 @@ Welcome to the cheat sheets collection - a comprehensive set of quick reference 
 - [TorchVision](python/torchvision.md) - Computer vision utilities and pre-trained models
 - [Transformers](python/transformers.md) - Hugging Face transformers for modern NLP
 
+### JavaScript & Frameworks
+- [React](javascript/react.md) - Component-based UI library with hooks, state management, and modern patterns
+- [Next.js](javascript/nextjs.md) - Full-stack React framework with App Router, SSR/SSG, and API routes
+
 ### Machine Learning & Data Science
 - [Machine Learning Algorithms](machine-learning-algorithms.md) - Comprehensive guide to ML algorithms, their use cases, and selection criteria
 
 ### Tools & Editors
+- [Protocol Buffers](tools/protobuf.md) - Schema definition and code generation with protoc compiler
 - [ripgrep](tools/ripgrep.md) - Fast text search tool with regex support
 - [Vim/Neovim with LazyVim](tools/vim-lazyvim.md) - Text editing with Vim motions and LazyVim enhancements
 
@@ -50,6 +55,7 @@ Each cheat sheet should include:
 
 Cheat sheets are organized by topic:
 - `python/` - Python-related libraries and tools
+- `javascript/` - JavaScript frameworks and libraries
 - `machine-learning-algorithms.md` - General machine learning and data science concepts
 - `tools/` - Development tools and editors
 - Additional directories can be added for other languages/topics as needed
