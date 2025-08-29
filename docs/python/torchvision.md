@@ -1,4 +1,4 @@
-# TorchVision Cheat Sheet
+# TorchVision
 
 TorchVision is PyTorch's computer vision library, providing datasets, model architectures, and common image transformations for computer vision tasks. It includes pre-trained models, data loading utilities, and transforms for efficient computer vision pipelines.
 

@@ -1,4 +1,4 @@
-# CUDA Programming Cheat Sheet
+# CUDA Programming
 
 A comprehensive reference for CUDA C/C++ GPU programming, covering kernels, memory management, synchronization, and optimization techniques.
 

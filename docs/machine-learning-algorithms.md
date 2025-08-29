@@ -1,4 +1,4 @@
-# Machine Learning Algorithms Cheat Sheet
+# Machine Learning Algorithms
 
 A comprehensive guide to fundamental machine learning algorithms, their applications, strengths, weaknesses, and when to use each approach.
 

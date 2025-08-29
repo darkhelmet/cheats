@@ -1,4 +1,4 @@
-# Seaborn Cheat Sheet
+# Seaborn
 
 ## Installation
 

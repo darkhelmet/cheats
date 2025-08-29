@@ -1,4 +1,4 @@
-# Pillow (PIL) Cheat Sheet
+# Pillow (PIL)
 
 Pillow is the modern, friendly fork of the Python Imaging Library (PIL). It provides extensive file format support, efficient internal representation, and powerful image processing capabilities. Pillow is the de facto standard for image manipulation in Python.
 

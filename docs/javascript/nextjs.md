@@ -1,4 +1,4 @@
-# Next.js Cheat Sheet
+# Next.js
 
 Next.js is a React framework for building full-stack web applications with built-in optimization, routing, and deployment features. This cheat sheet covers Next.js 13+ with App Router and modern patterns.
 

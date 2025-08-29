@@ -1,4 +1,4 @@
-# Transformers (Hugging Face) Cheat Sheet
+# Transformers (Hugging Face)
 
 Transformers is Hugging Face's flagship library providing state-of-the-art machine learning models for PyTorch, TensorFlow, and JAX. It offers thousands of pretrained models to perform tasks on different domains like text, vision, and audio.
 

@@ -1,4 +1,4 @@
-# React Cheat Sheet
+# React
 
 React is a JavaScript library for building user interfaces through reusable components. This cheat sheet covers React 18+ with modern hooks, patterns, and best practices.
 

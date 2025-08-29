@@ -1,4 +1,4 @@
-# LangChain Cheat Sheet
+# LangChain
 
 LangChain is a framework for developing applications powered by Large Language Models (LLMs). It simplifies the entire LLM application lifecycle with open-source components, third-party integrations, and tools for building complex AI workflows.
 

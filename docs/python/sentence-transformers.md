@@ -1,4 +1,4 @@
-# Sentence-Transformers (UKPLab) Cheat Sheet
+# Sentence-Transformers (UKPLab)
 
 Sentence-Transformers is a Python framework for state-of-the-art sentence, text, and image embeddings. It provides an easy way to compute dense vector representations for sentences, paragraphs, and images, enabling semantic similarity computation, clustering, and semantic search.
 

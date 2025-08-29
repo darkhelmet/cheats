@@ -1,4 +1,4 @@
-# LangExtract Cheat Sheet
+# LangExtract
 
 LangExtract is Google's open-source Python library for extracting structured information from unstructured text using Large Language Models (LLMs). It provides precise source grounding, interactive visualizations, and supports multiple model providers.
 

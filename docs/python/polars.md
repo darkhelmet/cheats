@@ -1,4 +1,4 @@
-# Polars Cheat Sheet
+# Polars
 
 Polars is a blazingly fast DataFrame library implemented in Rust, offering lazy and eager execution, multi-threading, and a powerful expression API for Python.
 

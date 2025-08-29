@@ -1,4 +1,4 @@
-# Python Inquirer Cheat Sheet
+# Python Inquirer
 
 A comprehensive reference for building interactive command-line interfaces with Python's inquirer libraries. This covers both the original `python-inquirer` and the modern `InquirerPy` libraries for creating engaging CLI prompts.
 

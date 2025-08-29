@@ -1,4 +1,4 @@
-# SciPy Cheat Sheet
+# SciPy
 
 ## Installation
 

@@ -1,4 +1,4 @@
-# Vim/Neovim with LazyVim Cheat Sheet
+# Vim/Neovim with LazyVim
 
 A comprehensive reference for Vim/Neovim fundamentals and LazyVim-specific features. This cheat sheet covers essential motions, commands, and LazyVim's modern enhancements for efficient text editing.
 

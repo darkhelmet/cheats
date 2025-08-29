@@ -1,4 +1,4 @@
-# Protocol Buffers (protobuf) Cheat Sheet
+# Protocol Buffers (protobuf)
 
 Protocol Buffers is Google's language-neutral, platform-neutral mechanism for serializing structured data. This guide covers .proto file syntax and compilation with `protoc`.
 

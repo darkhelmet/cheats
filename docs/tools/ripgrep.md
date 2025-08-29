@@ -1,4 +1,4 @@
-# Ripgrep (rg) Cheat Sheet
+# Ripgrep (rg)
 
 **ripgrep** is a line-oriented search tool that recursively searches the current directory for a regex pattern. It's written in Rust and is significantly faster than grep, ag, and other alternatives while respecting `.gitignore` rules by default.
 

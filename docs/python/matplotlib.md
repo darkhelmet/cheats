@@ -1,4 +1,4 @@
-# Matplotlib Cheat Sheet
+# Matplotlib
 
 ## Installation
 
