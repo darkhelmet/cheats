@@ -12,14 +12,14 @@ A comprehensive guide to fundamental machine learning algorithms, their applicat
 - **Anomaly Detection**: Isolation Forest, One-Class SVM, Local Outlier Factor
 
 ### By Data Size
-- **Small datasets (< 1K samples)**: k-NN, Naive Bayes, Decision Trees
-- **Medium datasets (1K-100K)**: SVM, Random Forest, Gradient Boosting
-- **Large datasets (> 100K)**: Linear models, Neural Networks, SGD variants
+- **Small datasets (< 1K samples)**: k-NN, Naive Bayes, Decision Trees, AdaBoost
+- **Medium datasets (1K-100K)**: SVM, Random Forest, XGBoost, LightGBM, CatBoost
+- **Large datasets (> 100K)**: Linear models, Neural Networks, LightGBM, SGD variants
 
 ### By Interpretability
 - **High**: Linear Regression, Decision Trees, Naive Bayes
-- **Medium**: Random Forest, k-NN
-- **Low**: SVM (with RBF kernel), Neural Networks, Ensemble methods
+- **Medium**: Random Forest, k-NN, AdaBoost
+- **Low**: SVM (with RBF kernel), Neural Networks, XGBoost, LightGBM, CatBoost
 
 ## Supervised Learning Algorithms
 
@@ -195,6 +195,221 @@ max_depth = [3, 5, 7, 10, None]
 min_samples_split = [2, 5, 10]
 max_features = ['sqrt', 'log2', None]
 ```
+
+---
+
+### Gradient Boosting
+
+**Purpose**: Sequential ensemble method that builds models iteratively, each correcting errors of previous models
+
+**Key Concepts**:
+```
+Sequential Learning: F_m(x) = F_(m-1)(x) + h_m(x)
+Gradient Descent: h_m = argmin Σ L(y_i, F_(m-1)(x_i) + h(x_i))
+Loss Function: Optimize differentiable loss functions
+Weak Learners: Typically shallow decision trees (stumps)
+Shrinkage: F_m(x) = F_(m-1)(x) + ν * h_m(x) where ν is learning rate
+```
+
+**Mathematical Framework**:
+```
+1. Initialize: F_0(x) = argmin_γ Σ L(y_i, γ)
+2. For m = 1 to M:
+   a. Compute residuals: r_im = -∂L(y_i, F_(m-1)(x_i))/∂F_(m-1)(x_i)
+   b. Fit weak learner: h_m(x) to predict residuals r_im
+   c. Find optimal step size: γ_m = argmin_γ Σ L(y_i, F_(m-1)(x_i) + γh_m(x_i))
+   d. Update: F_m(x) = F_(m-1)(x) + γ_m * h_m(x)
+3. Output: F_M(x)
+```
+
+**Popular Algorithms**:
+
+**XGBoost (eXtreme Gradient Boosting)**:
+- **Strengths**: High performance, handles missing values, built-in regularization, parallel processing
+- **Best for**: Structured/tabular data, competitions, high accuracy requirements
+- **Key Parameters**:
+  - `n_estimators`: Number of boosting rounds (100-1000)
+  - `max_depth`: Maximum tree depth (3-10)
+  - `learning_rate`: Step size shrinkage (0.01-0.3)
+  - `subsample`: Fraction of samples (0.8-1.0)
+  - `colsample_bytree`: Fraction of features (0.8-1.0)
+  - `reg_alpha`: L1 regularization (0-10)
+  - `reg_lambda`: L2 regularization (1-10)
+
+```python
+# XGBoost Example
+import xgboost as xgb
+from sklearn.model_selection import GridSearchCV
+
+# Basic usage
+xgb_model = xgb.XGBClassifier(
+    n_estimators=100,
+    max_depth=6,
+    learning_rate=0.1,
+    random_state=42
+)
+xgb_model.fit(X_train, y_train)
+
+# Hyperparameter tuning
+param_grid = {
+    'n_estimators': [100, 200, 300],
+    'max_depth': [3, 5, 7],
+    'learning_rate': [0.01, 0.1, 0.2],
+    'subsample': [0.8, 0.9, 1.0]
+}
+```
+
+**LightGBM (Light Gradient Boosting Machine)**:
+- **Strengths**: Fast training, low memory usage, high accuracy, handles categorical features
+- **Best for**: Large datasets, fast training requirements, limited memory
+- **Key Parameters**:
+  - `num_leaves`: Maximum leaves in one tree (31-300)
+  - `learning_rate`: Shrinkage rate (0.01-0.3)
+  - `feature_fraction`: Fraction of features (0.8-1.0)
+  - `bagging_fraction`: Fraction of data (0.8-1.0)
+  - `min_data_in_leaf`: Minimum samples in leaf (20-100)
+  - `lambda_l1`, `lambda_l2`: Regularization terms
+
+```python
+# LightGBM Example
+import lightgbm as lgb
+
+# Basic usage
+lgb_model = lgb.LGBMClassifier(
+    num_leaves=31,
+    learning_rate=0.1,
+    n_estimators=100,
+    random_state=42
+)
+lgb_model.fit(X_train, y_train)
+
+# Advanced configuration
+lgb_train = lgb.Dataset(X_train, y_train)
+params = {
+    'objective': 'binary',
+    'metric': 'binary_logloss',
+    'num_leaves': 31,
+    'learning_rate': 0.1,
+    'feature_fraction': 0.9
+}
+model = lgb.train(params, lgb_train, num_boost_round=100)
+```
+
+**CatBoost (Categorical Boosting)**:
+- **Strengths**: Handles categorical features automatically, robust to overfitting, good default parameters
+- **Best for**: Datasets with many categorical features, minimal preprocessing
+- **Key Parameters**:
+  - `iterations`: Number of boosting iterations (100-1000)
+  - `learning_rate`: Learning rate (0.01-0.3)
+  - `depth`: Tree depth (4-10)
+  - `l2_leaf_reg`: L2 regularization (1-10)
+  - `border_count`: Number of splits for numerical features (32-255)
+
+```python
+# CatBoost Example
+from catboost import CatBoostClassifier
+
+# Basic usage (handles categorical features automatically)
+cat_model = CatBoostClassifier(
+    iterations=100,
+    learning_rate=0.1,
+    depth=6,
+    verbose=False
+)
+cat_model.fit(X_train, y_train, cat_features=['category_col1', 'category_col2'])
+
+# With categorical feature indices
+cat_features = [0, 1, 5]  # Column indices of categorical features
+cat_model.fit(X_train, y_train, cat_features=cat_features)
+```
+
+**AdaBoost (Adaptive Boosting)**:
+- **Strengths**: Simple algorithm, good for binary classification, less prone to overfitting
+- **Best for**: Small datasets, when interpretability is important
+- **Key Parameters**:
+  - `n_estimators`: Number of weak learners (50-500)
+  - `learning_rate`: Weight applied to each classifier (0.1-2.0)
+  - `algorithm`: SAMME or SAMME.R for multi-class
+
+```python
+# AdaBoost Example
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
+
+ada_model = AdaBoostClassifier(
+    estimator=DecisionTreeClassifier(max_depth=1),
+    n_estimators=100,
+    learning_rate=1.0,
+    random_state=42
+)
+ada_model.fit(X_train, y_train)
+```
+
+**When to Use Gradient Boosting**:
+- ✅ Tabular/structured data with mixed feature types
+- ✅ High accuracy is priority over interpretability  
+- ✅ Medium to large datasets (1K+ samples)
+- ✅ Complex non-linear relationships exist
+- ✅ Have time for hyperparameter tuning
+- ✅ Competition or benchmark scenarios
+
+**Advantages**:
+- High predictive accuracy
+- Handles mixed data types well
+- Built-in feature selection
+- Robust to outliers and missing values
+- No need for feature scaling
+- Provides feature importance
+- Can optimize various loss functions
+
+**Disadvantages**:
+- Prone to overfitting (especially with small datasets)
+- Computationally expensive
+- Many hyperparameters to tune
+- Sequential training (harder to parallelize base algorithm)
+- Less interpretable than single trees
+- Sensitive to noisy data
+
+**Hyperparameter Tuning Strategy**:
+```python
+# 1. Start with learning rate and number of estimators
+learning_rates = [0.01, 0.1, 0.2]
+n_estimators = [100, 300, 500]
+
+# 2. Tune tree-specific parameters
+max_depths = [3, 5, 7, 10]
+min_samples_splits = [2, 5, 10]
+
+# 3. Add regularization
+reg_alphas = [0, 0.1, 1, 10]  # L1
+reg_lambdas = [1, 5, 10]      # L2
+
+# 4. Fine-tune sampling parameters
+subsamples = [0.8, 0.9, 1.0]
+colsample_bytrees = [0.8, 0.9, 1.0]
+```
+
+**Common Loss Functions**:
+- **Regression**: Squared error, absolute error, Huber, Quantile
+- **Classification**: Logistic loss, exponential loss, Hinge loss
+- **Ranking**: Pairwise ranking, LambdaRank, NDCG
+
+**Best Practices**:
+1. **Start simple**: Begin with default parameters and small learning rate
+2. **Cross-validation**: Use CV for reliable performance estimates
+3. **Early stopping**: Monitor validation loss to prevent overfitting
+4. **Feature engineering**: Create meaningful features before boosting
+5. **Regularization**: Use L1/L2 regularization and sampling techniques
+6. **Ensemble stacking**: Combine multiple boosting models
+7. **Monitor overfitting**: Track training vs validation metrics
+
+**Performance Comparison**:
+| Algorithm | Training Speed | Memory Usage | Categorical Handling | Accuracy | Interpretability |
+|-----------|---------------|--------------|---------------------|----------|------------------|
+| XGBoost | ⚡⚡ | ⚡⚡ | ⚡ | ⭐⭐⭐ | ⭐ |
+| LightGBM | ⚡⚡⚡ | ⚡⚡⚡ | ⚡⚡ | ⭐⭐⭐ | ⭐ |
+| CatBoost | ⚡⚡ | ⚡⚡ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐ |
+| AdaBoost | ⚡ | ⚡⚡⚡ | ⚡ | ⭐⭐ | ⭐⭐ |
 
 ---
 
@@ -630,6 +845,10 @@ Training Speed priority?
 | Logistic Regression | ⚡⚡⚡ | ⚡⚡⚡ | ⚡⚡⚡ | ⭐⭐⭐ |
 | Decision Tree | ⚡⚡ | ⚡⚡⚡ | ⚡⚡ | ⭐⭐⭐ |
 | Random Forest | ⚡ | ⚡⚡ | ⚡ | ⭐⭐ |
+| XGBoost | ⚡ | ⚡⚡ | ⚡⚡ | ⭐ |
+| LightGBM | ⚡⚡ | ⚡⚡⚡ | ⚡⚡⚡ | ⭐ |
+| CatBoost | ⚡ | ⚡⚡ | ⚡⚡ | ⭐ |
+| AdaBoost | ⚡ | ⚡⚡ | ⚡⚡ | ⭐⭐ |
 | SVM | ⚡ | ⚡⚡ | ⚡⚡ | ⭐ |
 | k-NN | ⚡⚡⚡ | ⚡ | ⚡ | ⭐⭐ |
 | Naive Bayes | ⚡⚡⚡ | ⚡⚡⚡ | ⚡⚡⚡ | ⭐⭐ |
@@ -749,9 +968,9 @@ RobustScaler()    # For data with outliers
 
 | Problem Type | First Try | If More Accuracy Needed | If Interpretability Needed |
 |--------------|-----------|------------------------|---------------------------|
-| Binary Classification | Logistic Regression | Random Forest, SVM | Decision Tree, Naive Bayes |
-| Multi-class Classification | Logistic Regression | Random Forest, Neural Network | Decision Tree |
-| Regression | Linear Regression | Random Forest, Neural Network | Linear Regression |
+| Binary Classification | Logistic Regression | XGBoost, LightGBM, CatBoost | Decision Tree, Naive Bayes |
+| Multi-class Classification | Logistic Regression | XGBoost, LightGBM, CatBoost | Decision Tree |
+| Regression | Linear Regression | XGBoost, LightGBM, CatBoost | Linear Regression |
 | Clustering | k-Means | DBSCAN, Hierarchical | k-Means with visualization |
 | Dimensionality Reduction | PCA | t-SNE, UMAP | PCA |
 | Anomaly Detection | Isolation Forest | One-Class SVM | Statistical methods |
