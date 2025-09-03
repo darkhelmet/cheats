@@ -395,27 +395,32 @@ class CustomModel(keras.Model):
 
 ## Data Processing
 
-### Data Generators
+### Image Data Loading and Augmentation
 ```python
-# Image data generator
-datagen = keras.preprocessing.image.ImageDataGenerator(
-    rotation_range=20,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    horizontal_flip=True,
-    zoom_range=0.2,
-    rescale=1./255
-)
-
-train_generator = datagen.flow_from_directory(
-    'train_directory',
-    target_size=(224, 224),
+# Create a dataset from a directory of images
+train_ds = keras.utils.image_dataset_from_directory(
+    directory='train_directory',
+    labels='inferred',
+    label_mode='categorical',
     batch_size=32,
-    class_mode='categorical'
+    image_size=(224, 224)
 )
 
-# Fit with generator
-model.fit(train_generator, epochs=10, validation_data=validation_generator)
+# Define data augmentation layers
+data_augmentation = keras.Sequential([
+    layers.RandomFlip("horizontal"),
+    layers.RandomRotation(0.1),
+    layers.RandomZoom(0.1),
+])
+
+# Apply augmentation to the dataset
+train_ds = train_ds.map(lambda x, y: (data_augmentation(x), y))
+
+# Prefetch for performance
+train_ds = train_ds.prefetch(buffer_size=tf.data.AUTOTUNE)
+
+# Fit with the dataset
+model.fit(train_ds, epochs=10, validation_data=val_ds)
 ```
 
 ### tf.data Integration

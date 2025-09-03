@@ -719,19 +719,16 @@ cuda-gdb ./program
 (cuda-gdb) continue
 ```
 
-### Profiling with nvprof/nsys
+### Profiling with Nsight (nsys/ncu)
 ```bash
-# Legacy profiling (nvprof)
-nvprof ./program
-
-# Modern profiling (Nsight Systems)
+# Nsight Systems (nsys) for system-wide performance analysis
 nsys profile --stats=true ./program
 
-# Detailed metrics
-nsys profile --stats=true --force-overwrite true -o profile ./program
-
-# GPU metrics
+# Nsight Compute (ncu) for detailed kernel analysis
 ncu --set full ./program
+
+# Legacy profiling (nvprof) - deprecated
+nvprof ./program
 ```
 
 ### Printf Debugging
