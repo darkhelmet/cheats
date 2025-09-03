@@ -12,7 +12,366 @@ cd my-app
 npm run dev
 
 # With specific options
-npx create-next-app@latest my-app --typescript --tailwind --eslint --app
+# Next.js
+
+Next.js is a React framework for building full-stack web applications with built-in optimization, routing, and deployment features. This cheat sheet covers Next.js 15+ with App Router and modern patterns.
+
+## Quick Start
+
+### Installation and Setup
+```bash
+# Create new Next.js app (Next.js 15 requires React 19)
+npx create-next-app@latest my-app
+cd my-app
+npm run dev
+
+# Manual installation
+npm install next@latest react@latest react-dom@latest
+```
+
+### Basic Project Structure
+```
+my-app/
+├── app/                 # App Router
+│   ├── globals.css     # Global styles
+│   ├── layout.tsx      # Root layout
+│   ├── page.tsx        # Home page
+│   └── loading.tsx     # Loading UI
+├── public/             # Static assets
+├── next.config.js      # Next.js configuration
+└── package.json
+```
+
+### Basic Configuration
+```javascript
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.example.com',
+      },
+    ],
+  },
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  }
+}
+
+module.exports = nextConfig
+```
+
+## App Router (Next.js 15+)
+
+### File-based Routing
+```
+app/
+├── page.tsx                    # / (home)
+├── about/page.tsx             # /about
+├── blog/
+│   ├── page.tsx               # /blog
+│   └── [slug]/page.tsx        # /blog/[slug] (dynamic)
+└── (dashboard)/              # Route groups (no URL segment)
+    ├── settings/page.tsx     # /settings
+    └── profile/page.tsx      # /profile
+```
+
+### Asynchronous Pages and Layouts
+In Next.js 15, `params` and `searchParams` are now Promises.
+
+```tsx
+// app/blog/[slug]/page.tsx - Dynamic Page
+type Params = Promise<{ slug: string }>
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+
+export default async function BlogPost({ params, searchParams }: { params: Params, searchParams: SearchParams }) {
+  const { slug } = await params;
+  const search = await searchParams;
+  
+  return (
+    <div>
+      <h1>Blog Post: {slug}</h1>
+      <p>Search params: {JSON.stringify(search)}</p>
+    </div>
+  )
+}
+```
+
+### Special Files
+```tsx
+// app/loading.tsx - Loading UI
+export default function Loading() {
+  return <div className="spinner">Loading...</div>
+}
+
+// app/error.tsx - Error UI
+'use client'
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+  return (
+    <div>
+      <h2>Something went wrong!</h2>
+      <p>{error.message}</p>
+      <button onClick={reset}>Try again</button>
+    </div>
+  )
+}
+```
+
+## Data Fetching
+
+### Server Components (Default)
+In Next.js 15, `fetch` is **not cached by default**. You must opt-in.
+
+```tsx
+// Server Component - runs on server
+async function getData() {
+  // Opt-in to caching
+  const res = await fetch('https://api.example.com/data', {
+    cache: 'force-cache', 
+  });
+
+  // No caching (SSR)
+  const dynamicRes = await fetch('https://api.example.com/data', {
+    cache: 'no-store',
+  });
+
+  // Incremental Static Regeneration (ISR)
+  const isrRes = await fetch('https://api.example.com/data', {
+    next: { revalidate: 60 } // Revalidate every 60 seconds
+  });
+  
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  
+  return res.json()
+}
+
+export default async function PostsPage() {
+  const posts = await getData()
+  
+  return (
+    <div>
+      <h1>Posts</h1>
+      {posts.map((post: any) => (
+        <article key={post.id}>
+          <h2>{post.title}</h2>
+        </article>
+      ))}
+    </div>
+  )
+}
+```
+
+### Client Components
+```tsx
+'use client'
+
+import { useState, useEffect } from 'react'
+
+export default function ClientDataFetching() {
+  const [data, setData] = useState(null)
+  
+  useEffect(() => {
+    fetch('/api/data')
+      .then(res => res.json())
+      .then(setData)
+  }, [])
+  
+  if (!data) return <div>Loading...</div>
+  
+  return <div>{/* Render data */}</div>
+}
+```
+
+### Static Site Generation (SSG)
+```tsx
+// app/posts/[slug]/page.tsx
+// Generate static params at build time
+export async function generateStaticParams() {
+  const posts = await fetch('https://.../posts').then((res) => res.json())
+  return posts.map((post) => ({ slug: post.slug }))
+}
+
+// Page component
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await fetch(`https://.../posts/${slug}`).then((res) => res.json())
+  
+  return <div>{post.title}</div>
+}
+```
+
+## API Routes (Route Handlers)
+
+### Basic API Routes
+```typescript
+// app/api/hello/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET() {
+  return NextResponse.json({ message: 'Hello World' })
+}
+```
+
+### Dynamic API Routes
+In Next.js 15, `params` in Route Handlers is a Promise.
+
+```typescript
+// app/api/users/[id]/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+type Params = Promise<{ id: string }>
+
+export async function GET(request: NextRequest, { params }: { params: Params }) {
+  const { id } = await params;
+  const user = await getUserById(id);
+  
+  if (!user) {
+    return new NextResponse('User not found', { status: 404 })
+  }
+  
+  return NextResponse.json(user)
+}
+```
+
+### Asynchronous Headers and Cookies
+```typescript
+// app/api/some-route/route.ts
+import { cookies, headers } from 'next/headers'
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(request: NextRequest) {
+  const headersList = await headers()
+  const userAgent = headersList.get('user-agent')
+
+  const cookieStore = await cookies()
+  const token = cookieStore.get('token')
+
+  return NextResponse.json({ userAgent, token: token?.value })
+}
+```
+
+## Navigation and Routing
+
+### Link Component
+```tsx
+import Link from 'next/link'
+
+export default function Navigation() {
+  return (
+    <nav>
+      <Link href="/about">About</Link>
+      <Link href="/products" className="nav-link">Products</Link>
+      <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+    </nav>
+  )
+}
+```
+
+### useRouter Hook
+```tsx
+'use client'
+
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+
+export default function ClientNavigation() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  
+  const handleNavigation = () => {
+    router.push('/dashboard')
+  }
+  
+  return (
+    <div>
+      <p>Current path: {pathname}</p>
+      <button onClick={handleNavigation}>Go to Dashboard</button>
+    </div>
+  )
+}
+```
+
+## Performance Optimization
+
+### Partial Prerendering (PPR)
+Enable PPR in `next.config.js` for incremental static/dynamic rendering.
+
+```javascript
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    ppr: 'incremental',
+  },
+}
+
+module.exports = nextConfig
+```
+
+### Caching Strategies
+`fetch` is no longer cached by default.
+
+```tsx
+// Default: No caching (SSR)
+const dynamicData = await fetch('https://api.example.com/dynamic-data')
+
+// Static caching (opt-in)
+const staticData = await fetch('https://api.example.com/static-data', {
+  cache: 'force-cache'
+})
+
+// Time-based revalidation (ISR)
+const revalidatedData = await fetch('https://api.example.com/data', {
+  next: { revalidate: 60 } // Revalidate every 60 seconds
+})
+
+// Set default caching for a layout or page
+export const fetchCache = 'default-cache'
+```
+
+## SEO and Metadata
+
+### Dynamic Metadata
+`params` is now a Promise.
+
+```tsx
+import type { Metadata } from 'next'
+
+type Props = {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await fetch(`https://.../posts/${slug}`).then((res) => res.json())
+  
+  return {
+    title: post.title,
+    description: post.excerpt,
+  }
+}
+
+export default async function PostPage({ params }: { params: Promise<{ slug:string }> }) {
+  const { slug } = await params;
+  const post = await fetch(`https://.../posts/${slug}`).then((res) => res.json())
+  
+  return <div>{post.title}</div>
+}
+```
+
+This comprehensive Next.js cheat sheet covers modern patterns, App Router features, and best practices for building production-ready applications with Next.js 15+. Focus on understanding the App Router paradigm, server/client component patterns, and data fetching strategies for effective Next.js development.
+
 
 # Manual installation
 npm install next@latest react@latest react-dom@latest
