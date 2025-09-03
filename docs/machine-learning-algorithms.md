@@ -89,8 +89,7 @@ Cost Function: J(θ) = -1/m Σ[y⁽ⁱ⁾log(hθ(x⁽ⁱ⁾)) + (1-y⁽ⁱ⁾)lo
 
 **Strengths**:
 - Outputs probability estimates
-- No tuning of hyperparameters required
-- Less prone to overfitting
+- Less prone to overfitting than complex models
 - Fast training
 - Interpretable coefficients
 
@@ -118,7 +117,7 @@ MSE (regression) = 1/n Σ(yᵢ - ŷ)²
 - **max_depth**: Maximum tree depth (default: None)
 - **min_samples_split**: Minimum samples to split node (default: 2)
 - **min_samples_leaf**: Minimum samples in leaf node (default: 1)
-- **max_features**: Number of features for best split ('auto', 'sqrt', 'log2')
+- **max_features**: Number of features for best split (default: None)
 
 **When to Use**:
 - ✅ Need interpretable model
@@ -165,7 +164,7 @@ Feature Importance: Average decrease in impurity when feature is used for splits
 - **max_depth**: Maximum depth of trees (default: None)
 - **min_samples_split**: Minimum samples to split (default: 2)
 - **min_samples_leaf**: Minimum samples in leaf (default: 1)
-- **max_features**: Features to consider for splits ('sqrt', 'log2', None)
+- **max_features**: Features to consider for splits (default: 'sqrt')
 - **bootstrap**: Whether to bootstrap samples (default: True)
 
 **When to Use**:
@@ -336,6 +335,7 @@ cat_model.fit(X_train, y_train, cat_features=cat_features)
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 
+# Note: The 'estimator' parameter was named 'base_estimator' in scikit-learn < 1.2
 ada_model = AdaBoostClassifier(
     estimator=DecisionTreeClassifier(max_depth=1),
     n_estimators=100,

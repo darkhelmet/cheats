@@ -36,9 +36,6 @@ my-app/
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   images: {
     domains: ['example.com'],
     formats: ['image/webp', 'image/avif'],
@@ -1096,20 +1093,22 @@ describe('Button', () => {
 ### API Route Testing
 ```tsx
 // __tests__/api/users.test.ts
-import { createMocks } from 'node-mocks-http'
-import handler from '@/app/api/users/route'
+import { GET } from '@/app/api/users/route' // Adjust path as needed
+import { NextRequest } from 'next/server'
 
-describe('/api/users', () => {
-  test('returns users list', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    })
+describe('/api/users route', () => {
+  it('returns a successful response with a list of users', async () => {
+    // Mock the request object
+    const request = new NextRequest('http://localhost/api/users')
     
-    await handler(req, res)
+    // Call the route handler
+    const response = await GET(request)
+    const body = await response.json()
     
-    expect(res._getStatusCode()).toBe(200)
-    const data = JSON.parse(res._getData())
-    expect(data).toHaveProperty('users')
+    // Assertions
+    expect(response.status).toBe(200)
+    expect(body).toHaveProperty('users')
+    expect(Array.isArray(body.users)).toBe(true)
   })
 })
 ```

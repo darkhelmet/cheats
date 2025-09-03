@@ -6,16 +6,14 @@ React is a JavaScript library for building user interfaces through reusable comp
 
 ### Installation
 ```bash
-# Create new React app
-npx create-react-app my-app
-cd my-app
-npm start
-
-# Or with Vite (recommended)
+# Create new React app with Vite (recommended)
 npm create vite@latest my-app -- --template react
 cd my-app
 npm install
 npm run dev
+
+# Create React App (Legacy)
+npx create-react-app my-app
 
 # Add React to existing project
 npm install react react-dom

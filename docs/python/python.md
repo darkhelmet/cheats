@@ -928,8 +928,9 @@ def get_value(dictionary, key):
         return None
 
 def process_file(filename):
-    if os.path.exists(filename):
-        with open(filename, 'r') as file:
+    path = Path(filename)
+    if path.exists():
+        with path.open('r') as file:
             return file.read()
     else:
         return "File not found"
@@ -955,7 +956,7 @@ else:
 def make_sound(animal):
     # We don't care what type animal is
     # We just call its sound() method
-    animal.sound()
+    print(animal.sound())
 
 class Dog:
     def sound(self):
@@ -2027,6 +2028,14 @@ dq.pop()             # [1, 2, 3]
 dq.rotate(1)         # [3, 1, 2]
 dq.rotate(-1)        # [1, 2, 3]
 
+# OrderedDict - dict that remembers insertion order
+# Note: Since Python 3.7, standard dicts also remember insertion order.
+# OrderedDict is still useful for its move_to_end() method and equality behavior.
+od = OrderedDict()
+od['a'] = 1
+od['b'] = 2
+od['c'] = 3
+
 # namedtuple - immutable classes
 Point = namedtuple('Point', ['x', 'y'])
 p = Point(10, 20)
@@ -2271,6 +2280,9 @@ class TestCalculator(unittest.TestCase):
 # Run tests
 if __name__ == '__main__':
     unittest.main()
+
+# Or run from the command line:
+# python -m unittest discover
 
 # Common assertions
 # self.assertEqual(a, b)      # a == b
