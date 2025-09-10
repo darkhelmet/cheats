@@ -39,6 +39,9 @@ Welcome to the cheat sheets collection - a comprehensive set of quick reference 
 ### GPU Computing
 - [CUDA](gpu/cuda.md) - Comprehensive CUDA C/C++ programming reference for GPU computing
 
+### Operating Systems
+- [Bottlerocket OS](os/bottlerocket.md) - Container-optimized Linux OS with AWS SSM, containerd management, and security best practices
+
 ### Tools & Editors
 - [Protocol Buffers](tools/protobuf.md) - Schema definition and code generation with protoc compiler
 - [ripgrep](tools/ripgrep.md) - Fast text search tool with regex support
@@ -61,6 +64,7 @@ Cheat sheets are organized by topic:
 - `javascript/` - JavaScript frameworks and libraries
 - `machine-learning-algorithms.md` - General machine learning and data science concepts
 - `gpu/` - GPU computing and parallel programming
+- `os/` - Operating systems and system administration
 - `tools/` - Development tools and editors
 - Additional directories can be added for other languages/topics as needed
 
