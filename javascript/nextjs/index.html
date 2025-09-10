@@ -1,0 +1,3102 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../gpu/cuda/">
+      
+      
+        <link rel="next" href="../react/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Next.js - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nextjs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Next.js
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation and Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Project Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app-router-nextjs-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      App Router (Next.js 15+)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="App Router (Next.js 15+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-based-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      File-based Routing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-pages-and-layouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous Pages and Layouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-fetching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Fetching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Fetching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-components-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Components (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-site-generation-ssg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Site Generation (SSG)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-routes-route-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Routes (Route Handlers)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Routes (Route Handlers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-api-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic API Routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-api-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic API Routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-headers-and-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous Headers and Cookies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigation-and-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation and Routing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigation and Routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#link-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Component
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userouter-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      useRouter Hook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#partial-prerendering-ppr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partial Prerendering (PPR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seo-and-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      SEO and Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SEO and Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Metadata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation and Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Project Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app-router-nextjs-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      App Router (Next.js 15+)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="App Router (Next.js 15+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-based-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      File-based Routing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-pages-and-layouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous Pages and Layouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-fetching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Fetching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Fetching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-components-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Components (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-site-generation-ssg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Site Generation (SSG)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-routes-route-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Routes (Route Handlers)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Routes (Route Handlers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-api-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic API Routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-api-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic API Routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-headers-and-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous Headers and Cookies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigation-and-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation and Routing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigation and Routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#link-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Component
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userouter-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      useRouter Hook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#partial-prerendering-ppr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partial Prerendering (PPR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seo-and-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      SEO and Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SEO and Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Metadata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="nextjs">Next.js</h1>
+<p>Next.js is a React framework for building full-stack web applications with built-in optimization, routing, and deployment features. This cheat sheet covers Next.js 13+ with App Router and modern patterns.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="installation-and-setup">Installation and Setup</h3>
+<pre><code class="language-bash"># Create new Next.js app
+npx create-next-app@latest my-app
+cd my-app
+npm run dev
+
+# With specific options
+# Next.js
+
+Next.js is a React framework for building full-stack web applications with built-in optimization, routing, and deployment features. This cheat sheet covers Next.js 15+ with App Router and modern patterns.
+
+## Quick Start
+
+### Installation and Setup
+```bash
+# Create new Next.js app (Next.js 15 requires React 19)
+npx create-next-app@latest my-app
+cd my-app
+npm run dev
+
+# Manual installation
+npm install next@latest react@latest react-dom@latest
+</code></pre>
+<h3 id="basic-project-structure">Basic Project Structure</h3>
+<pre><code>my-app/
+├── app/                 # App Router
+│   ├── globals.css     # Global styles
+│   ├── layout.tsx      # Root layout
+│   ├── page.tsx        # Home page
+│   └── loading.tsx     # Loading UI
+├── public/             # Static assets
+├── next.config.js      # Next.js configuration
+└── package.json
+</code></pre>
+<h3 id="basic-configuration">Basic Configuration</h3>
+<pre><code class="language-javascript">// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.example.com',
+      },
+    ],
+  },
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  }
+}
+
+module.exports = nextConfig
+</code></pre>
+<h2 id="app-router-nextjs-15">App Router (Next.js 15+)</h2>
+<h3 id="file-based-routing">File-based Routing</h3>
+<pre><code>app/
+├── page.tsx                    # / (home)
+├── about/page.tsx             # /about
+├── blog/
+│   ├── page.tsx               # /blog
+│   └── [slug]/page.tsx        # /blog/[slug] (dynamic)
+└── (dashboard)/              # Route groups (no URL segment)
+    ├── settings/page.tsx     # /settings
+    └── profile/page.tsx      # /profile
+</code></pre>
+<h3 id="asynchronous-pages-and-layouts">Asynchronous Pages and Layouts</h3>
+<p>In Next.js 15, <code>params</code> and <code>searchParams</code> are now Promises.</p>
+<pre><code class="language-tsx">// app/blog/[slug]/page.tsx - Dynamic Page
+type Params = Promise&lt;{ slug: string }&gt;
+type SearchParams = Promise&lt;{ [key: string]: string | string[] | undefined }&gt;
+
+export default async function BlogPost({ params, searchParams }: { params: Params, searchParams: SearchParams }) {
+  const { slug } = await params;
+  const search = await searchParams;
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Blog Post: {slug}&lt;/h1&gt;
+      &lt;p&gt;Search params: {JSON.stringify(search)}&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="special-files">Special Files</h3>
+<pre><code class="language-tsx">// app/loading.tsx - Loading UI
+export default function Loading() {
+  return &lt;div className=&quot;spinner&quot;&gt;Loading...&lt;/div&gt;
+}
+
+// app/error.tsx - Error UI
+'use client'
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error &amp; { digest?: string }
+  reset: () =&gt; void
+}) {
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Something went wrong!&lt;/h2&gt;
+      &lt;p&gt;{error.message}&lt;/p&gt;
+      &lt;button onClick={reset}&gt;Try again&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h2 id="data-fetching">Data Fetching</h2>
+<h3 id="server-components-default">Server Components (Default)</h3>
+<p>In Next.js 15, <code>fetch</code> is <strong>not cached by default</strong>. You must opt-in.</p>
+<pre><code class="language-tsx">// Server Component - runs on server
+async function getData() {
+  // Opt-in to caching
+  const res = await fetch('https://api.example.com/data', {
+    cache: 'force-cache', 
+  });
+
+  // No caching (SSR)
+  const dynamicRes = await fetch('https://api.example.com/data', {
+    cache: 'no-store',
+  });
+
+  // Incremental Static Regeneration (ISR)
+  const isrRes = await fetch('https://api.example.com/data', {
+    next: { revalidate: 60 } // Revalidate every 60 seconds
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
+export default async function PostsPage() {
+  const posts = await getData()
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Posts&lt;/h1&gt;
+      {posts.map((post: any) =&gt; (
+        &lt;article key={post.id}&gt;
+          &lt;h2&gt;{post.title}&lt;/h2&gt;
+        &lt;/article&gt;
+      ))}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="client-components">Client Components</h3>
+<pre><code class="language-tsx">'use client'
+
+import { useState, useEffect } from 'react'
+
+export default function ClientDataFetching() {
+  const [data, setData] = useState(null)
+
+  useEffect(() =&gt; {
+    fetch('/api/data')
+      .then(res =&gt; res.json())
+      .then(setData)
+  }, [])
+
+  if (!data) return &lt;div&gt;Loading...&lt;/div&gt;
+
+  return &lt;div&gt;{/* Render data */}&lt;/div&gt;
+}
+</code></pre>
+<h3 id="static-site-generation-ssg">Static Site Generation (SSG)</h3>
+<pre><code class="language-tsx">// app/posts/[slug]/page.tsx
+// Generate static params at build time
+export async function generateStaticParams() {
+  const posts = await fetch('https://.../posts').then((res) =&gt; res.json())
+  return posts.map((post) =&gt; ({ slug: post.slug }))
+}
+
+// Page component
+export default async function PostPage({ params }: { params: Promise&lt;{ slug: string }&gt; }) {
+  const { slug } = await params;
+  const post = await fetch(`https://.../posts/${slug}`).then((res) =&gt; res.json())
+
+  return &lt;div&gt;{post.title}&lt;/div&gt;
+}
+</code></pre>
+<h2 id="api-routes-route-handlers">API Routes (Route Handlers)</h2>
+<h3 id="basic-api-routes">Basic API Routes</h3>
+<pre><code class="language-typescript">// app/api/hello/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET() {
+  return NextResponse.json({ message: 'Hello World' })
+}
+</code></pre>
+<h3 id="dynamic-api-routes">Dynamic API Routes</h3>
+<p>In Next.js 15, <code>params</code> in Route Handlers is a Promise.</p>
+<pre><code class="language-typescript">// app/api/users/[id]/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+type Params = Promise&lt;{ id: string }&gt;
+
+export async function GET(request: NextRequest, { params }: { params: Params }) {
+  const { id } = await params;
+  const user = await getUserById(id);
+
+  if (!user) {
+    return new NextResponse('User not found', { status: 404 })
+  }
+
+  return NextResponse.json(user)
+}
+</code></pre>
+<h3 id="asynchronous-headers-and-cookies">Asynchronous Headers and Cookies</h3>
+<pre><code class="language-typescript">// app/api/some-route/route.ts
+import { cookies, headers } from 'next/headers'
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(request: NextRequest) {
+  const headersList = await headers()
+  const userAgent = headersList.get('user-agent')
+
+  const cookieStore = await cookies()
+  const token = cookieStore.get('token')
+
+  return NextResponse.json({ userAgent, token: token?.value })
+}
+</code></pre>
+<h2 id="navigation-and-routing">Navigation and Routing</h2>
+<h3 id="link-component">Link Component</h3>
+<pre><code class="language-tsx">import Link from 'next/link'
+
+export default function Navigation() {
+  return (
+    &lt;nav&gt;
+      &lt;Link href=&quot;/about&quot;&gt;About&lt;/Link&gt;
+      &lt;Link href=&quot;/products&quot; className=&quot;nav-link&quot;&gt;Products&lt;/Link&gt;
+      &lt;Link href={`/posts/${post.slug}`}&gt;{post.title}&lt;/Link&gt;
+    &lt;/nav&gt;
+  )
+}
+</code></pre>
+<h3 id="userouter-hook">useRouter Hook</h3>
+<pre><code class="language-tsx">'use client'
+
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+
+export default function ClientNavigation() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  const handleNavigation = () =&gt; {
+    router.push('/dashboard')
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Current path: {pathname}&lt;/p&gt;
+      &lt;button onClick={handleNavigation}&gt;Go to Dashboard&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="partial-prerendering-ppr">Partial Prerendering (PPR)</h3>
+<p>Enable PPR in <code>next.config.js</code> for incremental static/dynamic rendering.</p>
+<pre><code class="language-javascript">// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    ppr: 'incremental',
+  },
+}
+
+module.exports = nextConfig
+</code></pre>
+<h3 id="caching-strategies">Caching Strategies</h3>
+<p><code>fetch</code> is no longer cached by default.</p>
+<pre><code class="language-tsx">// Default: No caching (SSR)
+const dynamicData = await fetch('https://api.example.com/dynamic-data')
+
+// Static caching (opt-in)
+const staticData = await fetch('https://api.example.com/static-data', {
+  cache: 'force-cache'
+})
+
+// Time-based revalidation (ISR)
+const revalidatedData = await fetch('https://api.example.com/data', {
+  next: { revalidate: 60 } // Revalidate every 60 seconds
+})
+
+// Set default caching for a layout or page
+export const fetchCache = 'default-cache'
+</code></pre>
+<h2 id="seo-and-metadata">SEO and Metadata</h2>
+<h3 id="dynamic-metadata">Dynamic Metadata</h3>
+<p><code>params</code> is now a Promise.</p>
+<pre><code class="language-tsx">import type { Metadata } from 'next'
+
+type Props = {
+  params: Promise&lt;{ slug: string }&gt;
+}
+
+export async function generateMetadata({ params }: Props): Promise&lt;Metadata&gt; {
+  const { slug } = await params;
+  const post = await fetch(`https://.../posts/${slug}`).then((res) =&gt; res.json())
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+  }
+}
+
+export default async function PostPage({ params }: { params: Promise&lt;{ slug:string }&gt; }) {
+  const { slug } = await params;
+  const post = await fetch(`https://.../posts/${slug}`).then((res) =&gt; res.json())
+
+  return &lt;div&gt;{post.title}&lt;/div&gt;
+}
+</code></pre>
+<p>This comprehensive Next.js cheat sheet covers modern patterns, App Router features, and best practices for building production-ready applications with Next.js 15+. Focus on understanding the App Router paradigm, server/client component patterns, and data fetching strategies for effective Next.js development.</p>
+<h1 id="manual-installation">Manual installation</h1>
+<p>npm install next@latest react@latest react-dom@latest</p>
+<pre><code>
+### Basic Project Structure
+</code></pre>
+<p>my-app/
+├── app/                 # App Router (Next.js 13+)
+│   ├── globals.css     # Global styles
+│   ├── layout.tsx      # Root layout
+│   ├── page.tsx        # Home page
+│   └── loading.tsx     # Loading UI
+├── public/             # Static assets
+├── next.config.js      # Next.js configuration
+└── package.json</p>
+<pre><code>
+### Basic Configuration
+```javascript
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ['example.com'],
+    formats: ['image/webp', 'image/avif'],
+  },
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  }
+}
+
+module.exports = nextConfig
+</code></pre>
+<h2 id="app-router-nextjs-13">App Router (Next.js 13+)</h2>
+<h3 id="file-based-routing_1">File-based Routing</h3>
+<pre><code>app/
+├── page.tsx                    # / (home)
+├── about/page.tsx             # /about
+├── blog/
+│   ├── page.tsx               # /blog
+│   └── [slug]/page.tsx        # /blog/[slug] (dynamic)
+├── products/
+│   ├── page.tsx               # /products
+│   ├── [id]/page.tsx         # /products/[id]
+│   └── [...slug]/page.tsx    # /products/[...slug] (catch-all)
+└── (dashboard)/              # Route groups (no URL segment)
+    ├── settings/page.tsx     # /settings
+    └── profile/page.tsx      # /profile
+</code></pre>
+<h3 id="layout-components">Layout Components</h3>
+<pre><code class="language-tsx">// app/layout.tsx - Root Layout
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'My App',
+  description: 'Generated by Next.js',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    &lt;html lang=&quot;en&quot;&gt;
+      &lt;body&gt;
+        &lt;header&gt;
+          &lt;nav&gt;{/* Navigation */}&lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;main&gt;{children}&lt;/main&gt;
+        &lt;footer&gt;{/* Footer */}&lt;/footer&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}
+
+// app/dashboard/layout.tsx - Nested Layout
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    &lt;div className=&quot;dashboard&quot;&gt;
+      &lt;aside&gt;
+        {/* Sidebar */}
+      &lt;/aside&gt;
+      &lt;div className=&quot;content&quot;&gt;
+        {children}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="pages">Pages</h3>
+<pre><code class="language-tsx">// app/page.tsx - Home Page
+export default function HomePage() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Welcome to Next.js&lt;/h1&gt;
+      &lt;p&gt;This is the home page&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+
+// app/about/page.tsx - About Page
+export default function AboutPage() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;About Us&lt;/h1&gt;
+      &lt;p&gt;Learn more about our company&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+
+// app/blog/[slug]/page.tsx - Dynamic Page
+interface Props {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default function BlogPost({ params, searchParams }: Props) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Blog Post: {params.slug}&lt;/h1&gt;
+      &lt;p&gt;Search params: {JSON.stringify(searchParams)}&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="special-files_1">Special Files</h3>
+<pre><code class="language-tsx">// app/loading.tsx - Loading UI
+export default function Loading() {
+  return &lt;div className=&quot;spinner&quot;&gt;Loading...&lt;/div&gt;
+}
+
+// app/error.tsx - Error UI
+'use client'
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error &amp; { digest?: string }
+  reset: () =&gt; void
+}) {
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Something went wrong!&lt;/h2&gt;
+      &lt;p&gt;{error.message}&lt;/p&gt;
+      &lt;button onClick={reset}&gt;Try again&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+
+// app/not-found.tsx - 404 Page
+import Link from 'next/link'
+
+export default function NotFound() {
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Page Not Found&lt;/h2&gt;
+      &lt;p&gt;Could not find the requested page.&lt;/p&gt;
+      &lt;Link href=&quot;/&quot;&gt;Return Home&lt;/Link&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h2 id="data-fetching_1">Data Fetching</h2>
+<h3 id="server-components-default_1">Server Components (Default)</h3>
+<pre><code class="language-tsx">// Server Component - runs on server
+async function getData() {
+  const res = await fetch('https://api.example.com/data', {
+    cache: 'force-cache', // Default caching
+    // cache: 'no-store',    // No caching (SSR)
+    // next: { revalidate: 60 } // Revalidate every 60 seconds
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
+export default async function PostsPage() {
+  const posts = await getData()
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Posts&lt;/h1&gt;
+      {posts.map((post: any) =&gt; (
+        &lt;article key={post.id}&gt;
+          &lt;h2&gt;{post.title}&lt;/h2&gt;
+          &lt;p&gt;{post.content}&lt;/p&gt;
+        &lt;/article&gt;
+      ))}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="client-components_1">Client Components</h3>
+<pre><code class="language-tsx">'use client'
+
+import { useState, useEffect } from 'react'
+
+export default function ClientDataFetching() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() =&gt; {
+    fetch('/api/data')
+      .then(res =&gt; res.json())
+      .then(data =&gt; {
+        setData(data)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Client-side Data&lt;/h1&gt;
+      &lt;pre&gt;{JSON.stringify(data, null, 2)}&lt;/pre&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="static-site-generation-ssg_1">Static Site Generation (SSG)</h3>
+<pre><code class="language-tsx">// app/posts/[slug]/page.tsx
+interface Post {
+  id: string
+  title: string
+  content: string
+  slug: string
+}
+
+// Generate static params at build time
+export async function generateStaticParams() {
+  const posts = await fetch('https://api.example.com/posts').then(res =&gt; res.json())
+
+  return posts.map((post: Post) =&gt; ({
+    slug: post.slug,
+  }))
+}
+
+// Generate metadata for each page
+export async function generateMetadata(
+  { params }: { params: { slug: string } }
+) {
+  const post = await fetch(`https://api.example.com/posts/${params.slug}`)
+    .then(res =&gt; res.json())
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+  }
+}
+
+// Page component
+export default async function PostPage({ params }: { params: { slug: string } }) {
+  const post = await fetch(`https://api.example.com/posts/${params.slug}`)
+    .then(res =&gt; res.json())
+
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;{post.title}&lt;/h1&gt;
+      &lt;div dangerouslySetInnerHTML={{ __html: post.content }} /&gt;
+    &lt;/article&gt;
+  )
+}
+</code></pre>
+<h3 id="incremental-static-regeneration-isr">Incremental Static Regeneration (ISR)</h3>
+<pre><code class="language-tsx">async function getData() {
+  const res = await fetch('https://api.example.com/posts', {
+    next: { revalidate: 3600 } // Revalidate every hour
+  })
+
+  return res.json()
+}
+
+export default async function PostsPage() {
+  const posts = await getData()
+
+  return (
+    &lt;div&gt;
+      {posts.map((post: any) =&gt; (
+        &lt;div key={post.id}&gt;{post.title}&lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h2 id="api-routes">API Routes</h2>
+<h3 id="basic-api-routes_1">Basic API Routes</h3>
+<pre><code class="language-typescript">// app/api/hello/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET() {
+  return NextResponse.json({ message: 'Hello World' })
+}
+
+export async function POST(request: NextRequest) {
+  const body = await request.json()
+
+  return NextResponse.json({
+    message: 'Data received',
+    data: body
+  })
+}
+</code></pre>
+<h3 id="dynamic-api-routes_1">Dynamic API Routes</h3>
+<pre><code class="language-typescript">// app/api/users/[id]/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const id = params.id
+
+  // Fetch user data
+  const user = await getUserById(id)
+
+  if (!user) {
+    return new NextResponse('User not found', { status: 404 })
+  }
+
+  return NextResponse.json(user)
+}
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const id = params.id
+  const body = await request.json()
+
+  const updatedUser = await updateUser(id, body)
+
+  return NextResponse.json(updatedUser)
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const id = params.id
+  await deleteUser(id)
+
+  return new NextResponse(null, { status: 204 })
+}
+</code></pre>
+<h3 id="error-handling-in-api-routes">Error Handling in API Routes</h3>
+<pre><code class="language-typescript">// app/api/protected/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(request: NextRequest) {
+  try {
+    // Check authentication
+    const token = request.headers.get('authorization')
+    if (!token) {
+      return new NextResponse('Unauthorized', { status: 401 })
+    }
+
+    // Validate token
+    const user = await validateToken(token)
+    if (!user) {
+      return new NextResponse('Invalid token', { status: 401 })
+    }
+
+    // Return protected data
+    const data = await getProtectedData(user.id)
+    return NextResponse.json(data)
+
+  } catch (error) {
+    console.error('API Error:', error)
+    return new NextResponse('Internal Server Error', { status: 500 })
+  }
+}
+</code></pre>
+<h3 id="middleware">Middleware</h3>
+<pre><code class="language-typescript">// middleware.ts (in root directory)
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export function middleware(request: NextRequest) {
+  // Check if user is authenticated
+  const token = request.cookies.get('auth-token')
+
+  if (!token &amp;&amp; request.nextUrl.pathname.startsWith('/dashboard')) {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  // Add custom headers
+  const response = NextResponse.next()
+  response.headers.set('x-custom-header', 'my-value')
+
+  return response
+}
+
+export const config = {
+  matcher: ['/dashboard/:path*', '/api/:path*']
+}
+</code></pre>
+<h2 id="navigation-and-routing_1">Navigation and Routing</h2>
+<h3 id="link-component_1">Link Component</h3>
+<pre><code class="language-tsx">import Link from 'next/link'
+
+export default function Navigation() {
+  return (
+    &lt;nav&gt;
+      {/* Basic link */}
+      &lt;Link href=&quot;/about&quot;&gt;About&lt;/Link&gt;
+
+      {/* Link with custom styling */}
+      &lt;Link href=&quot;/products&quot; className=&quot;nav-link&quot;&gt;
+        Products
+      &lt;/Link&gt;
+
+      {/* Dynamic link */}
+      &lt;Link href={`/posts/${post.slug}`}&gt;
+        {post.title}
+      &lt;/Link&gt;
+
+      {/* External link */}
+      &lt;Link href=&quot;https://example.com&quot; target=&quot;_blank&quot;&gt;
+        External Link
+      &lt;/Link&gt;
+
+      {/* Link with query parameters */}
+      &lt;Link
+        href={{
+          pathname: '/search',
+          query: { q: 'nextjs' }
+        }}
+      &gt;
+        Search
+      &lt;/Link&gt;
+    &lt;/nav&gt;
+  )
+}
+</code></pre>
+<h3 id="userouter-hook_1">useRouter Hook</h3>
+<pre><code class="language-tsx">'use client'
+
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+
+export default function ClientNavigation() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  const handleNavigation = () =&gt; {
+    // Programmatic navigation
+    router.push('/dashboard')
+    // router.replace('/dashboard') // Replace current entry
+    // router.back() // Go back
+    // router.forward() // Go forward
+  }
+
+  const handleSearch = (term: string) =&gt; {
+    // Update URL with search params
+    const params = new URLSearchParams(searchParams)
+    params.set('q', term)
+    router.push(`${pathname}?${params.toString()}`)
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Current path: {pathname}&lt;/p&gt;
+      &lt;p&gt;Search: {searchParams.get('q')}&lt;/p&gt;
+      &lt;button onClick={handleNavigation}&gt;Go to Dashboard&lt;/button&gt;
+      &lt;input
+        type=&quot;text&quot;
+        onChange={(e) =&gt; handleSearch(e.target.value)}
+        placeholder=&quot;Search...&quot;
+      /&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h2 id="styling">Styling</h2>
+<h3 id="css-modules">CSS Modules</h3>
+<pre><code class="language-tsx">// components/Button.module.css
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0051a2;
+}
+
+.primary {
+  background-color: #0070f3;
+}
+
+.secondary {
+  background-color: #666;
+}
+</code></pre>
+<pre><code class="language-tsx">// components/Button.tsx
+import styles from './Button.module.css'
+
+interface ButtonProps {
+  children: React.ReactNode
+  variant?: 'primary' | 'secondary'
+  onClick?: () =&gt; void
+}
+
+export default function Button({ children, variant = 'primary', onClick }: ButtonProps) {
+  return (
+    &lt;button
+      className={`${styles.button} ${styles[variant]}`}
+      onClick={onClick}
+    &gt;
+      {children}
+    &lt;/button&gt;
+  )
+}
+</code></pre>
+<h3 id="global-styles">Global Styles</h3>
+<pre><code class="language-css">/* app/globals.css */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+</code></pre>
+<h3 id="tailwind-css-integration">Tailwind CSS Integration</h3>
+<pre><code class="language-tsx">// Install: npm install -D tailwindcss postcss autoprefixer
+// Initialize: npx tailwindcss init -p
+
+// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+// Component with Tailwind classes
+export default function Card({ children }: { children: React.ReactNode }) {
+  return (
+    &lt;div className=&quot;max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden&quot;&gt;
+      &lt;div className=&quot;p-6&quot;&gt;
+        {children}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h2 id="image-optimization">Image Optimization</h2>
+<h3 id="nextjs-image-component">Next.js Image Component</h3>
+<pre><code class="language-tsx">import Image from 'next/image'
+
+export default function Gallery() {
+  return (
+    &lt;div&gt;
+      {/* Local image */}
+      &lt;Image
+        src=&quot;/hero-image.jpg&quot;
+        alt=&quot;Hero&quot;
+        width={800}
+        height={600}
+        priority // Load immediately
+      /&gt;
+
+      {/* Remote image */}
+      &lt;Image
+        src=&quot;https://example.com/image.jpg&quot;
+        alt=&quot;Remote image&quot;
+        width={400}
+        height={300}
+        placeholder=&quot;blur&quot;
+        blurDataURL=&quot;data:image/jpeg;base64,...&quot; // Base64 blur placeholder
+      /&gt;
+
+      {/* Responsive image */}
+      &lt;Image
+        src=&quot;/responsive-image.jpg&quot;
+        alt=&quot;Responsive&quot;
+        fill
+        style={{ objectFit: 'cover' }}
+      /&gt;
+
+      {/* Image with custom loader */}
+      &lt;Image
+        src=&quot;image-key&quot;
+        alt=&quot;Custom loader&quot;
+        width={300}
+        height={200}
+        loader={({ src, width, quality }) =&gt; {
+          return `https://cdn.example.com/${src}?w=${width}&amp;q=${quality || 75}`
+        }}
+      /&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="image-configuration">Image Configuration</h3>
+<pre><code class="language-javascript">// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ['example.com', 'cdn.example.com'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+  },
+}
+
+module.exports = nextConfig
+</code></pre>
+<h2 id="authentication-patterns">Authentication Patterns</h2>
+<h3 id="session-based-authentication">Session-based Authentication</h3>
+<pre><code class="language-tsx">// app/api/auth/login/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
+import jwt from 'jsonwebtoken'
+
+export async function POST(request: NextRequest) {
+  const { email, password } = await request.json()
+
+  // Validate credentials
+  const user = await validateUser(email, password)
+  if (!user) {
+    return new NextResponse('Invalid credentials', { status: 401 })
+  }
+
+  // Create JWT token
+  const token = jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET!,
+    { expiresIn: '7d' }
+  )
+
+  // Set cookie
+  cookies().set('auth-token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+  })
+
+  return NextResponse.json({ user: { id: user.id, email: user.email } })
+}
+</code></pre>
+<h3 id="protected-routes">Protected Routes</h3>
+<pre><code class="language-tsx">// app/dashboard/page.tsx
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import jwt from 'jsonwebtoken'
+
+async function getCurrentUser() {
+  const token = cookies().get('auth-token')?.value
+
+  if (!token) {
+    return null
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any
+    return await getUserById(decoded.userId)
+  } catch {
+    return null
+  }
+}
+
+export default async function DashboardPage() {
+  const user = await getCurrentUser()
+
+  if (!user) {
+    redirect('/login')
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Welcome, {user.name}!&lt;/h1&gt;
+      &lt;p&gt;This is your dashboard&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h2 id="environment-variables">Environment Variables</h2>
+<h3 id="environment-configuration">Environment Configuration</h3>
+<pre><code class="language-bash"># .env.local (not committed to Git)
+DATABASE_URL=postgresql://...
+JWT_SECRET=your-secret-key
+API_KEY=your-api-key
+
+# .env (committed to Git - public variables only)
+NEXT_PUBLIC_APP_NAME=My App
+NEXT_PUBLIC_API_URL=https://api.example.com
+</code></pre>
+<pre><code class="language-typescript">// lib/env.ts - Type-safe environment variables
+export const env = {
+  DATABASE_URL: process.env.DATABASE_URL!,
+  JWT_SECRET: process.env.JWT_SECRET!,
+  // Public variables (available in browser)
+  NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME!,
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL!,
+}
+
+// Usage in components
+export default function Header() {
+  return (
+    &lt;header&gt;
+      &lt;h1&gt;{env.NEXT_PUBLIC_APP_NAME}&lt;/h1&gt;
+    &lt;/header&gt;
+  )
+}
+</code></pre>
+<h2 id="database-integration">Database Integration</h2>
+<h3 id="prisma-setup">Prisma Setup</h3>
+<pre><code class="language-bash"># Install Prisma
+npm install prisma @prisma/client
+npx prisma init
+
+# Generate client after schema changes
+npx prisma generate
+
+# Run migrations
+npx prisma migrate dev --name init
+</code></pre>
+<pre><code class="language-typescript">// lib/prisma.ts
+import { PrismaClient } from '@prisma/client'
+
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
+}
+
+export const prisma = globalForPrisma.prisma ?? new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+</code></pre>
+<pre><code class="language-typescript">// app/api/posts/route.ts
+import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
+
+export async function GET() {
+  const posts = await prisma.post.findMany({
+    include: {
+      author: {
+        select: {
+          name: true,
+          email: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  })
+
+  return NextResponse.json(posts)
+}
+
+export async function POST(request: Request) {
+  const { title, content, authorId } = await request.json()
+
+  const post = await prisma.post.create({
+    data: {
+      title,
+      content,
+      authorId,
+    },
+  })
+
+  return NextResponse.json(post, { status: 201 })
+}
+</code></pre>
+<h2 id="performance-optimization_1">Performance Optimization</h2>
+<h3 id="code-splitting-and-lazy-loading">Code Splitting and Lazy Loading</h3>
+<pre><code class="language-tsx">import { lazy, Suspense } from 'react'
+import dynamic from 'next/dynamic'
+
+// React.lazy (client-side only)
+const LazyComponent = lazy(() =&gt; import('../components/ExpensiveComponent'))
+
+// Next.js dynamic imports
+const DynamicComponent = dynamic(() =&gt; import('../components/DynamicComponent'), {
+  loading: () =&gt; &lt;p&gt;Loading...&lt;/p&gt;,
+  ssr: false, // Disable SSR for this component
+})
+
+// Dynamic import with named export
+const DynamicChart = dynamic(
+  () =&gt; import('../components/Chart').then(mod =&gt; mod.Chart),
+  { ssr: false }
+)
+
+export default function Page() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;My Page&lt;/h1&gt;
+
+      &lt;Suspense fallback={&lt;div&gt;Loading lazy component...&lt;/div&gt;}&gt;
+        &lt;LazyComponent /&gt;
+      &lt;/Suspense&gt;
+
+      &lt;DynamicComponent /&gt;
+      &lt;DynamicChart data={chartData} /&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="caching-strategies_1">Caching Strategies</h3>
+<pre><code class="language-tsx">// Static caching (default)
+const staticData = await fetch('https://api.example.com/static-data')
+
+// No caching (SSR)
+const dynamicData = await fetch('https://api.example.com/dynamic-data', {
+  cache: 'no-store'
+})
+
+// Time-based revalidation (ISR)
+const revalidatedData = await fetch('https://api.example.com/data', {
+  next: { revalidate: 60 } // Revalidate every 60 seconds
+})
+
+// Tag-based revalidation
+const taggedData = await fetch('https://api.example.com/data', {
+  next: { tags: ['posts'] }
+})
+
+// Manual revalidation
+import { revalidateTag, revalidatePath } from 'next/cache'
+
+// In API route or server action
+revalidateTag('posts') // Revalidate all requests with 'posts' tag
+revalidatePath('/posts') // Revalidate specific path
+</code></pre>
+<h2 id="seo-and-metadata_1">SEO and Metadata</h2>
+<h3 id="dynamic-metadata_1">Dynamic Metadata</h3>
+<pre><code class="language-tsx">import type { Metadata } from 'next'
+
+interface Props {
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise&lt;Metadata&gt; {
+  const post = await fetch(`https://api.example.com/posts/${params.slug}`)
+    .then(res =&gt; res.json())
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [
+        {
+          url: post.featuredImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.featuredImage],
+    },
+  }
+}
+
+export default async function PostPage({ params }: Props) {
+  const post = await fetch(`https://api.example.com/posts/${params.slug}`)
+    .then(res =&gt; res.json())
+
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;{post.title}&lt;/h1&gt;
+      &lt;div dangerouslySetInnerHTML={{ __html: post.content }} /&gt;
+    &lt;/article&gt;
+  )
+}
+</code></pre>
+<h3 id="sitemap-generation">Sitemap Generation</h3>
+<pre><code class="language-typescript">// app/sitemap.ts
+import type { MetadataRoute } from 'next'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: 'https://example.com',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 1,
+    },
+    {
+      url: 'https://example.com/about',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://example.com/blog',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+  ]
+}
+</code></pre>
+<h3 id="robotstxt">Robots.txt</h3>
+<pre><code class="language-typescript">// app/robots.ts
+import type { MetadataRoute } from 'next'
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: '/private/',
+    },
+    sitemap: 'https://example.com/sitemap.xml',
+  }
+}
+</code></pre>
+<h2 id="testing">Testing</h2>
+<h3 id="jest-setup">Jest Setup</h3>
+<pre><code class="language-javascript">// jest.config.js
+/** @type {import('jest').Config} */
+const config = {
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['&lt;rootDir&gt;/jest.setup.js'],
+  moduleNameMapping: {
+    '^@/(.*)$': '&lt;rootDir&gt;/$1',
+  },
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
+  },
+}
+
+module.exports = config
+</code></pre>
+<pre><code class="language-javascript">// jest.setup.js
+import '@testing-library/jest-dom'
+</code></pre>
+<h3 id="component-testing">Component Testing</h3>
+<pre><code class="language-tsx">// __tests__/components/Button.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react'
+import Button from '@/components/Button'
+
+describe('Button', () =&gt; {
+  test('renders with correct text', () =&gt; {
+    render(&lt;Button&gt;Click me&lt;/Button&gt;)
+    expect(screen.getByText('Click me')).toBeInTheDocument()
+  })
+
+  test('calls onClick when clicked', () =&gt; {
+    const handleClick = jest.fn()
+    render(&lt;Button onClick={handleClick}&gt;Click me&lt;/Button&gt;)
+
+    fireEvent.click(screen.getByText('Click me'))
+    expect(handleClick).toHaveBeenCalledTimes(1)
+  })
+})
+</code></pre>
+<h3 id="api-route-testing">API Route Testing</h3>
+<pre><code class="language-tsx">// __tests__/api/users.test.ts
+import { GET } from '@/app/api/users/route' // Adjust path as needed
+import { NextRequest } from 'next/server'
+
+describe('/api/users route', () =&gt; {
+  it('returns a successful response with a list of users', async () =&gt; {
+    // Mock the request object
+    const request = new NextRequest('http://localhost/api/users')
+
+    // Call the route handler
+    const response = await GET(request)
+    const body = await response.json()
+
+    // Assertions
+    expect(response.status).toBe(200)
+    expect(body).toHaveProperty('users')
+    expect(Array.isArray(body.users)).toBe(true)
+  })
+})
+</code></pre>
+<h2 id="deployment">Deployment</h2>
+<h3 id="vercel-deployment">Vercel Deployment</h3>
+<pre><code class="language-bash"># Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Deploy to production
+vercel --prod
+</code></pre>
+<h3 id="docker-deployment">Docker Deployment</h3>
+<pre><code class="language-dockerfile"># Dockerfile
+FROM node:18-alpine AS base
+
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm &amp;&amp; pnpm i --frozen-lockfile; \
+  else echo &quot;Lockfile not found.&quot; &amp;&amp; exit 1; \
+  fi
+
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+RUN yarn build
+
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD [&quot;node&quot;, &quot;server.js&quot;]
+</code></pre>
+<h3 id="environment-variables-for-production">Environment Variables for Production</h3>
+<pre><code class="language-bash"># .env.production
+NEXT_PUBLIC_API_URL=https://api.production.com
+DATABASE_URL=postgresql://prod-db...
+JWT_SECRET=production-secret-key
+</code></pre>
+<h2 id="common-patterns-and-best-practices">Common Patterns and Best Practices</h2>
+<h3 id="error-handling">Error Handling</h3>
+<pre><code class="language-tsx">// Global error boundary
+'use client'
+
+import { useEffect } from 'react'
+
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error &amp; { digest?: string }
+  reset: () =&gt; void
+}) {
+  useEffect(() =&gt; {
+    console.error(error)
+  }, [error])
+
+  return (
+    &lt;html&gt;
+      &lt;body&gt;
+        &lt;h2&gt;Something went wrong!&lt;/h2&gt;
+        &lt;button onClick={() =&gt; reset()}&gt;Try again&lt;/button&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}
+</code></pre>
+<h3 id="loading-states">Loading States</h3>
+<pre><code class="language-tsx">// app/dashboard/loading.tsx
+export default function DashboardLoading() {
+  return (
+    &lt;div className=&quot;animate-pulse&quot;&gt;
+      &lt;div className=&quot;h-8 bg-gray-200 rounded mb-4&quot;&gt;&lt;/div&gt;
+      &lt;div className=&quot;h-4 bg-gray-200 rounded mb-2&quot;&gt;&lt;/div&gt;
+      &lt;div className=&quot;h-4 bg-gray-200 rounded mb-2&quot;&gt;&lt;/div&gt;
+      &lt;div className=&quot;h-4 bg-gray-200 rounded w-3/4&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<h3 id="form-handling-with-server-actions">Form Handling with Server Actions</h3>
+<pre><code class="language-tsx">// app/contact/page.tsx
+import { redirect } from 'next/navigation'
+
+async function createContact(formData: FormData) {
+  'use server'
+
+  const name = formData.get('name') as string
+  const email = formData.get('email') as string
+  const message = formData.get('message') as string
+
+  // Save to database
+  await saveContact({ name, email, message })
+
+  redirect('/contact/success')
+}
+
+export default function ContactPage() {
+  return (
+    &lt;form action={createContact}&gt;
+      &lt;input type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;Name&quot; required /&gt;
+      &lt;input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Email&quot; required /&gt;
+      &lt;textarea name=&quot;message&quot; placeholder=&quot;Message&quot; required /&gt;
+      &lt;button type=&quot;submit&quot;&gt;Send Message&lt;/button&gt;
+    &lt;/form&gt;
+  )
+}
+</code></pre>
+<h3 id="typescript-configuration">TypeScript Configuration</h3>
+<pre><code class="language-json">// tsconfig.json
+{
+  &quot;compilerOptions&quot;: {
+    &quot;lib&quot;: [&quot;dom&quot;, &quot;dom.iterable&quot;, &quot;es6&quot;],
+    &quot;allowJs&quot;: true,
+    &quot;skipLibCheck&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;jsx&quot;: &quot;preserve&quot;,
+    &quot;incremental&quot;: true,
+    &quot;plugins&quot;: [
+      {
+        &quot;name&quot;: &quot;next&quot;
+      }
+    ],
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;paths&quot;: {
+      &quot;@/*&quot;: [&quot;./*&quot;],
+      &quot;@/components/*&quot;: [&quot;./components/*&quot;],
+      &quot;@/lib/*&quot;: [&quot;./lib/*&quot;]
+    }
+  },
+  &quot;include&quot;: [&quot;next-env.d.ts&quot;, &quot;**/*.ts&quot;, &quot;**/*.tsx&quot;, &quot;.next/types/**/*.ts&quot;],
+  &quot;exclude&quot;: [&quot;node_modules&quot;]
+}
+</code></pre>
+<p>This comprehensive Next.js cheat sheet covers modern patterns, App Router features, and best practices for building production-ready applications with Next.js 13+. Focus on understanding the App Router paradigm, server/client component patterns, and data fetching strategies for effective Next.js development.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

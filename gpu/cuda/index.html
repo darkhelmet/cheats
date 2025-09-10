@@ -1,0 +1,3053 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../machine-learning-algorithms/">
+      
+      
+        <link rel="next" href="../../javascript/nextjs/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>CUDA Programming - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cuda-programming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CUDA Programming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation &amp; Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-program-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Program Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-qualifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Qualifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-qualifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Qualifiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-memory-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Memory Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-memory-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous Memory Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pinned-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pinned Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unified-memory-managed-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unified Memory (Managed Memory)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-types-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Types &amp; Hierarchy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Types & Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constant Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texture-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Texture Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-launch-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Launch &amp; Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kernel Launch & Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#launch-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launch Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Parallelism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#occupancy-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Occupancy Calculation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread Synchronization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thread Synchronization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-level-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block-Level Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warp-level-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warp-Level Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atomic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atomic Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cooperative-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cooperative Groups
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-error-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Error Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-coalescing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Coalescing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory-bank-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Memory Bank Conflicts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-unrolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loop Unrolling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-bandwidth-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Bandwidth Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-level-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction-Level Optimizations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrix-multiplication-tiled" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrix Multiplication (Tiled)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scan-prefix-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scan (Prefix Sum)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging &amp; Profiling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging & Profiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cuda-gdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUDA-GDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-with-nsight-nsysncu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling with Nsight (nsys/ncu)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Printf Debugging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Device Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-gpu-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-GPU Programming
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-copy-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Copy Directions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warp-shuffle-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warp Shuffle Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-gotchas-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Gotchas &amp; Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Gotchas & Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Access Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation &amp; Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-program-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Program Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-qualifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Qualifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-qualifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Qualifiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-memory-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Memory Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-memory-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous Memory Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pinned-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pinned Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unified-memory-managed-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unified Memory (Managed Memory)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-types-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Types &amp; Hierarchy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Types & Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constant Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texture-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Texture Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-launch-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Launch &amp; Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kernel Launch & Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#launch-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launch Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Parallelism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#occupancy-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Occupancy Calculation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread Synchronization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thread Synchronization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-level-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block-Level Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warp-level-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warp-Level Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atomic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atomic Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cooperative-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cooperative Groups
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-error-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Error Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-coalescing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Coalescing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory-bank-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Memory Bank Conflicts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-unrolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loop Unrolling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-bandwidth-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Bandwidth Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-level-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction-Level Optimizations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrix-multiplication-tiled" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrix Multiplication (Tiled)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scan-prefix-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scan (Prefix Sum)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging &amp; Profiling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging & Profiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cuda-gdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUDA-GDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-with-nsight-nsysncu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling with Nsight (nsys/ncu)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Printf Debugging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Device Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-gpu-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-GPU Programming
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-copy-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Copy Directions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warp-shuffle-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warp Shuffle Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-gotchas-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Gotchas &amp; Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Gotchas & Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Access Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="cuda-programming">CUDA Programming</h1>
+<p>A comprehensive reference for CUDA C/C++ GPU programming, covering kernels, memory management, synchronization, and optimization techniques.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="installation-setup">Installation &amp; Setup</h3>
+<pre><code class="language-bash"># Check CUDA installation
+nvcc --version
+nvidia-smi
+
+# Compile CUDA program
+nvcc program.cu -o program
+
+# Compile with debugging info
+nvcc -g -G program.cu -o program
+
+# Compile for specific architecture
+nvcc -arch=sm_80 program.cu -o program
+</code></pre>
+<h3 id="basic-program-structure">Basic Program Structure</h3>
+<pre><code class="language-cuda">#include &lt;cuda_runtime.h&gt;
+#include &lt;stdio.h&gt;
+
+// Kernel function (runs on GPU)
+__global__ void myKernel(float* data, int n) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx &lt; n) {
+        data[idx] *= 2.0f;
+    }
+}
+
+int main() {
+    // Host code
+    int n = 1024;
+    size_t size = n * sizeof(float);
+
+    // Allocate host memory
+    float* h_data = (float*)malloc(size);
+
+    // Allocate device memory
+    float* d_data;
+    cudaMalloc(&amp;d_data, size);
+
+    // Copy data to device
+    cudaMemcpy(d_data, h_data, size, cudaMemcpyHostToDevice);
+
+    // Launch kernel
+    int blockSize = 256;
+    int gridSize = (n + blockSize - 1) / blockSize;
+    myKernel&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;(d_data, n);
+
+    // Copy result back
+    cudaMemcpy(h_data, d_data, size, cudaMemcpyDeviceToHost);
+
+    // Cleanup
+    cudaFree(d_data);
+    free(h_data);
+
+    return 0;
+}
+</code></pre>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="execution-model">Execution Model</h3>
+<pre><code class="language-cuda">// Grid -&gt; Blocks -&gt; Threads hierarchy
+__global__ void kernel() {
+    // Thread indices
+    int tid = threadIdx.x;                    // Thread within block
+    int bid = blockIdx.x;                     // Block within grid
+    int gid = bid * blockDim.x + tid;         // Global thread index
+
+    // Multi-dimensional indexing
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+    int idx = row * width + col;
+}
+
+// Launch configuration
+dim3 gridSize(16, 16);      // 16x16 blocks
+dim3 blockSize(32, 32);     // 32x32 threads per block
+kernel&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;();
+</code></pre>
+<h3 id="function-qualifiers">Function Qualifiers</h3>
+<pre><code class="language-cuda">__global__ void kernelFunction() {    // Runs on GPU, called from host
+    // Kernel code
+}
+
+__device__ void deviceFunction() {    // Runs on GPU, called from GPU
+    // Device function code
+}
+
+__host__ void hostFunction() {        // Runs on CPU (default)
+    // Host function code
+}
+
+__host__ __device__ void bothFunction() {  // Can run on both
+    // Code that works on both host and device
+}
+</code></pre>
+<h3 id="variable-qualifiers">Variable Qualifiers</h3>
+<pre><code class="language-cuda">__global__ void kernel() {
+    __shared__ float sharedArray[256];    // Shared memory
+    __constant__ float constValue;        // Constant memory
+    __device__ float deviceGlobal;        // Global device memory
+
+    int localVar;                         // Register/local memory
+}
+</code></pre>
+<h2 id="memory-management">Memory Management</h2>
+<h3 id="basic-memory-operations">Basic Memory Operations</h3>
+<pre><code class="language-cuda">// Device memory allocation
+float* d_array;
+size_t size = n * sizeof(float);
+cudaError_t err = cudaMalloc(&amp;d_array, size);
+
+// Memory copy operations
+cudaMemcpy(d_dst, h_src, size, cudaMemcpyHostToDevice);
+cudaMemcpy(h_dst, d_src, size, cudaMemcpyDeviceToHost);
+cudaMemcpy(d_dst, d_src, size, cudaMemcpyDeviceToDevice);
+
+// Memory initialization
+cudaMemset(d_array, 0, size);
+
+// Free memory
+cudaFree(d_array);
+</code></pre>
+<h3 id="asynchronous-memory-operations">Asynchronous Memory Operations</h3>
+<pre><code class="language-cuda">// Create streams
+cudaStream_t stream1, stream2;
+cudaStreamCreate(&amp;stream1);
+cudaStreamCreate(&amp;stream2);
+
+// Asynchronous operations
+cudaMemcpyAsync(d_data, h_data, size, cudaMemcpyHostToDevice, stream1);
+kernel&lt;&lt;&lt;grid, block, 0, stream1&gt;&gt;&gt;(d_data);
+cudaMemcpyAsync(h_result, d_result, size, cudaMemcpyDeviceToHost, stream1);
+
+// Synchronization
+cudaStreamSynchronize(stream1);
+cudaDeviceSynchronize();  // Wait for all operations
+
+// Cleanup
+cudaStreamDestroy(stream1);
+cudaStreamDestroy(stream2);
+</code></pre>
+<h3 id="pinned-memory">Pinned Memory</h3>
+<pre><code class="language-cuda">// Allocate pinned memory (faster transfers)
+float* h_pinned;
+cudaHostAlloc(&amp;h_pinned, size, cudaHostAllocDefault);
+
+// Or use cudaMallocHost
+cudaMallocHost(&amp;h_pinned, size);
+
+// Free pinned memory
+cudaFreeHost(h_pinned);
+</code></pre>
+<h3 id="unified-memory-managed-memory">Unified Memory (Managed Memory)</h3>
+<pre><code class="language-cuda">// Allocate unified memory
+float* unified_data;
+cudaMallocManaged(&amp;unified_data, size);
+
+// Use directly in kernel
+kernel&lt;&lt;&lt;grid, block&gt;&gt;&gt;(unified_data);
+
+// Prefetch to device (optional optimization)
+cudaMemPrefetchAsync(unified_data, size, 0);  // Device 0
+
+// Free unified memory
+cudaFree(unified_data);
+</code></pre>
+<h2 id="memory-types-hierarchy">Memory Types &amp; Hierarchy</h2>
+<h3 id="global-memory">Global Memory</h3>
+<pre><code class="language-cuda">// Allocated with cudaMalloc
+// Accessible by all threads
+// Highest latency, largest capacity
+__global__ void kernel(float* global_mem) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    global_mem[idx] = idx;  // Global memory access
+}
+</code></pre>
+<h3 id="shared-memory">Shared Memory</h3>
+<pre><code class="language-cuda">__global__ void sharedMemoryExample(float* input, float* output) {
+    __shared__ float tile[TILE_SIZE][TILE_SIZE];  // Static allocation
+
+    // Dynamic shared memory (specified at kernel launch)
+    extern __shared__ float dynamic_tile[];
+
+    int tid = threadIdx.x;
+
+    // Load data to shared memory
+    tile[threadIdx.y][threadIdx.x] = input[...];
+
+    // Synchronize threads in block
+    __syncthreads();
+
+    // Use shared memory data
+    float result = tile[threadIdx.y][threadIdx.x] * 2.0f;
+    output[...] = result;
+}
+
+// Launch with dynamic shared memory
+int sharedMemSize = TILE_SIZE * TILE_SIZE * sizeof(float);
+kernel&lt;&lt;&lt;grid, block, sharedMemSize&gt;&gt;&gt;(input, output);
+</code></pre>
+<h3 id="constant-memory">Constant Memory</h3>
+<pre><code class="language-cuda">// Declare constant memory (at file scope)
+__constant__ float const_array[1024];
+
+// Copy to constant memory
+float host_array[1024];
+cudaMemcpyToSymbol(const_array, host_array, sizeof(host_array));
+
+__global__ void useConstant() {
+    float value = const_array[threadIdx.x];  // Fast broadcast read
+}
+</code></pre>
+<h3 id="texture-memory">Texture Memory</h3>
+<pre><code class="language-cuda">// Texture object (modern approach)
+texture&lt;float, 2, cudaReadModeElementType&gt; tex;
+
+__global__ void textureKernel() {
+    float x = blockIdx.x * blockDim.x + threadIdx.x;
+    float y = blockIdx.y * blockDim.y + threadIdx.y;
+
+    // Read from texture (with interpolation)
+    float value = tex2D(tex, x + 0.5f, y + 0.5f);
+}
+
+// Setup texture (host code)
+cudaArray* cuArray;
+cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc&lt;float&gt;();
+cudaMallocArray(&amp;cuArray, &amp;channelDesc, width, height);
+cudaBindTextureToArray(tex, cuArray, channelDesc);
+</code></pre>
+<h2 id="kernel-launch-configuration">Kernel Launch &amp; Configuration</h2>
+<h3 id="launch-configuration">Launch Configuration</h3>
+<pre><code class="language-cuda">// 1D configuration
+int blockSize = 256;
+int gridSize = (n + blockSize - 1) / blockSize;
+kernel&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;(data);
+
+// 2D configuration
+dim3 blockSize(16, 16);     // 256 threads per block
+dim3 gridSize((width + 15) / 16, (height + 15) / 16);
+kernel2D&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;(data);
+
+// With shared memory
+int sharedMemSize = blockSize.x * blockSize.y * sizeof(float);
+kernel&lt;&lt;&lt;gridSize, blockSize, sharedMemSize&gt;&gt;&gt;(data);
+
+// With streams
+kernel&lt;&lt;&lt;gridSize, blockSize, sharedMemSize, stream&gt;&gt;&gt;(data);
+</code></pre>
+<h3 id="dynamic-parallelism">Dynamic Parallelism</h3>
+<pre><code class="language-cuda">__global__ void parentKernel(float* data, int n) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (idx &lt; n &amp;&amp; needsProcessing(data[idx])) {
+        // Launch child kernel from device
+        childKernel&lt;&lt;&lt;1, 32&gt;&gt;&gt;(data, idx);
+
+        // Synchronize child kernel
+        cudaDeviceSynchronize();
+    }
+}
+
+__global__ void childKernel(float* data, int offset) {
+    int idx = threadIdx.x;
+    // Process data[offset + idx]
+}
+</code></pre>
+<h3 id="occupancy-calculation">Occupancy Calculation</h3>
+<pre><code class="language-cuda">int blockSize;      // The launch configurator will suggest a block size
+int minGridSize;    // The minimum grid size needed to achieve max occupancy
+int gridSize;       // The actual grid size
+
+// Calculate optimal block size
+cudaOccupancyMaxPotentialBlockSize(&amp;minGridSize, &amp;blockSize, myKernel, 0, 0);
+
+// Round up according to array size
+gridSize = (n + blockSize - 1) / blockSize;
+
+myKernel&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;(data);
+</code></pre>
+<h2 id="thread-synchronization">Thread Synchronization</h2>
+<h3 id="block-level-synchronization">Block-Level Synchronization</h3>
+<pre><code class="language-cuda">__global__ void syncExample() {
+    __shared__ float shared_data[256];
+
+    int tid = threadIdx.x;
+
+    // Load data
+    shared_data[tid] = input[blockIdx.x * blockDim.x + tid];
+
+    // Wait for all threads in block to finish loading
+    __syncthreads();
+
+    // Now all threads can safely access shared_data
+    float result = shared_data[255 - tid];  // Reverse access
+
+    // Another sync before writing results
+    __syncthreads();
+
+    output[blockIdx.x * blockDim.x + tid] = result;
+}
+</code></pre>
+<h3 id="warp-level-synchronization">Warp-Level Synchronization</h3>
+<pre><code class="language-cuda">#include &lt;cooperative_groups.h&gt;
+
+__global__ void warpExample() {
+    auto warp = cooperative_groups::tiled_partition&lt;32&gt;(
+        cooperative_groups::this_thread_block());
+
+    int lane_id = warp.thread_rank();
+    int value = lane_id;
+
+    // Warp-level reduction
+    for (int delta = 16; delta &gt; 0; delta /= 2) {
+        value += warp.shfl_down_sync(0xffffffff, value, delta);
+    }
+
+    if (lane_id == 0) {
+        // Thread 0 of each warp has the sum
+        atomicAdd(result, value);
+    }
+}
+</code></pre>
+<h3 id="atomic-operations">Atomic Operations</h3>
+<pre><code class="language-cuda">// Basic atomic operations
+__global__ void atomicsExample(int* counter, float* sum, int* histogram) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Atomic increment
+    int old_val = atomicAdd(counter, 1);
+
+    // Atomic floating point operations (CC &gt;= 6.0)
+    atomicAdd(sum, data[idx]);
+
+    // Atomic compare and swap
+    int expected = 0;
+    int desired = idx;
+    int old = atomicCAS(&amp;flag, expected, desired);
+
+    // Histogram example
+    int bin = (int)(data[idx] * NUM_BINS);
+    atomicAdd(&amp;histogram[bin], 1);
+}
+
+// Custom atomic operations using CAS
+__device__ float atomicMaxFloat(float* address, float val) {
+    int* address_as_int = (int*)address;
+    int old = *address_as_int, assumed;
+    do {
+        assumed = old;
+        old = atomicCAS(address_as_int, assumed,
+            __float_as_int(fmaxf(val, __int_as_float(assumed))));
+    } while (assumed != old);
+    return __int_as_float(old);
+}
+</code></pre>
+<h3 id="cooperative-groups">Cooperative Groups</h3>
+<pre><code class="language-cuda">#include &lt;cooperative_groups.h&gt;
+using namespace cooperative_groups;
+
+__global__ void cooperativeKernel() {
+    // Thread block group
+    thread_block block = this_thread_block();
+
+    // Warp-sized tile
+    auto tile32 = tiled_partition&lt;32&gt;(block);
+
+    // Grid group (requires cooperative launch)
+    grid_group grid = this_grid();
+
+    // Synchronize at different levels
+    block.sync();     // Block-level sync
+    tile32.sync();    // Warp-level sync
+    grid.sync();      // Grid-level sync (cooperative kernels only)
+}
+
+// Launch cooperative kernel
+cudaLaunchCooperativeKernel((void*)cooperativeKernel, gridSize, blockSize, args);
+</code></pre>
+<h2 id="error-handling">Error Handling</h2>
+<h3 id="basic-error-checking">Basic Error Checking</h3>
+<pre><code class="language-cuda">#define CUDA_CHECK(call) \
+    do { \
+        cudaError_t err = call; \
+        if (err != cudaSuccess) { \
+            fprintf(stderr, &quot;CUDA error at %s:%d - %s\n&quot;, \
+                    __FILE__, __LINE__, cudaGetErrorString(err)); \
+            exit(EXIT_FAILURE); \
+        } \
+    } while(0)
+
+// Usage
+CUDA_CHECK(cudaMalloc(&amp;d_data, size));
+CUDA_CHECK(cudaMemcpy(d_data, h_data, size, cudaMemcpyHostToDevice));
+
+// Check kernel launch errors
+kernel&lt;&lt;&lt;grid, block&gt;&gt;&gt;(data);
+CUDA_CHECK(cudaGetLastError());
+CUDA_CHECK(cudaDeviceSynchronize());
+</code></pre>
+<h3 id="advanced-error-handling">Advanced Error Handling</h3>
+<pre><code class="language-cuda">// Error checking function
+void checkCudaErrors(cudaError_t result) {
+    if (result != cudaSuccess) {
+        fprintf(stderr, &quot;CUDA Runtime Error: %s\n&quot;, cudaGetErrorString(result));
+        assert(result == cudaSuccess);
+    }
+}
+
+// Async error checking
+cudaError_t asyncCheckErrors() {
+    cudaError_t err = cudaGetLastError();
+    if (err != cudaSuccess) {
+        printf(&quot;Async kernel error: %s\n&quot;, cudaGetErrorString(err));
+        return err;
+    }
+
+    // Check for execution errors
+    err = cudaDeviceSynchronize();
+    if (err != cudaSuccess) {
+        printf(&quot;Sync error: %s\n&quot;, cudaGetErrorString(err));
+        return err;
+    }
+
+    return cudaSuccess;
+}
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="memory-coalescing">Memory Coalescing</h3>
+<pre><code class="language-cuda">// Bad: Non-coalesced access
+__global__ void badAccess(float* data, int width) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    int row = idx / width;
+    int col = idx % width;
+
+    // Strided access pattern (bad)
+    float value = data[col * width + row];  // Column-major access
+}
+
+// Good: Coalesced access
+__global__ void goodAccess(float* data, int width) {
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Sequential access pattern (good)
+    float value = data[row * width + col];  // Row-major access
+}
+</code></pre>
+<h3 id="shared-memory-bank-conflicts">Shared Memory Bank Conflicts</h3>
+<pre><code class="language-cuda">// Bad: Bank conflicts
+__global__ void badSharedAccess() {
+    __shared__ float shared[32][32];
+    int tid = threadIdx.x;
+
+    // All threads access same bank (conflict)
+    float value = shared[0][tid];
+}
+
+// Good: No bank conflicts
+__global__ void goodSharedAccess() {
+    __shared__ float shared[32][33];  // Padding to avoid conflicts
+    int tid = threadIdx.x;
+
+    // Diagonal access pattern
+    float value = shared[tid][(tid + offset) % 32];
+}
+</code></pre>
+<h3 id="loop-unrolling">Loop Unrolling</h3>
+<pre><code class="language-cuda">// Manual unrolling for small, known loop counts
+__global__ void unrolledKernel(float* data) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    float sum = 0.0f;
+
+    // Unroll small loops
+    #pragma unroll 4
+    for (int i = 0; i &lt; 4; i++) {
+        sum += data[idx * 4 + i];
+    }
+
+    data[idx] = sum;
+}
+</code></pre>
+<h3 id="memory-bandwidth-optimization">Memory Bandwidth Optimization</h3>
+<pre><code class="language-cuda">// Vectorized memory access
+__global__ void vectorizedAccess(float4* input, float4* output, int n) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (idx &lt; n) {
+        float4 data = input[idx];  // Load 4 floats at once
+
+        // Process each component
+        data.x *= 2.0f;
+        data.y *= 2.0f;
+        data.z *= 2.0f;
+        data.w *= 2.0f;
+
+        output[idx] = data;  // Store 4 floats at once
+    }
+}
+</code></pre>
+<h3 id="instruction-level-optimizations">Instruction-Level Optimizations</h3>
+<pre><code class="language-cuda">__global__ void optimizedKernel(float* data, int n) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (idx &lt; n) {
+        float x = data[idx];
+
+        // Use fast math functions
+        float result = __sinf(x) + __cosf(x);  // Fast sin/cos
+
+        // Fast division (less accurate)
+        result = __fdividef(result, 3.14159f);
+
+        // Fast reciprocal square root
+        result *= __frsqrt_rn(result);
+
+        data[idx] = result;
+    }
+}
+</code></pre>
+<h2 id="common-patterns">Common Patterns</h2>
+<h3 id="reduction">Reduction</h3>
+<pre><code class="language-cuda">// Efficient block-level reduction
+__global__ void blockReduce(float* input, float* output, int n) {
+    __shared__ float sdata[256];
+
+    int tid = threadIdx.x;
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Load data
+    sdata[tid] = (idx &lt; n) ? input[idx] : 0.0f;
+    __syncthreads();
+
+    // Reduction in shared memory
+    for (int s = blockDim.x / 2; s &gt; 0; s &gt;&gt;= 1) {
+        if (tid &lt; s) {
+            sdata[tid] += sdata[tid + s];
+        }
+        __syncthreads();
+    }
+
+    // Write result
+    if (tid == 0) {
+        output[blockIdx.x] = sdata[0];
+    }
+}
+</code></pre>
+<h3 id="matrix-multiplication-tiled">Matrix Multiplication (Tiled)</h3>
+<pre><code class="language-cuda">#define TILE_SIZE 16
+
+__global__ void matmulTiled(float* A, float* B, float* C, int N) {
+    __shared__ float As[TILE_SIZE][TILE_SIZE];
+    __shared__ float Bs[TILE_SIZE][TILE_SIZE];
+
+    int row = blockIdx.y * TILE_SIZE + threadIdx.y;
+    int col = blockIdx.x * TILE_SIZE + threadIdx.x;
+
+    float sum = 0.0f;
+
+    for (int tile = 0; tile &lt; (N + TILE_SIZE - 1) / TILE_SIZE; tile++) {
+        // Load tiles into shared memory
+        if (row &lt; N &amp;&amp; tile * TILE_SIZE + threadIdx.x &lt; N)
+            As[threadIdx.y][threadIdx.x] = A[row * N + tile * TILE_SIZE + threadIdx.x];
+        else
+            As[threadIdx.y][threadIdx.x] = 0.0f;
+
+        if (col &lt; N &amp;&amp; tile * TILE_SIZE + threadIdx.y &lt; N)
+            Bs[threadIdx.y][threadIdx.x] = B[(tile * TILE_SIZE + threadIdx.y) * N + col];
+        else
+            Bs[threadIdx.y][threadIdx.x] = 0.0f;
+
+        __syncthreads();
+
+        // Compute partial result
+        for (int k = 0; k &lt; TILE_SIZE; k++) {
+            sum += As[threadIdx.y][k] * Bs[k][threadIdx.x];
+        }
+
+        __syncthreads();
+    }
+
+    // Write result
+    if (row &lt; N &amp;&amp; col &lt; N) {
+        C[row * N + col] = sum;
+    }
+}
+</code></pre>
+<h3 id="scan-prefix-sum">Scan (Prefix Sum)</h3>
+<pre><code class="language-cuda">__global__ void scanBlock(float* input, float* output, int n) {
+    __shared__ float temp[2 * BLOCK_SIZE];
+
+    int tid = threadIdx.x;
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Load data
+    temp[2 * tid] = (2 * idx &lt; n) ? input[2 * idx] : 0;
+    temp[2 * tid + 1] = (2 * idx + 1 &lt; n) ? input[2 * idx + 1] : 0;
+
+    __syncthreads();
+
+    // Up-sweep phase
+    for (int stride = 1; stride &lt; 2 * BLOCK_SIZE; stride *= 2) {
+        int index = (tid + 1) * stride * 2 - 1;
+        if (index &lt; 2 * BLOCK_SIZE) {
+            temp[index] += temp[index - stride];
+        }
+        __syncthreads();
+    }
+
+    // Clear last element
+    if (tid == 0) temp[2 * BLOCK_SIZE - 1] = 0;
+    __syncthreads();
+
+    // Down-sweep phase
+    for (int stride = BLOCK_SIZE; stride &gt; 0; stride /= 2) {
+        int index = (tid + 1) * stride * 2 - 1;
+        if (index &lt; 2 * BLOCK_SIZE) {
+            float t = temp[index];
+            temp[index] += temp[index - stride];
+            temp[index - stride] = t;
+        }
+        __syncthreads();
+    }
+
+    // Write results
+    if (2 * idx &lt; n) output[2 * idx] = temp[2 * tid];
+    if (2 * idx + 1 &lt; n) output[2 * idx + 1] = temp[2 * tid + 1];
+}
+</code></pre>
+<h2 id="debugging-profiling">Debugging &amp; Profiling</h2>
+<h3 id="cuda-gdb">CUDA-GDB</h3>
+<pre><code class="language-bash"># Compile with debugging info
+nvcc -g -G -O0 program.cu -o program
+
+# Run with cuda-gdb
+cuda-gdb ./program
+
+# Common commands
+(cuda-gdb) break main
+(cuda-gdb) break kernel_name
+(cuda-gdb) run
+(cuda-gdb) cuda thread (0,0,0)  # Switch to specific thread
+(cuda-gdb) cuda block (0,0)     # Switch to specific block
+(cuda-gdb) print variable_name
+(cuda-gdb) continue
+</code></pre>
+<h3 id="profiling-with-nsight-nsysncu">Profiling with Nsight (nsys/ncu)</h3>
+<pre><code class="language-bash"># Nsight Systems (nsys) for system-wide performance analysis
+nsys profile --stats=true ./program
+
+# Nsight Compute (ncu) for detailed kernel analysis
+ncu --set full ./program
+
+# Legacy profiling (nvprof) - deprecated
+nvprof ./program
+</code></pre>
+<h3 id="printf-debugging">Printf Debugging</h3>
+<pre><code class="language-cuda">__global__ void debugKernel(float* data, int n) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Debug specific threads
+    if (blockIdx.x == 0 &amp;&amp; threadIdx.x &lt; 5) {
+        printf(&quot;Block %d, Thread %d: data[%d] = %f\n&quot;,
+               blockIdx.x, threadIdx.x, idx, data[idx]);
+    }
+
+    // Conditional debugging
+    if (data[idx] &lt; 0) {
+        printf(&quot;Negative value at index %d: %f\n&quot;, idx, data[idx]);
+    }
+}
+</code></pre>
+<h2 id="device-management">Device Management</h2>
+<h3 id="device-properties">Device Properties</h3>
+<pre><code class="language-cuda">void queryDevice() {
+    int deviceCount;
+    cudaGetDeviceCount(&amp;deviceCount);
+
+    for (int dev = 0; dev &lt; deviceCount; dev++) {
+        cudaDeviceProp prop;
+        cudaGetDeviceProperties(&amp;prop, dev);
+
+        printf(&quot;Device %d: %s\n&quot;, dev, prop.name);
+        printf(&quot;  Compute capability: %d.%d\n&quot;, prop.major, prop.minor);
+        printf(&quot;  Total global memory: %zu MB\n&quot;, prop.totalGlobalMem / (1024*1024));
+        printf(&quot;  Shared memory per block: %zu KB\n&quot;, prop.sharedMemPerBlock / 1024);
+        printf(&quot;  Max threads per block: %d\n&quot;, prop.maxThreadsPerBlock);
+        printf(&quot;  Warp size: %d\n&quot;, prop.warpSize);
+        printf(&quot;  Memory bus width: %d bits\n&quot;, prop.memoryBusWidth);
+        printf(&quot;  Memory clock rate: %d MHz\n&quot;, prop.memoryClockRate / 1000);
+    }
+}
+
+void setDevice() {
+    int device = 0;  // Use device 0
+    cudaSetDevice(device);
+
+    // Verify device was set
+    int currentDevice;
+    cudaGetDevice(&amp;currentDevice);
+    printf(&quot;Using device %d\n&quot;, currentDevice);
+}
+</code></pre>
+<h3 id="multi-gpu-programming">Multi-GPU Programming</h3>
+<pre><code class="language-cuda">void multiGPU() {
+    int deviceCount;
+    cudaGetDeviceCount(&amp;deviceCount);
+
+    // Allocate data on each device
+    float** d_data = new float*[deviceCount];
+    cudaStream_t* streams = new cudaStream_t[deviceCount];
+
+    for (int dev = 0; dev &lt; deviceCount; dev++) {
+        cudaSetDevice(dev);
+        cudaMalloc(&amp;d_data[dev], dataSize);
+        cudaStreamCreate(&amp;streams[dev]);
+
+        // Launch work on this device
+        kernel&lt;&lt;&lt;grid, block, 0, streams[dev]&gt;&gt;&gt;(d_data[dev]);
+    }
+
+    // Synchronize all devices
+    for (int dev = 0; dev &lt; deviceCount; dev++) {
+        cudaSetDevice(dev);
+        cudaStreamSynchronize(streams[dev]);
+        cudaFree(d_data[dev]);
+        cudaStreamDestroy(streams[dev]);
+    }
+}
+</code></pre>
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="memory-copy-directions">Memory Copy Directions</h3>
+<pre><code class="language-cuda">cudaMemcpyHostToDevice    // CPU → GPU
+cudaMemcpyDeviceToHost    // GPU → CPU
+cudaMemcpyDeviceToDevice  // GPU → GPU
+cudaMemcpyHostToHost      // CPU → CPU (rarely used)
+</code></pre>
+<h3 id="built-in-variables">Built-in Variables</h3>
+<pre><code class="language-cuda">// Thread indexing
+threadIdx.x, threadIdx.y, threadIdx.z  // Thread index within block
+blockIdx.x, blockIdx.y, blockIdx.z     // Block index within grid
+blockDim.x, blockDim.y, blockDim.z     // Block dimensions
+gridDim.x, gridDim.y, gridDim.z        // Grid dimensions
+
+// Warp information
+warpSize                                // Usually 32
+</code></pre>
+<h3 id="mathematical-functions">Mathematical Functions</h3>
+<pre><code class="language-cuda">// Standard math functions (slower, double precision available)
+sin(), cos(), tan(), log(), exp(), sqrt(), pow()
+
+// Fast math functions (faster, single precision only)
+__sinf(), __cosf(), __tanf(), __logf(), __expf()
+__fsqrt_rn(), __fdividef()
+
+// Integer functions
+__clz()      // Count leading zeros
+__popc()     // Population count (number of set bits)
+__brev()     // Bit reverse
+</code></pre>
+<h3 id="warp-shuffle-operations">Warp Shuffle Operations</h3>
+<pre><code class="language-cuda">// Warp shuffle functions (CC &gt;= 3.0)
+__shfl_sync(mask, var, srcLane)        // Direct lane access
+__shfl_up_sync(mask, var, delta)       // Shift up
+__shfl_down_sync(mask, var, delta)     // Shift down  
+__shfl_xor_sync(mask, var, laneMask)   // XOR-based shuffle
+
+// Example: Warp reduction
+int value = threadIdx.x;
+for (int offset = 16; offset &gt; 0; offset /= 2) {
+    value += __shfl_down_sync(0xffffffff, value, offset);
+}
+</code></pre>
+<h3 id="common-gotchas-best-practices">Common Gotchas &amp; Best Practices</h3>
+<h4 id="memory-access-patterns">Memory Access Patterns</h4>
+<ul>
+<li><strong>Always aim for coalesced memory access</strong> - threads in a warp should access consecutive memory addresses</li>
+<li><strong>Use shared memory for repeated data access</strong> - 100x faster than global memory</li>
+<li><strong>Avoid bank conflicts in shared memory</strong> - pad arrays or use different access patterns</li>
+<li><strong>Prefer AoS over SoA for coalesced access</strong> in most cases</li>
+</ul>
+<h4 id="thread-management">Thread Management</h4>
+<ul>
+<li><strong>Choose block sizes that are multiples of warp size (32)</strong> for best efficiency</li>
+<li><strong>Aim for high occupancy but not at all costs</strong> - sometimes fewer blocks with more shared memory is better</li>
+<li><strong>Use <code>__syncthreads()</code> carefully</strong> - all threads in the block must reach it</li>
+<li><strong>Avoid divergent branches within warps</strong> when possible</li>
+</ul>
+<h4 id="performance-tips">Performance Tips</h4>
+<ul>
+<li><strong>Use fast math functions</strong> (<code>__sinf</code>, <code>__expf</code>, etc.) when precision allows</li>
+<li><strong>Minimize register usage</strong> to increase occupancy</li>
+<li><strong>Use texture memory for spatial locality</strong> in read-only data</li>
+<li><strong>Consider using unified memory</strong> for easier development, but profile performance</li>
+<li><strong>Profile your code</strong> with nsys/ncu to identify bottlenecks</li>
+</ul>
+<h4 id="error-handling_1">Error Handling</h4>
+<ul>
+<li><strong>Always check CUDA API return values</strong> using error checking macros</li>
+<li><strong>Use <code>cudaGetLastError()</code></strong> after kernel launches to catch errors</li>
+<li><strong>Synchronize before error checking</strong> for kernel execution errors</li>
+<li><strong>Use CUDA-GDB</strong> for debugging device code when needed</li>
+</ul>
+<p>This cheat sheet covers the essential CUDA programming concepts and patterns. For the most current information, always refer to the <a href="https://docs.nvidia.com/cuda/">official CUDA documentation</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2824 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../javascript/react/">
+      
+      
+        <link rel="next" href="../../python/inquirer/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Bottlerocket OS Administration - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bottlerocket-os-administration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bottlerocket OS Administration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#essential-setup-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Setup Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-ssm-session-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS SSM Session Manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS SSM Session Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-ssm-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up SSM Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up SSM Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-iam-service-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create IAM Service Role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-control-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configure Control Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-enable-admin-container-if-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Enable Admin Container (if needed)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-management-with-ctr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Management with ctr
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Container Management with ctr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-runtime-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Runtime Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#administration-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administration Tasks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Administration Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-container-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Container Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Host Container Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-control-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Control Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-admin-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Admin Container
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-client-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Client Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-container-runtime-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Container Runtime Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kubernetes-node-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Kubernetes Node Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-network-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Network Connectivity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-storage-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Storage Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ssm-connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. SSM Connection Problems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-container-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Container Hardening
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control-with-pod-security-admission" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control with Pod Security Admission
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updates-and-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updates and Maintenance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Updates and Maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      OS Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-image-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Image Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ami-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMI Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AMI Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-bottlerocket-amis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Bottlerocket AMIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Launch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important File Locations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selinux-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      SELinux Labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#essential-setup-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Setup Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-ssm-session-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS SSM Session Manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS SSM Session Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-ssm-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up SSM Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up SSM Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-iam-service-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create IAM Service Role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-control-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configure Control Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-enable-admin-container-if-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Enable Admin Container (if needed)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-management-with-ctr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Management with ctr
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Container Management with ctr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-runtime-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Runtime Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#administration-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administration Tasks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Administration Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-container-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Container Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Host Container Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-control-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Control Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-admin-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Admin Container
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-client-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Client Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-container-runtime-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Container Runtime Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kubernetes-node-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Kubernetes Node Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-network-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Network Connectivity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-storage-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Storage Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ssm-connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. SSM Connection Problems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-container-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Container Hardening
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control-with-pod-security-admission" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control with Pod Security Admission
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updates-and-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updates and Maintenance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Updates and Maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      OS Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-image-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Image Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ami-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMI Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AMI Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-bottlerocket-amis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Bottlerocket AMIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Launch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important File Locations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selinux-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      SELinux Labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="bottlerocket-os-administration">Bottlerocket OS Administration</h1>
+<p>A comprehensive guide to managing Bottlerocket OS instances with AWS Systems Manager Session Manager, containerd, and essential administration tasks.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>AWS CLI configured with appropriate IAM permissions</li>
+<li>Session Manager plugin installed</li>
+<li>Instance with SSMServiceRole and AmazonSSMManagedInstanceCore policy</li>
+<li>Bottlerocket instance with control container enabled</li>
+</ul>
+<h3 id="essential-setup-commands">Essential Setup Commands</h3>
+<p>For instructions on installing the Session Manager plugin on your operating system, please refer to the official AWS documentation: <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html">Install the Session Manager plugin for the AWS CLI</a>.</p>
+<p>After installation, you can verify it and connect to an instance.</p>
+<pre><code class="language-bash"># Verify installation
+session-manager-plugin
+
+# Connect to instance
+aws ssm start-session --target $INSTANCE_ID --region $REGION
+</code></pre>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="container-architecture">Container Architecture</h3>
+<ul>
+<li><strong>Control Container</strong>: Provides SSM access and API management (enabled by default)</li>
+<li><strong>Admin Container</strong>: Privileged access for debugging (disabled by default)</li>
+<li><strong>Host Containers</strong>: Out-of-band access to host OS with configurable privileges</li>
+<li><strong>Workload Containers</strong>: Application containers managed by orchestrators</li>
+</ul>
+<h3 id="security-model">Security Model</h3>
+<ul>
+<li><strong>dm-verity</strong>: Read-only root filesystem with cryptographic integrity checking</li>
+<li><strong>SELinux</strong>: Enforcing mode with process labels (container_t, control_t, super_t)</li>
+<li><strong>Immutable OS</strong>: Updates via complete image replacement, not package managers</li>
+<li><strong>Minimal Attack Surface</strong>: No SSH, shell, or package manager by default</li>
+</ul>
+<h2 id="aws-ssm-session-manager">AWS SSM Session Manager</h2>
+<h3 id="basic-connection">Basic Connection</h3>
+<pre><code class="language-bash"># Connect to instance via SSM
+aws ssm start-session --target i-1234567890abcdef0 --region us-west-2
+
+# Connect with specific profile
+aws ssm start-session --target $INSTANCE_ID --region $REGION --profile myprofile
+
+# List managed instances
+aws ssm describe-instance-information --region us-west-2
+</code></pre>
+<h3 id="setting-up-ssm-access">Setting Up SSM Access</h3>
+<h4 id="1-create-iam-service-role">1. Create IAM Service Role</h4>
+<pre><code class="language-bash"># Create trust policy
+cat &lt;&lt;EOF &gt; ssmservice-trust.json
+{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: {
+        &quot;Effect&quot;: &quot;Allow&quot;,
+        &quot;Principal&quot;: {
+            &quot;Service&quot;: &quot;ssm.amazonaws.com&quot;
+        },
+        &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+    }
+}
+EOF
+
+# Create the role
+aws iam create-role \
+    --role-name SSMServiceRole \
+    --assume-role-policy-document file://ssmservice-trust.json
+
+# Attach SSM policy
+aws iam attach-role-policy \
+    --role-name SSMServiceRole \
+    --policy-arn arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+</code></pre>
+<h4 id="2-configure-control-container">2. Configure Control Container</h4>
+<pre><code class="language-bash"># Create SSM activation
+export SSM_ACTIVATION=&quot;$(aws ssm create-activation \
+  --iam-role SSMServiceRole \
+  --registration-limit 100 \
+  --region us-west-2 \
+  --output json)&quot;
+
+# Extract activation details
+SSM_ACTIVATION_ID=&quot;$(jq -r '.ActivationId' &lt;&lt;&lt; ${SSM_ACTIVATION})&quot;
+SSM_ACTIVATION_CODE=&quot;$(jq -r '.ActivationCode' &lt;&lt;&lt; ${SSM_ACTIVATION})&quot;
+
+# Create user data for control container
+CONTROL_USER_DATA=&quot;$(echo '{&quot;ssm&quot;:{&quot;activation-id&quot;:&quot;'${SSM_ACTIVATION_ID}'&quot;,&quot;activation-code&quot;:&quot;'${SSM_ACTIVATION_CODE}'&quot;,&quot;region&quot;:&quot;us-west-2&quot;}}' | base64 -w0)&quot;
+
+# Add to user-data.toml
+cat &lt;&lt;EOF &gt;&gt;user-data.toml
+[settings.host-containers.control]
+enabled = true
+user-data = &quot;${CONTROL_USER_DATA}&quot;
+# Note: Replace vX.Y.Z with the latest version from the ECR Public Gallery
+# https://gallery.ecr.aws/bottlerocket/bottlerocket-control
+source = &quot;public.ecr.aws/bottlerocket/bottlerocket-control:vX.Y.Z&quot;
+EOF
+</code></pre>
+<h4 id="3-enable-admin-container-if-needed">3. Enable Admin Container (if needed)</h4>
+<blockquote>
+<p><strong>Note:</strong> The container versions below are examples. Always check the Amazon ECR Public Gallery for the latest version tags for the <a href="https://gallery.ecr.aws/bottlerocket/bottlerocket-control">bottlerocket-control</a> and <a href="https://gallery.ecr.aws/bottlerocket/bottlerocket-admin">bottlerocket-admin</a> containers before use.</p>
+</blockquote>
+<pre><code class="language-bash"># Via user data (during launch)
+PUBKEY_FILE=&quot;${HOME}/.ssh/id_rsa.pub&quot;
+PUBKEY=$(&lt; &quot;${PUBKEY_FILE}&quot;)
+ADMIN_USER_DATA=&quot;$(echo '{&quot;ssh&quot;: {&quot;authorized-keys&quot;: [&quot;'${PUBKEY}'&quot;]}}' | base64 -w 0)&quot;
+
+cat &lt;&lt;EOF &gt;&gt;user-data.toml
+[settings.host-containers.admin]
+enabled = true
+superpowered = true
+user-data = &quot;${ADMIN_USER_DATA}&quot;
+# Note: Replace vX.Y.Z with the latest version from the ECR Public Gallery
+# https://gallery.ecr.aws/bottlerocket/bottlerocket-admin
+source = &quot;public.ecr.aws/bottlerocket/bottlerocket-admin:vX.Y.Z&quot;
+EOF
+</code></pre>
+<h3 id="session-management">Session Management</h3>
+<pre><code class="language-bash"># Start interactive session
+aws ssm start-session --target $INSTANCE_ID
+
+# Run single command
+aws ssm send-command \
+    --instance-ids $INSTANCE_ID \
+    --document-name &quot;AWS-RunShellScript&quot; \
+    --parameters 'commands=[&quot;uptime&quot;]'
+
+# Get command output
+aws ssm get-command-invocation \
+    --command-id $COMMAND_ID \
+    --instance-id $INSTANCE_ID
+</code></pre>
+<h2 id="container-management-with-ctr">Container Management with ctr</h2>
+<h3 id="container-runtime-access">Container Runtime Access</h3>
+<pre><code class="language-bash"># Access the host containerd socket
+sudo ctr --address /run/host-containerd/host-containerd.sock
+
+# Common namespaces
+ctr namespaces list
+# k8s.io (Kubernetes)
+# moby (Docker/ECS)
+# default
+</code></pre>
+<h3 id="image-management">Image Management</h3>
+<pre><code class="language-bash"># List images
+ctr --namespace k8s.io images list
+ctr --namespace moby images list
+
+# Pull image
+ctr --namespace k8s.io images pull docker.io/nginx:latest
+
+# Remove image
+ctr --namespace k8s.io images remove docker.io/nginx:latest
+
+# Import image from tar
+ctr --namespace k8s.io images import image.tar
+
+# Export image to tar
+ctr --namespace k8s.io images export image.tar docker.io/nginx:latest
+
+# Tag image
+ctr --namespace k8s.io images tag docker.io/nginx:latest my-registry/nginx:v1
+</code></pre>
+<h3 id="container-operations">Container Operations</h3>
+<pre><code class="language-bash"># List containers
+ctr --namespace k8s.io containers list
+ctr --namespace moby containers list
+
+# List running tasks
+ctr --namespace k8s.io tasks list
+
+# View container info
+ctr --namespace k8s.io containers info $CONTAINER_ID
+
+# Execute command in running container
+ctr --namespace k8s.io tasks exec --exec-id $EXEC_ID $CONTAINER_ID sh
+
+# Kill task
+ctr --namespace k8s.io tasks kill $CONTAINER_ID
+
+# Remove container
+ctr --namespace k8s.io containers remove $CONTAINER_ID
+</code></pre>
+<h3 id="advanced-operations">Advanced Operations</h3>
+<pre><code class="language-bash"># Create container (without starting)
+ctr --namespace k8s.io containers create docker.io/nginx:latest nginx-test
+
+# Start container as task
+ctr --namespace k8s.io tasks start nginx-test
+
+# Attach to running container
+ctr --namespace k8s.io tasks attach nginx-test
+
+# Get container metrics
+ctr --namespace k8s.io tasks metrics $CONTAINER_ID
+
+# Create snapshot
+ctr --namespace k8s.io snapshots prepare snapshot-name $CONTAINER_ID
+
+# List snapshots
+ctr --namespace k8s.io snapshots list
+</code></pre>
+<h2 id="administration-tasks">Administration Tasks</h2>
+<h3 id="host-container-management">Host Container Management</h3>
+<h4 id="from-control-container">From Control Container</h4>
+<pre><code class="language-bash"># Enable admin container
+enable-admin-container
+
+# Enter admin container
+enter-admin-container
+
+# Check admin container status
+apiclient get host-containers.admin
+</code></pre>
+<h4 id="from-admin-container">From Admin Container</h4>
+<pre><code class="language-bash"># Access privileged host namespace
+sudo sheltie
+
+# Run single command with elevated privileges
+sudo sheltie -c &quot;command_here&quot;
+
+# Common privileged operations
+sudo sheltie -c &quot;systemctl status kubelet&quot;
+sudo sheltie -c &quot;journalctl -u kubelet --no-pager&quot;
+sudo sheltie -c &quot;crictl ps&quot;
+</code></pre>
+<h3 id="api-client-operations">API Client Operations</h3>
+<pre><code class="language-bash"># Set configuration
+apiclient set host-containers.admin.enabled=true
+apiclient set settings.kubernetes.cluster-name=my-cluster
+
+# Get configuration
+apiclient get settings
+apiclient get host-containers
+
+# Execute in container
+apiclient exec admin bash
+apiclient exec control enable-admin-container
+
+# Apply settings from file
+apiclient apply --from-file settings.json
+
+# Generate configuration
+apiclient generate-settings &gt; current-settings.json
+</code></pre>
+<h3 id="system-information">System Information</h3>
+<pre><code class="language-bash"># OS version and build info
+apiclient get os
+cat /etc/os-release
+
+# Kernel information
+uname -a
+apiclient get kernel
+
+# Container runtime info
+ctr version
+apiclient get container-runtime
+
+# Network configuration
+apiclient get network
+ip addr show
+
+# Storage information
+df -h
+lsblk
+apiclient get storage
+</code></pre>
+<h3 id="service-management">Service Management</h3>
+<pre><code class="language-bash"># From admin container with sheltie
+sudo sheltie -c &quot;systemctl status containerd&quot;
+sudo sheltie -c &quot;systemctl status kubelet&quot;
+sudo sheltie -c &quot;systemctl status ecs&quot;
+sudo sheltie -c &quot;systemctl restart containerd&quot;
+
+# View service logs
+sudo sheltie -c &quot;journalctl -u containerd --no-pager&quot;
+sudo sheltie -c &quot;journalctl -u kubelet -f&quot;
+sudo sheltie -c &quot;journalctl --boot --no-pager&quot;
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="log-collection">Log Collection</h3>
+<pre><code class="language-bash"># Generate comprehensive log archive
+sudo sheltie
+logdog
+
+# Fetch logs via SSH
+ssh -i YOUR_KEY_FILE ec2-user@YOUR_HOST \
+    &quot;cat /.bottlerocket/support/bottlerocket-logs.tar.gz&quot; &gt; bottlerocket-logs.tar.gz
+
+# Fetch logs via kubectl (for Kubernetes)
+kubectl get --raw \
+    &quot;/api/v1/nodes/NODE_NAME/proxy/logs/support/bottlerocket-logs.tar.gz&quot; &gt; bottlerocket-logs.tar.gz
+</code></pre>
+<h3 id="common-issues-and-solutions">Common Issues and Solutions</h3>
+<h4 id="1-container-runtime-issues">1. Container Runtime Issues</h4>
+<pre><code class="language-bash"># Check containerd status
+sudo sheltie -c &quot;systemctl status containerd&quot;
+
+# Restart containerd
+sudo sheltie -c &quot;systemctl restart containerd&quot;
+
+# Check containerd configuration
+sudo sheltie -c &quot;cat /etc/containerd/config.toml&quot;
+
+# View containerd logs
+sudo sheltie -c &quot;journalctl -u containerd --no-pager -n 100&quot;
+</code></pre>
+<h4 id="2-kubernetes-node-issues">2. Kubernetes Node Issues</h4>
+<pre><code class="language-bash"># Check kubelet status
+sudo sheltie -c &quot;systemctl status kubelet&quot;
+
+# View kubelet configuration
+apiclient get settings.kubernetes
+
+# Check node readiness
+kubectl get nodes
+kubectl describe node $NODE_NAME
+
+# Restart kubelet
+sudo sheltie -c &quot;systemctl restart kubelet&quot;
+</code></pre>
+<h4 id="3-network-connectivity">3. Network Connectivity</h4>
+<pre><code class="language-bash"># Check network interfaces
+ip addr show
+ip route show
+
+# Test DNS resolution
+nslookup kubernetes.default.svc.cluster.local
+
+# Check iptables rules (from admin container)
+sudo sheltie -c &quot;iptables -L&quot;
+sudo sheltie -c &quot;iptables -t nat -L&quot;
+
+# Test container network
+ctr --namespace k8s.io tasks exec --exec-id test nginx-test ping 8.8.8.8
+</code></pre>
+<h4 id="4-storage-issues">4. Storage Issues</h4>
+<pre><code class="language-bash"># Check disk usage
+df -h
+lsblk
+
+# Check mount points
+mount | grep bottlerocket
+
+# EBS volume attachment (AWS)
+aws ec2 describe-volumes --volume-ids $VOLUME_ID
+
+# Container storage usage
+ctr --namespace k8s.io images list -q | xargs ctr --namespace k8s.io images usage
+</code></pre>
+<h4 id="5-ssm-connection-problems">5. SSM Connection Problems</h4>
+<pre><code class="language-bash"># Check SSM agent status
+sudo sheltie -c &quot;systemctl status amazon-ssm-agent&quot;
+
+# Restart SSM agent
+sudo sheltie -c &quot;systemctl restart amazon-ssm-agent&quot;
+
+# Verify instance registration
+aws ssm describe-instance-information --filters &quot;Key=InstanceIds,Values=$INSTANCE_ID&quot;
+
+# Check IAM permissions
+aws sts get-caller-identity
+aws iam list-attached-role-policies --role-name $ROLE_NAME
+</code></pre>
+<h3 id="performance-monitoring">Performance Monitoring</h3>
+<pre><code class="language-bash"># CPU and memory usage
+top
+htop (if available)
+apiclient get metrics
+
+# Container resource usage
+ctr --namespace k8s.io tasks metrics
+crictl stats (from admin container)
+
+# System resource limits
+apiclient get settings.oci-defaults
+
+# Network statistics
+ss -tuln
+netstat -i
+
+# I/O statistics
+iostat
+iotop (if available)
+</code></pre>
+<h2 id="security-best-practices">Security Best Practices</h2>
+<h3 id="container-security">Container Security</h3>
+<pre><code class="language-bash"># Disable privileged containers (ECS)
+apiclient set settings.ecs.allow-privileged-containers=false
+
+# Configure SELinux labels for containers
+apiclient set settings.oci-defaults.capabilities=[]
+apiclient set settings.container-runtime.selinux-label=&quot;system_u:system_r:container_t:s0&quot;
+</code></pre>
+<h3 id="host-container-hardening">Host Container Hardening</h3>
+<pre><code class="language-bash"># Disable admin container when not needed
+apiclient set host-containers.admin.enabled=false
+
+# Disable control container (careful - may lose remote access)
+apiclient set host-containers.control.enabled=false
+
+# Limit superpowered containers
+# Avoid: superpowered = true unless absolutely necessary
+</code></pre>
+<h3 id="network-security">Network Security</h3>
+<pre><code class="language-bash"># Configure proxy settings if required
+apiclient set settings.network.proxy.http-proxy=&quot;http://proxy:8080&quot;
+apiclient set settings.network.proxy.https-proxy=&quot;https://proxy:8080&quot;
+apiclient set settings.network.proxy.no-proxy=&quot;localhost,127.0.0.1,.internal&quot;
+
+# Review iptables rules
+sudo sheltie -c &quot;iptables -L -n&quot;
+</code></pre>
+<h3 id="access-control-with-pod-security-admission">Access Control with Pod Security Admission</h3>
+<p>Pod Security Policies (PSPs) were deprecated in Kubernetes v1.21 and removed entirely in v1.25. Security for pods is now enforced using <a href="https://kubernetes.io/docs/concepts/security/pod-security-admission/">Pod Security Admission (PSA)</a>, which applies security standards at the namespace level. You can enforce <code>privileged</code>, <code>baseline</code>, or <code>restricted</code> policies by labeling your namespaces.</p>
+<pre><code class="language-bash"># Example: Label a namespace to enforce the baseline policy
+kubectl label --overwrite ns YOUR_NAMESPACE pod-security.kubernetes.io/enforce=baseline
+
+# Example: Label a namespace to warn on violations of the restricted policy
+kubectl label --overwrite ns YOUR_NAMESPACE pod-security.kubernetes.io/warn=restricted
+</code></pre>
+<h2 id="updates-and-maintenance">Updates and Maintenance</h2>
+<h3 id="os-updates">OS Updates</h3>
+<pre><code class="language-bash"># Check current version
+apiclient get os.version-id
+apiclient get os.build-id
+
+# Configure automatic updates
+# Note: Replace aws-k8s-1.XX with your desired and supported Kubernetes version.
+apiclient set settings.updates.metadata-base-url=&quot;https://updates.bottlerocket.aws/2020-07-07/aws-k8s-1.XX/x86_64/&quot;
+apiclient set settings.updates.targets-base-url=&quot;https://updates.bottlerocket.aws/2020-07-07/aws-k8s-1.XX/x86_64/&quot;
+
+# Check for available updates
+apiclient check-update
+
+# Apply updates
+apiclient update apply
+
+# Rollback if needed
+apiclient update rollback
+
+# Reboot to new image
+apiclient reboot
+</code></pre>
+<h3 id="container-image-management">Container Image Management</h3>
+<pre><code class="language-bash"># Clean up unused images
+ctr --namespace k8s.io images prune
+ctr --namespace moby images prune
+
+# Check image sizes
+ctr --namespace k8s.io images list -q | xargs -I {} ctr --namespace k8s.io images usage {}
+
+# Update container runtime settings
+apiclient set settings.container-runtime.max-container-log-line-size=&quot;16384&quot;
+apiclient set settings.container-runtime.max-concurrent-downloads=&quot;6&quot;
+</code></pre>
+<h2 id="ami-management">AMI Management</h2>
+<h3 id="finding-bottlerocket-amis">Finding Bottlerocket AMIs</h3>
+<blockquote>
+<p><strong>Note:</strong> The Kubernetes version <code>1.27</code> used below is an example. You should find the latest supported version for your use case.</p>
+</blockquote>
+<pre><code class="language-bash"># List all available Bottlerocket variants to find the latest K8s version
+aws ssm get-parameters-by-path \
+    --path &quot;/aws/service/bottlerocket&quot; \
+    --query &quot;Parameters[].Name&quot; --output text | sort | uniq
+
+# Get latest AMI ID from SSM for a specific K8s version
+aws ssm get-parameter \
+    --region us-west-2 \
+    --name &quot;/aws/service/bottlerocket/aws-k8s-1.27/x86_64/latest/image_id&quot; \
+    --query Parameter.Value --output text
+
+# Get AMI details for a specific K8s version
+aws ssm get-parameters --region us-west-2 \
+    --names &quot;/aws/service/bottlerocket/aws-k8s-1.27/x86_64/latest/image_id&quot; \
+            &quot;/aws/service/bottlerocket/aws-k8s-1.27/x86_64/latest/image_version&quot; \
+    --output json | jq -r '.Parameters | .[] | &quot;\(.Name): \(.Value)&quot;'
+
+# List all available variants (alternative)
+aws ssm get-parameters-by-path \
+    --path &quot;/aws/service/bottlerocket&quot; \
+    --recursive --region us-west-2 | jq -r '.Parameters[].Name' | sort
+</code></pre>
+<h3 id="instance-launch">Instance Launch</h3>
+<pre><code class="language-bash"># Launch with user data
+aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --count 1 \
+    --instance-type m5.large \
+    --key-name my-key \
+    --security-group-ids sg-12345678 \
+    --subnet-id subnet-12345678 \
+    --iam-instance-profile Name=BottlerocketInstanceProfile \
+    --user-data file://user-data.toml
+</code></pre>
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="essential-commands">Essential Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect via SSM</td>
+<td><code>aws ssm start-session --target $INSTANCE_ID</code></td>
+</tr>
+<tr>
+<td>Enable admin container</td>
+<td><code>enable-admin-container</code> (from control)</td>
+</tr>
+<tr>
+<td>Access admin container</td>
+<td><code>enter-admin-container</code> (from control)</td>
+</tr>
+<tr>
+<td>Privileged shell</td>
+<td><code>sudo sheltie</code> (from admin)</td>
+</tr>
+<tr>
+<td>List containers</td>
+<td><code>ctr --namespace k8s.io containers list</code></td>
+</tr>
+<tr>
+<td>Generate logs</td>
+<td><code>logdog</code> (from admin with sheltie)</td>
+</tr>
+<tr>
+<td>Get OS info</td>
+<td><code>apiclient get os</code></td>
+</tr>
+<tr>
+<td>Set configuration</td>
+<td><code>apiclient set key=value</code></td>
+</tr>
+<tr>
+<td>Apply updates</td>
+<td><code>apiclient update apply</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="container-namespaces">Container Namespaces</h3>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>k8s.io</code></td>
+<td>Kubernetes containers and images</td>
+</tr>
+<tr>
+<td><code>moby</code></td>
+<td>Docker/ECS containers and images</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>Default containerd namespace</td>
+</tr>
+</tbody>
+</table>
+<h3 id="important-file-locations">Important File Locations</h3>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/run/host-containerd/host-containerd.sock</code></td>
+<td>Host containerd socket</td>
+</tr>
+<tr>
+<td><code>/run/containerd/containerd.sock</code></td>
+<td>Container containerd socket</td>
+</tr>
+<tr>
+<td><code>/etc/containerd/config.toml</code></td>
+<td>Containerd configuration</td>
+</tr>
+<tr>
+<td><code>/.bottlerocket/support/</code></td>
+<td>Log and debug files</td>
+</tr>
+<tr>
+<td><code>/etc/os-release</code></td>
+<td>OS version information</td>
+</tr>
+</tbody>
+</table>
+<h3 id="selinux-labels">SELinux Labels</h3>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Usage</th>
+<th>Privileges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>container_t</code></td>
+<td>Regular containers</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td><code>control_t</code></td>
+<td>Privileged containers</td>
+<td>API socket access</td>
+</tr>
+<tr>
+<td><code>super_t</code></td>
+<td>Superpowered containers</td>
+<td>Full host access</td>
+</tr>
+</tbody>
+</table>
+<h2 id="production-recommendations">Production Recommendations</h2>
+<ol>
+<li><strong>Security</strong></li>
+<li>Keep admin container disabled unless actively debugging</li>
+<li>Use least-privilege IAM roles</li>
+<li>Implement Pod Security Admission standards</li>
+<li>
+<p>Regular security updates</p>
+</li>
+<li>
+<p><strong>Monitoring</strong></p>
+</li>
+<li>Set up CloudWatch for system metrics</li>
+<li>Monitor container resource usage</li>
+<li>Alert on update failures</li>
+<li>
+<p>Track SSM session activity</p>
+</li>
+<li>
+<p><strong>Maintenance</strong></p>
+</li>
+<li>Schedule regular OS updates</li>
+<li>Clean up unused container images</li>
+<li>Monitor disk usage</li>
+<li>
+<p>Backup important configurations</p>
+</li>
+<li>
+<p><strong>Access Control</strong></p>
+</li>
+<li>Limit SSH key distribution</li>
+<li>Use SSM for remote access</li>
+<li>Implement proper IAM policies</li>
+<li>
+<p>Regular access reviews</p>
+</li>
+<li>
+<p><strong>Troubleshooting Preparedness</strong></p>
+</li>
+<li>Document common procedures</li>
+<li>Maintain debug tooling access</li>
+<li>Regular log collection tests</li>
+<li>Incident response procedures</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

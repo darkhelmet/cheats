@@ -1,0 +1,2618 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../langextract/">
+      
+      
+        <link rel="next" href="../nltk/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Matplotlib - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#matplotlib" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Matplotlib
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Plotting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scatter-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scatter Plot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bar-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bar Charts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#histograms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histograms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subplots-and-figure-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subplots and Figure Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subplots and Figure Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-subplots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Subplots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gridspec-for-advanced-layouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      GridSpec for Advanced Layouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subplot-with-shared-axes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subplot with Shared Axes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#colors-and-styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colors and Styles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fonts-and-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fonts and Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#axis-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Axis Customization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legends
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#different-plot-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Different Plot Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Different Plot Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistical-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Plots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2d-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      2D Plots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pie-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pie Charts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving Figures
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#widgets-requires-widget-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Widgets (requires widget backend)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#animations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Animations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-colormaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Colormaps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-axes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Axes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization &amp; Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization & Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#style-sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style Sheets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rc-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      RC Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numpy-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      NumPy Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pandas-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pandas Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-gotchas-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Gotchas &amp; Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Gotchas & Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-maps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Maps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Plotting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scatter-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scatter Plot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bar-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bar Charts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#histograms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histograms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subplots-and-figure-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subplots and Figure Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subplots and Figure Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-subplots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Subplots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gridspec-for-advanced-layouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      GridSpec for Advanced Layouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subplot-with-shared-axes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subplot with Shared Axes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#colors-and-styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colors and Styles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fonts-and-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fonts and Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#axis-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Axis Customization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legends
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#different-plot-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Different Plot Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Different Plot Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistical-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Plots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2d-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      2D Plots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pie-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pie Charts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving Figures
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#widgets-requires-widget-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Widgets (requires widget backend)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#animations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Animations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-colormaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Colormaps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-axes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Axes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization &amp; Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization & Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#style-sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style Sheets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rc-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      RC Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numpy-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      NumPy Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pandas-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pandas Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-gotchas-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Gotchas &amp; Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Gotchas & Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-maps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Maps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="matplotlib">Matplotlib</h1>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash"># Basic installation
+pip install matplotlib
+
+# With optional dependencies
+pip install matplotlib[complete]
+
+# Check version
+python -c &quot;import matplotlib; print(matplotlib.__version__)&quot;
+
+# Check backend
+python -c &quot;import matplotlib; print(matplotlib.get_backend())&quot;
+</code></pre>
+<h2 id="basic-setup">Basic Setup</h2>
+<pre><code class="language-python"># Essential imports
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import numpy as np
+
+# Set backend (optional)
+matplotlib.use('TkAgg')  # or 'Qt5Agg', 'Agg', etc.
+
+# Enable inline plots in Jupyter
+%matplotlib inline
+
+# Basic figure creation
+fig, ax = plt.subplots()
+plt.show()
+</code></pre>
+<h2 id="core-functionality">Core Functionality</h2>
+<h3 id="basic-plotting">Basic Plotting</h3>
+<pre><code class="language-python"># Line plot
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.figure(figsize=(8, 6))
+plt.plot(x, y, label='sin(x)', linewidth=2, color='blue')
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Simple Sine Wave')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Multiple lines
+plt.plot(x, np.sin(x), label='sin(x)')
+plt.plot(x, np.cos(x), label='cos(x)', linestyle='--')
+plt.legend()
+</code></pre>
+<h3 id="scatter-plot">Scatter Plot</h3>
+<pre><code class="language-python"># Basic scatter
+x = np.random.randn(100)
+y = np.random.randn(100)
+colors = np.random.rand(100)
+sizes = 1000 * np.random.rand(100)
+
+plt.scatter(x, y, c=colors, s=sizes, alpha=0.6, cmap='viridis')
+plt.colorbar()
+plt.title('Scatter Plot with Color and Size')
+</code></pre>
+<h3 id="bar-charts">Bar Charts</h3>
+<pre><code class="language-python"># Vertical bar chart
+categories = ['A', 'B', 'C', 'D']
+values = [23, 17, 35, 29]
+
+plt.bar(categories, values, color=['red', 'green', 'blue', 'orange'])
+plt.title('Bar Chart')
+plt.ylabel('Values')
+
+# Horizontal bar chart
+plt.barh(categories, values)
+
+# Grouped bar chart
+x = np.arange(len(categories))
+width = 0.35
+plt.bar(x - width/2, values, width, label='Series 1')
+plt.bar(x + width/2, [20, 25, 15, 30], width, label='Series 2')
+plt.xticks(x, categories)
+plt.legend()
+</code></pre>
+<h3 id="histograms">Histograms</h3>
+<pre><code class="language-python"># Basic histogram
+data = np.random.normal(100, 15, 1000)
+plt.hist(data, bins=30, alpha=0.7, color='skyblue', edgecolor='black')
+plt.title('Histogram')
+plt.xlabel('Values')
+plt.ylabel('Frequency')
+
+# Multiple histograms
+data1 = np.random.normal(100, 15, 1000)
+data2 = np.random.normal(80, 20, 1000)
+plt.hist([data1, data2], bins=30, alpha=0.7, label=['Dataset 1', 'Dataset 2'])
+plt.legend()
+</code></pre>
+<h2 id="subplots-and-figure-management">Subplots and Figure Management</h2>
+<h3 id="creating-subplots">Creating Subplots</h3>
+<pre><code class="language-python"># Basic subplots
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 8))
+
+ax1.plot([1, 2, 3], [1, 4, 2])
+ax1.set_title('Plot 1')
+
+ax2.scatter([1, 2, 3], [1, 4, 2])
+ax2.set_title('Plot 2')
+
+ax3.bar([1, 2, 3], [1, 4, 2])
+ax3.set_title('Plot 3')
+
+ax4.hist(np.random.randn(100), bins=20)
+ax4.set_title('Plot 4')
+
+plt.tight_layout()  # Adjust spacing
+plt.show()
+
+# Subplot with different sizes
+fig = plt.figure(figsize=(12, 8))
+ax1 = plt.subplot(2, 2, 1)
+ax2 = plt.subplot(2, 2, 2)
+ax3 = plt.subplot(2, 1, 2)  # Spans two columns
+</code></pre>
+<h3 id="gridspec-for-advanced-layouts">GridSpec for Advanced Layouts</h3>
+<pre><code class="language-python">import matplotlib.gridspec as gridspec
+
+fig = plt.figure(figsize=(10, 8))
+gs = gridspec.GridSpec(3, 3)
+
+ax1 = fig.add_subplot(gs[0, :])    # Top row, all columns
+ax2 = fig.add_subplot(gs[1, :-1])  # Middle row, first two columns
+ax3 = fig.add_subplot(gs[1:, -1])  # Right column, bottom two rows
+ax4 = fig.add_subplot(gs[-1, 0])   # Bottom left
+ax5 = fig.add_subplot(gs[-1, -2])  # Bottom center
+</code></pre>
+<h3 id="subplot-with-shared-axes">Subplot with Shared Axes</h3>
+<pre><code class="language-python"># Shared x-axis
+fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(8, 6))
+ax1.plot(x, np.sin(x))
+ax2.plot(x, np.cos(x))
+
+# Shared y-axis
+fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(10, 4))
+</code></pre>
+<h2 id="customization">Customization</h2>
+<h3 id="colors-and-styles">Colors and Styles</h3>
+<pre><code class="language-python"># Color specifications
+plt.plot(x, y, color='red')           # Named color
+plt.plot(x, y, color='#FF5733')       # Hex code
+plt.plot(x, y, color=(0.1, 0.2, 0.5)) # RGB tuple
+plt.plot(x, y, c='r')                 # Short form
+
+# Line styles
+plt.plot(x, y, linestyle='-')         # Solid
+plt.plot(x, y, linestyle='--')        # Dashed
+plt.plot(x, y, linestyle='-.')        # Dash-dot
+plt.plot(x, y, linestyle=':')         # Dotted
+plt.plot(x, y, ls=':')                # Short form
+
+# Markers
+plt.plot(x, y, marker='o')            # Circle
+plt.plot(x, y, marker='s')            # Square
+plt.plot(x, y, marker='^')            # Triangle up
+plt.plot(x, y, marker='D')            # Diamond
+
+# Combined format string
+plt.plot(x, y, 'ro-')  # Red circles with solid line
+plt.plot(x, y, 'g--^') # Green dashed line with triangle markers
+</code></pre>
+<h3 id="fonts-and-text">Fonts and Text</h3>
+<pre><code class="language-python"># Font properties
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['font.size'] = 12
+
+# Title and labels with custom fonts
+plt.title('Title', fontsize=16, fontweight='bold')
+plt.xlabel('X Label', fontsize=14, style='italic')
+plt.ylabel('Y Label', fontsize=14, color='red')
+
+# Text annotations
+plt.text(0.5, 0.5, 'Sample Text', fontsize=12, 
+         horizontalalignment='center', verticalalignment='center',
+         transform=ax.transAxes)  # Relative coordinates
+
+# Annotations with arrows
+plt.annotate('Important Point', xy=(2, 1), xytext=(3, 4),
+             arrowprops=dict(arrowstyle='-&gt;', color='red', lw=2))
+</code></pre>
+<h3 id="axis-customization">Axis Customization</h3>
+<pre><code class="language-python"># Axis limits
+plt.xlim(0, 10)
+plt.ylim(-1, 1)
+# or
+ax.set_xlim(0, 10)
+ax.set_ylim(-1, 1)
+
+# Axis ticks
+plt.xticks([0, 2, 4, 6, 8, 10])
+plt.yticks([-1, -0.5, 0, 0.5, 1])
+
+# Custom tick labels
+plt.xticks([0, 1, 2, 3], ['A', 'B', 'C', 'D'])
+
+# Tick formatting
+from matplotlib.ticker import FuncFormatter
+def currency(x, pos):
+    return f'${x:.0f}'
+ax.yaxis.set_major_formatter(FuncFormatter(currency))
+
+# Logarithmic scale
+plt.yscale('log')
+plt.xscale('log')
+
+# Grid customization
+plt.grid(True, linestyle='--', alpha=0.7, color='gray')
+</code></pre>
+<h3 id="legends">Legends</h3>
+<pre><code class="language-python"># Basic legend
+plt.plot(x, np.sin(x), label='sin(x)')
+plt.plot(x, np.cos(x), label='cos(x)')
+plt.legend()
+
+# Legend positioning
+plt.legend(loc='upper right')  # 'upper left', 'lower right', etc.
+plt.legend(loc='best')         # Automatic best position
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')  # Outside plot
+
+# Legend customization
+plt.legend(frameon=True, fancybox=True, shadow=True, 
+           ncol=2, fontsize=10, title='Legend Title')
+</code></pre>
+<h2 id="different-plot-types">Different Plot Types</h2>
+<h3 id="statistical-plots">Statistical Plots</h3>
+<pre><code class="language-python"># Box plot
+data = [np.random.normal(0, std, 100) for std in range(1, 4)]
+plt.boxplot(data, labels=['Group A', 'Group B', 'Group C'])
+
+# Violin plot (requires seaborn or custom implementation)
+# Error bars
+x = [1, 2, 3, 4]
+y = [1, 4, 2, 3]
+yerr = [0.1, 0.2, 0.1, 0.3]
+plt.errorbar(x, y, yerr=yerr, fmt='o-', capsize=5)
+
+# Fill between
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+plt.fill_between(x, y1, y2, alpha=0.3, color='blue')
+</code></pre>
+<h3 id="2d-plots">2D Plots</h3>
+<pre><code class="language-python"># Heatmap/Image
+data = np.random.rand(10, 10)
+plt.imshow(data, cmap='hot', interpolation='nearest')
+plt.colorbar()
+
+# Contour plot
+x = np.linspace(-3, 3, 100)
+y = np.linspace(-3, 3, 100)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(X) * np.cos(Y)
+
+plt.contour(X, Y, Z, levels=10)
+plt.contourf(X, Y, Z, levels=20, cmap='viridis')  # Filled contours
+plt.colorbar()
+
+# 3D plotting
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, Z, cmap='viridis')
+</code></pre>
+<h3 id="pie-charts">Pie Charts</h3>
+<pre><code class="language-python"># Basic pie chart
+sizes = [25, 30, 15, 30]
+labels = ['A', 'B', 'C', 'D']
+colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']
+explode = (0, 0.1, 0, 0)  # Explode slice B
+
+plt.pie(sizes, explode=explode, labels=labels, colors=colors,
+        autopct='%1.1f%%', shadow=True, startangle=90)
+plt.axis('equal')  # Equal aspect ratio
+</code></pre>
+<h2 id="saving-figures">Saving Figures</h2>
+<pre><code class="language-python"># Save in different formats
+plt.savefig('plot.png', dpi=300, bbox_inches='tight')
+plt.savefig('plot.pdf', format='pdf')
+plt.savefig('plot.svg', format='svg')
+plt.savefig('plot.eps', format='eps')
+
+# High-quality publication figure
+plt.savefig('publication.png', dpi=300, bbox_inches='tight', 
+            facecolor='white', edgecolor='none', transparent=False)
+
+# Save with specific size
+plt.figure(figsize=(10, 6))
+# ... plotting code ...
+plt.savefig('sized_plot.png', dpi=150)
+</code></pre>
+<h2 id="interactive-features">Interactive Features</h2>
+<h3 id="event-handling">Event Handling</h3>
+<pre><code class="language-python"># Click event handling
+def onclick(event):
+    if event.inaxes is not None:
+        print(f'Clicked at: ({event.xdata:.2f}, {event.ydata:.2f})')
+
+fig, ax = plt.subplots()
+ax.plot([1, 2, 3], [1, 4, 2])
+fig.canvas.mpl_connect('button_press_event', onclick)
+plt.show()
+
+# Key press events
+def onkey(event):
+    print(f'Key pressed: {event.key}')
+
+fig.canvas.mpl_connect('key_press_event', onkey)
+</code></pre>
+<h3 id="widgets-requires-widget-backend">Widgets (requires widget backend)</h3>
+<pre><code class="language-python">from matplotlib.widgets import Button, Slider
+
+# Interactive slider
+fig, ax = plt.subplots()
+plt.subplots_adjust(bottom=0.25)
+
+# Initial plot
+t = np.linspace(0, 10, 1000)
+a0 = 1
+f0 = 1
+s = a0 * np.sin(2 * np.pi * f0 * t)
+l, = plt.plot(t, s)
+
+# Slider
+ax_freq = plt.axes([0.25, 0.1, 0.5, 0.03])
+slider = Slider(ax_freq, 'Frequency', 0.1, 5.0, valinit=f0)
+
+def update(val):
+    freq = slider.val
+    l.set_ydata(a0 * np.sin(2 * np.pi * freq * t))
+    fig.canvas.draw_idle()
+
+slider.on_changed(update)
+plt.show()
+</code></pre>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="animations">Animations</h3>
+<pre><code class="language-python">from matplotlib.animation import FuncAnimation
+
+# Animated sine wave
+fig, ax = plt.subplots()
+x = np.linspace(0, 2*np.pi, 100)
+line, = ax.plot(x, np.sin(x))
+
+def animate(frame):
+    line.set_ydata(np.sin(x + frame/10))
+    return line,
+
+ani = FuncAnimation(fig, animate, frames=200, interval=50, blit=True)
+plt.show()
+
+# Save animation
+ani.save('animation.gif', writer='pillow', fps=20)
+ani.save('animation.mp4', writer='ffmpeg', fps=30)
+</code></pre>
+<h3 id="custom-colormaps">Custom Colormaps</h3>
+<pre><code class="language-python">from matplotlib.colors import LinearSegmentedColormap
+
+# Create custom colormap
+colors = ['red', 'yellow', 'green', 'blue']
+n_bins = 100
+cmap = LinearSegmentedColormap.from_list('custom', colors, N=n_bins)
+
+# Use custom colormap
+data = np.random.rand(10, 10)
+plt.imshow(data, cmap=cmap)
+plt.colorbar()
+</code></pre>
+<h3 id="dual-axes">Dual Axes</h3>
+<pre><code class="language-python"># Two different y-axes
+fig, ax1 = plt.subplots()
+
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.exp(x/5)
+
+# First y-axis
+ax1.plot(x, y1, 'g-')
+ax1.set_xlabel('X data')
+ax1.set_ylabel('sin(x)', color='g')
+ax1.tick_params(axis='y', labelcolor='g')
+
+# Second y-axis
+ax2 = ax1.twinx()
+ax2.plot(x, y2, 'b-')
+ax2.set_ylabel('exp(x/5)', color='b')
+ax2.tick_params(axis='y', labelcolor='b')
+
+plt.show()
+</code></pre>
+<h2 id="customization-best-practices">Customization &amp; Best Practices</h2>
+<h3 id="style-sheets">Style Sheets</h3>
+<pre><code class="language-python"># Available styles
+print(plt.style.available)
+
+# Use built-in styles
+plt.style.use('seaborn-v0_8')
+plt.style.use('ggplot')
+plt.style.use('dark_background')
+
+# Use multiple styles
+plt.style.use(['seaborn-v0_8', 'seaborn-v0_8-darkgrid'])
+
+# Context manager for temporary style
+with plt.style.context('bmh'):
+    plt.plot([1, 2, 3], [1, 4, 2])
+    plt.show()
+</code></pre>
+<h3 id="rc-parameters">RC Parameters</h3>
+<pre><code class="language-python"># Global settings
+plt.rcParams['figure.figsize'] = [10, 6]
+plt.rcParams['font.size'] = 12
+plt.rcParams['lines.linewidth'] = 2
+plt.rcParams['grid.alpha'] = 0.3
+
+# Context manager for temporary settings
+with plt.rc_context({'font.size': 14, 'lines.linewidth': 3}):
+    plt.plot([1, 2, 3], [1, 4, 2])
+
+# Reset to defaults
+plt.rcdefaults()
+</code></pre>
+<h3 id="performance-tips">Performance Tips</h3>
+<pre><code class="language-python"># Use appropriate backends
+import matplotlib
+matplotlib.use('Agg')  # For server/batch processing
+
+# Batch plotting
+plt.ioff()  # Turn off interactive mode
+for i in range(100):
+    plt.figure()
+    plt.plot(data[i])
+    plt.savefig(f'plot_{i}.png')
+    plt.close()  # Important: close figures to free memory
+
+# Efficient line collection for many lines
+from matplotlib.collections import LineCollection
+lines = [np.column_stack([x, y + i]) for i in range(100)]
+lc = LineCollection(lines, linewidths=0.5)
+ax.add_collection(lc)
+</code></pre>
+<h2 id="integration-with-other-libraries">Integration with Other Libraries</h2>
+<h3 id="numpy-integration">NumPy Integration</h3>
+<pre><code class="language-python"># Matplotlib works seamlessly with NumPy arrays
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+plt.plot(x, y)
+
+# Masked arrays
+y_masked = np.ma.masked_where(y &lt; 0, y)
+plt.plot(x, y_masked)
+</code></pre>
+<h3 id="pandas-integration">Pandas Integration</h3>
+<pre><code class="language-python">import pandas as pd
+
+# DataFrame plotting
+df = pd.DataFrame({
+    'x': range(10),
+    'y1': np.random.randn(10),
+    'y2': np.random.randn(10)
+})
+
+# Direct pandas plotting
+df.plot(x='x', y=['y1', 'y2'])
+
+# Using matplotlib directly
+plt.plot(df['x'], df['y1'], label='y1')
+plt.plot(df['x'], df['y2'], label='y2')
+plt.legend()
+</code></pre>
+<h2 id="common-gotchas-best-practices">Common Gotchas &amp; Best Practices</h2>
+<h3 id="memory-management">Memory Management</h3>
+<pre><code class="language-python"># Always close figures when done
+fig, ax = plt.subplots()
+# ... plotting code ...
+plt.close(fig)  # or plt.close('all')
+
+# Clear current figure
+plt.clf()
+
+# Clear current axes
+plt.cla()
+</code></pre>
+<h3 id="backend-issues">Backend Issues</h3>
+<pre><code class="language-python"># Check current backend
+print(plt.get_backend())
+
+# Set backend before importing pyplot
+import matplotlib
+matplotlib.use('TkAgg')  # Must be before importing pyplot
+import matplotlib.pyplot as plt
+</code></pre>
+<h3 id="common-patterns">Common Patterns</h3>
+<pre><code class="language-python"># Professional plotting setup
+def setup_plot(figsize=(10, 6)):
+    fig, ax = plt.subplots(figsize=figsize)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.grid(True, alpha=0.3)
+    return fig, ax
+
+# Context manager for consistent styling
+from contextlib import contextmanager
+
+@contextmanager
+def plot_style(style='seaborn-v0_8', figsize=(10, 6)):
+    with plt.style.context(style):
+        fig, ax = plt.subplots(figsize=figsize)
+        yield fig, ax
+        plt.tight_layout()
+
+# Usage
+with plot_style() as (fig, ax):
+    ax.plot([1, 2, 3], [1, 4, 2])
+    ax.set_title('Styled Plot')
+    plt.show()
+</code></pre>
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="essential-functions">Essential Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plt.figure()</code></td>
+<td>Create new figure</td>
+<td><code>plt.figure(figsize=(8,6))</code></td>
+</tr>
+<tr>
+<td><code>plt.subplot()</code></td>
+<td>Add subplot</td>
+<td><code>plt.subplot(2,2,1)</code></td>
+</tr>
+<tr>
+<td><code>plt.plot()</code></td>
+<td>Line plot</td>
+<td><code>plt.plot(x, y, 'r-')</code></td>
+</tr>
+<tr>
+<td><code>plt.scatter()</code></td>
+<td>Scatter plot</td>
+<td><code>plt.scatter(x, y, c=colors)</code></td>
+</tr>
+<tr>
+<td><code>plt.bar()</code></td>
+<td>Bar chart</td>
+<td><code>plt.bar(x, height)</code></td>
+</tr>
+<tr>
+<td><code>plt.hist()</code></td>
+<td>Histogram</td>
+<td><code>plt.hist(data, bins=20)</code></td>
+</tr>
+<tr>
+<td><code>plt.imshow()</code></td>
+<td>Display image/2D data</td>
+<td><code>plt.imshow(array, cmap='hot')</code></td>
+</tr>
+<tr>
+<td><code>plt.savefig()</code></td>
+<td>Save figure</td>
+<td><code>plt.savefig('plot.png', dpi=300)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="format-strings">Format Strings</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>Solid line</td>
+<td><code>o</code></td>
+<td>Circle marker</td>
+</tr>
+<tr>
+<td><code>--</code></td>
+<td>Dashed line</td>
+<td><code>s</code></td>
+<td>Square marker</td>
+</tr>
+<tr>
+<td><code>-.</code></td>
+<td>Dash-dot line</td>
+<td><code>^</code></td>
+<td>Triangle up marker</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>Dotted line</td>
+<td><code>D</code></td>
+<td>Diamond marker</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>Red</td>
+<td><code>g</code></td>
+<td>Green</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>Blue</td>
+<td><code>k</code></td>
+<td>Black</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>Cyan</td>
+<td><code>m</code></td>
+<td>Magenta</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>Yellow</td>
+<td><code>w</code></td>
+<td>White</td>
+</tr>
+</tbody>
+</table>
+<h3 id="color-maps">Color Maps</h3>
+<p>Common colormaps: <code>viridis</code>, <code>plasma</code>, <code>inferno</code>, <code>magma</code>, <code>coolwarm</code>, <code>RdYlBu</code>, <code>seismic</code>, <code>hot</code>, <code>cool</code>, <code>spring</code>, <code>summer</code>, <code>autumn</code>, <code>winter</code>, <code>gray</code></p>
+<p>Use: <code>plt.imshow(data, cmap='viridis')</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

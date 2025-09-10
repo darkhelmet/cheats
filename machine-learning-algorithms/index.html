@@ -1,0 +1,2724 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../gpu/cuda/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Machine Learning Algorithms - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#machine-learning-algorithms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Machine Learning Algorithms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-algorithm-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Algorithm Selection Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Algorithm Selection Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-problem-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      By Problem Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#by-data-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      By Data Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#by-interpretability" class="md-nav__link">
+    <span class="md-ellipsis">
+      By Interpretability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supervised-learning-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supervised Learning Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supervised Learning Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linear-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Regression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logistic-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logistic Regression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Trees
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-forest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Forest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradient Boosting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-vector-machine-svm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Vector Machine (SVM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-nearest-neighbors-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      k-Nearest Neighbors (k-NN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naive-bayes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naive Bayes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neural-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neural Networks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unsupervised-learning-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unsupervised Learning Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unsupervised Learning Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-means-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      k-Means Clustering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hierarchical Clustering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbscan-density-based-spatial-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      DBSCAN (Density-Based Spatial Clustering)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principal-component-analysis-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principal Component Analysis (PCA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t-sne-t-distributed-stochastic-neighbor-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      t-SNE (t-Distributed Stochastic Neighbor Embedding)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm-selection-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Selection Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithm Selection Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-characteristics-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Characteristics Decision Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regression-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regression Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clustering-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clustering Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-preprocessing-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Preprocessing Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Preprocessing Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Scaling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overfitting-vs-underfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overfitting vs Underfitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overfitting vs Underfitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overfitting-high-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overfitting (High Variance)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#underfitting-high-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Underfitting (High Bias)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-selection-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference Table
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-algorithm-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Algorithm Selection Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Algorithm Selection Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-problem-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      By Problem Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#by-data-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      By Data Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#by-interpretability" class="md-nav__link">
+    <span class="md-ellipsis">
+      By Interpretability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supervised-learning-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supervised Learning Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supervised Learning Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linear-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Regression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logistic-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logistic Regression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Trees
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-forest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Forest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradient Boosting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-vector-machine-svm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Vector Machine (SVM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-nearest-neighbors-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      k-Nearest Neighbors (k-NN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naive-bayes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naive Bayes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neural-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neural Networks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unsupervised-learning-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unsupervised Learning Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unsupervised Learning Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-means-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      k-Means Clustering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hierarchical Clustering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbscan-density-based-spatial-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      DBSCAN (Density-Based Spatial Clustering)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principal-component-analysis-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principal Component Analysis (PCA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t-sne-t-distributed-stochastic-neighbor-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      t-SNE (t-Distributed Stochastic Neighbor Embedding)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm-selection-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Selection Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithm Selection Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-characteristics-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Characteristics Decision Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regression-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regression Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clustering-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clustering Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-preprocessing-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Preprocessing Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Preprocessing Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Scaling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overfitting-vs-underfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overfitting vs Underfitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overfitting vs Underfitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overfitting-high-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overfitting (High Variance)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#underfitting-high-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Underfitting (High Bias)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-selection-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference Table
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="machine-learning-algorithms">Machine Learning Algorithms</h1>
+<p>A comprehensive guide to fundamental machine learning algorithms, their applications, strengths, weaknesses, and when to use each approach.</p>
+<h2 id="quick-algorithm-selection-guide">Quick Algorithm Selection Guide</h2>
+<h3 id="by-problem-type">By Problem Type</h3>
+<ul>
+<li><strong>Regression</strong>: Linear Regression, Random Forest, SVM, Neural Networks</li>
+<li><strong>Classification</strong>: Logistic Regression, Decision Trees, Random Forest, SVM, k-NN, Naive Bayes</li>
+<li><strong>Clustering</strong>: k-Means, Hierarchical Clustering, DBSCAN</li>
+<li><strong>Dimensionality Reduction</strong>: PCA, t-SNE, UMAP</li>
+<li><strong>Anomaly Detection</strong>: Isolation Forest, One-Class SVM, Local Outlier Factor</li>
+</ul>
+<h3 id="by-data-size">By Data Size</h3>
+<ul>
+<li><strong>Small datasets (&lt; 1K samples)</strong>: k-NN, Naive Bayes, Decision Trees, AdaBoost</li>
+<li><strong>Medium datasets (1K-100K)</strong>: SVM, Random Forest, XGBoost, LightGBM, CatBoost</li>
+<li><strong>Large datasets (&gt; 100K)</strong>: Linear models, Neural Networks, LightGBM, SGD variants</li>
+</ul>
+<h3 id="by-interpretability">By Interpretability</h3>
+<ul>
+<li><strong>High</strong>: Linear Regression, Decision Trees, Naive Bayes</li>
+<li><strong>Medium</strong>: Random Forest, k-NN, AdaBoost</li>
+<li><strong>Low</strong>: SVM (with RBF kernel), Neural Networks, XGBoost, LightGBM, CatBoost</li>
+</ul>
+<h2 id="supervised-learning-algorithms">Supervised Learning Algorithms</h2>
+<h3 id="linear-regression">Linear Regression</h3>
+<p><strong>Purpose</strong>: Predict continuous target variable using linear relationship</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ + ε
+Cost Function: J(θ) = 1/(2m) Σ(hθ(x⁽ⁱ⁾) - y⁽ⁱ⁾)²
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>fit_intercept</strong>: Whether to calculate intercept (default: True)
+- <strong>normalize</strong>: Normalize features before fitting (deprecated, use StandardScaler)
+- <strong>solver</strong>: Algorithm for optimization ('auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga')</p>
+<p><strong>When to Use</strong>:
+- ✅ Linear relationship between features and target
+- ✅ Need interpretable results
+- ✅ Fast training and prediction required
+- ✅ Baseline model for comparison</p>
+<p><strong>Strengths</strong>:
+- Fast training and prediction
+- No hyperparameter tuning needed
+- Provides feature importance (coefficients)
+- Works well with linearly separable data
+- Memory efficient</p>
+<p><strong>Weaknesses</strong>:
+- Assumes linear relationship
+- Sensitive to outliers
+- Requires feature scaling
+- Poor performance with non-linear patterns</p>
+<p><strong>Preprocessing</strong>:
+- Scale features (StandardScaler, MinMaxScaler)
+- Handle outliers
+- Feature engineering for non-linear relationships</p>
+<hr />
+<h3 id="logistic-regression">Logistic Regression</h3>
+<p><strong>Purpose</strong>: Binary or multi-class classification using logistic function</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>Sigmoid: σ(z) = 1 / (1 + e^(-z))
+Probability: P(y=1|x) = σ(θᵀx)
+Cost Function: J(θ) = -1/m Σ[y⁽ⁱ⁾log(hθ(x⁽ⁱ⁾)) + (1-y⁽ⁱ⁾)log(1-hθ(x⁽ⁱ⁾))]
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>C</strong>: Inverse of regularization strength (default: 1.0)
+- <strong>penalty</strong>: Regularization type ('l1', 'l2', 'elasticnet', 'none')
+- <strong>solver</strong>: Algorithm ('liblinear', 'newton-cg', 'lbfgs', 'sag', 'saga')
+- <strong>max_iter</strong>: Maximum iterations (default: 100)</p>
+<p><strong>When to Use</strong>:
+- ✅ Binary or multi-class classification
+- ✅ Need probability estimates
+- ✅ Linear decision boundary is appropriate
+- ✅ Fast training required</p>
+<p><strong>Strengths</strong>:
+- Outputs probability estimates
+- Less prone to overfitting than complex models
+- Fast training
+- Interpretable coefficients</p>
+<p><strong>Weaknesses</strong>:
+- Assumes linear relationship between features and log-odds
+- Sensitive to outliers
+- Requires feature scaling
+- Can struggle with complex relationships</p>
+<hr />
+<h3 id="decision-trees">Decision Trees</h3>
+<p><strong>Purpose</strong>: Classification or regression using tree-like model of decisions</p>
+<p><strong>Key Concepts</strong>:</p>
+<pre><code>Information Gain = Entropy(parent) - Weighted_Avg(Entropy(children))
+Gini Impurity = 1 - Σ(pᵢ)²
+MSE (regression) = 1/n Σ(yᵢ - ŷ)²
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>criterion</strong>: Split quality measure ('gini', 'entropy', 'log_loss' for classification; 'squared_error', 'absolute_error' for regression)
+- <strong>max_depth</strong>: Maximum tree depth (default: None)
+- <strong>min_samples_split</strong>: Minimum samples to split node (default: 2)
+- <strong>min_samples_leaf</strong>: Minimum samples in leaf node (default: 1)
+- <strong>max_features</strong>: Number of features for best split (default: None)</p>
+<p><strong>When to Use</strong>:
+- ✅ Need interpretable model
+- ✅ Non-linear relationships exist
+- ✅ Mixed data types (numerical and categorical)
+- ✅ Feature interactions are important</p>
+<p><strong>Strengths</strong>:
+- Highly interpretable
+- Handles both numerical and categorical data
+- No need for feature scaling
+- Automatically handles feature interactions
+- Fast prediction</p>
+<p><strong>Weaknesses</strong>:
+- Prone to overfitting
+- Unstable (small data changes → different trees)
+- Biased toward features with more levels
+- Cannot capture linear relationships efficiently</p>
+<p><strong>Hyperparameter Tuning</strong>:</p>
+<pre><code class="language-python"># Prevent overfitting
+max_depth = [3, 5, 7, 10, None]
+min_samples_split = [2, 5, 10, 20]
+min_samples_leaf = [1, 2, 4, 8]
+</code></pre>
+<hr />
+<h3 id="random-forest">Random Forest</h3>
+<p><strong>Purpose</strong>: Ensemble of decision trees for improved accuracy and reduced overfitting</p>
+<p><strong>Key Concepts</strong>:</p>
+<pre><code>Final Prediction = Average/Majority Vote of all trees
+Out-of-Bag Error: Error rate using samples not used in training each tree
+Feature Importance: Average decrease in impurity when feature is used for splits
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>n_estimators</strong>: Number of trees (default: 100)
+- <strong>max_depth</strong>: Maximum depth of trees (default: None)
+- <strong>min_samples_split</strong>: Minimum samples to split (default: 2)
+- <strong>min_samples_leaf</strong>: Minimum samples in leaf (default: 1)
+- <strong>max_features</strong>: Features to consider for splits (default: 'sqrt')
+- <strong>bootstrap</strong>: Whether to bootstrap samples (default: True)</p>
+<p><strong>When to Use</strong>:
+- ✅ Need robust, accurate model
+- ✅ Have mixed data types
+- ✅ Want feature importance rankings
+- ✅ Can tolerate longer training time</p>
+<p><strong>Strengths</strong>:
+- Reduces overfitting compared to single trees
+- Provides feature importance
+- Handles missing values
+- Works well out-of-the-box
+- Robust to outliers</p>
+<p><strong>Weaknesses</strong>:
+- Less interpretable than single tree
+- Can overfit with very noisy data
+- Biased toward categorical features with many categories
+- Memory intensive</p>
+<p><strong>Hyperparameter Tuning</strong>:</p>
+<pre><code class="language-python"># Key parameters to tune
+n_estimators = [100, 200, 300, 500]
+max_depth = [3, 5, 7, 10, None]
+min_samples_split = [2, 5, 10]
+max_features = ['sqrt', 'log2', None]
+</code></pre>
+<hr />
+<h3 id="gradient-boosting">Gradient Boosting</h3>
+<p><strong>Purpose</strong>: Sequential ensemble method that builds models iteratively, each correcting errors of previous models</p>
+<p><strong>Key Concepts</strong>:</p>
+<pre><code>Sequential Learning: F_m(x) = F_(m-1)(x) + h_m(x)
+Gradient Descent: h_m = argmin Σ L(y_i, F_(m-1)(x_i) + h(x_i))
+Loss Function: Optimize differentiable loss functions
+Weak Learners: Typically shallow decision trees (stumps)
+Shrinkage: F_m(x) = F_(m-1)(x) + ν * h_m(x) where ν is learning rate
+</code></pre>
+<p><strong>Mathematical Framework</strong>:</p>
+<pre><code>1. Initialize: F_0(x) = argmin_γ Σ L(y_i, γ)
+2. For m = 1 to M:
+   a. Compute residuals: r_im = -∂L(y_i, F_(m-1)(x_i))/∂F_(m-1)(x_i)
+   b. Fit weak learner: h_m(x) to predict residuals r_im
+   c. Find optimal step size: γ_m = argmin_γ Σ L(y_i, F_(m-1)(x_i) + γh_m(x_i))
+   d. Update: F_m(x) = F_(m-1)(x) + γ_m * h_m(x)
+3. Output: F_M(x)
+</code></pre>
+<p><strong>Popular Algorithms</strong>:</p>
+<p><strong>XGBoost (eXtreme Gradient Boosting)</strong>:
+- <strong>Strengths</strong>: High performance, handles missing values, built-in regularization, parallel processing
+- <strong>Best for</strong>: Structured/tabular data, competitions, high accuracy requirements
+- <strong>Key Parameters</strong>:
+  - <code>n_estimators</code>: Number of boosting rounds (100-1000)
+  - <code>max_depth</code>: Maximum tree depth (3-10)
+  - <code>learning_rate</code>: Step size shrinkage (0.01-0.3)
+  - <code>subsample</code>: Fraction of samples (0.8-1.0)
+  - <code>colsample_bytree</code>: Fraction of features (0.8-1.0)
+  - <code>reg_alpha</code>: L1 regularization (0-10)
+  - <code>reg_lambda</code>: L2 regularization (1-10)</p>
+<pre><code class="language-python"># XGBoost Example
+import xgboost as xgb
+from sklearn.model_selection import GridSearchCV
+
+# Basic usage
+xgb_model = xgb.XGBClassifier(
+    n_estimators=100,
+    max_depth=6,
+    learning_rate=0.1,
+    random_state=42
+)
+xgb_model.fit(X_train, y_train)
+
+# Hyperparameter tuning
+param_grid = {
+    'n_estimators': [100, 200, 300],
+    'max_depth': [3, 5, 7],
+    'learning_rate': [0.01, 0.1, 0.2],
+    'subsample': [0.8, 0.9, 1.0]
+}
+</code></pre>
+<p><strong>LightGBM (Light Gradient Boosting Machine)</strong>:
+- <strong>Strengths</strong>: Fast training, low memory usage, high accuracy, handles categorical features
+- <strong>Best for</strong>: Large datasets, fast training requirements, limited memory
+- <strong>Key Parameters</strong>:
+  - <code>num_leaves</code>: Maximum leaves in one tree (31-300)
+  - <code>learning_rate</code>: Shrinkage rate (0.01-0.3)
+  - <code>feature_fraction</code>: Fraction of features (0.8-1.0)
+  - <code>bagging_fraction</code>: Fraction of data (0.8-1.0)
+  - <code>min_data_in_leaf</code>: Minimum samples in leaf (20-100)
+  - <code>lambda_l1</code>, <code>lambda_l2</code>: Regularization terms</p>
+<pre><code class="language-python"># LightGBM Example
+import lightgbm as lgb
+
+# Basic usage
+lgb_model = lgb.LGBMClassifier(
+    num_leaves=31,
+    learning_rate=0.1,
+    n_estimators=100,
+    random_state=42
+)
+lgb_model.fit(X_train, y_train)
+
+# Advanced configuration
+lgb_train = lgb.Dataset(X_train, y_train)
+params = {
+    'objective': 'binary',
+    'metric': 'binary_logloss',
+    'num_leaves': 31,
+    'learning_rate': 0.1,
+    'feature_fraction': 0.9
+}
+model = lgb.train(params, lgb_train, num_boost_round=100)
+</code></pre>
+<p><strong>CatBoost (Categorical Boosting)</strong>:
+- <strong>Strengths</strong>: Handles categorical features automatically, robust to overfitting, good default parameters
+- <strong>Best for</strong>: Datasets with many categorical features, minimal preprocessing
+- <strong>Key Parameters</strong>:
+  - <code>iterations</code>: Number of boosting iterations (100-1000)
+  - <code>learning_rate</code>: Learning rate (0.01-0.3)
+  - <code>depth</code>: Tree depth (4-10)
+  - <code>l2_leaf_reg</code>: L2 regularization (1-10)
+  - <code>border_count</code>: Number of splits for numerical features (32-255)</p>
+<pre><code class="language-python"># CatBoost Example
+from catboost import CatBoostClassifier
+
+# Basic usage (handles categorical features automatically)
+cat_model = CatBoostClassifier(
+    iterations=100,
+    learning_rate=0.1,
+    depth=6,
+    verbose=False
+)
+cat_model.fit(X_train, y_train, cat_features=['category_col1', 'category_col2'])
+
+# With categorical feature indices
+cat_features = [0, 1, 5]  # Column indices of categorical features
+cat_model.fit(X_train, y_train, cat_features=cat_features)
+</code></pre>
+<p><strong>AdaBoost (Adaptive Boosting)</strong>:
+- <strong>Strengths</strong>: Simple algorithm, good for binary classification, less prone to overfitting
+- <strong>Best for</strong>: Small datasets, when interpretability is important
+- <strong>Key Parameters</strong>:
+  - <code>n_estimators</code>: Number of weak learners (50-500)
+  - <code>learning_rate</code>: Weight applied to each classifier (0.1-2.0)
+  - <code>algorithm</code>: SAMME or SAMME.R for multi-class</p>
+<pre><code class="language-python"># AdaBoost Example
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
+
+# Note: The 'estimator' parameter was named 'base_estimator' in scikit-learn &lt; 1.2
+ada_model = AdaBoostClassifier(
+    estimator=DecisionTreeClassifier(max_depth=1),
+    n_estimators=100,
+    learning_rate=1.0,
+    random_state=42
+)
+ada_model.fit(X_train, y_train)
+</code></pre>
+<p><strong>When to Use Gradient Boosting</strong>:
+- ✅ Tabular/structured data with mixed feature types
+- ✅ High accuracy is priority over interpretability<br />
+- ✅ Medium to large datasets (1K+ samples)
+- ✅ Complex non-linear relationships exist
+- ✅ Have time for hyperparameter tuning
+- ✅ Competition or benchmark scenarios</p>
+<p><strong>Advantages</strong>:
+- High predictive accuracy
+- Handles mixed data types well
+- Built-in feature selection
+- Robust to outliers and missing values
+- No need for feature scaling
+- Provides feature importance
+- Can optimize various loss functions</p>
+<p><strong>Disadvantages</strong>:
+- Prone to overfitting (especially with small datasets)
+- Computationally expensive
+- Many hyperparameters to tune
+- Sequential training (harder to parallelize base algorithm)
+- Less interpretable than single trees
+- Sensitive to noisy data</p>
+<p><strong>Hyperparameter Tuning Strategy</strong>:</p>
+<pre><code class="language-python"># 1. Start with learning rate and number of estimators
+learning_rates = [0.01, 0.1, 0.2]
+n_estimators = [100, 300, 500]
+
+# 2. Tune tree-specific parameters
+max_depths = [3, 5, 7, 10]
+min_samples_splits = [2, 5, 10]
+
+# 3. Add regularization
+reg_alphas = [0, 0.1, 1, 10]  # L1
+reg_lambdas = [1, 5, 10]      # L2
+
+# 4. Fine-tune sampling parameters
+subsamples = [0.8, 0.9, 1.0]
+colsample_bytrees = [0.8, 0.9, 1.0]
+</code></pre>
+<p><strong>Common Loss Functions</strong>:
+- <strong>Regression</strong>: Squared error, absolute error, Huber, Quantile
+- <strong>Classification</strong>: Logistic loss, exponential loss, Hinge loss
+- <strong>Ranking</strong>: Pairwise ranking, LambdaRank, NDCG</p>
+<p><strong>Best Practices</strong>:
+1. <strong>Start simple</strong>: Begin with default parameters and small learning rate
+2. <strong>Cross-validation</strong>: Use CV for reliable performance estimates
+3. <strong>Early stopping</strong>: Monitor validation loss to prevent overfitting
+4. <strong>Feature engineering</strong>: Create meaningful features before boosting
+5. <strong>Regularization</strong>: Use L1/L2 regularization and sampling techniques
+6. <strong>Ensemble stacking</strong>: Combine multiple boosting models
+7. <strong>Monitor overfitting</strong>: Track training vs validation metrics</p>
+<p><strong>Performance Comparison</strong>:
+| Algorithm | Training Speed | Memory Usage | Categorical Handling | Accuracy | Interpretability |
+|-----------|---------------|--------------|---------------------|----------|------------------|
+| XGBoost | ⚡⚡ | ⚡⚡ | ⚡ | ⭐⭐⭐ | ⭐ |
+| LightGBM | ⚡⚡⚡ | ⚡⚡⚡ | ⚡⚡ | ⭐⭐⭐ | ⭐ |
+| CatBoost | ⚡⚡ | ⚡⚡ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐ |
+| AdaBoost | ⚡ | ⚡⚡⚡ | ⚡ | ⭐⭐ | ⭐⭐ |</p>
+<hr />
+<h3 id="support-vector-machine-svm">Support Vector Machine (SVM)</h3>
+<p><strong>Purpose</strong>: Classification or regression by finding optimal hyperplane</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>Objective: minimize 1/2||w||² subject to yᵢ(wᵀxᵢ + b) ≥ 1
+Kernel Trick: K(x, x') maps input space to higher dimensional space
+RBF Kernel: K(x, x') = exp(-γ||x - x'||²)
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>C</strong>: Regularization parameter (default: 1.0)
+- <strong>kernel</strong>: Kernel type ('linear', 'poly', 'rbf', 'sigmoid')
+- <strong>gamma</strong>: Kernel coefficient for 'rbf', 'poly', 'sigmoid' ('scale', 'auto', or float)
+- <strong>degree</strong>: Degree for polynomial kernel (default: 3)</p>
+<p><strong>When to Use</strong>:
+- ✅ High-dimensional data
+- ✅ Clear margin of separation
+- ✅ Memory efficient solution needed
+- ✅ Versatile (different kernels)</p>
+<p><strong>Strengths</strong>:
+- Effective in high dimensions
+- Memory efficient
+- Versatile (different kernel functions)
+- Works well with clear separation margin</p>
+<p><strong>Weaknesses</strong>:
+- Poor performance on large datasets
+- Sensitive to feature scaling
+- No probabilistic output
+- Choice of kernel and parameters is crucial</p>
+<p><strong>Hyperparameter Tuning</strong>:</p>
+<pre><code class="language-python"># Grid search parameters
+C = [0.1, 1, 10, 100]
+gamma = ['scale', 'auto', 0.001, 0.01, 0.1, 1]
+kernel = ['linear', 'rbf', 'poly']
+</code></pre>
+<hr />
+<h3 id="k-nearest-neighbors-k-nn">k-Nearest Neighbors (k-NN)</h3>
+<p><strong>Purpose</strong>: Classification or regression based on k closest training examples</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>Distance Metrics:
+- Euclidean: d(x,y) = √Σ(xᵢ - yᵢ)²
+- Manhattan: d(x,y) = Σ|xᵢ - yᵢ|
+- Minkowski: d(x,y) = (Σ|xᵢ - yᵢ|ᵖ)^(1/p)
+
+Classification: Majority vote of k neighbors
+Regression: Average of k neighbors
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>n_neighbors</strong>: Number of neighbors (default: 5)
+- <strong>weights</strong>: Weight function ('uniform', 'distance', or callable)
+- <strong>algorithm</strong>: Algorithm to compute neighbors ('auto', 'ball_tree', 'kd_tree', 'brute')
+- <strong>metric</strong>: Distance metric ('euclidean', 'manhattan', 'minkowski')
+- <strong>p</strong>: Power parameter for Minkowski metric (default: 2)</p>
+<p><strong>When to Use</strong>:
+- ✅ Simple, non-parametric approach needed
+- ✅ Local patterns in data are important
+- ✅ Irregular decision boundaries
+- ✅ Small to medium datasets</p>
+<p><strong>Strengths</strong>:
+- Simple to understand and implement
+- No assumptions about data distribution
+- Works well with small datasets
+- Naturally handles multi-class problems</p>
+<p><strong>Weaknesses</strong>:
+- Computationally expensive for large datasets
+- Sensitive to irrelevant features (curse of dimensionality)
+- Sensitive to local structure of data
+- Memory intensive</p>
+<p><strong>Hyperparameter Tuning</strong>:</p>
+<pre><code class="language-python"># Key parameters
+n_neighbors = [3, 5, 7, 9, 11, 15]
+weights = ['uniform', 'distance']
+metric = ['euclidean', 'manhattan', 'minkowski']
+</code></pre>
+<hr />
+<h3 id="naive-bayes">Naive Bayes</h3>
+<p><strong>Purpose</strong>: Classification based on Bayes' theorem with independence assumption</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>Bayes' Theorem: P(A|B) = P(B|A) * P(A) / P(B)
+Naive Bayes: P(y|x₁,...,xₙ) = P(y) * ∏P(xᵢ|y) / P(x₁,...,xₙ)
+
+Variants:
+- Gaussian: P(xᵢ|y) = 1/√(2πσᵧ²) * exp(-(xᵢ-μᵧ)²/2σᵧ²)
+- Multinomial: P(xᵢ|y) = (count(xᵢ,y) + α) / (count(y) + α*n)
+- Bernoulli: P(xᵢ|y) = P(xᵢ=1|y)^xᵢ * (1-P(xᵢ=1|y))^(1-xᵢ)
+</code></pre>
+<p><strong>Types &amp; Parameters</strong>:
+- <strong>GaussianNB</strong>: For continuous features
+- <strong>MultinomialNB</strong>: For discrete counts (alpha for smoothing)
+- <strong>BernoulliNB</strong>: For binary features (alpha for smoothing)</p>
+<p><strong>When to Use</strong>:
+- ✅ Text classification
+- ✅ Small datasets
+- ✅ Need fast, simple baseline
+- ✅ Features are relatively independent</p>
+<p><strong>Strengths</strong>:
+- Fast training and prediction
+- Works well with small datasets
+- Handles multi-class naturally
+- Good baseline for text classification
+- Not sensitive to irrelevant features</p>
+<p><strong>Weaknesses</strong>:
+- Strong independence assumption
+- Can be outperformed by more sophisticated methods
+- Requires smoothing for zero probabilities
+- Poor estimator for probability</p>
+<hr />
+<h3 id="neural-networks">Neural Networks</h3>
+<p><strong>Purpose</strong>: Complex pattern recognition using interconnected nodes</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>Forward Pass: aʲ⁽ˡ⁺¹⁾ = σ(Wʲˡaˡ + bʲˡ)
+Loss Function: L = 1/m Σ loss(ŷ⁽ⁱ⁾, y⁽ⁱ⁾)
+Backpropagation: ∂L/∂W = ∂L/∂a * ∂a/∂z * ∂z/∂W
+
+Common Activation Functions:
+- Sigmoid: σ(x) = 1/(1+e⁻ˣ)
+- ReLU: f(x) = max(0,x)
+- Tanh: tanh(x) = (eˣ-e⁻ˣ)/(eˣ+e⁻ˣ)
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>hidden_layer_sizes</strong>: Tuple of hidden layer sizes (default: (100,))
+- <strong>activation</strong>: Activation function ('identity', 'logistic', 'tanh', 'relu')
+- <strong>solver</strong>: Weight optimization solver ('lbfgs', 'sgd', 'adam')
+- <strong>alpha</strong>: L2 penalty parameter (default: 0.0001)
+- <strong>learning_rate</strong>: Learning rate schedule ('constant', 'invscaling', 'adaptive')
+- <strong>max_iter</strong>: Maximum iterations (default: 200)</p>
+<p><strong>When to Use</strong>:
+- ✅ Complex, non-linear relationships
+- ✅ Large datasets available
+- ✅ High-dimensional problems
+- ✅ Can afford longer training time</p>
+<p><strong>Strengths</strong>:
+- Can model complex non-linear relationships
+- Universal function approximators
+- Flexible architecture
+- Good performance with large datasets</p>
+<p><strong>Weaknesses</strong>:
+- Requires large datasets
+- Prone to overfitting
+- Many hyperparameters to tune
+- Black box (low interpretability)
+- Computationally intensive</p>
+<hr />
+<h2 id="unsupervised-learning-algorithms">Unsupervised Learning Algorithms</h2>
+<h3 id="k-means-clustering">k-Means Clustering</h3>
+<p><strong>Purpose</strong>: Partition data into k clusters based on feature similarity</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>Objective: minimize Σᵢ₌₁ᵏ Σₓ∈Cᵢ ||x - μᵢ||²
+Where μᵢ is the centroid of cluster Cᵢ
+
+Algorithm:
+1. Initialize k centroids randomly
+2. Assign points to nearest centroid
+3. Update centroids to cluster mean
+4. Repeat until convergence
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>n_clusters</strong>: Number of clusters (default: 8)
+- <strong>init</strong>: Initialization method ('k-means++', 'random')
+- <strong>n_init</strong>: Number of random initializations (default: 10)
+- <strong>max_iter</strong>: Maximum iterations (default: 300)
+- <strong>tol</strong>: Tolerance for convergence (default: 1e-4)</p>
+<p><strong>When to Use</strong>:
+- ✅ Know approximate number of clusters
+- ✅ Clusters are spherical and similar sized
+- ✅ Need fast clustering algorithm
+- ✅ Continuous features</p>
+<p><strong>Strengths</strong>:
+- Simple and fast
+- Works well with spherical clusters
+- Scales well to large datasets
+- Guaranteed convergence</p>
+<p><strong>Weaknesses</strong>:
+- Must specify number of clusters
+- Assumes spherical clusters
+- Sensitive to initialization and outliers
+- Struggles with clusters of different sizes/densities</p>
+<p><strong>Choosing k</strong>:</p>
+<pre><code class="language-python"># Elbow method: plot WCSS vs k
+# Silhouette analysis: measure cluster cohesion
+# Gap statistic: compare to random data
+</code></pre>
+<hr />
+<h3 id="hierarchical-clustering">Hierarchical Clustering</h3>
+<p><strong>Purpose</strong>: Create tree of clusters showing nested grouping of data</p>
+<p><strong>Types</strong>:
+- <strong>Agglomerative</strong>: Bottom-up (merge clusters)
+- <strong>Divisive</strong>: Top-down (split clusters)</p>
+<p><strong>Linkage Criteria</strong>:</p>
+<pre><code>Single: min(distance(a,b)) where a∈A, b∈B
+Complete: max(distance(a,b)) where a∈A, b∈B
+Average: mean(distance(a,b)) where a∈A, b∈B
+Ward: minimizes within-cluster variance
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>n_clusters</strong>: Number of clusters to find (default: 2)
+- <strong>linkage</strong>: Linkage criterion ('ward', 'complete', 'average', 'single')
+- <strong>affinity</strong>: Distance metric ('euclidean', 'manhattan', 'cosine')</p>
+<p><strong>When to Use</strong>:
+- ✅ Don't know number of clusters beforehand
+- ✅ Want to see cluster hierarchy
+- ✅ Small to medium datasets
+- ✅ Need deterministic results</p>
+<p><strong>Strengths</strong>:
+- No need to specify number of clusters initially
+- Deterministic results
+- Creates hierarchy of clusters
+- Works with any distance metric</p>
+<p><strong>Weaknesses</strong>:
+- O(n³) time complexity
+- Sensitive to noise and outliers
+- Difficult to handle large datasets
+- Cannot undo previous steps</p>
+<hr />
+<h3 id="dbscan-density-based-spatial-clustering">DBSCAN (Density-Based Spatial Clustering)</h3>
+<p><strong>Purpose</strong>: Group together points that are closely packed, marking outliers</p>
+<p><strong>Key Concepts</strong>:</p>
+<pre><code>Core Point: Point with at least MinPts neighbors within ε distance
+Border Point: Not core but within ε distance of core point
+Noise Point: Neither core nor border point
+
+Algorithm:
+1. For each point, find neighbors within ε
+2. If point has ≥ MinPts neighbors, mark as core
+3. Form clusters by connecting core points
+4. Add border points to nearby clusters
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>eps</strong>: Maximum distance between two samples to be neighbors
+- <strong>min_samples</strong>: Minimum number of samples in neighborhood for core point
+- <strong>metric</strong>: Distance metric ('euclidean', 'manhattan', 'cosine')</p>
+<p><strong>When to Use</strong>:
+- ✅ Clusters have varying shapes and sizes
+- ✅ Data contains noise/outliers
+- ✅ Don't know number of clusters
+- ✅ Density-based clusters expected</p>
+<p><strong>Strengths</strong>:
+- Finds arbitrarily shaped clusters
+- Automatically determines number of clusters
+- Robust to outliers
+- Identifies outliers explicitly</p>
+<p><strong>Weaknesses</strong>:
+- Sensitive to hyperparameters (eps, min_samples)
+- Struggles with varying densities
+- Memory intensive for large datasets
+- Difficult to use with high-dimensional data</p>
+<hr />
+<h3 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h3>
+<p><strong>Purpose</strong>: Reduce dimensionality while preserving maximum variance</p>
+<p><strong>Mathematical Formula</strong>:</p>
+<pre><code>Covariance Matrix: C = 1/(n-1) * XᵀX
+Eigendecomposition: C = PΛPᵀ
+Principal Components: PC = X * P
+Explained Variance Ratio: λᵢ / Σλⱼ
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>n_components</strong>: Number of components to keep (int, float, 'mle', or None)
+- <strong>whiten</strong>: Whether to whiten the components (default: False)
+- <strong>svd_solver</strong>: SVD solver ('auto', 'full', 'arpack', 'randomized')</p>
+<p><strong>When to Use</strong>:
+- ✅ High-dimensional data
+- ✅ Need dimensionality reduction
+- ✅ Want to remove correlated features
+- ✅ Visualization of high-dim data</p>
+<p><strong>Strengths</strong>:
+- Reduces overfitting
+- Removes correlated features
+- Fast and simple
+- Interpretable components</p>
+<p><strong>Weaknesses</strong>:
+- Linear transformation only
+- Components may not be interpretable
+- Sensitive to feature scaling
+- May lose important information</p>
+<p><strong>Choosing Components</strong>:</p>
+<pre><code class="language-python"># Cumulative explained variance ≥ 95%
+# Scree plot: elbow in eigenvalue plot
+# Cross-validation performance
+</code></pre>
+<hr />
+<h3 id="t-sne-t-distributed-stochastic-neighbor-embedding">t-SNE (t-Distributed Stochastic Neighbor Embedding)</h3>
+<p><strong>Purpose</strong>: Nonlinear dimensionality reduction for visualization</p>
+<p><strong>Key Concepts</strong>:</p>
+<pre><code>High-dimensional similarity: pⱼ|ᵢ = exp(-||xᵢ-xⱼ||²/2σᵢ²) / Σₖ exp(-||xᵢ-xₖ||²/2σᵢ²)
+Low-dimensional similarity: qᵢⱼ = (1+||yᵢ-yⱼ||²)⁻¹ / Σₖₗ(1+||yₖ-yₗ||²)⁻¹
+Cost function: KL(P||Q) = Σᵢⱼ pᵢⱼ log(pᵢⱼ/qᵢⱼ)
+</code></pre>
+<p><strong>Key Parameters</strong>:
+- <strong>n_components</strong>: Dimension of embedded space (default: 2)
+- <strong>perplexity</strong>: Number of nearest neighbors (default: 30)
+- <strong>learning_rate</strong>: Learning rate (default: 200)
+- <strong>n_iter</strong>: Maximum iterations (default: 1000)</p>
+<p><strong>When to Use</strong>:
+- ✅ Visualization of high-dimensional data
+- ✅ Exploring cluster structure
+- ✅ Non-linear relationships exist
+- ✅ Small to medium datasets</p>
+<p><strong>Strengths</strong>:
+- Excellent for visualization
+- Preserves local structure
+- Reveals cluster structure
+- Non-linear dimensionality reduction</p>
+<p><strong>Weaknesses</strong>:
+- Computationally expensive
+- Non-deterministic results
+- Hyperparameter sensitive
+- Not suitable for new data projection</p>
+<hr />
+<h2 id="algorithm-selection-framework">Algorithm Selection Framework</h2>
+<h3 id="data-characteristics-decision-tree">Data Characteristics Decision Tree</h3>
+<pre><code>Sample Size?
+├── Small (&lt; 1K)
+│   ├── Classification → Naive Bayes, k-NN, Decision Tree
+│   └── Regression → Linear Regression, k-NN
+├── Medium (1K-100K)
+│   ├── Linear relationship → Linear/Logistic Regression
+│   ├── Non-linear → Random Forest, SVM
+│   └── Complex patterns → Neural Networks
+└── Large (&gt; 100K)
+    ├── Speed priority → Linear models, SGD
+    ├── Accuracy priority → Random Forest, Gradient Boosting
+    └── Very complex → Neural Networks
+
+Interpretability needed?
+├── Yes → Linear Regression, Decision Trees, Naive Bayes
+└── No → Random Forest, SVM, Neural Networks
+
+Training Speed priority?
+├── Yes → Naive Bayes, Linear Regression, k-NN
+└── No → SVM, Random Forest, Neural Networks
+</code></pre>
+<h3 id="performance-characteristics">Performance Characteristics</h3>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Training Speed</th>
+<th>Prediction Speed</th>
+<th>Memory Usage</th>
+<th>Interpretability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear Regression</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Logistic Regression</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Decision Tree</td>
+<td>⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>⚡</td>
+<td>⚡⚡</td>
+<td>⚡</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>⚡</td>
+<td>⚡⚡</td>
+<td>⚡⚡</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>CatBoost</td>
+<td>⚡</td>
+<td>⚡⚡</td>
+<td>⚡⚡</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>AdaBoost</td>
+<td>⚡</td>
+<td>⚡⚡</td>
+<td>⚡⚡</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>SVM</td>
+<td>⚡</td>
+<td>⚡⚡</td>
+<td>⚡⚡</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>k-NN</td>
+<td>⚡⚡⚡</td>
+<td>⚡</td>
+<td>⚡</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>Naive Bayes</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⚡⚡⚡</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>Neural Networks</td>
+<td>⚡</td>
+<td>⚡⚡</td>
+<td>⚡</td>
+<td>⭐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evaluation-metrics">Evaluation Metrics</h2>
+<h3 id="classification-metrics">Classification Metrics</h3>
+<p><strong>Accuracy</strong>: <code>(TP + TN) / (TP + TN + FP + FN)</code>
+- Use when: Balanced classes, all errors equally important</p>
+<p><strong>Precision</strong>: <code>TP / (TP + FP)</code>
+- Use when: False positives are costly (spam detection)</p>
+<p><strong>Recall (Sensitivity)</strong>: <code>TP / (TP + FN)</code>
+- Use when: False negatives are costly (disease detection)</p>
+<p><strong>F1-Score</strong>: <code>2 * (Precision * Recall) / (Precision + Recall)</code>
+- Use when: Balance between precision and recall needed</p>
+<p><strong>ROC-AUC</strong>: Area under Receiver Operating Characteristic curve
+- Use when: Comparing models across different thresholds</p>
+<h3 id="regression-metrics">Regression Metrics</h3>
+<p><strong>Mean Absolute Error (MAE)</strong>: <code>1/n Σ|yᵢ - ŷᵢ|</code>
+- Robust to outliers, interpretable in original units</p>
+<p><strong>Mean Squared Error (MSE)</strong>: <code>1/n Σ(yᵢ - ŷᵢ)²</code>
+- Penalizes large errors more, sensitive to outliers</p>
+<p><strong>Root Mean Squared Error (RMSE)</strong>: <code>√(1/n Σ(yᵢ - ŷᵢ)²)</code>
+- Same units as target, interpretable</p>
+<p><strong>R² Score</strong>: <code>1 - SS_res/SS_tot</code>
+- Proportion of variance explained, 0-1 scale</p>
+<h3 id="clustering-metrics">Clustering Metrics</h3>
+<p><strong>Silhouette Score</strong>: Measures cluster cohesion and separation
+- Range: [-1, 1], higher is better</p>
+<p><strong>Adjusted Rand Index</strong>: Measures similarity to true clustering
+- Range: [-1, 1], 1 = perfect match</p>
+<p><strong>Inertia</strong>: Within-cluster sum of squares (k-means objective)
+- Lower is better, use with elbow method</p>
+<h2 id="common-preprocessing-steps">Common Preprocessing Steps</h2>
+<h3 id="feature-scaling">Feature Scaling</h3>
+<pre><code class="language-python"># Standardization (mean=0, std=1)
+StandardScaler()  # For normal distribution
+
+# Normalization (min=0, max=1)
+MinMaxScaler()    # For uniform distribution
+
+# Robust scaling (median=0, IQR=1)
+RobustScaler()    # For data with outliers
+</code></pre>
+<h3 id="feature-engineering">Feature Engineering</h3>
+<ul>
+<li><strong>Polynomial Features</strong>: Create interaction terms</li>
+<li><strong>One-Hot Encoding</strong>: Convert categorical to binary</li>
+<li><strong>Target Encoding</strong>: Use target statistics for categories</li>
+<li><strong>Binning</strong>: Convert continuous to categorical</li>
+<li><strong>Date Features</strong>: Extract year, month, day, weekday</li>
+</ul>
+<h3 id="missing-data">Missing Data</h3>
+<ul>
+<li><strong>Drop</strong>: Remove rows/columns with missing values</li>
+<li><strong>Mean/Median/Mode</strong>: Fill with central tendency</li>
+<li><strong>Forward/Backward Fill</strong>: Use adjacent values</li>
+<li><strong>Interpolation</strong>: Estimate based on trends</li>
+<li><strong>Model-based</strong>: Predict missing values</li>
+</ul>
+<h2 id="overfitting-vs-underfitting">Overfitting vs Underfitting</h2>
+<h3 id="overfitting-high-variance">Overfitting (High Variance)</h3>
+<p><strong>Symptoms</strong>: 
+- High training accuracy, low validation accuracy
+- Complex model performs worse on new data</p>
+<p><strong>Solutions</strong>:
+- More training data
+- Regularization (L1/L2)
+- Feature selection
+- Cross-validation
+- Early stopping
+- Ensemble methods</p>
+<h3 id="underfitting-high-bias">Underfitting (High Bias)</h3>
+<p><strong>Symptoms</strong>:
+- Low training and validation accuracy
+- Model too simple for the problem</p>
+<p><strong>Solutions</strong>:
+- More complex model
+- Add features
+- Reduce regularization
+- Increase model capacity
+- Feature engineering</p>
+<h2 id="model-selection-best-practices">Model Selection Best Practices</h2>
+<ol>
+<li><strong>Start Simple</strong>: Begin with baseline models (linear, naive bayes)</li>
+<li><strong>Cross-Validation</strong>: Use k-fold CV for reliable performance estimates</li>
+<li><strong>Feature Engineering</strong>: Often more important than algorithm choice</li>
+<li><strong>Ensemble Methods</strong>: Combine multiple models for better performance</li>
+<li><strong>Hyperparameter Tuning</strong>: Use grid search or randomized search</li>
+<li><strong>Monitor Overfitting</strong>: Track train vs validation performance</li>
+<li><strong>Business Metrics</strong>: Optimize for what matters to the business</li>
+<li><strong>Interpretability Trade-off</strong>: Balance accuracy with explainability</li>
+</ol>
+<h2 id="quick-reference-table">Quick Reference Table</h2>
+<table>
+<thead>
+<tr>
+<th>Problem Type</th>
+<th>First Try</th>
+<th>If More Accuracy Needed</th>
+<th>If Interpretability Needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binary Classification</td>
+<td>Logistic Regression</td>
+<td>XGBoost, LightGBM, CatBoost</td>
+<td>Decision Tree, Naive Bayes</td>
+</tr>
+<tr>
+<td>Multi-class Classification</td>
+<td>Logistic Regression</td>
+<td>XGBoost, LightGBM, CatBoost</td>
+<td>Decision Tree</td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>Linear Regression</td>
+<td>XGBoost, LightGBM, CatBoost</td>
+<td>Linear Regression</td>
+</tr>
+<tr>
+<td>Clustering</td>
+<td>k-Means</td>
+<td>DBSCAN, Hierarchical</td>
+<td>k-Means with visualization</td>
+</tr>
+<tr>
+<td>Dimensionality Reduction</td>
+<td>PCA</td>
+<td>t-SNE, UMAP</td>
+<td>PCA</td>
+</tr>
+<tr>
+<td>Anomaly Detection</td>
+<td>Isolation Forest</td>
+<td>One-Class SVM</td>
+<td>Statistical methods</td>
+</tr>
+</tbody>
+</table>
+<p>This cheat sheet provides a foundation for understanding and applying machine learning algorithms. Always consider your specific problem context, data characteristics, and business requirements when selecting algorithms.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>

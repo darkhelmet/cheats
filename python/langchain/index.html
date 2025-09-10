@@ -1,0 +1,3809 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../keras/">
+      
+      
+        <link rel="next" href="../langextract/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>LangChain - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#langchain" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LangChain
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-langchain-expression-language-lcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. LangChain Expression Language (LCEL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-prompts-and-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Prompts and Templates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-llm-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LLM Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sequential-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sequential Chains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-parallel-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Parallel Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conditional-logic-and-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Conditional Logic and Routing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conversation-buffer-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Conversation Buffer Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-conversation-summary-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Conversation Summary Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conversation-buffer-window-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Conversation Buffer Window Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-custom-memory-with-lcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Memory with LCEL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-loading-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Loading and Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Document Loading and Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-document-loaders" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Document Loaders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-text-splitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Text Splitting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-stores-and-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Stores and Embeddings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vector Stores and Embeddings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Embeddings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vector-store-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Vector Store Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-augmented-generation-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieval-Augmented Generation (RAG)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieval-Augmented Generation (RAG)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-basic-rag-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Basic RAG Chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-advanced-rag-with-multiple-retrievers" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Advanced RAG with Multiple Retrievers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rag-with-chat-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. RAG with Chat History
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agents-and-tool-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agents and Tool Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agents and Tool Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-basic-agent-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Basic Agent Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-custom-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Custom Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-agent-types-and-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Agent Types and Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Parsing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Parsing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-built-in-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Built-in Parsers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pydantic-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pydantic Parser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-custom-output-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Custom Output Parsers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-callbacks-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Callbacks and Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-streaming-and-async-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Streaming and Async Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuration-and-environment-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuration and Environment Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-custom-chain-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Chain Classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fastapi-web-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. FastAPI Web Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-streamlit-chat-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Streamlit Chat Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gradio-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Gradio Interface
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Production Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-monitoring-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Monitoring and Observability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-langchain-expression-language-lcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. LangChain Expression Language (LCEL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-prompts-and-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Prompts and Templates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-llm-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LLM Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sequential-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sequential Chains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-parallel-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Parallel Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conditional-logic-and-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Conditional Logic and Routing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conversation-buffer-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Conversation Buffer Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-conversation-summary-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Conversation Summary Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conversation-buffer-window-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Conversation Buffer Window Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-custom-memory-with-lcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Memory with LCEL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-loading-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Loading and Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Document Loading and Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-document-loaders" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Document Loaders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-text-splitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Text Splitting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-stores-and-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Stores and Embeddings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vector Stores and Embeddings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Embeddings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vector-store-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Vector Store Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-augmented-generation-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieval-Augmented Generation (RAG)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieval-Augmented Generation (RAG)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-basic-rag-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Basic RAG Chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-advanced-rag-with-multiple-retrievers" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Advanced RAG with Multiple Retrievers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rag-with-chat-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. RAG with Chat History
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agents-and-tool-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agents and Tool Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agents and Tool Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-basic-agent-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Basic Agent Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-custom-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Custom Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-agent-types-and-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Agent Types and Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Parsing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Parsing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-built-in-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Built-in Parsers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pydantic-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pydantic Parser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-custom-output-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Custom Output Parsers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-callbacks-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Callbacks and Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-streaming-and-async-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Streaming and Async Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuration-and-environment-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuration and Environment Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-custom-chain-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Chain Classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fastapi-web-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. FastAPI Web Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-streamlit-chat-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Streamlit Chat Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gradio-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Gradio Interface
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Production Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-monitoring-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Monitoring and Observability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="langchain">LangChain</h1>
+<p>LangChain is a framework for developing applications powered by Large Language Models (LLMs). It simplifies the entire LLM application lifecycle with open-source components, third-party integrations, and tools for building complex AI workflows.</p>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash"># Core LangChain library
+pip install langchain
+
+# Specific integrations
+pip install langchain-openai        # OpenAI models
+pip install langchain-anthropic     # Claude models
+pip install langchain-community     # Community integrations
+pip install langchain-experimental  # Experimental features
+
+# Vector stores
+pip install langchain-chroma        # ChromaDB
+pip install langchain-pinecone      # Pinecone
+pip install faiss-cpu               # FAISS
+
+# All common packages
+pip install langchain[all]
+
+# Development installation
+git clone https://github.com/langchain-ai/langchain.git
+cd langchain
+pip install -e .[all]
+</code></pre>
+<h2 id="quick-start">Quick Start</h2>
+<pre><code class="language-python">from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+# Initialize LLM
+llm = ChatOpenAI(model=&quot;gpt-4o-mini&quot;, temperature=0)
+
+# Create prompt template
+prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, &quot;You are a helpful assistant.&quot;),
+    (&quot;human&quot;, &quot;{input}&quot;)
+])
+
+# Create chain using LCEL (LangChain Expression Language)
+chain = prompt | llm | StrOutputParser()
+
+# Invoke the chain
+result = chain.invoke({&quot;input&quot;: &quot;What is LangChain?&quot;})
+print(result)
+</code></pre>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="1-langchain-expression-language-lcel">1. LangChain Expression Language (LCEL)</h3>
+<pre><code class="language-python">from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+from langchain_core.output_parsers import StrOutputParser
+
+# Basic chain composition
+prompt = ChatPromptTemplate.from_template(&quot;Tell me a joke about {topic}&quot;)
+model = ChatOpenAI()
+output_parser = StrOutputParser()
+
+# Chain components with | operator
+chain = prompt | model | output_parser
+
+# Invoke chain
+result = chain.invoke({&quot;topic&quot;: &quot;programming&quot;})
+
+# Batch processing
+results = chain.batch([
+    {&quot;topic&quot;: &quot;cats&quot;}, 
+    {&quot;topic&quot;: &quot;dogs&quot;}
+])
+
+# Streaming
+for chunk in chain.stream({&quot;topic&quot;: &quot;AI&quot;}):
+    print(chunk, end=&quot;&quot;, flush=True)
+
+# Async support
+import asyncio
+async_result = await chain.ainvoke({&quot;topic&quot;: &quot;python&quot;})
+</code></pre>
+<h3 id="2-prompts-and-templates">2. Prompts and Templates</h3>
+<pre><code class="language-python">from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
+from langchain_core.prompts import FewShotPromptTemplate
+
+# Basic prompt template
+prompt = PromptTemplate(
+    input_variables=[&quot;product&quot;],
+    template=&quot;What is a good name for a company that makes {product}?&quot;
+)
+
+# Chat prompt template
+chat_prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, &quot;You are a helpful assistant that translates {input_language} to {output_language}.&quot;),
+    (&quot;human&quot;, &quot;{text}&quot;)
+])
+
+# Few-shot prompting
+examples = [
+    {&quot;input&quot;: &quot;happy&quot;, &quot;output&quot;: &quot;sad&quot;},
+    {&quot;input&quot;: &quot;tall&quot;, &quot;output&quot;: &quot;short&quot;},
+]
+
+example_prompt = PromptTemplate(
+    input_variables=[&quot;input&quot;, &quot;output&quot;],
+    template=&quot;Input: {input}\nOutput: {output}&quot;
+)
+
+few_shot_prompt = FewShotPromptTemplate(
+    examples=examples,
+    example_prompt=example_prompt,
+    prefix=&quot;Give the antonym of every input&quot;,
+    suffix=&quot;Input: {adjective}\nOutput:&quot;,
+    input_variables=[&quot;adjective&quot;]
+)
+
+# Partial prompts
+partial_prompt = prompt.partial(product=&quot;smartphones&quot;)
+result = partial_prompt.format()
+
+# Prompt composition
+final_prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, &quot;You are a helpful assistant.&quot;),
+    chat_prompt,
+    (&quot;human&quot;, &quot;Please also explain why this translation is correct.&quot;)
+])
+</code></pre>
+<h3 id="3-llm-integration">3. LLM Integration</h3>
+<pre><code class="language-python">from langchain_openai import ChatOpenAI, OpenAI
+from langchain_anthropic import ChatAnthropic
+from langchain_community.llms import Ollama
+
+# OpenAI models
+openai_chat = ChatOpenAI(
+    model=&quot;gpt-4o&quot;,
+    temperature=0.7,
+    max_tokens=1000,
+    api_key=&quot;your-api-key&quot;
+)
+
+# Anthropic Claude
+anthropic = ChatAnthropic(
+    model=&quot;claude-3-5-sonnet-20241022&quot;,
+    temperature=0,
+    max_tokens=1000
+)
+
+# Local Ollama models
+ollama = Ollama(
+    model=&quot;llama2&quot;,
+    base_url=&quot;http://localhost:11434&quot;
+)
+
+# Model with callbacks for monitoring
+from langchain_core.callbacks import BaseCallbackHandler
+
+class TokenCountCallback(BaseCallbackHandler):
+    def __init__(self):
+        self.total_tokens = 0
+
+    def on_llm_end(self, response, **kwargs):
+        if hasattr(response, 'llm_output') and 'token_usage' in response.llm_output:
+            self.total_tokens += response.llm_output['token_usage']['total_tokens']
+
+callback = TokenCountCallback()
+llm_with_callback = ChatOpenAI(callbacks=[callback])
+</code></pre>
+<h2 id="common-patterns">Common Patterns</h2>
+<h3 id="1-sequential-chains">1. Sequential Chains</h3>
+<pre><code class="language-python">from langchain.chains import LLMChain, SimpleSequentialChain
+from langchain_core.prompts import PromptTemplate
+
+# First chain: generate synopsis
+synopsis_template = &quot;&quot;&quot;You are a playwright. Given the title of play, it is your job to write a synopsis for that title.
+Title: {title}
+Playwright: This is a synopsis for the above play:&quot;&quot;&quot;
+
+synopsis_prompt = PromptTemplate(
+    input_variables=[&quot;title&quot;], 
+    template=synopsis_template
+)
+synopsis_chain = LLMChain(llm=llm, prompt=synopsis_prompt)
+
+# Second chain: write review
+review_template = &quot;&quot;&quot;You are a play critic from the New York Times. Given the synopsis of play, it is your job to write a review for that play.
+Synopsis: {synopsis}
+Review from a New York Times play critic of the above play:&quot;&quot;&quot;
+
+review_prompt = PromptTemplate(
+    input_variables=[&quot;synopsis&quot;], 
+    template=review_template
+)
+review_chain = LLMChain(llm=llm, prompt=review_prompt)
+
+# Combine chains
+overall_chain = SimpleSequentialChain(
+    chains=[synopsis_chain, review_chain],
+    verbose=True
+)
+
+# Run the chain
+review = overall_chain.invoke({&quot;input&quot;: &quot;Tragedy at sunset on the beach&quot;})
+</code></pre>
+<h3 id="2-parallel-processing">2. Parallel Processing</h3>
+<pre><code class="language-python">from langchain_core.runnables import RunnableParallel, RunnablePassthrough
+
+# Define parallel tasks
+joke_chain = ChatPromptTemplate.from_template(&quot;tell me a joke about {topic}&quot;) | model | StrOutputParser()
+poem_chain = ChatPromptTemplate.from_template(&quot;write a short poem about {topic}&quot;) | model | StrOutputParser()
+
+# Run in parallel
+parallel_chain = RunnableParallel({
+    &quot;joke&quot;: joke_chain,
+    &quot;poem&quot;: poem_chain,
+    &quot;original_topic&quot;: RunnablePassthrough()
+})
+
+result = parallel_chain.invoke({&quot;topic&quot;: &quot;artificial intelligence&quot;})
+print(result[&quot;joke&quot;])
+print(result[&quot;poem&quot;])
+print(result[&quot;original_topic&quot;])
+</code></pre>
+<h3 id="3-conditional-logic-and-routing">3. Conditional Logic and Routing</h3>
+<pre><code class="language-python">from langchain_core.runnables import RunnableBranch
+
+def route_question(info):
+    if &quot;math&quot; in info[&quot;question&quot;].lower():
+        return math_chain
+    elif &quot;history&quot; in info[&quot;question&quot;].lower():
+        return history_chain
+    else:
+        return general_chain
+
+# Math chain
+math_chain = ChatPromptTemplate.from_template(
+    &quot;You are a math expert. Answer this question: {question}&quot;
+) | model | StrOutputParser()
+
+# History chain
+history_chain = ChatPromptTemplate.from_template(
+    &quot;You are a history expert. Answer this question: {question}&quot;
+) | model | StrOutputParser()
+
+# General chain
+general_chain = ChatPromptTemplate.from_template(
+    &quot;Answer this question: {question}&quot;
+) | model | StrOutputParser()
+
+# Route based on question content
+routing_chain = RunnableBranch(
+    (lambda x: &quot;math&quot; in x[&quot;question&quot;].lower(), math_chain),
+    (lambda x: &quot;history&quot; in x[&quot;question&quot;].lower(), history_chain),
+    general_chain  # default
+)
+
+result = routing_chain.invoke({&quot;question&quot;: &quot;What is 2+2?&quot;})
+</code></pre>
+<h2 id="memory-management">Memory Management</h2>
+<h3 id="1-conversation-buffer-memory">1. Conversation Buffer Memory</h3>
+<pre><code class="language-python">from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationChain
+
+# Basic conversation memory
+memory = ConversationBufferMemory()
+conversation = ConversationChain(
+    llm=llm,
+    memory=memory,
+    verbose=True
+)
+
+# Have a conversation
+response1 = conversation.invoke({&quot;input&quot;: &quot;Hi, I'm John&quot;})
+response2 = conversation.invoke({&quot;input&quot;: &quot;What's my name?&quot;})
+
+# Access memory
+print(memory.buffer)
+print(memory.chat_memory.messages)
+</code></pre>
+<h3 id="2-conversation-summary-memory">2. Conversation Summary Memory</h3>
+<pre><code class="language-python">from langchain.memory import ConversationSummaryMemory
+
+# Memory that summarizes conversation
+summary_memory = ConversationSummaryMemory(
+    llm=llm,
+    return_messages=True
+)
+
+conversation_with_summary = ConversationChain(
+    llm=llm,
+    memory=summary_memory,
+    verbose=True
+)
+
+# Long conversation will be summarized
+for i in range(5):
+    response = conversation_with_summary.invoke({
+        &quot;input&quot;: f&quot;Tell me a fact about number {i}&quot;
+    })
+</code></pre>
+<h3 id="3-conversation-buffer-window-memory">3. Conversation Buffer Window Memory</h3>
+<pre><code class="language-python">from langchain.memory import ConversationBufferWindowMemory
+
+# Keep only last k interactions
+window_memory = ConversationBufferWindowMemory(
+    k=3,  # Keep last 3 exchanges
+    return_messages=True
+)
+
+windowed_conversation = ConversationChain(
+    llm=llm,
+    memory=window_memory
+)
+</code></pre>
+<h3 id="4-custom-memory-with-lcel">4. Custom Memory with LCEL</h3>
+<pre><code class="language-python">from langchain_core.runnables import RunnablePassthrough, RunnableLambda
+from langchain_core.messages import BaseMessage
+from typing import List
+
+# Custom memory implementation
+class CustomMemory:
+    def __init__(self):
+        self.messages: List[BaseMessage] = []
+
+    def add_message(self, message: BaseMessage):
+        self.messages.append(message)
+
+    def get_context(self) -&gt; str:
+        return &quot;\n&quot;.join([f&quot;{msg.type}: {msg.content}&quot; for msg in self.messages[-6:]])
+
+memory = CustomMemory()
+
+# Chain with custom memory
+def add_memory(inputs):
+    # Add user input to memory
+    memory.add_message(HumanMessage(content=inputs[&quot;input&quot;]))
+    inputs[&quot;chat_history&quot;] = memory.get_context()
+    return inputs
+
+def save_response(response):
+    # Save AI response to memory
+    memory.add_message(AIMessage(content=response.content))
+    return response
+
+chat_with_memory = (
+    RunnableLambda(add_memory) |
+    ChatPromptTemplate.from_messages([
+        (&quot;system&quot;, &quot;You are a helpful assistant. Here's the chat history:\n{chat_history}&quot;),
+        (&quot;human&quot;, &quot;{input}&quot;)
+    ]) |
+    model |
+    RunnableLambda(save_response) |
+    StrOutputParser()
+)
+</code></pre>
+<h2 id="document-loading-and-processing">Document Loading and Processing</h2>
+<h3 id="1-document-loaders">1. Document Loaders</h3>
+<pre><code class="language-python">from langchain_community.document_loaders import (
+    TextLoader, PDFLoader, WebBaseLoader, 
+    DirectoryLoader, CSVLoader, UnstructuredHTMLLoader
+)
+
+# Text files
+text_loader = TextLoader(&quot;path/to/file.txt&quot;)
+docs = text_loader.load()
+
+# PDF files
+pdf_loader = PDFLoader(&quot;path/to/document.pdf&quot;)
+pdf_docs = pdf_loader.load()
+
+# Web pages
+web_loader = WebBaseLoader(&quot;https://example.com&quot;)
+web_docs = web_loader.load()
+
+# Directory of files
+directory_loader = DirectoryLoader(
+    &quot;path/to/directory&quot;,
+    glob=&quot;**/*.txt&quot;,
+    loader_cls=TextLoader
+)
+all_docs = directory_loader.load()
+
+# CSV files
+csv_loader = CSVLoader(&quot;path/to/data.csv&quot;)
+csv_docs = csv_loader.load()
+
+# Custom loader
+from langchain_core.documents import Document
+
+def custom_loader(file_path: str) -&gt; List[Document]:
+    # Custom loading logic
+    with open(file_path, 'r') as f:
+        content = f.read()
+
+    return [Document(
+        page_content=content,
+        metadata={&quot;source&quot;: file_path, &quot;custom_field&quot;: &quot;value&quot;}
+    )]
+</code></pre>
+<h3 id="2-text-splitting">2. Text Splitting</h3>
+<pre><code class="language-python">from langchain.text_splitter import (
+    CharacterTextSplitter, RecursiveCharacterTextSplitter,
+    TokenTextSplitter, MarkdownHeaderTextSplitter
+)
+
+# Character-based splitting
+char_splitter = CharacterTextSplitter(
+    separator=&quot;\n\n&quot;,
+    chunk_size=1000,
+    chunk_overlap=200
+)
+char_chunks = char_splitter.split_documents(docs)
+
+# Recursive character splitting (recommended)
+recursive_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200,
+    separators=[&quot;\n\n&quot;, &quot;\n&quot;, &quot; &quot;, &quot;&quot;]
+)
+recursive_chunks = recursive_splitter.split_documents(docs)
+
+# Token-based splitting
+token_splitter = TokenTextSplitter(
+    chunk_size=512,
+    chunk_overlap=50
+)
+token_chunks = token_splitter.split_documents(docs)
+
+# Markdown-aware splitting
+markdown_splitter = MarkdownHeaderTextSplitter(
+    headers_to_split_on=[
+        (&quot;#&quot;, &quot;Header 1&quot;),
+        (&quot;##&quot;, &quot;Header 2&quot;),
+        (&quot;###&quot;, &quot;Header 3&quot;),
+    ]
+)
+markdown_chunks = markdown_splitter.split_text(markdown_text)
+
+# Custom splitter
+from langchain.text_splitter import TextSplitter
+
+class CustomSplitter(TextSplitter):
+    def split_text(self, text: str) -&gt; List[str]:
+        # Custom splitting logic
+        return text.split(&quot;---&quot;)  # Split on custom separator
+
+custom_splitter = CustomSplitter()
+custom_chunks = custom_splitter.split_documents(docs)
+</code></pre>
+<h2 id="vector-stores-and-embeddings">Vector Stores and Embeddings</h2>
+<h3 id="1-embeddings">1. Embeddings</h3>
+<pre><code class="language-python">from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings, OllamaEmbeddings
+
+# OpenAI embeddings
+openai_embeddings = OpenAIEmbeddings(
+    model=&quot;text-embedding-3-small&quot;
+)
+
+# Hugging Face embeddings
+hf_embeddings = HuggingFaceEmbeddings(
+    model_name=&quot;sentence-transformers/all-MiniLM-L6-v2&quot;
+)
+
+# Local Ollama embeddings
+ollama_embeddings = OllamaEmbeddings(
+    model=&quot;llama2&quot;,
+    base_url=&quot;http://localhost:11434&quot;
+)
+
+# Test embeddings
+text = &quot;This is a test document&quot;
+embedding_vector = openai_embeddings.embed_query(text)
+print(f&quot;Embedding dimension: {len(embedding_vector)}&quot;)
+
+# Batch embeddings
+texts = [&quot;Document 1&quot;, &quot;Document 2&quot;, &quot;Document 3&quot;]
+batch_embeddings = openai_embeddings.embed_documents(texts)
+</code></pre>
+<h3 id="2-vector-store-operations">2. Vector Store Operations</h3>
+<pre><code class="language-python">from langchain_community.vectorstores import Chroma, FAISS, Pinecone
+from langchain_core.documents import Document
+
+# Create documents
+docs = [
+    Document(page_content=&quot;The sky is blue&quot;, metadata={&quot;source&quot;: &quot;fact1&quot;}),
+    Document(page_content=&quot;Grass is green&quot;, metadata={&quot;source&quot;: &quot;fact2&quot;}),
+    Document(page_content=&quot;Fire is hot&quot;, metadata={&quot;source&quot;: &quot;fact3&quot;}),
+]
+
+# ChromaDB vector store
+chroma_db = Chroma.from_documents(
+    documents=docs,
+    embedding=openai_embeddings,
+    persist_directory=&quot;./chroma_db&quot;
+)
+
+# FAISS vector store (in-memory)
+faiss_db = FAISS.from_documents(
+    documents=docs,
+    embedding=openai_embeddings
+)
+
+# Save/load FAISS
+faiss_db.save_local(&quot;./faiss_index&quot;)
+loaded_faiss = FAISS.load_local(&quot;./faiss_index&quot;, openai_embeddings)
+
+# Pinecone vector store
+import pinecone
+pinecone.init(api_key=&quot;your-api-key&quot;, environment=&quot;your-env&quot;)
+
+pinecone_db = Pinecone.from_documents(
+    documents=docs,
+    embedding=openai_embeddings,
+    index_name=&quot;your-index&quot;
+)
+
+# Search operations
+query = &quot;What color is the sky?&quot;
+similar_docs = chroma_db.similarity_search(query, k=2)
+
+# Search with scores
+docs_with_scores = chroma_db.similarity_search_with_score(query, k=2)
+for doc, score in docs_with_scores:
+    print(f&quot;Score: {score}, Content: {doc.page_content}&quot;)
+
+# Filtered search
+filtered_docs = chroma_db.similarity_search(
+    query, 
+    k=2, 
+    filter={&quot;source&quot;: &quot;fact1&quot;}
+)
+
+# Add more documents
+new_docs = [Document(page_content=&quot;Water is wet&quot;, metadata={&quot;source&quot;: &quot;fact4&quot;})]
+chroma_db.add_documents(new_docs)
+
+# Delete documents
+chroma_db.delete(ids=[&quot;doc_id_to_delete&quot;])
+</code></pre>
+<h2 id="retrieval-augmented-generation-rag">Retrieval-Augmented Generation (RAG)</h2>
+<h3 id="1-basic-rag-chain">1. Basic RAG Chain</h3>
+<pre><code class="language-python">from langchain.chains import RetrievalQA
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.prompts import ChatPromptTemplate
+
+# Set up vector store as retriever
+retriever = chroma_db.as_retriever(
+    search_type=&quot;similarity&quot;,
+    search_kwargs={&quot;k&quot;: 3}
+)
+
+# Traditional approach with RetrievalQA
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    chain_type=&quot;stuff&quot;,
+    retriever=retriever,
+    return_source_documents=True
+)
+
+result = qa_chain.invoke({&quot;query&quot;: &quot;What is the color of the sky?&quot;})
+print(result[&quot;result&quot;])
+print(result[&quot;source_documents&quot;])
+
+# Modern approach with LCEL
+def format_docs(docs):
+    return &quot;\n\n&quot;.join(doc.page_content for doc in docs)
+
+rag_template = &quot;&quot;&quot;Answer the question based only on the following context:
+
+{context}
+
+Question: {question}
+
+Answer:&quot;&quot;&quot;
+
+rag_prompt = ChatPromptTemplate.from_template(rag_template)
+
+rag_chain = (
+    {&quot;context&quot;: retriever | format_docs, &quot;question&quot;: RunnablePassthrough()}
+    | rag_prompt
+    | llm
+    | StrOutputParser()
+)
+
+answer = rag_chain.invoke(&quot;What is the color of the sky?&quot;)
+</code></pre>
+<h3 id="2-advanced-rag-with-multiple-retrievers">2. Advanced RAG with Multiple Retrievers</h3>
+<pre><code class="language-python">from langchain.retrievers import EnsembleRetriever, MultiQueryRetriever
+from langchain_community.retrievers import BM25Retriever
+
+# BM25 retriever (keyword-based)
+texts = [doc.page_content for doc in docs]
+bm25_retriever = BM25Retriever.from_texts(texts)
+
+# Ensemble retriever (combines multiple retrievers)
+ensemble_retriever = EnsembleRetriever(
+    retrievers=[chroma_db.as_retriever(), bm25_retriever],
+    weights=[0.7, 0.3]  # Weight vector search more than keyword search
+)
+
+# Multi-query retriever (generates multiple queries)
+multi_query_retriever = MultiQueryRetriever.from_llm(
+    retriever=chroma_db.as_retriever(),
+    llm=llm
+)
+
+# Use with RAG chain
+advanced_rag_chain = (
+    {&quot;context&quot;: ensemble_retriever | format_docs, &quot;question&quot;: RunnablePassthrough()}
+    | rag_prompt
+    | llm
+    | StrOutputParser()
+)
+</code></pre>
+<h3 id="3-rag-with-chat-history">3. RAG with Chat History</h3>
+<pre><code class="language-python">from langchain.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+
+# Contextualized retrieval
+contextualize_q_system_prompt = &quot;&quot;&quot;Given a chat history and the latest user question \
+which might reference context in the chat history, formulate a standalone question \
+which can be understood without the chat history. Do NOT answer the question, \
+just reformulate it if needed and otherwise return it as is.&quot;&quot;&quot;
+
+contextualize_q_prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, contextualize_q_system_prompt),
+    MessagesPlaceholder(&quot;chat_history&quot;),
+    (&quot;human&quot;, &quot;{input}&quot;),
+])
+
+history_aware_retriever = create_history_aware_retriever(
+    llm, retriever, contextualize_q_prompt
+)
+
+# Answer generation
+qa_system_prompt = &quot;&quot;&quot;You are an assistant for question-answering tasks. \
+Use the following pieces of retrieved context to answer the question. \
+If you don't know the answer, just say that you don't know.
+
+{context}&quot;&quot;&quot;
+
+qa_prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, qa_system_prompt),
+    MessagesPlaceholder(&quot;chat_history&quot;),
+    (&quot;human&quot;, &quot;{input}&quot;),
+])
+
+question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
+
+# Full RAG chain with history
+rag_chain_with_history = create_retrieval_chain(
+    history_aware_retriever, question_answer_chain
+)
+
+# Usage with session history
+from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_core.chat_history import BaseChatMessageHistory
+
+store = {}
+
+def get_session_history(session_id: str) -&gt; BaseChatMessageHistory:
+    if session_id not in store:
+        store[session_id] = ChatMessageHistory()
+    return store[session_id]
+
+conversational_rag_chain = RunnableWithMessageHistory(
+    rag_chain_with_history,
+    get_session_history,
+    input_messages_key=&quot;input&quot;,
+    history_messages_key=&quot;chat_history&quot;,
+    output_messages_key=&quot;answer&quot;,
+)
+
+# Chat with history
+response = conversational_rag_chain.invoke(
+    {&quot;input&quot;: &quot;What is the sky color?&quot;},
+    config={&quot;configurable&quot;: {&quot;session_id&quot;: &quot;session_1&quot;}},
+)
+
+follow_up = conversational_rag_chain.invoke(
+    {&quot;input&quot;: &quot;Why is that?&quot;},  # References previous question
+    config={&quot;configurable&quot;: {&quot;session_id&quot;: &quot;session_1&quot;}},
+)
+</code></pre>
+<h2 id="agents-and-tool-usage">Agents and Tool Usage</h2>
+<h3 id="1-basic-agent-setup">1. Basic Agent Setup</h3>
+<pre><code class="language-python">from langchain.agents import create_openai_tools_agent, AgentExecutor
+from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchRun
+from langchain_community.utilities import WikipediaAPIWrapper
+from langchain.tools import BaseTool
+from typing import Type
+
+# Define tools
+wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
+search = DuckDuckGoSearchRun()
+
+# Custom tool
+class CalculatorTool(BaseTool):
+    name = &quot;calculator&quot;
+    description = &quot;Useful for mathematical calculations&quot;
+
+    def _run(self, query: str) -&gt; str:
+        try:
+            return str(eval(query))  # Be careful with eval in production
+        except Exception as e:
+            return f&quot;Error: {str(e)}&quot;
+
+calculator = CalculatorTool()
+
+# Available tools
+tools = [wikipedia, search, calculator]
+
+# Create agent
+agent_prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, &quot;You are a helpful assistant. Use tools when needed.&quot;),
+    (&quot;human&quot;, &quot;{input}&quot;),
+    MessagesPlaceholder(variable_name=&quot;agent_scratchpad&quot;),
+])
+
+agent = create_openai_tools_agent(llm, tools, agent_prompt)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+# Use agent
+result = agent_executor.invoke({
+    &quot;input&quot;: &quot;What is the population of Tokyo? Then calculate 10% of that number.&quot;
+})
+</code></pre>
+<h3 id="2-custom-tools">2. Custom Tools</h3>
+<pre><code class="language-python">from langchain.tools import tool
+from langchain.pydantic_v1 import BaseModel, Field
+import requests
+
+# Decorator-based tool
+@tool
+def get_weather(city: str) -&gt; str:
+    &quot;&quot;&quot;Get current weather for a given city.&quot;&quot;&quot;
+    # Mock weather API call
+    return f&quot;The weather in {city} is sunny and 75°F&quot;
+
+# Class-based tool with input schema
+class WeatherInput(BaseModel):
+    city: str = Field(description=&quot;The city to get weather for&quot;)
+    units: str = Field(default=&quot;fahrenheit&quot;, description=&quot;Temperature units&quot;)
+
+class WeatherTool(BaseTool):
+    name = &quot;weather_tool&quot;
+    description = &quot;Get current weather information&quot;
+    args_schema: Type[BaseModel] = WeatherInput
+
+    def _run(self, city: str, units: str = &quot;fahrenheit&quot;) -&gt; str:
+        # Weather API integration
+        return f&quot;Weather in {city}: 72°{units[0].upper()}, partly cloudy&quot;
+
+# API-based tool
+@tool
+def search_api(query: str) -&gt; str:
+    &quot;&quot;&quot;Search the web using a custom API.&quot;&quot;&quot;
+    # Example API call
+    response = requests.get(
+        &quot;https://api.example.com/search&quot;,
+        params={&quot;q&quot;: query},
+        headers={&quot;Authorization&quot;: &quot;Bearer your-token&quot;}
+    )
+    return response.json().get(&quot;results&quot;, &quot;No results found&quot;)
+
+# File system tool
+@tool
+def read_file(file_path: str) -&gt; str:
+    &quot;&quot;&quot;Read contents of a file.&quot;&quot;&quot;
+    try:
+        with open(file_path, 'r') as f:
+            return f.read()
+    except Exception as e:
+        return f&quot;Error reading file: {str(e)}&quot;
+
+# Database tool
+@tool
+def query_database(sql_query: str) -&gt; str:
+    &quot;&quot;&quot;Execute SQL query on database.&quot;&quot;&quot;
+    import sqlite3
+
+    conn = sqlite3.connect(&quot;example.db&quot;)
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        conn.close()
+        return str(results)
+    except Exception as e:
+        conn.close()
+        return f&quot;Database error: {str(e)}&quot;
+</code></pre>
+<h3 id="3-agent-types-and-strategies">3. Agent Types and Strategies</h3>
+<pre><code class="language-python">from langchain.agents import create_react_agent, create_structured_chat_agent
+
+# ReAct agent (Reasoning and Acting)
+react_prompt = &quot;&quot;&quot;Answer the following questions as best you can. You have access to the following tools:
+
+{tools}
+
+Use the following format:
+
+Question: the input question you must answer
+Thought: you should always think about what to do
+Action: the action to take, should be one of [{tool_names}]
+Action Input: the input to the action
+Observation: the result of the action
+... (this Thought/Action/Action Input/Observation can repeat N times)
+Thought: I now know the final answer
+Final Answer: the final answer to the original input question
+
+Begin!
+
+Question: {input}
+Thought:{agent_scratchpad}&quot;&quot;&quot;
+
+react_agent = create_react_agent(llm, tools, react_prompt)
+react_executor = AgentExecutor(
+    agent=react_agent,
+    tools=tools,
+    verbose=True,
+    max_iterations=5
+)
+
+# Structured chat agent
+structured_agent = create_structured_chat_agent(
+    llm=llm,
+    tools=tools,
+    prompt=agent_prompt
+)
+
+structured_executor = AgentExecutor(
+    agent=structured_agent,
+    tools=tools,
+    verbose=True,
+    handle_parsing_errors=True
+)
+
+# Custom agent with error handling
+class CustomAgentExecutor(AgentExecutor):
+    def _handle_error(self, error: Exception) -&gt; str:
+        return f&quot;I encountered an error: {str(error)}. Let me try a different approach.&quot;
+
+custom_executor = CustomAgentExecutor(
+    agent=agent,
+    tools=tools,
+    verbose=True,
+    max_iterations=3,
+    early_stopping_method=&quot;generate&quot;
+)
+</code></pre>
+<h2 id="output-parsing">Output Parsing</h2>
+<h3 id="1-built-in-parsers">1. Built-in Parsers</h3>
+<pre><code class="language-python">from langchain_core.output_parsers import (
+    StrOutputParser, JsonOutputParser, ListOutputParser,
+    CommaSeparatedListOutputParser, DatetimeOutputParser
+)
+from langchain_core.pydantic_v1 import BaseModel, Field
+
+# String parser (default)
+str_parser = StrOutputParser()
+
+# JSON parser
+json_parser = JsonOutputParser()
+
+# List parser
+list_parser = ListOutputParser()
+
+# Comma-separated list parser
+csv_parser = CommaSeparatedListOutputParser()
+
+# Datetime parser
+datetime_parser = DatetimeOutputParser()
+
+# Usage with chains
+json_chain = (
+    ChatPromptTemplate.from_template(
+        &quot;Generate a JSON object with name and age for a person named {name}&quot;
+    )
+    | llm
+    | json_parser
+)
+
+result = json_chain.invoke({&quot;name&quot;: &quot;Alice&quot;})
+</code></pre>
+<h3 id="2-pydantic-parser">2. Pydantic Parser</h3>
+<pre><code class="language-python">from langchain.output_parsers import PydanticOutputParser
+from pydantic import BaseModel, Field
+from typing import List
+
+# Define data model
+class Person(BaseModel):
+    name: str = Field(description=&quot;person's name&quot;)
+    age: int = Field(description=&quot;person's age&quot;)
+    occupation: str = Field(description=&quot;person's job&quot;)
+    skills: List[str] = Field(description=&quot;list of skills&quot;)
+
+# Create parser
+person_parser = PydanticOutputParser(pydantic_object=Person)
+
+# Create prompt with format instructions
+person_prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, &quot;Extract person information from the following text.&quot;),
+    (&quot;human&quot;, &quot;{text}\n{format_instructions}&quot;),
+])
+
+# Chain with structured output
+person_chain = (
+    person_prompt.partial(format_instructions=person_parser.get_format_instructions())
+    | llm
+    | person_parser
+)
+
+# Usage
+text = &quot;John Doe is a 30-year-old software engineer who knows Python, JavaScript, and SQL.&quot;
+structured_data = person_chain.invoke({&quot;text&quot;: text})
+print(f&quot;Name: {structured_data.name}&quot;)
+print(f&quot;Skills: {structured_data.skills}&quot;)
+</code></pre>
+<h3 id="3-custom-output-parsers">3. Custom Output Parsers</h3>
+<pre><code class="language-python">from langchain_core.output_parsers import BaseOutputParser
+from typing import Dict, Any
+import re
+
+class CustomEmailParser(BaseOutputParser[Dict[str, Any]]):
+    &quot;&quot;&quot;Parse email components from LLM output.&quot;&quot;&quot;
+
+    def parse(self, text: str) -&gt; Dict[str, Any]:
+        # Extract email components using regex
+        subject_match = re.search(r'Subject:\s*(.*)', text)
+        body_match = re.search(r'Body:\s*(.*?)(?=\n\n|\Z)', text, re.DOTALL)
+        recipient_match = re.search(r'To:\s*(.*)', text)
+
+        return {
+            &quot;subject&quot;: subject_match.group(1) if subject_match else &quot;&quot;,
+            &quot;body&quot;: body_match.group(1).strip() if body_match else &quot;&quot;,
+            &quot;recipient&quot;: recipient_match.group(1) if recipient_match else &quot;&quot;
+        }
+
+    @property
+    def _type(self) -&gt; str:
+        return &quot;custom_email_parser&quot;
+
+# Usage
+email_parser = CustomEmailParser()
+
+email_prompt = ChatPromptTemplate.from_template(
+    &quot;&quot;&quot;Write a professional email with the following format:
+Subject: [subject line]
+To: [recipient email]
+Body: [email content]
+
+Topic: {topic}
+Recipient: {recipient}&quot;&quot;&quot;
+)
+
+email_chain = email_prompt | llm | email_parser
+
+parsed_email = email_chain.invoke({
+    &quot;topic&quot;: &quot;Meeting followup&quot;,
+    &quot;recipient&quot;: &quot;john@example.com&quot;
+})
+
+print(parsed_email)
+</code></pre>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="1-callbacks-and-monitoring">1. Callbacks and Monitoring</h3>
+<pre><code class="language-python">from langchain_core.callbacks import BaseCallbackHandler
+from langchain_core.callbacks import CallbackManager
+import time
+
+class TimingCallback(BaseCallbackHandler):
+    def __init__(self):
+        self.start_time = None
+        self.end_time = None
+
+    def on_chain_start(self, serialized, inputs, **kwargs):
+        self.start_time = time.time()
+        print(f&quot;Chain started with inputs: {inputs}&quot;)
+
+    def on_chain_end(self, outputs, **kwargs):
+        self.end_time = time.time()
+        duration = self.end_time - self.start_time
+        print(f&quot;Chain completed in {duration:.2f} seconds&quot;)
+
+    def on_llm_start(self, serialized, prompts, **kwargs):
+        print(f&quot;LLM called with prompts: {prompts}&quot;)
+
+    def on_llm_end(self, response, **kwargs):
+        if hasattr(response, 'llm_output') and response.llm_output:
+            token_usage = response.llm_output.get('token_usage', {})
+            print(f&quot;Token usage: {token_usage}&quot;)
+
+# Use callback
+timing_callback = TimingCallback()
+callback_manager = CallbackManager([timing_callback])
+
+chain_with_callbacks = (
+    prompt 
+    | llm.with_config(callbacks=[timing_callback])
+    | StrOutputParser()
+)
+
+result = chain_with_callbacks.invoke({&quot;input&quot;: &quot;Hello, world!&quot;})
+</code></pre>
+<h3 id="2-streaming-and-async-operations">2. Streaming and Async Operations</h3>
+<pre><code class="language-python">import asyncio
+from langchain_core.callbacks import AsyncCallbackHandler
+
+# Streaming responses
+def stream_response(chain, input_data):
+    for chunk in chain.stream(input_data):
+        print(chunk, end=&quot;&quot;, flush=True)
+
+# Async operations
+async def async_chain_example():
+    async_llm = ChatOpenAI(temperature=0)
+    async_chain = prompt | async_llm | StrOutputParser()
+
+    # Async invoke
+    result = await async_chain.ainvoke({&quot;input&quot;: &quot;Hello async world!&quot;})
+    print(result)
+
+    # Async streaming
+    async for chunk in async_chain.astream({&quot;input&quot;: &quot;Stream this async&quot;}):
+        print(chunk, end=&quot;&quot;, flush=True)
+
+    # Async batch processing
+    batch_results = await async_chain.abatch([
+        {&quot;input&quot;: &quot;First query&quot;},
+        {&quot;input&quot;: &quot;Second query&quot;},
+        {&quot;input&quot;: &quot;Third query&quot;}
+    ])
+
+    return batch_results
+
+# Run async example
+# results = asyncio.run(async_chain_example())
+
+# Async callback
+class AsyncTimingCallback(AsyncCallbackHandler):
+    async def on_chain_start(self, serialized, inputs, **kwargs):
+        print(f&quot;Async chain started: {inputs}&quot;)
+
+    async def on_chain_end(self, outputs, **kwargs):
+        print(f&quot;Async chain completed: {outputs}&quot;)
+</code></pre>
+<h3 id="3-configuration-and-environment-management">3. Configuration and Environment Management</h3>
+<pre><code class="language-python">from langchain_core.runnables import RunnableConfig
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Configuration management
+config = RunnableConfig(
+    tags=[&quot;production&quot;, &quot;chat&quot;],
+    metadata={&quot;user_id&quot;: &quot;123&quot;, &quot;session_id&quot;: &quot;abc&quot;},
+    recursion_limit=10
+)
+
+# Chain with config
+result = chain.invoke(
+    {&quot;input&quot;: &quot;Hello&quot;},
+    config=config
+)
+
+# Environment-specific setup
+class EnvironmentConfig:
+    def __init__(self, env: str = &quot;development&quot;):
+        self.env = env
+        if env == &quot;production&quot;:
+            self.llm_model = &quot;gpt-4&quot;
+            self.temperature = 0.1
+            self.max_tokens = 1000
+        else:
+            self.llm_model = &quot;gpt-3.5-turbo&quot;
+            self.temperature = 0.7
+            self.max_tokens = 500
+
+    def get_llm(self):
+        return ChatOpenAI(
+            model=self.llm_model,
+            temperature=self.temperature,
+            max_tokens=self.max_tokens
+        )
+
+# Usage
+env_config = EnvironmentConfig(&quot;production&quot;)
+production_llm = env_config.get_llm()
+</code></pre>
+<h3 id="4-custom-chain-classes">4. Custom Chain Classes</h3>
+<pre><code class="language-python">from langchain_core.runnables import Runnable
+from typing import Dict, Any
+
+class CustomProcessingChain(Runnable):
+    &quot;&quot;&quot;Custom chain with preprocessing and postprocessing.&quot;&quot;&quot;
+
+    def __init__(self, llm, preprocessor=None, postprocessor=None):
+        self.llm = llm
+        self.preprocessor = preprocessor or self._default_preprocess
+        self.postprocessor = postprocessor or self._default_postprocess
+
+    def _default_preprocess(self, input_data: Dict[str, Any]) -&gt; Dict[str, Any]:
+        # Default preprocessing
+        if &quot;text&quot; in input_data:
+            input_data[&quot;text&quot;] = input_data[&quot;text&quot;].strip().lower()
+        return input_data
+
+    def _default_postprocess(self, output: str) -&gt; str:
+        # Default postprocessing
+        return output.strip().capitalize()
+
+    def invoke(self, input_data: Dict[str, Any], config=None) -&gt; str:
+        # Preprocess
+        processed_input = self.preprocessor(input_data)
+
+        # LLM call
+        prompt = ChatPromptTemplate.from_template(&quot;Process this text: {text}&quot;)
+        chain = prompt | self.llm | StrOutputParser()
+        result = chain.invoke(processed_input, config=config)
+
+        # Postprocess
+        final_result = self.postprocessor(result)
+
+        return final_result
+
+# Custom preprocessing/postprocessing functions
+def custom_preprocessor(data):
+    data[&quot;text&quot;] = f&quot;IMPORTANT: {data['text']}&quot;
+    return data
+
+def custom_postprocessor(output):
+    return f&quot;[PROCESSED] {output}&quot;
+
+# Usage
+custom_chain = CustomProcessingChain(
+    llm=llm,
+    preprocessor=custom_preprocessor,
+    postprocessor=custom_postprocessor
+)
+
+result = custom_chain.invoke({&quot;text&quot;: &quot;hello world&quot;})
+</code></pre>
+<h2 id="integration-examples">Integration Examples</h2>
+<h3 id="1-fastapi-web-service">1. FastAPI Web Service</h3>
+<pre><code class="language-python">from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional
+
+app = FastAPI()
+
+class ChatRequest(BaseModel):
+    message: str
+    session_id: Optional[str] = None
+
+class ChatResponse(BaseModel):
+    response: str
+    session_id: str
+
+# Initialize chain
+chat_chain = prompt | llm | StrOutputParser()
+
+@app.post(&quot;/chat&quot;, response_model=ChatResponse)
+async def chat_endpoint(request: ChatRequest):
+    try:
+        response = await chat_chain.ainvoke({&quot;input&quot;: request.message})
+        return ChatResponse(
+            response=response,
+            session_id=request.session_id or &quot;default&quot;
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get(&quot;/health&quot;)
+async def health_check():
+    return {&quot;status&quot;: &quot;healthy&quot;}
+
+# Run with: uvicorn main:app --reload
+</code></pre>
+<h3 id="2-streamlit-chat-interface">2. Streamlit Chat Interface</h3>
+<pre><code class="language-python">import streamlit as st
+from langchain_core.messages import HumanMessage, AIMessage
+
+# Initialize session state
+if &quot;messages&quot; not in st.session_state:
+    st.session_state.messages = []
+
+if &quot;chain&quot; not in st.session_state:
+    st.session_state.chain = prompt | llm | StrOutputParser()
+
+st.title(&quot;LangChain Chatbot&quot;)
+
+# Display chat history
+for message in st.session_state.messages:
+    if isinstance(message, HumanMessage):
+        with st.chat_message(&quot;user&quot;):
+            st.write(message.content)
+    else:
+        with st.chat_message(&quot;assistant&quot;):
+            st.write(message.content)
+
+# Chat input
+if user_input := st.chat_input(&quot;Type your message...&quot;):
+    # Add user message
+    st.session_state.messages.append(HumanMessage(content=user_input))
+
+    # Display user message
+    with st.chat_message(&quot;user&quot;):
+        st.write(user_input)
+
+    # Get AI response
+    with st.chat_message(&quot;assistant&quot;):
+        with st.spinner(&quot;Thinking...&quot;):
+            response = st.session_state.chain.invoke({&quot;input&quot;: user_input})
+            st.write(response)
+            st.session_state.messages.append(AIMessage(content=response))
+</code></pre>
+<h3 id="3-gradio-interface">3. Gradio Interface</h3>
+<pre><code class="language-python">import gradio as gr
+
+def chat_interface(message, history):
+    # Convert history to proper format
+    context = &quot;\n&quot;.join([f&quot;Human: {h[0]}\nAssistant: {h[1]}&quot; for h in history])
+
+    # Add current message
+    full_prompt = f&quot;{context}\nHuman: {message}\nAssistant:&quot;
+
+    # Get response
+    response = chain.invoke({&quot;input&quot;: full_prompt})
+
+    return response
+
+# Create Gradio interface
+demo = gr.ChatInterface(
+    fn=chat_interface,
+    title=&quot;LangChain Chat&quot;,
+    description=&quot;Chat with LangChain-powered AI assistant&quot;
+)
+
+# Launch interface
+if __name__ == &quot;__main__&quot;:
+    demo.launch(share=True)
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="1-caching">1. Caching</h3>
+<pre><code class="language-python">from langchain.cache import InMemoryCache, SQLiteCache
+from langchain.globals import set_llm_cache
+
+# In-memory caching
+set_llm_cache(InMemoryCache())
+
+# SQLite caching (persistent)
+set_llm_cache(SQLiteCache(database_path=&quot;.langchain.db&quot;))
+
+# Redis caching
+from langchain.cache import RedisCache
+import redis
+
+redis_client = redis.Redis(host='localhost', port=6379, db=0)
+set_llm_cache(RedisCache(redis_client))
+
+# Custom cache
+from langchain_core.caches import BaseCache
+
+class CustomCache(BaseCache):
+    def __init__(self):
+        self._cache = {}
+
+    def lookup(self, prompt, llm_string):
+        return self._cache.get((prompt, llm_string))
+
+    def update(self, prompt, llm_string, return_val):
+        self._cache[(prompt, llm_string)] = return_val
+
+set_llm_cache(CustomCache())
+</code></pre>
+<h3 id="2-batch-processing">2. Batch Processing</h3>
+<pre><code class="language-python"># Batch LLM calls
+batch_prompts = [
+    {&quot;input&quot;: f&quot;Summarize topic {i}&quot;} for i in range(10)
+]
+
+# Sequential processing
+results = []
+for prompt in batch_prompts:
+    result = chain.invoke(prompt)
+    results.append(result)
+
+# Parallel batch processing
+batch_results = chain.batch(batch_prompts, config={&quot;max_concurrency&quot;: 5})
+
+# Async batch processing
+async def async_batch_processing():
+    return await chain.abatch(batch_prompts)
+
+# Streaming batch
+for result in chain.batch(batch_prompts):
+    print(f&quot;Completed: {result}&quot;)
+</code></pre>
+<h3 id="3-memory-management">3. Memory Management</h3>
+<pre><code class="language-python"># Efficient memory usage
+from langchain.memory import ConversationSummaryBufferMemory
+
+# Summary + buffer memory (hybrid approach)
+memory = ConversationSummaryBufferMemory(
+    llm=llm,
+    max_token_limit=1000,
+    return_messages=True
+)
+
+# Custom memory with cleanup
+class EfficientMemory:
+    def __init__(self, max_messages=10):
+        self.messages = []
+        self.max_messages = max_messages
+
+    def add_message(self, message):
+        self.messages.append(message)
+        if len(self.messages) &gt; self.max_messages:
+            # Keep only recent messages
+            self.messages = self.messages[-self.max_messages:]
+
+    def clear_old_messages(self):
+        # Keep only last 5 messages
+        self.messages = self.messages[-5:]
+
+# Periodic cleanup
+efficient_memory = EfficientMemory()
+
+# Use context managers for cleanup
+from contextlib import contextmanager
+
+@contextmanager
+def managed_chain(chain):
+    try:
+        yield chain
+    finally:
+        # Cleanup operations
+        if hasattr(chain, 'memory') and chain.memory:
+            chain.memory.clear()
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-error-handling">1. Error Handling</h3>
+<pre><code class="language-python">from langchain_core.exceptions import LangChainException
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def robust_chain_invoke(chain, input_data, max_retries=3):
+    &quot;&quot;&quot;Invoke chain with error handling and retries.&quot;&quot;&quot;
+    for attempt in range(max_retries):
+        try:
+            result = chain.invoke(input_data)
+            logger.info(f&quot;Chain invocation successful on attempt {attempt + 1}&quot;)
+            return result
+
+        except LangChainException as e:
+            logger.error(f&quot;LangChain error on attempt {attempt + 1}: {str(e)}&quot;)
+            if attempt == max_retries - 1:
+                raise
+
+        except Exception as e:
+            logger.error(f&quot;Unexpected error on attempt {attempt + 1}: {str(e)}&quot;)
+            if attempt == max_retries - 1:
+                raise
+
+        # Exponential backoff
+        time.sleep(2 ** attempt)
+
+# Usage
+try:
+    result = robust_chain_invoke(chain, {&quot;input&quot;: &quot;test&quot;})
+except Exception as e:
+    logger.error(f&quot;All retry attempts failed: {str(e)}&quot;)
+    # Fallback behavior
+    result = &quot;I apologize, but I'm having trouble processing your request right now.&quot;
+</code></pre>
+<h3 id="2-testing">2. Testing</h3>
+<pre><code class="language-python">import pytest
+from unittest.mock import Mock, patch
+
+class TestLangChainComponents:
+
+    @pytest.fixture
+    def mock_llm(self):
+        &quot;&quot;&quot;Mock LLM for testing.&quot;&quot;&quot;
+        mock = Mock()
+        mock.invoke.return_value = &quot;Mocked response&quot;
+        return mock
+
+    @pytest.fixture
+    def sample_chain(self, mock_llm):
+        &quot;&quot;&quot;Sample chain for testing.&quot;&quot;&quot;
+        prompt = ChatPromptTemplate.from_template(&quot;Test: {input}&quot;)
+        return prompt | mock_llm | StrOutputParser()
+
+    def test_chain_invoke(self, sample_chain):
+        &quot;&quot;&quot;Test basic chain invocation.&quot;&quot;&quot;
+        result = sample_chain.invoke({&quot;input&quot;: &quot;hello&quot;})
+        assert result == &quot;Mocked response&quot;
+
+    def test_prompt_formatting(self):
+        &quot;&quot;&quot;Test prompt template formatting.&quot;&quot;&quot;
+        prompt = ChatPromptTemplate.from_template(&quot;Hello {name}&quot;)
+        formatted = prompt.format(name=&quot;Alice&quot;)
+        assert &quot;Alice&quot; in str(formatted)
+
+    @patch('langchain_openai.ChatOpenAI')
+    def test_with_real_llm_mock(self, mock_openai):
+        &quot;&quot;&quot;Test with mocked OpenAI client.&quot;&quot;&quot;
+        mock_openai.return_value.invoke.return_value = &quot;Test response&quot;
+
+        llm = ChatOpenAI()
+        result = llm.invoke(&quot;test prompt&quot;)
+
+        assert result == &quot;Test response&quot;
+        mock_openai.assert_called_once()
+
+# Run tests with: pytest test_langchain.py
+</code></pre>
+<h3 id="3-production-deployment">3. Production Deployment</h3>
+<pre><code class="language-python">from langchain_core.runnables import RunnableConfig
+import os
+from typing import Dict, Any
+
+class ProductionChainWrapper:
+    &quot;&quot;&quot;Production-ready chain wrapper with monitoring and error handling.&quot;&quot;&quot;
+
+    def __init__(self, chain, environment=&quot;production&quot;):
+        self.chain = chain
+        self.environment = environment
+        self.request_count = 0
+        self.error_count = 0
+
+    def invoke(self, input_data: Dict[str, Any]) -&gt; str:
+        &quot;&quot;&quot;Invoke chain with production safeguards.&quot;&quot;&quot;
+        self.request_count += 1
+
+        try:
+            # Input validation
+            self._validate_input(input_data)
+
+            # Rate limiting check
+            if self.request_count &gt; 1000:  # Example limit
+                raise Exception(&quot;Rate limit exceeded&quot;)
+
+            # Invoke chain with timeout
+            config = RunnableConfig(
+                tags=[self.environment],
+                metadata={&quot;request_id&quot;: self.request_count}
+            )
+
+            result = self.chain.invoke(input_data, config=config)
+
+            # Output validation
+            self._validate_output(result)
+
+            return result
+
+        except Exception as e:
+            self.error_count += 1
+            logger.error(f&quot;Chain error: {str(e)}&quot;)
+
+            # Fallback response
+            return self._get_fallback_response(input_data)
+
+    def _validate_input(self, input_data: Dict[str, Any]):
+        &quot;&quot;&quot;Validate input data.&quot;&quot;&quot;
+        if not isinstance(input_data, dict):
+            raise ValueError(&quot;Input must be a dictionary&quot;)
+
+        if &quot;input&quot; not in input_data:
+            raise ValueError(&quot;Input must contain 'input' key&quot;)
+
+        if len(input_data[&quot;input&quot;]) &gt; 10000:  # Character limit
+            raise ValueError(&quot;Input too long&quot;)
+
+    def _validate_output(self, output: str):
+        &quot;&quot;&quot;Validate output.&quot;&quot;&quot;
+        if not isinstance(output, str):
+            raise ValueError(&quot;Output must be a string&quot;)
+
+        if len(output) == 0:
+            raise ValueError(&quot;Empty output&quot;)
+
+    def _get_fallback_response(self, input_data: Dict[str, Any]) -&gt; str:
+        &quot;&quot;&quot;Provide fallback response on error.&quot;&quot;&quot;
+        return &quot;I apologize, but I'm unable to process your request at the moment.&quot;
+
+    def get_metrics(self) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Get performance metrics.&quot;&quot;&quot;
+        return {
+            &quot;request_count&quot;: self.request_count,
+            &quot;error_count&quot;: self.error_count,
+            &quot;error_rate&quot;: self.error_count / max(self.request_count, 1),
+            &quot;environment&quot;: self.environment
+        }
+
+# Usage
+production_chain = ProductionChainWrapper(chain, &quot;production&quot;)
+result = production_chain.invoke({&quot;input&quot;: &quot;Hello world&quot;})
+metrics = production_chain.get_metrics()
+</code></pre>
+<h3 id="4-monitoring-and-observability">4. Monitoring and Observability</h3>
+<pre><code class="language-python">from langchain_community.callbacks import LangChainTracer
+from langchain.callbacks.manager import tracing_v2_enabled
+
+# LangSmith tracing (if available)
+os.environ[&quot;LANGCHAIN_TRACING_V2&quot;] = &quot;true&quot;
+os.environ[&quot;LANGCHAIN_API_KEY&quot;] = &quot;your-langsmith-api-key&quot;
+
+# Use tracing context
+with tracing_v2_enabled():
+    result = chain.invoke({&quot;input&quot;: &quot;traced request&quot;})
+
+# Custom monitoring
+class MonitoringCallback(BaseCallbackHandler):
+    def __init__(self):
+        self.metrics = {
+            &quot;total_requests&quot;: 0,
+            &quot;total_tokens&quot;: 0,
+            &quot;average_response_time&quot;: 0,
+            &quot;error_count&quot;: 0
+        }
+        self.start_times = {}
+
+    def on_chain_start(self, serialized, inputs, run_id, **kwargs):
+        self.metrics[&quot;total_requests&quot;] += 1
+        self.start_times[run_id] = time.time()
+
+    def on_chain_end(self, outputs, run_id, **kwargs):
+        if run_id in self.start_times:
+            duration = time.time() - self.start_times[run_id]
+            # Update average response time
+            current_avg = self.metrics[&quot;average_response_time&quot;]
+            new_avg = ((current_avg * (self.metrics[&quot;total_requests&quot;] - 1)) + duration) / self.metrics[&quot;total_requests&quot;]
+            self.metrics[&quot;average_response_time&quot;] = new_avg
+            del self.start_times[run_id]
+
+    def on_chain_error(self, error, run_id, **kwargs):
+        self.metrics[&quot;error_count&quot;] += 1
+        if run_id in self.start_times:
+            del self.start_times[run_id]
+
+# Use monitoring
+monitoring = MonitoringCallback()
+monitored_chain = chain.with_config(callbacks=[monitoring])
+
+# Health check endpoint
+def health_check():
+    return {
+        &quot;status&quot;: &quot;healthy&quot;,
+        &quot;metrics&quot;: monitoring.metrics,
+        &quot;timestamp&quot;: time.time()
+    }
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues-and-solutions">Common Issues and Solutions</h3>
+<ol>
+<li><strong>API Key Issues</strong>
+   ```python
+   # Check environment variables
+   import os
+   print("OpenAI API Key:", "SET" if os.getenv("OPENAI_API_KEY") else "NOT SET")</li>
+</ol>
+<p># Set programmatically
+   os.environ["OPENAI_API_KEY"] = "your-api-key"
+   ```</p>
+<ol>
+<li>
+<p><strong>Memory Issues with Large Documents</strong>
+   ```python
+   # Use streaming for large documents
+   def process_large_document(doc, chunk_size=1000):
+       chunks = [doc[i:i+chunk_size] for i in range(0, len(doc), chunk_size)]
+       results = []</p>
+<p>for chunk in chunks:
+       result = chain.invoke({"input": chunk})
+       results.append(result)</p>
+<p>return results
+   ```</p>
+</li>
+<li>
+<p><strong>Rate Limiting</strong>
+   ```python
+   import time
+   from tenacity import retry, wait_exponential, stop_after_attempt</p>
+</li>
+</ol>
+<p>@retry(
+       wait=wait_exponential(multiplier=1, min=4, max=10),
+       stop=stop_after_attempt(3)
+   )
+   def invoke_with_retry(chain, input_data):
+       return chain.invoke(input_data)
+   ```</p>
+<ol>
+<li><strong>Token Limits</strong>
+   ```python
+   import tiktoken</li>
+</ol>
+<p>def count_tokens(text, model="gpt-4"):
+       encoding = tiktoken.encoding_for_model(model)
+       return len(encoding.encode(text))</p>
+<p>def truncate_text(text, max_tokens=4000, model="gpt-4"):
+       encoding = tiktoken.encoding_for_model(model)
+       tokens = encoding.encode(text)
+       if len(tokens) &gt; max_tokens:
+           truncated_tokens = tokens[:max_tokens]
+           return encoding.decode(truncated_tokens)
+       return text
+   ```</p>
+<hr />
+<p><em>For the latest documentation and updates, visit the <a href="https://python.langchain.com/">LangChain Documentation</a> and <a href="https://github.com/langchain-ai/langchain">GitHub Repository</a>.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

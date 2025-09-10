@@ -1,0 +1,2994 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../scikit-learn/">
+      
+      
+        <link rel="next" href="../seaborn/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>SciPy - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scipy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SciPy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistics-module-scipystats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistics Module (scipy.stats)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statistics Module (scipy.stats)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discrete Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chi-square-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chi-square Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-module-scipyoptimize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Module (scipy.optimize)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimization Module (scipy.optimize)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-minimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Minimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Root Finding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curve-fitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curve Fitting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-algebra-module-scipylinalg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra Module (scipy.linalg)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Algebra Module (scipy.linalg)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvalues-and-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigenvalues and Eigenvectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decompositions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decompositions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-processing-module-scipysignal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Processing Module (scipy.signal)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Processing Module (scipy.signal)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectral-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peak-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peak Finding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-module-scipyintegrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Module (scipy.integrate)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Module (scipy.integrate)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numerical-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Numerical Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordinary-differential-equations-odes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordinary Differential Equations (ODEs)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-module-scipyinterpolate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation Module (scipy.interpolate)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpolation Module (scipy.interpolate)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1d-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1D Interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2d-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2D Interpolation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatial-algorithms-scipyspatial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Algorithms (scipy.spatial)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse-matrices-scipysparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sparse Matrices (scipy.sparse)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fft-module-scipyfft" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFT Module (scipy.fft)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistical-analysis-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Analysis Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numpy-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      NumPy Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matplotlib-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matplotlib Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-tests-quick-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Tests Quick Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution Quick Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistics-module-scipystats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistics Module (scipy.stats)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statistics Module (scipy.stats)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discrete Distributions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chi-square-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chi-square Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-module-scipyoptimize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Module (scipy.optimize)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimization Module (scipy.optimize)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-minimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Minimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Root Finding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curve-fitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curve Fitting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-algebra-module-scipylinalg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Algebra Module (scipy.linalg)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Algebra Module (scipy.linalg)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvalues-and-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigenvalues and Eigenvectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decompositions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decompositions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-processing-module-scipysignal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Processing Module (scipy.signal)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Processing Module (scipy.signal)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectral-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peak-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peak Finding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-module-scipyintegrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Module (scipy.integrate)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Module (scipy.integrate)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numerical-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Numerical Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordinary-differential-equations-odes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordinary Differential Equations (ODEs)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-module-scipyinterpolate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation Module (scipy.interpolate)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpolation Module (scipy.interpolate)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1d-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1D Interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2d-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2D Interpolation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatial-algorithms-scipyspatial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Algorithms (scipy.spatial)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse-matrices-scipysparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sparse Matrices (scipy.sparse)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fft-module-scipyfft" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFT Module (scipy.fft)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistical-analysis-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Analysis Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numpy-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      NumPy Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matplotlib-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matplotlib Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-tests-quick-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Tests Quick Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution Quick Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="scipy">SciPy</h1>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash"># Basic installation
+pip install scipy
+
+# With all optional dependencies
+pip install scipy[all]
+
+# Check version
+python -c &quot;import scipy; print(scipy.__version__)&quot;
+
+# Check available submodules
+python -c &quot;import scipy; print([x for x in dir(scipy) if not x.startswith('_')])&quot;
+</code></pre>
+<h2 id="basic-setup">Basic Setup</h2>
+<pre><code class="language-python"># Essential imports
+import numpy as np
+import scipy as sp
+from scipy import stats, optimize, integrate, linalg, signal, interpolate
+
+# Common import pattern for specific modules
+from scipy.stats import norm, t, chi2, pearsonr
+from scipy.optimize import minimize, curve_fit
+from scipy.signal import find_peaks, periodogram
+from scipy.interpolate import interp1d
+</code></pre>
+<h2 id="core-functionality">Core Functionality</h2>
+<h3 id="statistics-module-scipystats">Statistics Module (<code>scipy.stats</code>)</h3>
+<h4 id="continuous-distributions">Continuous Distributions</h4>
+<pre><code class="language-python">from scipy.stats import norm, t, chi2, f, uniform, expon, gamma, beta
+
+# Normal distribution
+mean, std = 0, 1
+x = np.linspace(-3, 3, 100)
+
+# Probability density function (PDF)
+pdf_values = norm.pdf(x, mean, std)
+
+# Cumulative distribution function (CDF)
+cdf_values = norm.cdf(x, mean, std)
+
+# Percent point function (inverse CDF)
+percentiles = norm.ppf([0.05, 0.5, 0.95], mean, std)
+
+# Random variates
+samples = norm.rvs(mean, std, size=1000)
+
+# Summary statistics
+print(f&quot;Mean: {norm.mean(mean, std)}&quot;)
+print(f&quot;Variance: {norm.var(mean, std)}&quot;)
+print(f&quot;Standard deviation: {norm.std(mean, std)}&quot;)
+</code></pre>
+<h4 id="discrete-distributions">Discrete Distributions</h4>
+<pre><code class="language-python">from scipy.stats import binom, poisson, hypergeom, geom
+
+# Binomial distribution
+n, p = 10, 0.3
+k = np.arange(0, 11)
+
+# Probability mass function (PMF)
+pmf_values = binom.pmf(k, n, p)
+
+# CDF for discrete distributions
+cdf_values = binom.cdf(k, n, p)
+
+# Random samples
+samples = binom.rvs(n, p, size=1000)
+
+# Poisson distribution
+lam = 3.5  # lambda parameter
+k = np.arange(0, 15)
+pmf_poisson = poisson.pmf(k, lam)
+</code></pre>
+<h4 id="statistical-tests">Statistical Tests</h4>
+<pre><code class="language-python">from scipy.stats import ttest_1samp, ttest_ind, ttest_rel, chi2_contingency
+from scipy.stats import pearsonr, spearmanr, kendalltau, mannwhitneyu
+
+# One-sample t-test
+data = np.random.normal(5, 2, 100)
+statistic, p_value = ttest_1samp(data, popmean=4.5)
+print(f&quot;t-statistic: {statistic:.4f}, p-value: {p_value:.4f}&quot;)
+
+# Two-sample t-test (independent)
+group1 = np.random.normal(5, 2, 50)
+group2 = np.random.normal(5.5, 2, 50)
+stat, p = ttest_ind(group1, group2)
+
+# Paired t-test
+before = np.random.normal(100, 15, 30)
+after = before + np.random.normal(2, 5, 30)
+stat, p = ttest_rel(before, after)
+
+# Correlation tests
+x = np.random.normal(0, 1, 100)
+y = 2*x + np.random.normal(0, 0.5, 100)
+
+# Pearson correlation
+corr_pearson, p_pearson = pearsonr(x, y)
+
+# Spearman rank correlation
+corr_spearman, p_spearman = spearmanr(x, y)
+
+# Kendall's tau
+tau, p_kendall = kendalltau(x, y)
+
+# Mann-Whitney U test (non-parametric)
+stat, p = mannwhitneyu(group1, group2, alternative='two-sided')
+</code></pre>
+<h4 id="chi-square-tests">Chi-square Tests</h4>
+<pre><code class="language-python">from scipy.stats import chi2_contingency, chisquare
+
+# Chi-square test of independence
+contingency_table = np.array([[10, 20, 30],
+                              [15, 25, 35],
+                              [20, 30, 40]])
+chi2_stat, p_value, dof, expected = chi2_contingency(contingency_table)
+
+# Goodness of fit test
+observed = [16, 18, 16, 14, 12, 12]
+expected = [16, 16, 16, 16, 16, 16]
+chi2_stat, p_value = chisquare(observed, expected)
+</code></pre>
+<h3 id="optimization-module-scipyoptimize">Optimization Module (<code>scipy.optimize</code>)</h3>
+<h4 id="function-minimization">Function Minimization</h4>
+<pre><code class="language-python">from scipy.optimize import minimize, minimize_scalar, differential_evolution
+
+# Scalar function minimization
+def f(x):
+    return (x - 2)**2
+
+result = minimize_scalar(f)
+print(f&quot;Minimum at x = {result.x:.4f}, f(x) = {result.fun:.4f}&quot;)
+
+# Multivariable function minimization
+def rosenbrock(x):
+    return 100*(x[1] - x[0]**2)**2 + (1 - x[0])**2
+
+# Initial guess
+x0 = [0, 0]
+
+# Minimize using different methods
+result_bfgs = minimize(rosenbrock, x0, method='BFGS')
+result_nm = minimize(rosenbrock, x0, method='Nelder-Mead')
+
+print(f&quot;BFGS result: {result_bfgs.x}&quot;)
+print(f&quot;Nelder-Mead result: {result_nm.x}&quot;)
+
+# With bounds
+bounds = [(0, 2), (0, 2)]
+result_bounded = minimize(rosenbrock, x0, method='L-BFGS-B', bounds=bounds)
+
+# Global optimization
+result_global = differential_evolution(rosenbrock, bounds)
+</code></pre>
+<h4 id="root-finding">Root Finding</h4>
+<pre><code class="language-python">from scipy.optimize import root, fsolve, brentq
+
+# Single variable root finding
+def equation(x):
+    return x**3 - 2*x - 5
+
+# Brent's method (requires bracketing interval)
+root_brent = brentq(equation, 2, 3)
+
+# Multi-variable root finding
+def system_equations(vars):
+    x, y = vars
+    eq1 = x**2 + y**2 - 1
+    eq2 = x - y**2
+    return [eq1, eq2]
+
+# Initial guess
+initial_guess = [0.5, 0.5]
+solution = fsolve(system_equations, initial_guess)
+
+# Using root function (more options)
+sol = root(system_equations, initial_guess, method='hybr')
+</code></pre>
+<h4 id="curve-fitting">Curve Fitting</h4>
+<pre><code class="language-python">from scipy.optimize import curve_fit
+
+# Define model function
+def exponential_model(x, a, b, c):
+    return a * np.exp(b * x) + c
+
+# Generate sample data with noise
+x_data = np.linspace(0, 4, 50)
+y_true = exponential_model(x_data, 2.5, 1.3, 0.5)
+y_data = y_true + 0.2 * np.random.normal(size=len(x_data))
+
+# Fit the curve
+popt, pcov = curve_fit(exponential_model, x_data, y_data)
+a_fit, b_fit, c_fit = popt
+
+# Parameter uncertainties
+param_errors = np.sqrt(np.diag(pcov))
+
+print(f&quot;Fitted parameters: a={a_fit:.3f}±{param_errors[0]:.3f}, &quot;
+      f&quot;b={b_fit:.3f}±{param_errors[1]:.3f}, c={c_fit:.3f}±{param_errors[2]:.3f}&quot;)
+
+# Plot results
+y_fit = exponential_model(x_data, *popt)
+import matplotlib.pyplot as plt
+plt.plot(x_data, y_data, 'o', label='Data')
+plt.plot(x_data, y_fit, '-', label='Fitted curve')
+plt.legend()
+</code></pre>
+<h3 id="linear-algebra-module-scipylinalg">Linear Algebra Module (<code>scipy.linalg</code>)</h3>
+<h4 id="basic-operations">Basic Operations</h4>
+<pre><code class="language-python">from scipy.linalg import solve, det, inv, eig, svd, norm, cholesky
+
+# System of linear equations Ax = b
+A = np.array([[3, 2, -1],
+              [2, -2, 4],
+              [-1, 0.5, -1]])
+b = np.array([1, -2, 0])
+
+# Solve the system
+x = solve(A, b)
+print(f&quot;Solution: {x}&quot;)
+
+# Matrix determinant
+determinant = det(A)
+
+# Matrix inverse
+A_inv = inv(A)
+
+# Verify: A * A_inv should be identity
+identity_check = np.allclose(A @ A_inv, np.eye(3))
+</code></pre>
+<h4 id="eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</h4>
+<pre><code class="language-python"># Eigendecomposition
+eigenvalues, eigenvectors = eig(A)
+print(f&quot;Eigenvalues: {eigenvalues}&quot;)
+
+# Singular Value Decomposition
+U, s, Vt = svd(A)
+print(f&quot;Singular values: {s}&quot;)
+
+# Matrix norms
+frobenius_norm = norm(A, 'fro')
+spectral_norm = norm(A, 2)
+l1_norm = norm(A, 1)
+</code></pre>
+<h4 id="decompositions">Decompositions</h4>
+<pre><code class="language-python">from scipy.linalg import lu, qr, cholesky, schur
+
+# LU decomposition
+P, L, U = lu(A)
+
+# QR decomposition
+Q, R = qr(A)
+
+# Cholesky decomposition (for positive definite matrices)
+# Create a positive definite matrix
+A_pd = A.T @ A
+L_chol = cholesky(A_pd, lower=True)
+
+# Schur decomposition
+T, Z = schur(A)
+</code></pre>
+<h3 id="signal-processing-module-scipysignal">Signal Processing Module (<code>scipy.signal</code>)</h3>
+<h4 id="filtering">Filtering</h4>
+<pre><code class="language-python">from scipy.signal import butter, filtfilt, savgol_filter, medfilt
+
+# Create sample signal
+fs = 1000  # Sampling frequency
+t = np.linspace(0, 1, fs, endpoint=False)
+signal = np.sin(2*np.pi*5*t) + 0.5*np.sin(2*np.pi*25*t) + np.random.normal(0, 0.1, len(t))
+
+# Butterworth filter
+def butter_lowpass_filter(data, cutoff, fs, order=4):
+    nyquist = 0.5 * fs
+    normal_cutoff = cutoff / nyquist
+    b, a = butter(order, normal_cutoff, btype='low', analog=False)
+    filtered_data = filtfilt(b, a, data)
+    return filtered_data
+
+# Apply low-pass filter
+cutoff_freq = 10  # Hz
+filtered_signal = butter_lowpass_filter(signal, cutoff_freq, fs)
+
+# Savitzky-Golay filter (good for smoothing)
+window_length = 51  # Must be odd
+poly_order = 3
+smoothed_signal = savgol_filter(signal, window_length, poly_order)
+
+# Median filter (good for removing spikes)
+kernel_size = 5
+median_filtered = medfilt(signal, kernel_size)
+</code></pre>
+<h4 id="spectral-analysis">Spectral Analysis</h4>
+<pre><code class="language-python">from scipy.signal import periodogram, welch, spectrogram
+from scipy.fft import fft, fftfreq
+
+# Periodogram (power spectral density)
+frequencies, psd = periodogram(signal, fs)
+
+# Welch's method (averaged periodogram)
+f_welch, psd_welch = welch(signal, fs, nperseg=256)
+
+# Spectrogram (time-frequency analysis)
+f_spec, t_spec, Sxx = spectrogram(signal, fs, nperseg=256)
+
+# FFT
+fft_values = fft(signal)
+fft_freq = fftfreq(len(signal), 1/fs)
+
+# Plot spectrum
+import matplotlib.pyplot as plt
+plt.figure(figsize=(12, 4))
+
+plt.subplot(131)
+plt.plot(t[:500], signal[:500])
+plt.title('Time Domain')
+plt.xlabel('Time (s)')
+
+plt.subplot(132)
+plt.semilogy(frequencies, psd)
+plt.title('Power Spectral Density')
+plt.xlabel('Frequency (Hz)')
+
+plt.subplot(133)
+plt.pcolormesh(t_spec, f_spec, 10*np.log10(Sxx), shading='gouraud')
+plt.title('Spectrogram')
+plt.ylabel('Frequency (Hz)')
+plt.xlabel('Time (s)')
+plt.tight_layout()
+</code></pre>
+<h4 id="peak-finding">Peak Finding</h4>
+<pre><code class="language-python">from scipy.signal import find_peaks, peak_widths, peak_prominences
+
+# Generate signal with peaks
+x = np.linspace(0, 10, 1000)
+signal_peaks = np.sin(x) + 0.5*np.sin(3*x) + 0.2*np.random.randn(1000)
+
+# Find peaks
+peaks, properties = find_peaks(signal_peaks, height=0.5, distance=20)
+
+# Peak properties
+widths = peak_widths(signal_peaks, peaks, rel_height=0.5)
+prominences = peak_prominences(signal_peaks, peaks)
+
+# Plot results
+plt.figure(figsize=(12, 6))
+plt.plot(x, signal_peaks, label='Signal')
+plt.plot(x[peaks], signal_peaks[peaks], 'ro', label='Peaks')
+plt.legend()
+</code></pre>
+<h3 id="integration-module-scipyintegrate">Integration Module (<code>scipy.integrate</code>)</h3>
+<h4 id="numerical-integration">Numerical Integration</h4>
+<pre><code class="language-python">from scipy.integrate import quad, dblquad, tplquad, odeint, solve_ivp
+
+# Single integral
+def integrand(x):
+    return np.exp(-x**2)
+
+# Integrate from 0 to infinity
+result, error = quad(integrand, 0, np.inf)
+print(f&quot;∫₀^∞ e^(-x²) dx = {result:.6f} ± {error:.2e}&quot;)
+
+# Double integral
+def integrand_2d(y, x):
+    return x*y**2
+
+# Integrate over rectangle [0,1] × [0,2]
+result_2d, error_2d = dblquad(integrand_2d, 0, 1, lambda x: 0, lambda x: 2)
+
+# Triple integral
+def integrand_3d(z, y, x):
+    return x*y*z
+
+result_3d, error_3d = tplquad(integrand_3d, 0, 1, lambda x: 0, lambda x: 1, 
+                              lambda x, y: 0, lambda x, y: 1)
+</code></pre>
+<h4 id="ordinary-differential-equations-odes">Ordinary Differential Equations (ODEs)</h4>
+<pre><code class="language-python">from scipy.integrate import odeint, solve_ivp
+
+# Solve dy/dt = -2y with initial condition y(0) = 1
+def dydt(y, t):
+    return -2*y
+
+t = np.linspace(0, 2, 100)
+y0 = 1
+solution = odeint(dydt, y0, t)
+
+# System of ODEs: Lotka-Volterra (predator-prey)
+def lotka_volterra(t, z, a, b, c, d):
+    x, y = z
+    return [a*x - b*x*y, -c*y + d*x*y]
+
+# Parameters
+a, b, c, d = 1.0, 0.1, 1.5, 0.075
+initial_conditions = [10, 5]  # [prey, predator]
+t_span = (0, 15)
+t_eval = np.linspace(0, 15, 1000)
+
+# Solve using solve_ivp (more modern interface)
+sol = solve_ivp(lotka_volterra, t_span, initial_conditions, 
+                t_eval=t_eval, args=(a, b, c, d), dense_output=True)
+
+# Plot phase portrait
+plt.figure(figsize=(12, 5))
+plt.subplot(121)
+plt.plot(sol.t, sol.y[0], label='Prey')
+plt.plot(sol.t, sol.y[1], label='Predator')
+plt.xlabel('Time')
+plt.ylabel('Population')
+plt.legend()
+
+plt.subplot(122)
+plt.plot(sol.y[0], sol.y[1])
+plt.xlabel('Prey')
+plt.ylabel('Predator')
+plt.title('Phase Portrait')
+</code></pre>
+<h3 id="interpolation-module-scipyinterpolate">Interpolation Module (<code>scipy.interpolate</code>)</h3>
+<h4 id="1d-interpolation">1D Interpolation</h4>
+<pre><code class="language-python">from scipy.interpolate import interp1d, UnivariateSpline, CubicSpline
+
+# Sample data
+x = np.linspace(0, 10, 11)
+y = np.sin(x)
+
+# Different interpolation methods
+f_linear = interp1d(x, y, kind='linear')
+f_cubic = interp1d(x, y, kind='cubic')
+f_spline = UnivariateSpline(x, y, s=0)  # s=0 for interpolation
+f_cubic_spline = CubicSpline(x, y)
+
+# Evaluate at new points
+x_new = np.linspace(0, 10, 100)
+y_linear = f_linear(x_new)
+y_cubic = f_cubic(x_new)
+y_spline = f_spline(x_new)
+y_cubic_spline = f_cubic_spline(x_new)
+
+# Plot comparison
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, 'o', label='Data points')
+plt.plot(x_new, y_linear, '-', label='Linear')
+plt.plot(x_new, y_cubic, '--', label='Cubic')
+plt.plot(x_new, y_spline, '-.', label='Spline')
+plt.plot(x_new, y_cubic_spline, ':', label='Cubic Spline')
+plt.legend()
+plt.title('Interpolation Methods Comparison')
+</code></pre>
+<h4 id="2d-interpolation">2D Interpolation</h4>
+<pre><code class="language-python">from scipy.interpolate import griddata, RegularGridInterpolator
+
+# Scattered data interpolation
+np.random.seed(42)
+points = np.random.rand(100, 2) * 10
+values = np.sin(points[:, 0]) * np.cos(points[:, 1])
+
+# Create regular grid
+xi = np.linspace(0, 10, 50)
+yi = np.linspace(0, 10, 50)
+xi_grid, yi_grid = np.meshgrid(xi, yi)
+
+# Interpolate using different methods
+zi_nearest = griddata(points, values, (xi_grid, yi_grid), method='nearest')
+zi_linear = griddata(points, values, (xi_grid, yi_grid), method='linear')
+zi_cubic = griddata(points, values, (xi_grid, yi_grid), method='cubic')
+
+# Regular grid interpolation (faster for regular grids)
+x_reg = np.linspace(0, 10, 20)
+y_reg = np.linspace(0, 10, 20)
+X_reg, Y_reg = np.meshgrid(x_reg, y_reg)
+Z_reg = np.sin(X_reg) * np.cos(Y_reg)
+
+interp_func = RegularGridInterpolator((x_reg, y_reg), Z_reg)
+new_points = np.column_stack([xi_grid.ravel(), yi_grid.ravel()])
+zi_reg = interp_func(new_points).reshape(xi_grid.shape)
+</code></pre>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="spatial-algorithms-scipyspatial">Spatial Algorithms (<code>scipy.spatial</code>)</h3>
+<pre><code class="language-python">from scipy.spatial import distance, KDTree, ConvexHull, Voronoi
+from scipy.spatial.distance import pdist, squareform
+
+# Distance calculations
+points = np.random.rand(10, 2)
+
+# Pairwise distances
+distances = pdist(points)
+distance_matrix = squareform(distances)
+
+# Different distance metrics
+euclidean_dist = pdist(points, metric='euclidean')
+manhattan_dist = pdist(points, metric='manhattan')
+cosine_dist = pdist(points, metric='cosine')
+
+# KD-Tree for nearest neighbor searches
+tree = KDTree(points)
+
+# Find k nearest neighbors
+query_point = [0.5, 0.5]
+distances, indices = tree.query(query_point, k=3)
+
+# Convex Hull
+hull = ConvexHull(points)
+hull_points = points[hull.vertices]
+
+# Voronoi diagram
+vor = Voronoi(points)
+</code></pre>
+<h3 id="sparse-matrices-scipysparse">Sparse Matrices (<code>scipy.sparse</code>)</h3>
+<pre><code class="language-python">from scipy.sparse import csr_matrix, csc_matrix, diags, eye
+from scipy.sparse.linalg import spsolve
+
+# Create sparse matrix
+row = np.array([0, 0, 1, 2, 2, 2])
+col = np.array([0, 2, 1, 0, 1, 2])
+data = np.array([1, 2, 3, 4, 5, 6])
+
+# Compressed Sparse Row matrix
+sparse_matrix = csr_matrix((data, (row, col)), shape=(3, 3))
+
+# Create diagonal sparse matrix
+diag_sparse = diags([1, 2, 3], offsets=[0], shape=(3, 3))
+
+# Sparse identity matrix
+sparse_eye = eye(1000, format='csr')
+
+# Solve sparse linear system
+A_sparse = csr_matrix([[1, 2], [3, 4]])
+b = np.array([1, 2])
+x = spsolve(A_sparse, b)
+</code></pre>
+<h3 id="fft-module-scipyfft">FFT Module (<code>scipy.fft</code>)</h3>
+<pre><code class="language-python">from scipy.fft import fft, ifft, fft2, ifft2, fftfreq, rfft
+
+# 1D FFT
+signal = np.sin(2*np.pi*5*np.linspace(0, 1, 1000))
+fft_signal = fft(signal)
+freq = fftfreq(len(signal), 1/1000)
+
+# Real FFT (for real-valued signals)
+rfft_signal = rfft(signal)
+rfreq = fftfreq(len(signal), 1/1000)[:len(rfft_signal)]
+
+# 2D FFT
+image = np.random.rand(100, 100)
+fft2_image = fft2(image)
+ifft2_image = ifft2(fft2_image)  # Should recover original
+
+# Verify reconstruction
+reconstruction_error = np.max(np.abs(image - ifft2_image.real))
+print(f&quot;Reconstruction error: {reconstruction_error:.2e}&quot;)
+</code></pre>
+<h2 id="common-use-cases">Common Use Cases</h2>
+<h3 id="statistical-analysis-workflow">Statistical Analysis Workflow</h3>
+<pre><code class="language-python"># Complete statistical analysis example
+import pandas as pd
+from scipy import stats
+
+# Generate sample data
+np.random.seed(42)
+group_a = np.random.normal(100, 15, 50)
+group_b = np.random.normal(105, 15, 50)
+
+# Descriptive statistics
+print(&quot;Group A:&quot;)
+print(f&quot;Mean: {np.mean(group_a):.2f}, Std: {np.std(group_a, ddof=1):.2f}&quot;)
+print(&quot;Group B:&quot;)
+print(f&quot;Mean: {np.mean(group_b):.2f}, Std: {np.std(group_b, ddof=1):.2f}&quot;)
+
+# Test for normality
+_, p_a = stats.shapiro(group_a)
+_, p_b = stats.shapiro(group_b)
+print(f&quot;\nNormality tests (Shapiro-Wilk):&quot;)
+print(f&quot;Group A p-value: {p_a:.4f}&quot;)
+print(f&quot;Group B p-value: {p_b:.4f}&quot;)
+
+# Test for equal variances
+_, p_levene = stats.levene(group_a, group_b)
+print(f&quot;\nEqual variances test (Levene): p-value = {p_levene:.4f}&quot;)
+
+# Choose appropriate t-test
+if p_levene &gt; 0.05:  # Equal variances
+    t_stat, p_ttest = stats.ttest_ind(group_a, group_b, equal_var=True)
+    print(f&quot;\nStudent's t-test: t = {t_stat:.4f}, p = {p_ttest:.4f}&quot;)
+else:  # Unequal variances
+    t_stat, p_ttest = stats.ttest_ind(group_a, group_b, equal_var=False)
+    print(f&quot;\nWelch's t-test: t = {t_stat:.4f}, p = {p_ttest:.4f}&quot;)
+
+# Effect size (Cohen's d)
+pooled_std = np.sqrt(((len(group_a)-1)*np.var(group_a, ddof=1) + 
+                      (len(group_b)-1)*np.var(group_b, ddof=1)) / 
+                     (len(group_a) + len(group_b) - 2))
+cohens_d = (np.mean(group_a) - np.mean(group_b)) / pooled_std
+print(f&quot;Cohen's d: {cohens_d:.4f}&quot;)
+</code></pre>
+<h3 id="signal-processing-pipeline">Signal Processing Pipeline</h3>
+<pre><code class="language-python"># Complete signal processing example
+from scipy import signal
+import matplotlib.pyplot as plt
+
+# Generate noisy signal
+fs = 1000
+t = np.linspace(0, 2, 2*fs, endpoint=False)
+clean_signal = (np.sin(2*np.pi*10*t) + 
+                0.5*np.sin(2*np.pi*20*t) + 
+                0.3*np.sin(2*np.pi*30*t))
+noisy_signal = clean_signal + 0.2*np.random.randn(len(t))
+
+# Design and apply filters
+# Low-pass filter
+sos_low = signal.butter(4, 25, btype='low', fs=fs, output='sos')
+filtered_low = signal.sosfiltfilt(sos_low, noisy_signal)
+
+# Band-pass filter
+sos_band = signal.butter(4, [15, 25], btype='band', fs=fs, output='sos')
+filtered_band = signal.sosfiltfilt(sos_band, noisy_signal)
+
+# Spectral analysis
+f, psd = signal.welch(noisy_signal, fs, nperseg=1024)
+f_clean, psd_clean = signal.welch(clean_signal, fs, nperseg=1024)
+f_filt, psd_filt = signal.welch(filtered_low, fs, nperseg=1024)
+
+# Find peaks in filtered signal
+peaks, properties = signal.find_peaks(filtered_low, height=0.5, distance=50)
+
+# Plot results
+fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+
+# Time domain
+axes[0,0].plot(t[:500], noisy_signal[:500], alpha=0.7, label='Noisy')
+axes[0,0].plot(t[:500], filtered_low[:500], label='Filtered')
+axes[0,0].set_title('Time Domain')
+axes[0,0].legend()
+
+# Frequency domain
+axes[0,1].semilogy(f, psd, alpha=0.7, label='Noisy')
+axes[0,1].semilogy(f_filt, psd_filt, label='Filtered')
+axes[0,1].set_title('Power Spectral Density')
+axes[0,1].legend()
+
+# Peak detection
+axes[1,0].plot(filtered_low[:1000])
+axes[1,0].plot(peaks[peaks&lt;1000], filtered_low[peaks[peaks&lt;1000]], 'ro')
+axes[1,0].set_title('Peak Detection')
+
+# Spectrogram
+f_spec, t_spec, Sxx = signal.spectrogram(noisy_signal, fs, nperseg=256)
+axes[1,1].pcolormesh(t_spec, f_spec, 10*np.log10(Sxx), shading='gouraud')
+axes[1,1].set_title('Spectrogram')
+axes[1,1].set_ylabel('Frequency (Hz)')
+axes[1,1].set_xlabel('Time (s)')
+
+plt.tight_layout()
+</code></pre>
+<h3 id="optimization-problem">Optimization Problem</h3>
+<pre><code class="language-python"># Multi-modal optimization example
+from scipy.optimize import minimize, differential_evolution, basinhopping
+
+# Define a complex function with multiple local minima
+def complex_function(x):
+    x1, x2 = x
+    return (x1**2 + x2 - 11)**2 + (x1 + x2**2 - 7)**2
+
+# Local optimization (may get stuck in local minima)
+x0 = [0, 0]
+result_local = minimize(complex_function, x0, method='BFGS')
+
+# Global optimization methods
+bounds = [(-5, 5), (-5, 5)]
+result_global = differential_evolution(complex_function, bounds, seed=42)
+
+# Basin-hopping (another global method)
+minimizer_kwargs = {&quot;method&quot;: &quot;BFGS&quot;}
+result_basinhopping = basinhopping(complex_function, x0, 
+                                   minimizer_kwargs=minimizer_kwargs, 
+                                   niter=100, T=1.0, stepsize=0.5)
+
+print(&quot;Local minimum (BFGS):&quot;, result_local.x, &quot;f =&quot;, result_local.fun)
+print(&quot;Global minimum (DE):&quot;, result_global.x, &quot;f =&quot;, result_global.fun)
+print(&quot;Basin-hopping result:&quot;, result_basinhopping.x, &quot;f =&quot;, result_basinhopping.fun)
+
+# Visualize the function and minima
+x1_range = np.linspace(-5, 5, 100)
+x2_range = np.linspace(-5, 5, 100)
+X1, X2 = np.meshgrid(x1_range, x2_range)
+Z = complex_function([X1, X2])
+
+plt.figure(figsize=(10, 8))
+contour = plt.contour(X1, X2, Z, levels=50)
+plt.colorbar(contour)
+plt.plot(result_local.x[0], result_local.x[1], 'ro', markersize=10, label='Local min')
+plt.plot(result_global.x[0], result_global.x[1], 'go', markersize=10, label='Global min')
+plt.xlabel('x1')
+plt.ylabel('x2')
+plt.title('Function Landscape with Optimization Results')
+plt.legend()
+</code></pre>
+<h2 id="integration-with-other-libraries">Integration with Other Libraries</h2>
+<h3 id="numpy-integration">NumPy Integration</h3>
+<pre><code class="language-python"># SciPy functions work seamlessly with NumPy arrays
+data = np.random.exponential(2, 1000)
+
+# Fit distribution
+params = stats.expon.fit(data)
+print(f&quot;Fitted parameters: scale = {params[1]:.4f}&quot;)
+
+# Kolmogorov-Smirnov test
+ks_stat, p_value = stats.kstest(data, lambda x: stats.expon.cdf(x, *params))
+print(f&quot;K-S test: statistic = {ks_stat:.4f}, p-value = {p_value:.4f}&quot;)
+</code></pre>
+<h3 id="matplotlib-integration">Matplotlib Integration</h3>
+<pre><code class="language-python"># Visualization with matplotlib
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# Q-Q plot
+stats.probplot(data, dist=&quot;expon&quot;, plot=axes[0,0])
+axes[0,0].set_title(&quot;Q-Q Plot&quot;)
+
+# Histogram with fitted PDF
+axes[0,1].hist(data, bins=50, density=True, alpha=0.7, label='Data')
+x_fit = np.linspace(0, np.max(data), 100)
+axes[0,1].plot(x_fit, stats.expon.pdf(x_fit, *params), 'r-', lw=2, label='Fitted PDF')
+axes[0,1].legend()
+axes[0,1].set_title(&quot;Histogram with Fitted Distribution&quot;)
+
+# CDF comparison
+sorted_data = np.sort(data)
+empirical_cdf = np.arange(1, len(data)+1) / len(data)
+theoretical_cdf = stats.expon.cdf(sorted_data, *params)
+axes[1,0].plot(sorted_data, empirical_cdf, label='Empirical CDF')
+axes[1,0].plot(sorted_data, theoretical_cdf, 'r-', label='Theoretical CDF')
+axes[1,0].legend()
+axes[1,0].set_title(&quot;CDF Comparison&quot;)
+
+plt.tight_layout()
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="performance-tips">Performance Tips</h3>
+<pre><code class="language-python"># Use vectorized operations
+# Good
+x = np.linspace(0, 10, 1000000)
+y = stats.norm.pdf(x, 0, 1)
+
+# Avoid loops when possible
+# Bad (slow)
+# y = np.array([stats.norm.pdf(xi, 0, 1) for xi in x])
+
+# Use appropriate data types
+data_float32 = np.random.rand(10000).astype(np.float32)
+data_float64 = np.random.rand(10000).astype(np.float64)
+
+# Profile your code for bottlenecks
+import cProfile
+cProfile.run('stats.ttest_ind(group_a, group_b)')
+</code></pre>
+<h3 id="memory-management">Memory Management</h3>
+<pre><code class="language-python"># For large datasets, consider chunking
+def process_large_dataset(data, chunk_size=10000):
+    results = []
+    for i in range(0, len(data), chunk_size):
+        chunk = data[i:i+chunk_size]
+        result = stats.describe(chunk)
+        results.append(result)
+    return results
+
+# Use sparse matrices for sparse data
+from scipy.sparse import csr_matrix
+# Instead of dense matrix with many zeros
+# dense = np.zeros((10000, 10000))
+# Use sparse representation
+sparse = csr_matrix((10000, 10000))
+</code></pre>
+<h3 id="error-handling">Error Handling</h3>
+<pre><code class="language-python"># Handle numerical issues
+def safe_division(a, b):
+    try:
+        result = a / b
+        if np.isnan(result) or np.isinf(result):
+            return None
+        return result
+    except ZeroDivisionError:
+        return None
+
+# Check for convergence in optimization
+result = minimize(rosenbrock, x0, method='BFGS')
+if result.success:
+    print(f&quot;Optimization successful: {result.x}&quot;)
+else:
+    print(f&quot;Optimization failed: {result.message}&quot;)
+
+# Validate statistical test assumptions
+def check_normality(data, alpha=0.05):
+    statistic, p_value = stats.shapiro(data)
+    is_normal = p_value &gt; alpha
+    return is_normal, p_value
+</code></pre>
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="key-modules">Key Modules</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Purpose</th>
+<th>Common Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scipy.stats</code></td>
+<td>Statistics</td>
+<td><code>norm</code>, <code>ttest_ind</code>, <code>pearsonr</code>, <code>chi2_contingency</code></td>
+</tr>
+<tr>
+<td><code>scipy.optimize</code></td>
+<td>Optimization</td>
+<td><code>minimize</code>, <code>curve_fit</code>, <code>fsolve</code></td>
+</tr>
+<tr>
+<td><code>scipy.linalg</code></td>
+<td>Linear algebra</td>
+<td><code>solve</code>, <code>eig</code>, <code>svd</code>, <code>cholesky</code></td>
+</tr>
+<tr>
+<td><code>scipy.signal</code></td>
+<td>Signal processing</td>
+<td><code>butter</code>, <code>filtfilt</code>, <code>find_peaks</code>, <code>periodogram</code></td>
+</tr>
+<tr>
+<td><code>scipy.interpolate</code></td>
+<td>Interpolation</td>
+<td><code>interp1d</code>, <code>griddata</code>, <code>CubicSpline</code></td>
+</tr>
+<tr>
+<td><code>scipy.integrate</code></td>
+<td>Integration</td>
+<td><code>quad</code>, <code>solve_ivp</code>, <code>odeint</code></td>
+</tr>
+<tr>
+<td><code>scipy.spatial</code></td>
+<td>Spatial algorithms</td>
+<td><code>distance</code>, <code>KDTree</code>, <code>ConvexHull</code></td>
+</tr>
+<tr>
+<td><code>scipy.sparse</code></td>
+<td>Sparse matrices</td>
+<td><code>csr_matrix</code>, <code>spsolve</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="statistical-tests-quick-guide">Statistical Tests Quick Guide</h3>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Function</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One-sample t-test</td>
+<td><code>ttest_1samp</code></td>
+<td>Compare sample mean to population mean</td>
+</tr>
+<tr>
+<td>Two-sample t-test</td>
+<td><code>ttest_ind</code></td>
+<td>Compare two independent groups</td>
+</tr>
+<tr>
+<td>Paired t-test</td>
+<td><code>ttest_rel</code></td>
+<td>Compare paired/dependent samples</td>
+</tr>
+<tr>
+<td>Mann-Whitney U</td>
+<td><code>mannwhitneyu</code></td>
+<td>Non-parametric comparison of two groups</td>
+</tr>
+<tr>
+<td>Wilcoxon signed-rank</td>
+<td><code>wilcoxon</code></td>
+<td>Non-parametric paired test</td>
+</tr>
+<tr>
+<td>Chi-square</td>
+<td><code>chi2_contingency</code></td>
+<td>Test independence in contingency tables</td>
+</tr>
+<tr>
+<td>Kolmogorov-Smirnov</td>
+<td><code>kstest</code></td>
+<td>Test goodness of fit to distribution</td>
+</tr>
+<tr>
+<td>Shapiro-Wilk</td>
+<td><code>shapiro</code></td>
+<td>Test for normality</td>
+</tr>
+<tr>
+<td>Levene's test</td>
+<td><code>levene</code></td>
+<td>Test for equal variances</td>
+</tr>
+</tbody>
+</table>
+<h3 id="distribution-quick-reference">Distribution Quick Reference</h3>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>Function</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal</td>
+<td><code>norm</code></td>
+<td><code>loc</code> (mean), <code>scale</code> (std)</td>
+</tr>
+<tr>
+<td>Student's t</td>
+<td><code>t</code></td>
+<td><code>df</code> (degrees of freedom)</td>
+</tr>
+<tr>
+<td>Chi-square</td>
+<td><code>chi2</code></td>
+<td><code>df</code> (degrees of freedom)</td>
+</tr>
+<tr>
+<td>F-distribution</td>
+<td><code>f</code></td>
+<td><code>dfn</code>, <code>dfd</code> (degrees of freedom)</td>
+</tr>
+<tr>
+<td>Binomial</td>
+<td><code>binom</code></td>
+<td><code>n</code> (trials), <code>p</code> (probability)</td>
+</tr>
+<tr>
+<td>Poisson</td>
+<td><code>poisson</code></td>
+<td><code>mu</code> (rate parameter)</td>
+</tr>
+<tr>
+<td>Exponential</td>
+<td><code>expon</code></td>
+<td><code>scale</code> (1/rate)</td>
+</tr>
+<tr>
+<td>Uniform</td>
+<td><code>uniform</code></td>
+<td><code>loc</code> (lower), <code>scale</code> (range)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

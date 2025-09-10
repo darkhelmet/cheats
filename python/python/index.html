@@ -1,0 +1,6039 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../polars/">
+      
+      
+        <link rel="next" href="../pytorch/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Python - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Syntax
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-and-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables and Assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-membership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identity and Membership
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Statements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loops
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Loops
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      While Loops
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loop Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decorators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decorators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes and Objects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes and Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dunder-methods-magic-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dunder Methods (Magic Methods)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dunder Methods (Magic Methods)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Representation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-initialization-and-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Initialization and Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-like-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container-like Behavior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterator-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterator Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-manager-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Manager Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callable-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callable Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashing-and-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hashing and Equality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-operators_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Operators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-slang-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Slang and Terminology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python Slang and Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-python-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Python Terminology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Python Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dunder-double-underscore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dunder (Double Underscore)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pythonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pythonic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-philosophies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming Philosophies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programming Philosophies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eafp-easier-to-ask-for-forgiveness-than-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      EAFP (Easier to Ask for Forgiveness than Permission)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lbyl-look-before-you-leap" class="md-nav__link">
+    <span class="md-ellipsis">
+      LBYL (Look Before You Leap)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-system-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type System Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type System Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duck-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duck Typing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkey-patching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monkey Patching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-structure-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structure Terminology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structure Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-comprehension-vs-generator-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehension vs Generator Expression
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Language Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gil-global-interpreter-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      GIL (Global Interpreter Lock)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descriptor-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descriptor Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metaclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metaclass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-patterns-and-idioms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns and Idioms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns and Idioms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unpacking-and-packing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unpacking and Packing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#walrus-operator-assignment-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Walrus Operator (Assignment Expression)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-python-culture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Python Culture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Python Culture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-zen-of-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Zen of Python
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exception Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exception Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Exception Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Exceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-and-writing-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading and Writing Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with JSON
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with CSV
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-and-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modules and Packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules and Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importing-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-built-ins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Built-ins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input/Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-slicing-and-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Slicing and Indexing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-comprehensions-and-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions and Generators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List Comprehensions and Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionary-and-set-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionary and Set Comprehensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generator Expressions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Managers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Managers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-context-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Context Managers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-context-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Context Managers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regular Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-regex-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Regex Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-regex-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Regex Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-dates-and-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Dates and Times
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Dates and Times">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datetime-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      datetime Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      time Module
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specific-exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Exception Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#singleton-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Singleton Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factory Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hints-and-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Hints and Annotations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type Hints and Annotations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-type-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Type Hints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-type-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Type Hints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataclasses
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataclasses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-dataclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Dataclasses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#async-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Async Programming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Async Programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Async/Await
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collections-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collections Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collections Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specialized-data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Data Structures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#itertools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Itertools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Itertools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-iteration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Iteration Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pathlib-modern-file-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pathlib (Modern File Handling)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pathlib (Modern File Handling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#path-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Logging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Arguments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Line Arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-argparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using argparse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-unittest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using unittest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pytest-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pytest (Alternative)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-environments-and-package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Environments and Package Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Environments and Package Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-virtual-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Virtual Environments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementstxt-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      requirements.txt example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-third-party-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Third-Party Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Third-Party Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requests-http-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requests (HTTP Client)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-data-analysis-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Data Analysis (Pandas)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Syntax
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-and-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables and Assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-membership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identity and Membership
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Statements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loops
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Loops
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      While Loops
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loop Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decorators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decorators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes and Objects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes and Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dunder-methods-magic-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dunder Methods (Magic Methods)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dunder Methods (Magic Methods)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Representation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-initialization-and-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Initialization and Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-like-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container-like Behavior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterator-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterator Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-manager-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Manager Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callable-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callable Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashing-and-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hashing and Equality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-operators_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Operators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-slang-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Slang and Terminology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python Slang and Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-python-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Python Terminology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Python Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dunder-double-underscore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dunder (Double Underscore)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pythonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pythonic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-philosophies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming Philosophies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programming Philosophies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eafp-easier-to-ask-for-forgiveness-than-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      EAFP (Easier to Ask for Forgiveness than Permission)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lbyl-look-before-you-leap" class="md-nav__link">
+    <span class="md-ellipsis">
+      LBYL (Look Before You Leap)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-system-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type System Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type System Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duck-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duck Typing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkey-patching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monkey Patching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-structure-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structure Terminology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structure Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-comprehension-vs-generator-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehension vs Generator Expression
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Language Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gil-global-interpreter-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      GIL (Global Interpreter Lock)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descriptor-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descriptor Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metaclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metaclass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-patterns-and-idioms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns and Idioms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns and Idioms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unpacking-and-packing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unpacking and Packing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#walrus-operator-assignment-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Walrus Operator (Assignment Expression)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-python-culture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Python Culture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Python Culture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-zen-of-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Zen of Python
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exception Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exception Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Exception Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Exceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-and-writing-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading and Writing Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with JSON
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with CSV
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-and-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modules and Packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules and Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importing-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-built-ins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Built-ins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input/Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-slicing-and-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Slicing and Indexing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-comprehensions-and-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions and Generators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List Comprehensions and Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionary-and-set-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionary and Set Comprehensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generator Expressions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Managers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Managers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-context-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Context Managers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-context-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Context Managers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regular Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-regex-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Regex Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-regex-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Regex Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-dates-and-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Dates and Times
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Dates and Times">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datetime-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      datetime Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      time Module
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specific-exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Exception Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#singleton-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Singleton Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factory Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hints-and-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Hints and Annotations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type Hints and Annotations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-type-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Type Hints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-type-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Type Hints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataclasses
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataclasses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-dataclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Dataclasses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#async-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Async Programming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Async Programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Async/Await
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collections-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collections Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collections Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specialized-data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Data Structures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#itertools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Itertools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Itertools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-iteration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Iteration Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pathlib-modern-file-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pathlib (Modern File Handling)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pathlib (Modern File Handling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#path-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Logging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Arguments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Line Arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-argparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using argparse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-unittest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using unittest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pytest-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pytest (Alternative)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-environments-and-package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Environments and Package Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Environments and Package Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-virtual-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Virtual Environments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementstxt-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      requirements.txt example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-third-party-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Third-Party Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Third-Party Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requests-http-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requests (HTTP Client)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-data-analysis-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Data Analysis (Pandas)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="python">Python</h1>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash"># Download from python.org or use package manager
+# macOS with Homebrew
+brew install python
+
+# Ubuntu/Debian
+sudo apt update &amp;&amp; sudo apt install python3 python3-pip
+
+# Windows
+# Download from python.org or use Microsoft Store
+
+# Check version
+python --version
+python3 --version
+</code></pre>
+<h2 id="basic-syntax">Basic Syntax</h2>
+<h3 id="variables-and-assignment">Variables and Assignment</h3>
+<pre><code class="language-python"># Variable assignment
+x = 5
+name = &quot;Alice&quot;
+is_active = True
+
+# Multiple assignment
+a, b, c = 1, 2, 3
+x = y = z = 0
+
+# Swapping variables
+a, b = b, a
+</code></pre>
+<h3 id="data-types">Data Types</h3>
+<pre><code class="language-python"># Numeric types
+integer = 42
+float_num = 3.14
+complex_num = 2 + 3j
+
+# Strings
+single_quote = 'Hello'
+double_quote = &quot;World&quot;
+multiline = &quot;&quot;&quot;This is a
+multiline string&quot;&quot;&quot;
+
+# Boolean
+is_true = True
+is_false = False
+
+# None type
+empty_value = None
+
+# Type checking
+type(42)          # &lt;class 'int'&gt;
+isinstance(42, int)  # True
+</code></pre>
+<h2 id="operators">Operators</h2>
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+<pre><code class="language-python"># Basic arithmetic
+a + b    # Addition
+a - b    # Subtraction
+a * b    # Multiplication
+a / b    # Division (float)
+a // b   # Floor division
+a % b    # Modulus
+a ** b   # Exponentiation
+
+# Augmented assignment
+x += 5   # x = x + 5
+x -= 3   # x = x - 3
+x *= 2   # x = x * 2
+x /= 4   # x = x / 4
+</code></pre>
+<h3 id="comparison-operators">Comparison Operators</h3>
+<pre><code class="language-python">a == b   # Equal
+a != b   # Not equal
+a &lt; b    # Less than
+a &lt;= b   # Less than or equal
+a &gt; b    # Greater than
+a &gt;= b   # Greater than or equal
+
+# Chaining comparisons
+1 &lt; x &lt; 10  # True if x is between 1 and 10
+</code></pre>
+<h3 id="logical-operators">Logical Operators</h3>
+<pre><code class="language-python"># Boolean logic
+a and b  # Logical AND
+a or b   # Logical OR
+not a    # Logical NOT
+
+# Short-circuit evaluation
+result = condition1 and condition2  # condition2 only evaluated if condition1 is True
+result = condition1 or condition2   # condition2 only evaluated if condition1 is False
+</code></pre>
+<h3 id="identity-and-membership">Identity and Membership</h3>
+<pre><code class="language-python"># Identity operators
+a is b       # Same object
+a is not b   # Different objects
+
+# Membership operators
+item in container     # True if item is in container
+item not in container # True if item is not in container
+
+# Examples
+x = [1, 2, 3]
+2 in x      # True
+4 not in x  # True
+</code></pre>
+<h2 id="control-flow">Control Flow</h2>
+<h3 id="conditional-statements">Conditional Statements</h3>
+<pre><code class="language-python"># if-elif-else
+if condition1:
+    # code block
+elif condition2:
+    # code block
+else:
+    # code block
+
+# Ternary operator
+result = value_if_true if condition else value_if_false
+
+# Examples
+age = 18
+status = &quot;adult&quot; if age &gt;= 18 else &quot;minor&quot;
+
+# Multiple conditions
+if 18 &lt;= age &lt; 65:
+    print(&quot;Working age&quot;)
+</code></pre>
+<h3 id="loops">Loops</h3>
+<h4 id="for-loops">For Loops</h4>
+<pre><code class="language-python"># Iterating over sequences
+for item in [1, 2, 3]:
+    print(item)
+
+# Range function
+for i in range(5):        # 0 to 4
+    print(i)
+
+for i in range(2, 8):     # 2 to 7
+    print(i)
+
+for i in range(0, 10, 2): # 0, 2, 4, 6, 8
+    print(i)
+
+# Enumerate for index and value
+for index, value in enumerate(['a', 'b', 'c']):
+    print(f&quot;{index}: {value}&quot;)
+
+# Zip for parallel iteration
+for x, y in zip([1, 2, 3], ['a', 'b', 'c']):
+    print(x, y)
+</code></pre>
+<h4 id="while-loops">While Loops</h4>
+<pre><code class="language-python"># While loop
+count = 0
+while count &lt; 5:
+    print(count)
+    count += 1
+
+# Infinite loop with break
+while True:
+    user_input = input(&quot;Enter 'quit' to exit: &quot;)
+    if user_input == 'quit':
+        break
+    print(f&quot;You entered: {user_input}&quot;)
+</code></pre>
+<h4 id="loop-control">Loop Control</h4>
+<pre><code class="language-python"># break - exit loop
+for i in range(10):
+    if i == 5:
+        break
+    print(i)  # prints 0, 1, 2, 3, 4
+
+# continue - skip iteration
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)  # prints 0, 1, 3, 4
+
+# else clause (executes if loop completes normally)
+for i in range(3):
+    print(i)
+else:
+    print(&quot;Loop completed&quot;)
+</code></pre>
+<h2 id="data-structures">Data Structures</h2>
+<h3 id="lists">Lists</h3>
+<pre><code class="language-python"># Creating lists
+empty_list = []
+numbers = [1, 2, 3, 4, 5]
+mixed = [1, &quot;hello&quot;, 3.14, True]
+
+# List methods
+numbers.append(6)           # Add to end
+numbers.insert(0, 0)        # Insert at index
+numbers.extend([7, 8])      # Add multiple items
+numbers.remove(3)           # Remove first occurrence
+item = numbers.pop()        # Remove and return last item
+item = numbers.pop(0)       # Remove and return item at index
+
+# List operations
+len(numbers)                # Length
+numbers[0]                  # Access by index
+numbers[-1]                 # Last item
+numbers[1:4]                # Slicing
+numbers[:3]                 # First 3 items
+numbers[2:]                 # From index 2 to end
+numbers[::2]                # Every 2nd item
+
+# List comprehension
+squares = [x**2 for x in range(10)]
+evens = [x for x in range(20) if x % 2 == 0]
+</code></pre>
+<h3 id="tuples">Tuples</h3>
+<pre><code class="language-python"># Creating tuples
+empty_tuple = ()
+single_item = (42,)         # Note the comma
+coordinates = (10, 20)
+rgb = (255, 128, 0)
+
+# Tuple unpacking
+x, y = coordinates
+r, g, b = rgb
+
+# Named tuples
+from collections import namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(10, 20)
+print(p.x, p.y)
+</code></pre>
+<h3 id="dictionaries">Dictionaries</h3>
+<pre><code class="language-python"># Creating dictionaries
+empty_dict = {}
+person = {'name': 'Alice', 'age': 30, 'city': 'New York'}
+person = dict(name='Alice', age=30, city='New York')
+
+# Dictionary operations
+person['name']              # Access value
+person['email'] = 'alice@example.com'  # Add/update
+del person['age']           # Delete key
+person.get('phone', 'N/A')  # Get with default
+
+# Dictionary methods
+person.keys()               # All keys
+person.values()             # All values
+person.items()              # Key-value pairs
+person.update({'age': 31})  # Update multiple
+
+# Dictionary comprehension
+squares = {x: x**2 for x in range(5)}
+</code></pre>
+<h3 id="sets">Sets</h3>
+<pre><code class="language-python"># Creating sets
+empty_set = set()
+numbers = {1, 2, 3, 4, 5}
+from_list = set([1, 2, 2, 3])  # Duplicates removed
+
+# Set operations
+numbers.add(6)              # Add element
+numbers.remove(3)           # Remove element (raises error if not found)
+numbers.discard(10)         # Remove element (no error if not found)
+
+# Set mathematics
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+set1 | set2                 # Union {1, 2, 3, 4, 5}
+set1 &amp; set2                 # Intersection {3}
+set1 - set2                 # Difference {1, 2}
+set1 ^ set2                 # Symmetric difference {1, 2, 4, 5}
+</code></pre>
+<h2 id="functions">Functions</h2>
+<h3 id="basic-functions">Basic Functions</h3>
+<pre><code class="language-python"># Function definition
+def greet(name):
+    return f&quot;Hello, {name}!&quot;
+
+# Function with default parameters
+def greet(name, greeting=&quot;Hello&quot;):
+    return f&quot;{greeting}, {name}!&quot;
+
+# Multiple return values
+def divide_and_remainder(a, b):
+    return a // b, a % b
+
+quotient, remainder = divide_and_remainder(17, 5)
+
+# Variable arguments
+def sum_all(*args):
+    return sum(args)
+
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f&quot;{key}: {value}&quot;)
+
+# Mixed arguments
+def complex_func(required, default=&quot;default&quot;, *args, **kwargs):
+    print(f&quot;Required: {required}&quot;)
+    print(f&quot;Default: {default}&quot;)
+    print(f&quot;Args: {args}&quot;)
+    print(f&quot;Kwargs: {kwargs}&quot;)
+</code></pre>
+<h3 id="lambda-functions">Lambda Functions</h3>
+<pre><code class="language-python"># Lambda (anonymous) functions
+square = lambda x: x**2
+add = lambda x, y: x + y
+
+# Common use with higher-order functions
+numbers = [1, 2, 3, 4, 5]
+squares = list(map(lambda x: x**2, numbers))
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+
+# Sorting with lambda
+students = [('Alice', 85), ('Bob', 92), ('Charlie', 78)]
+students.sort(key=lambda student: student[1])  # Sort by grade
+</code></pre>
+<h3 id="decorators">Decorators</h3>
+<pre><code class="language-python"># Simple decorator
+def my_decorator(func):
+    def wrapper():
+        print(&quot;Before function call&quot;)
+        func()
+        print(&quot;After function call&quot;)
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print(&quot;Hello!&quot;)
+
+# Decorator with arguments
+def repeat(times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(times):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator
+
+@repeat(3)
+def greet(name):
+    print(f&quot;Hello, {name}!&quot;)
+
+# Built-in decorators
+@staticmethod
+def utility_function():
+    pass
+
+@classmethod
+def from_string(cls, string):
+    pass
+
+@property
+def full_name(self):
+    return f&quot;{self.first} {self.last}&quot;
+</code></pre>
+<h2 id="classes-and-objects">Classes and Objects</h2>
+<h3 id="basic-classes">Basic Classes</h3>
+<pre><code class="language-python"># Class definition
+class Person:
+    # Class variable
+    species = &quot;Homo sapiens&quot;
+
+    # Constructor
+    def __init__(self, name, age):
+        self.name = name    # Instance variable
+        self.age = age
+
+    # Instance method
+    def greet(self):
+        return f&quot;Hello, I'm {self.name}&quot;
+
+    # Human-readable string representation
+    def __str__(self):
+        return f&quot;Person named {self.name}, age {self.age}&quot;
+
+    # Developer-friendly string representation
+    def __repr__(self):
+        return f&quot;Person('{self.name}', {self.age})&quot;
+
+# Creating objects
+person1 = Person(&quot;Alice&quot;, 30)
+print(person1.greet())
+</code></pre>
+<h3 id="inheritance">Inheritance</h3>
+<pre><code class="language-python"># Base class
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+    def __str__(self):
+        return f&quot;{self.__class__.__name__}('{self.name}')&quot;
+
+# Derived classes
+class Dog(Animal):
+    def speak(self):
+        return f&quot;{self.name} says Woof!&quot;
+
+class Cat(Animal):
+    def speak(self):
+        return f&quot;{self.name} says Meow!&quot;
+
+# Multiple inheritance
+class FlyingMixin:
+    def fly(self):
+        return f&quot;{self.name} is flying!&quot;
+
+class Bird(Animal, FlyingMixin):
+    def speak(self):
+        return f&quot;{self.name} says Tweet!&quot;
+
+# Using super()
+class Employee(Person):
+    def __init__(self, name, age, employee_id):
+        super().__init__(name, age)
+        self.employee_id = employee_id
+</code></pre>
+<h2 id="dunder-methods-magic-methods">Dunder Methods (Magic Methods)</h2>
+<p>Dunder methods (double underscore methods) are special methods that allow Python objects to implement or modify built-in behaviors. They define how objects interact with operators, built-in functions, and language constructs.</p>
+<h3 id="object-representation">Object Representation</h3>
+<pre><code class="language-python">class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        # Human-readable string representation
+        # Called by str() and print()
+        return f&quot;Person named {self.name}, age {self.age}&quot;
+
+    def __repr__(self):
+        # Unambiguous string representation for developers
+        # Called by repr() and in interactive shell
+        # Should ideally be valid Python code to recreate the object
+        return f&quot;Person('{self.name}', {self.age})&quot;
+
+# Usage
+person = Person(&quot;Alice&quot;, 30)
+print(person)        # Uses __str__: Person named Alice, age 30
+repr(person)         # Uses __repr__: Person('Alice', 30)
+str(person)          # Uses __str__: Person named Alice, age 30
+
+# In interactive shell or debugger, __repr__ is used by default
+</code></pre>
+<h3 id="object-initialization-and-creation">Object Initialization and Creation</h3>
+<pre><code class="language-python">class DatabaseConnection:
+    def __new__(cls, host, port):
+        # Controls object creation (rarely overridden)
+        # Called before __init__
+        print(f&quot;Creating connection to {host}:{port}&quot;)
+        instance = super().__new__(cls)
+        return instance
+
+    def __init__(self, host, port):
+        # Object initialization after creation
+        # Most commonly used constructor method
+        self.host = host
+        self.port = port
+        print(f&quot;Initialized connection to {host}:{port}&quot;)
+
+# Example of when __new__ is useful (Singleton pattern)
+class Singleton:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+</code></pre>
+<h3 id="container-like-behavior">Container-like Behavior</h3>
+<pre><code class="language-python">class CustomList:
+    def __init__(self, items=None):
+        self.items = items or []
+
+    def __len__(self):
+        # Called by len()
+        return len(self.items)
+
+    def __bool__(self):
+        # Called by bool() and in boolean contexts
+        # If not defined, __len__ is used (0 is False)
+        return len(self.items) &gt; 0
+
+    def __getitem__(self, key):
+        # Called for indexing: obj[key]
+        return self.items[key]
+
+    def __setitem__(self, key, value):
+        # Called for item assignment: obj[key] = value
+        self.items[key] = value
+
+    def __delitem__(self, key):
+        # Called for item deletion: del obj[key]
+        del self.items[key]
+
+    def __contains__(self, item):
+        # Called by 'in' operator
+        return item in self.items
+
+# Usage
+custom_list = CustomList([1, 2, 3, 4])
+print(len(custom_list))      # 4
+print(bool(custom_list))     # True
+print(custom_list[0])        # 1
+custom_list[0] = 10         # Sets first item to 10
+del custom_list[1]          # Removes second item
+print(2 in custom_list)     # False (was deleted)
+</code></pre>
+<h3 id="iterator-protocol">Iterator Protocol</h3>
+<pre><code class="language-python">class NumberSequence:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def __iter__(self):
+        # Returns iterator object (often self)
+        # Called by iter() and in for loops
+        self.current = self.start
+        return self
+
+    def __next__(self):
+        # Returns next item in iteration
+        # Called by next() and automatically in for loops
+        if self.current &lt; self.end:
+            num = self.current
+            self.current += 1
+            return num
+        else:
+            raise StopIteration
+
+# Usage
+sequence = NumberSequence(1, 5)
+for num in sequence:        # Uses __iter__ and __next__
+    print(num)              # Prints 1, 2, 3, 4
+
+# Manual iteration
+iterator = iter(sequence)   # Calls __iter__
+print(next(iterator))       # Calls __next__
+</code></pre>
+<h3 id="context-manager-protocol">Context Manager Protocol</h3>
+<pre><code class="language-python">class FileManager:
+    def __init__(self, filename, mode):
+        self.filename = filename
+        self.mode = mode
+        self.file = None
+
+    def __enter__(self):
+        # Called when entering 'with' block
+        # Return value is assigned to 'as' variable
+        print(f&quot;Opening {self.filename}&quot;)
+        self.file = open(self.filename, self.mode)
+        return self.file
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        # Called when exiting 'with' block
+        # Parameters contain exception info if one occurred
+        print(f&quot;Closing {self.filename}&quot;)
+        if self.file:
+            self.file.close()
+
+        # Return False to propagate exceptions
+        # Return True to suppress exceptions
+        return False
+
+# Usage
+with FileManager(&quot;data.txt&quot;, &quot;w&quot;) as f:
+    f.write(&quot;Hello, World!&quot;)
+# File is automatically closed
+
+# Another example: Timer context manager
+import time
+
+class Timer:
+    def __enter__(self):
+        self.start_time = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        elapsed = time.time() - self.start_time
+        print(f&quot;Elapsed time: {elapsed:.2f} seconds&quot;)
+        return False
+
+with Timer():
+    # Some time-consuming operation
+    time.sleep(1)
+</code></pre>
+<h3 id="callable-objects">Callable Objects</h3>
+<pre><code class="language-python">class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+
+    def __call__(self, value):
+        # Makes the object callable like a function
+        return value * self.factor
+
+# Usage
+double = Multiplier(2)
+triple = Multiplier(3)
+
+print(double(5))        # 10 (calls __call__)
+print(triple(4))        # 12
+
+# Check if object is callable
+print(callable(double))  # True
+
+# Useful for creating function-like objects with state
+class Counter:
+    def __init__(self):
+        self.count = 0
+
+    def __call__(self):
+        self.count += 1
+        return self.count
+
+counter = Counter()
+print(counter())        # 1
+print(counter())        # 2
+</code></pre>
+<h3 id="hashing-and-equality">Hashing and Equality</h3>
+<pre><code class="language-python">class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __eq__(self, other):
+        # Defines equality (==)
+        # Also affects !=, which returns the opposite
+        if not isinstance(other, Point):
+            return False
+        return self.x == other.x and self.y == other.y
+
+    def __hash__(self):
+        # Makes object hashable (can be used as dict key or in set)
+        # Objects that compare equal must have same hash value
+        # Immutable objects should implement this
+        return hash((self.x, self.y))
+
+    def __repr__(self):
+        return f&quot;Point({self.x}, {self.y})&quot;
+
+# Usage
+p1 = Point(1, 2)
+p2 = Point(1, 2)
+p3 = Point(2, 3)
+
+print(p1 == p2)         # True
+print(p1 == p3)         # False
+
+# Can be used as dictionary keys
+points_dict = {p1: &quot;origin area&quot;, p3: &quot;far point&quot;}
+print(points_dict[p2])  # &quot;origin area&quot; (p1 == p2)
+
+# Can be added to sets
+point_set = {p1, p2, p3}  # Only p1 and p3 (p1 == p2)
+print(len(point_set))    # 2
+</code></pre>
+<h3 id="arithmetic-operators_1">Arithmetic Operators</h3>
+<pre><code class="language-python">class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        # Addition: self + other
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other):
+        # Subtraction: self - other
+        return Vector(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other):
+        # Multiplication: self * other
+        if isinstance(other, (int, float)):
+            # Scalar multiplication
+            return Vector(self.x * other, self.y * other)
+        else:
+            # Dot product with another vector
+            return self.x * other.x + self.y * other.y
+
+    def __rmul__(self, other):
+        # Right multiplication: other * self
+        # Called when left operand doesn't support operation
+        return self.__mul__(other)
+
+    def __truediv__(self, scalar):
+        # Division: self / other
+        return Vector(self.x / scalar, self.y / scalar)
+
+    def __floordiv__(self, scalar):
+        # Floor division: self // other
+        return Vector(self.x // scalar, self.y // scalar)
+
+    def __mod__(self, scalar):
+        # Modulus: self % other
+        return Vector(self.x % scalar, self.y % scalar)
+
+    def __pow__(self, power):
+        # Exponentiation: self ** other
+        return Vector(self.x ** power, self.y ** power)
+
+    def __abs__(self):
+        # Absolute value: abs(self)
+        return (self.x**2 + self.y**2)**0.5
+
+    def __neg__(self):
+        # Unary minus: -self
+        return Vector(-self.x, -self.y)
+
+    def __str__(self):
+        return f&quot;Vector({self.x}, {self.y})&quot;
+
+# Usage
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+
+print(v1 + v2)          # Vector(4, 6)
+print(v1 - v2)          # Vector(2, 2)
+print(v1 * 2)           # Vector(6, 8) - scalar multiplication
+print(3 * v1)           # Vector(9, 12) - uses __rmul__
+print(v1 * v2)          # 11 - dot product
+print(v1 / 2)           # Vector(1.5, 2.0)
+print(abs(v1))          # 5.0 - magnitude
+print(-v1)              # Vector(-3, -4)
+</code></pre>
+<h3 id="comparison-operators_1">Comparison Operators</h3>
+<pre><code class="language-python">class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def __eq__(self, other):
+        return self.grade == other.grade
+
+    def __lt__(self, other):
+        # Less than: self &lt; other
+        return self.grade &lt; other.grade
+
+    def __le__(self, other):
+        # Less than or equal: self &lt;= other
+        return self.grade &lt;= other.grade
+
+    def __gt__(self, other):
+        # Greater than: self &gt; other
+        return self.grade &gt; other.grade
+
+    def __ge__(self, other):
+        # Greater than or equal: self &gt;= other
+        return self.grade &gt;= other.grade
+
+    def __ne__(self, other):
+        # Not equal: self != other (usually auto-generated from __eq__)
+        return not self.__eq__(other)
+
+    def __repr__(self):
+        return f&quot;Student('{self.name}', {self.grade})&quot;
+
+# Usage
+alice = Student(&quot;Alice&quot;, 85)
+bob = Student(&quot;Bob&quot;, 92)
+charlie = Student(&quot;Charlie&quot;, 85)
+
+print(alice &lt; bob)      # True
+print(alice == charlie) # True
+print(bob &gt;= alice)     # True
+
+# Can be sorted
+students = [bob, alice, charlie]
+sorted_students = sorted(students)  # Sorts by grade using __lt__
+</code></pre>
+<h2 id="python-slang-and-terminology">Python Slang and Terminology</h2>
+<p>Understanding Python's unique terminology and idioms is essential for reading code, documentation, and communicating with other Python developers.</p>
+<h3 id="core-python-terminology">Core Python Terminology</h3>
+<h4 id="dunder-double-underscore">Dunder (Double Underscore)</h4>
+<pre><code class="language-python"># &quot;Dunder&quot; refers to methods with double underscores before and after
+class MyClass:
+    def __init__(self):      # &quot;dunder init&quot;
+        pass
+
+    def __str__(self):       # &quot;dunder str&quot;
+        return &quot;MyClass&quot;
+
+    def __len__(self):       # &quot;dunder len&quot;
+        return 0
+
+# Also applies to built-in variables
+print(__name__)              # &quot;dunder name&quot;
+print(__file__)              # &quot;dunder file&quot;
+</code></pre>
+<h4 id="pythonic">Pythonic</h4>
+<p>Writing code that follows Python idioms and conventions. Emphasizes readability, simplicity, and following "The Zen of Python."</p>
+<pre><code class="language-python"># Non-Pythonic
+numbers = [1, 2, 3, 4, 5]
+squares = []
+for num in numbers:
+    squares.append(num ** 2)
+
+# Pythonic
+squares = [num ** 2 for num in numbers]
+
+# Non-Pythonic
+if len(my_list) == 0:
+    print(&quot;List is empty&quot;)
+
+# Pythonic
+if not my_list:
+    print(&quot;List is empty&quot;)
+
+# Non-Pythonic
+for i in range(len(items)):
+    print(f&quot;{i}: {items[i]}&quot;)
+
+# Pythonic
+for i, item in enumerate(items):
+    print(f&quot;{i}: {item}&quot;)
+</code></pre>
+<h3 id="programming-philosophies">Programming Philosophies</h3>
+<h4 id="eafp-easier-to-ask-for-forgiveness-than-permission">EAFP (Easier to Ask for Forgiveness than Permission)</h4>
+<p>Python's preferred approach: try the operation and handle exceptions rather than checking conditions first.</p>
+<pre><code class="language-python"># EAFP - Pythonic approach
+def get_value(dictionary, key):
+    try:
+        return dictionary[key]
+    except KeyError:
+        return None
+
+def process_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        return &quot;File not found&quot;
+
+# Example with attribute access
+try:
+    result = obj.some_method()
+except AttributeError:
+    result = &quot;Method not available&quot;
+</code></pre>
+<h4 id="lbyl-look-before-you-leap">LBYL (Look Before You Leap)</h4>
+<p>The alternative approach: check conditions before performing operations.</p>
+<pre><code class="language-python"># LBYL - Less Pythonic in most cases
+def get_value(dictionary, key):
+    if key in dictionary:
+        return dictionary[key]
+    else:
+        return None
+
+def process_file(filename):
+    path = Path(filename)
+    if path.exists():
+        with path.open('r') as file:
+            return file.read()
+    else:
+        return &quot;File not found&quot;
+
+# Example with attribute access
+if hasattr(obj, 'some_method'):
+    result = obj.some_method()
+else:
+    result = &quot;Method not available&quot;
+
+# When LBYL is appropriate:
+# - Performance critical code where exceptions are expensive
+# - When checking is much faster than trying and failing
+</code></pre>
+<h3 id="type-system-concepts">Type System Concepts</h3>
+<h4 id="duck-typing">Duck Typing</h4>
+<p>"If it walks like a duck and quacks like a duck, then it's a duck." Objects are judged by their behavior, not their type.</p>
+<pre><code class="language-python"># Duck typing example
+def make_sound(animal):
+    # We don't care what type animal is
+    # We just call its sound() method
+    print(animal.sound())
+
+class Dog:
+    def sound(self):
+        return &quot;Woof!&quot;
+
+class Cat:
+    def sound(self):
+        return &quot;Meow!&quot;
+
+class Robot:
+    def sound(self):
+        return &quot;Beep!&quot;
+
+# All work with make_sound function
+make_sound(Dog())    # Works because Dog has sound()
+make_sound(Cat())    # Works because Cat has sound()
+make_sound(Robot())  # Works because Robot has sound()
+
+# Another example: file-like objects
+def process_data(file_obj):
+    # Works with any object that has read() method
+    return file_obj.read()
+
+# Works with files, StringIO, BytesIO, etc.
+with open('data.txt') as f:
+    process_data(f)
+
+from io import StringIO
+string_file = StringIO(&quot;Hello, World!&quot;)
+process_data(string_file)
+</code></pre>
+<h4 id="monkey-patching">Monkey Patching</h4>
+<p>Dynamically modifying classes or modules at runtime.</p>
+<pre><code class="language-python"># Monkey patching example
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+# Add a new method to the class
+def subtract(self, a, b):
+    return a - b
+
+Calculator.subtract = subtract
+
+# Now all Calculator instances have subtract method
+calc = Calculator()
+print(calc.add(5, 3))      # 8
+print(calc.subtract(5, 3))  # 2
+
+# Monkey patching built-in modules
+import datetime
+
+# Add a custom method to datetime
+def is_weekend(self):
+    return self.weekday() &gt;= 5
+
+datetime.date.is_weekend = is_weekend
+
+# Now all dates have is_weekend method
+today = datetime.date.today()
+print(today.is_weekend())
+
+# Be cautious with monkey patching:
+# - Can make code harder to understand
+# - Can break if the original implementation changes
+# - Use sparingly and document well
+</code></pre>
+<h3 id="data-structure-terminology">Data Structure Terminology</h3>
+<h4 id="list-comprehension-vs-generator-expression">List Comprehension vs Generator Expression</h4>
+<pre><code class="language-python"># List comprehension - creates a list immediately
+squares_list = [x**2 for x in range(10)]
+print(type(squares_list))  # &lt;class 'list'&gt;
+print(squares_list)        # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Generator expression - creates a generator (lazy evaluation)
+squares_gen = (x**2 for x in range(10))
+print(type(squares_gen))   # &lt;class 'generator'&gt;
+print(squares_gen)         # &lt;generator object at 0x...&gt;
+
+# Generator values are produced on-demand
+for square in squares_gen:
+    print(square)          # Prints one at a time
+
+# Memory comparison
+import sys
+large_list = [x for x in range(1000000)]
+large_gen = (x for x in range(1000000))
+print(f&quot;List size: {sys.getsizeof(large_list)} bytes&quot;)
+print(f&quot;Generator size: {sys.getsizeof(large_gen)} bytes&quot;)
+</code></pre>
+<h3 id="language-features">Language Features</h3>
+<h4 id="gil-global-interpreter-lock">GIL (Global Interpreter Lock)</h4>
+<p>Python's mechanism that allows only one thread to execute Python code at a time.</p>
+<pre><code class="language-python">import threading
+import time
+
+# The GIL affects CPU-bound tasks
+def cpu_bound_task():
+    # This won't run in parallel due to GIL
+    total = 0
+    for i in range(10000000):
+        total += i
+    return total
+
+# Multiple threads won't speed up CPU-bound work
+start_time = time.time()
+threads = []
+for _ in range(4):
+    thread = threading.Thread(target=cpu_bound_task)
+    threads.append(thread)
+    thread.start()
+
+for thread in threads:
+    thread.join()
+print(f&quot;Multi-threaded time: {time.time() - start_time}&quot;)
+
+# For CPU-bound work, use multiprocessing instead
+from multiprocessing import Pool
+
+def parallel_cpu_work():
+    with Pool() as pool:
+        results = pool.map(lambda x: sum(range(x)), [1000000] * 4)
+    return results
+
+# GIL doesn't affect I/O-bound tasks
+import asyncio
+import aiohttp
+
+async def io_bound_task(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text()
+
+# This can run concurrently despite the GIL
+</code></pre>
+<h3 id="advanced-concepts">Advanced Concepts</h3>
+<h4 id="descriptor-protocol">Descriptor Protocol</h4>
+<p>Objects that define how attribute access is handled.</p>
+<pre><code class="language-python">class Descriptor:
+    def __get__(self, obj, objtype=None):
+        return &quot;Getting attribute&quot;
+
+    def __set__(self, obj, value):
+        print(f&quot;Setting attribute to {value}&quot;)
+
+    def __delete__(self, obj):
+        print(&quot;Deleting attribute&quot;)
+
+class MyClass:
+    attr = Descriptor()
+
+obj = MyClass()
+print(obj.attr)        # &quot;Getting attribute&quot;
+obj.attr = &quot;new value&quot; # &quot;Setting attribute to new value&quot;
+del obj.attr          # &quot;Deleting attribute&quot;
+</code></pre>
+<h4 id="context-manager">Context Manager</h4>
+<p>Objects that define runtime context for executing code blocks (used with <code>with</code> statements).</p>
+<pre><code class="language-python"># Built-in context managers
+with open('file.txt', 'r') as f:  # File is a context manager
+    content = f.read()
+# File is automatically closed
+
+# Custom context manager using contextlib
+from contextlib import contextmanager
+
+@contextmanager
+def temporary_change(obj, attr, new_value):
+    old_value = getattr(obj, attr)
+    setattr(obj, attr, new_value)
+    try:
+        yield obj
+    finally:
+        setattr(obj, attr, old_value)
+
+# Usage
+class Config:
+    debug = False
+
+config = Config()
+with temporary_change(config, 'debug', True):
+    print(config.debug)  # True
+print(config.debug)      # False (restored)
+</code></pre>
+<h4 id="metaclass">Metaclass</h4>
+<p>Classes whose instances are classes themselves. "Classes that create classes."</p>
+<pre><code class="language-python"># Simple metaclass example
+class SingletonMeta(type):
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super().__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class Singleton(metaclass=SingletonMeta):
+    def __init__(self, value):
+        self.value = value
+
+# Both variables refer to the same instance
+s1 = Singleton(&quot;first&quot;)
+s2 = Singleton(&quot;second&quot;)
+print(s1 is s2)  # True
+print(s1.value)  # &quot;first&quot; (unchanged)
+</code></pre>
+<h3 id="common-patterns-and-idioms">Common Patterns and Idioms</h3>
+<h4 id="unpacking-and-packing">Unpacking and Packing</h4>
+<pre><code class="language-python"># Tuple unpacking
+point = (3, 4)
+x, y = point
+
+# Extended unpacking (Python 3+)
+first, *middle, last = [1, 2, 3, 4, 5]
+print(first)   # 1
+print(middle)  # [2, 3, 4]
+print(last)    # 5
+
+# Function argument unpacking
+def greet(name, age, city):
+    print(f&quot;{name} is {age} years old and lives in {city}&quot;)
+
+person_info = (&quot;Alice&quot;, 30, &quot;New York&quot;)
+greet(*person_info)  # Unpacks tuple as arguments
+
+person_dict = {&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25, &quot;city&quot;: &quot;Boston&quot;}
+greet(**person_dict)  # Unpacks dictionary as keyword arguments
+</code></pre>
+<h4 id="walrus-operator-assignment-expression">Walrus Operator (Assignment Expression)</h4>
+<pre><code class="language-python"># Walrus operator := (Python 3.8+)
+# Assigns and returns a value in one expression
+
+# Traditional approach
+numbers = [1, 2, 3, 4, 5]
+squared = []
+for num in numbers:
+    square = num ** 2
+    if square &gt; 10:
+        squared.append(square)
+
+# With walrus operator
+squared = [square for num in numbers if (square := num ** 2) &gt; 10]
+
+# Useful in while loops
+import random
+while (dice := random.randint(1, 6)) != 6:
+    print(f&quot;Rolled {dice}, try again&quot;)
+print(&quot;Finally rolled a 6!&quot;)
+
+# In conditional statements
+if (match := some_pattern.search(text)):
+    print(f&quot;Found match: {match.group()}&quot;)
+</code></pre>
+<h3 id="understanding-python-culture">Understanding Python Culture</h3>
+<h4 id="the-zen-of-python">The Zen of Python</h4>
+<pre><code class="language-python">import this  # Prints &quot;The Zen of Python&quot;
+
+# Key principles:
+# - Beautiful is better than ugly
+# - Explicit is better than implicit
+# - Simple is better than complex
+# - Readability counts
+# - There should be one obvious way to do it
+</code></pre>
+<h2 id="exception-handling">Exception Handling</h2>
+<h3 id="basic-exception-handling">Basic Exception Handling</h3>
+<pre><code class="language-python"># try-except
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print(&quot;Cannot divide by zero&quot;)
+
+# Multiple exceptions
+try:
+    value = int(input(&quot;Enter a number: &quot;))
+    result = 10 / value
+except ValueError:
+    print(&quot;Invalid input&quot;)
+except ZeroDivisionError:
+    print(&quot;Cannot divide by zero&quot;)
+
+# Catch multiple exception types
+try:
+    # risky code
+    pass
+except (ValueError, TypeError) as e:
+    print(f&quot;Error: {e}&quot;)
+
+# Catch all exceptions
+try:
+    # risky code
+    pass
+except Exception as e:
+    print(f&quot;Unexpected error: {e}&quot;)
+
+# finally block (always executes)
+try:
+    file = open(&quot;data.txt&quot;)
+    # process file
+except FileNotFoundError:
+    print(&quot;File not found&quot;)
+finally:
+    try:
+        file.close()
+    except NameError:
+        pass  # file was never opened
+</code></pre>
+<h3 id="custom-exceptions">Custom Exceptions</h3>
+<pre><code class="language-python">class CustomError(Exception):
+    pass
+
+class ValidationError(Exception):
+    def __init__(self, message, code=None):
+        super().__init__(message)
+        self.code = code
+
+def validate_age(age):
+    if age &lt; 0:
+        raise ValidationError(&quot;Age cannot be negative&quot;, code=&quot;NEGATIVE_AGE&quot;)
+    if age &gt; 150:
+        raise ValidationError(&quot;Age seems unrealistic&quot;, code=&quot;HIGH_AGE&quot;)
+
+try:
+    validate_age(-5)
+except ValidationError as e:
+    print(f&quot;Validation failed: {e} (Code: {e.code})&quot;)
+</code></pre>
+<h2 id="file-handling">File Handling</h2>
+<h3 id="reading-and-writing-files">Reading and Writing Files</h3>
+<pre><code class="language-python"># Reading files
+with open(&quot;file.txt&quot;, &quot;r&quot;) as file:
+    content = file.read()           # Read entire file
+
+with open(&quot;file.txt&quot;, &quot;r&quot;) as file:
+    lines = file.readlines()        # Read all lines as list
+
+with open(&quot;file.txt&quot;, &quot;r&quot;) as file:
+    for line in file:               # Iterate line by line
+        print(line.strip())
+
+# Writing files
+with open(&quot;output.txt&quot;, &quot;w&quot;) as file:
+    file.write(&quot;Hello, World!\n&quot;)
+    file.writelines([&quot;Line 1\n&quot;, &quot;Line 2\n&quot;])
+
+# Appending to files
+with open(&quot;log.txt&quot;, &quot;a&quot;) as file:
+    file.write(&quot;New log entry\n&quot;)
+
+# File modes
+# &quot;r&quot; - read (default)
+# &quot;w&quot; - write (overwrites)
+# &quot;a&quot; - append
+# &quot;x&quot; - exclusive creation
+# &quot;b&quot; - binary mode
+# &quot;t&quot; - text mode (default)
+# &quot;+&quot; - read and write
+</code></pre>
+<h3 id="working-with-json">Working with JSON</h3>
+<pre><code class="language-python">import json
+
+# Writing JSON
+data = {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30, &quot;city&quot;: &quot;New York&quot;}
+with open(&quot;data.json&quot;, &quot;w&quot;) as file:
+    json.dump(data, file, indent=2)
+
+# Reading JSON
+with open(&quot;data.json&quot;, &quot;r&quot;) as file:
+    data = json.load(file)
+
+# JSON strings
+json_string = json.dumps(data, indent=2)
+parsed_data = json.loads(json_string)
+</code></pre>
+<h3 id="working-with-csv">Working with CSV</h3>
+<pre><code class="language-python">import csv
+
+# Writing CSV
+data = [
+    [&quot;Name&quot;, &quot;Age&quot;, &quot;City&quot;],
+    [&quot;Alice&quot;, 30, &quot;New York&quot;],
+    [&quot;Bob&quot;, 25, &quot;Boston&quot;]
+]
+
+with open(&quot;people.csv&quot;, &quot;w&quot;, newline=&quot;&quot;) as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+
+# Reading CSV
+with open(&quot;people.csv&quot;, &quot;r&quot;) as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+
+# CSV with dictionaries
+with open(&quot;people.csv&quot;, &quot;w&quot;, newline=&quot;&quot;) as file:
+    fieldnames = [&quot;name&quot;, &quot;age&quot;, &quot;city&quot;]
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerow({&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30, &quot;city&quot;: &quot;New York&quot;})
+</code></pre>
+<h2 id="modules-and-packages">Modules and Packages</h2>
+<h3 id="importing-modules">Importing Modules</h3>
+<pre><code class="language-python"># Different import styles
+import math
+from math import pi, sqrt
+from math import *  # Not recommended
+import math as m
+
+# Using imported functions
+result = math.sqrt(16)
+result = sqrt(16)
+result = m.sqrt(16)
+
+# Importing from packages
+from os.path import join, exists
+from urllib.parse import urlparse
+</code></pre>
+<h3 id="creating-modules">Creating Modules</h3>
+<pre><code class="language-python"># mymodule.py
+&quot;&quot;&quot;A simple module example.&quot;&quot;&quot;
+
+PI = 3.14159
+
+def circle_area(radius):
+    &quot;&quot;&quot;Calculate the area of a circle.&quot;&quot;&quot;
+    return PI * radius ** 2
+
+def circle_circumference(radius):
+    &quot;&quot;&quot;Calculate the circumference of a circle.&quot;&quot;&quot;
+    return 2 * PI * radius
+
+if __name__ == &quot;__main__&quot;:
+    # This code runs only when the module is executed directly
+    print(&quot;Testing the module&quot;)
+    print(f&quot;Area of circle with radius 5: {circle_area(5)}&quot;)
+</code></pre>
+<h3 id="package-structure">Package Structure</h3>
+<pre><code>mypackage/
+    __init__.py
+    module1.py
+    module2.py
+    subpackage/
+        __init__.py
+        submodule.py
+</code></pre>
+<pre><code class="language-python"># __init__.py
+&quot;&quot;&quot;MyPackage - A sample package.&quot;&quot;&quot;
+from .module1 import function1
+from .module2 import Class2
+
+__version__ = &quot;1.0.0&quot;
+__all__ = [&quot;function1&quot;, &quot;Class2&quot;]
+</code></pre>
+<h2 id="built-in-functions">Built-in Functions</h2>
+<h3 id="common-built-ins">Common Built-ins</h3>
+<pre><code class="language-python"># Type conversion
+int(&quot;42&quot;)           # String to integer
+float(&quot;3.14&quot;)       # String to float
+str(42)             # Number to string
+bool(1)             # To boolean
+list(&quot;hello&quot;)       # String to list of characters
+
+# Math functions
+abs(-5)             # Absolute value
+round(3.7)          # Round to nearest integer
+round(3.14159, 2)   # Round to 2 decimal places
+min(1, 2, 3)        # Minimum value
+max([1, 2, 3])      # Maximum value
+sum([1, 2, 3])      # Sum of iterable
+
+# Sequence functions
+len([1, 2, 3])      # Length
+sorted([3, 1, 2])   # Return sorted list
+reversed([1, 2, 3]) # Return reversed iterator
+enumerate(['a', 'b']) # Return index-value pairs
+zip([1, 2], ['a', 'b']) # Combine iterables
+
+# Higher-order functions
+map(str, [1, 2, 3])     # Apply function to each item
+filter(lambda x: x &gt; 0, [-1, 0, 1, 2])  # Filter items
+all([True, True, False]) # True if all elements are true
+any([False, True, False]) # True if any element is true
+</code></pre>
+<h3 id="inputoutput">Input/Output</h3>
+<pre><code class="language-python"># User input
+name = input(&quot;Enter your name: &quot;)
+age = int(input(&quot;Enter your age: &quot;))
+
+# Printing
+print(&quot;Hello, World!&quot;)
+print(&quot;Name:&quot;, name, &quot;Age:&quot;, age)
+print(f&quot;Hello, {name}! You are {age} years old.&quot;)
+print(&quot;Value:&quot;, 42, sep=&quot; = &quot;, end=&quot;\n\n&quot;)
+
+# String formatting
+name = &quot;Alice&quot;
+age = 30
+print(&quot;Name: {}, Age: {}&quot;.format(name, age))
+print(&quot;Name: {name}, Age: {age}&quot;.format(name=name, age=age))
+print(f&quot;Name: {name}, Age: {age}&quot;)  # f-strings (Python 3.6+)
+</code></pre>
+<h2 id="string-operations">String Operations</h2>
+<h3 id="string-methods">String Methods</h3>
+<pre><code class="language-python">text = &quot;  Hello, World!  &quot;
+
+# Case conversion
+text.upper()        # &quot;  HELLO, WORLD!  &quot;
+text.lower()        # &quot;  hello, world!  &quot;
+text.title()        # &quot;  Hello, World!  &quot;
+text.capitalize()   # &quot;  hello, world!  &quot;
+text.swapcase()     # &quot;  hELLO, wORLD!  &quot;
+
+# Whitespace handling
+text.strip()        # &quot;Hello, World!&quot;
+text.lstrip()       # &quot;Hello, World!  &quot;
+text.rstrip()       # &quot;  Hello, World!&quot;
+
+# Searching and checking
+text.find(&quot;World&quot;)      # Index of substring (or -1)
+text.index(&quot;World&quot;)     # Index of substring (raises ValueError)
+text.count(&quot;l&quot;)         # Count occurrences
+text.startswith(&quot;  H&quot;)  # True
+text.endswith(&quot;!  &quot;)    # True
+&quot;123&quot;.isdigit()         # True
+&quot;abc&quot;.isalpha()         # True
+&quot;abc123&quot;.isalnum()      # True
+
+# Splitting and joining
+&quot;a,b,c&quot;.split(&quot;,&quot;)      # [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+&quot;hello world&quot;.split()   # [&quot;hello&quot;, &quot;world&quot;]
+&quot;-&quot;.join([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])  # &quot;a-b-c&quot;
+
+# Replacement
+text.replace(&quot;World&quot;, &quot;Python&quot;)  # &quot;  Hello, Python!  &quot;
+
+# Formatting
+&quot;The value is {:.2f}&quot;.format(3.14159)  # &quot;The value is 3.14&quot;
+f&quot;The value is {3.14159:.2f}&quot;          # &quot;The value is 3.14&quot;
+</code></pre>
+<h3 id="string-slicing-and-indexing">String Slicing and Indexing</h3>
+<pre><code class="language-python">text = &quot;Hello, World!&quot;
+
+# Indexing
+text[0]     # &quot;H&quot;
+text[-1]    # &quot;!&quot;
+text[7]     # &quot;W&quot;
+
+# Slicing
+text[0:5]   # &quot;Hello&quot;
+text[7:]    # &quot;World!&quot;
+text[:5]    # &quot;Hello&quot;
+text[::2]   # &quot;Hlo ol!&quot;
+text[::-1]  # &quot;!dlroW ,olleH&quot; (reversed)
+</code></pre>
+<h2 id="list-comprehensions-and-generators">List Comprehensions and Generators</h2>
+<h3 id="list-comprehensions">List Comprehensions</h3>
+<pre><code class="language-python"># Basic list comprehension
+squares = [x**2 for x in range(10)]
+
+# With condition
+evens = [x for x in range(20) if x % 2 == 0]
+
+# Nested loops
+pairs = [(x, y) for x in range(3) for y in range(3) if x != y]
+
+# Processing strings
+words = [&quot;hello&quot;, &quot;world&quot;, &quot;python&quot;]
+lengths = [len(word) for word in words]
+upper_words = [word.upper() for word in words if len(word) &gt; 4]
+</code></pre>
+<h3 id="dictionary-and-set-comprehensions">Dictionary and Set Comprehensions</h3>
+<pre><code class="language-python"># Dictionary comprehension
+squares = {x: x**2 for x in range(5)}
+word_lengths = {word: len(word) for word in [&quot;hello&quot;, &quot;world&quot;]}
+
+# Set comprehension
+unique_lengths = {len(word) for word in [&quot;hello&quot;, &quot;world&quot;, &quot;hi&quot;]}
+</code></pre>
+<h3 id="generator-expressions">Generator Expressions</h3>
+<pre><code class="language-python"># Generator expression (lazy evaluation)
+squares_gen = (x**2 for x in range(10))
+
+# Generator function
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+# Using generators
+for num in fibonacci(10):
+    print(num)
+
+# Generator with yield from
+def flatten(nested_list):
+    for sublist in nested_list:
+        if isinstance(sublist, list):
+            yield from flatten(sublist)
+        else:
+            yield sublist
+
+nested = [[1, 2], [3, [4, 5]], 6]
+flat = list(flatten(nested))  # [1, 2, 3, 4, 5, 6]
+</code></pre>
+<h2 id="context-managers">Context Managers</h2>
+<h3 id="using-context-managers">Using Context Managers</h3>
+<pre><code class="language-python"># File handling with context manager
+with open(&quot;file.txt&quot;, &quot;r&quot;) as file:
+    content = file.read()
+# File is automatically closed
+
+# Multiple context managers
+with open(&quot;input.txt&quot;, &quot;r&quot;) as infile, open(&quot;output.txt&quot;, &quot;w&quot;) as outfile:
+    outfile.write(infile.read())
+</code></pre>
+<h3 id="creating-context-managers">Creating Context Managers</h3>
+<pre><code class="language-python"># Using contextlib
+from contextlib import contextmanager
+
+@contextmanager
+def timer():
+    import time
+    start = time.time()
+    try:
+        yield
+    finally:
+        end = time.time()
+        print(f&quot;Elapsed time: {end - start:.2f} seconds&quot;)
+
+# Usage
+with timer():
+    # Some time-consuming operation
+    sum(range(1000000))
+
+# Class-based context manager
+class DatabaseConnection:
+    def __enter__(self):
+        print(&quot;Connecting to database&quot;)
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(&quot;Closing database connection&quot;)
+        return False  # Don't suppress exceptions
+
+with DatabaseConnection() as db:
+    print(&quot;Using database connection&quot;)
+</code></pre>
+<h2 id="regular-expressions">Regular Expressions</h2>
+<h3 id="basic-regex-operations">Basic Regex Operations</h3>
+<pre><code class="language-python">import re
+
+# Pattern matching
+pattern = r&quot;\d+&quot;  # One or more digits
+text = &quot;I have 5 apples and 10 oranges&quot;
+
+# Search for first match
+match = re.search(pattern, text)
+if match:
+    print(match.group())  # &quot;5&quot;
+
+# Find all matches
+matches = re.findall(pattern, text)  # [&quot;5&quot;, &quot;10&quot;]
+
+# Match at beginning of string
+match = re.match(r&quot;\w+&quot;, &quot;Hello World&quot;)  # &quot;Hello&quot;
+
+# Split by pattern
+parts = re.split(r&quot;\s+&quot;, &quot;Hello    World   Python&quot;)  # [&quot;Hello&quot;, &quot;World&quot;, &quot;Python&quot;]
+
+# Replace patterns
+result = re.sub(r&quot;\d+&quot;, &quot;X&quot;, text)  # &quot;I have X apples and X oranges&quot;
+</code></pre>
+<h3 id="common-regex-patterns">Common Regex Patterns</h3>
+<pre><code class="language-python"># Email validation (simplified)
+email_pattern = r&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&quot;
+
+# Phone number (US format)
+phone_pattern = r&quot;\(\d{3}\)\s\d{3}-\d{4}&quot;
+
+# URL pattern
+url_pattern = r&quot;https?://[^\s]+&quot;
+
+# Date pattern (YYYY-MM-DD)
+date_pattern = r&quot;\d{4}-\d{2}-\d{2}&quot;
+
+# Compiled patterns for efficiency
+compiled_email = re.compile(email_pattern)
+result = compiled_email.search(&quot;Contact us at info@example.com&quot;)
+</code></pre>
+<h2 id="working-with-dates-and-times">Working with Dates and Times</h2>
+<h3 id="datetime-module">datetime Module</h3>
+<pre><code class="language-python">from datetime import datetime, date, time, timedelta
+
+# Current date and time
+now = datetime.now()
+today = date.today()
+current_time = datetime.now().time()
+
+# Creating specific dates
+birthday = date(1990, 5, 15)
+meeting_time = datetime(2023, 12, 25, 14, 30)
+
+# Formatting dates
+formatted = now.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)
+formatted_date = today.strftime(&quot;%B %d, %Y&quot;)
+
+# Parsing strings to dates
+parsed = datetime.strptime(&quot;2023-12-25 14:30&quot;, &quot;%Y-%m-%d %H:%M&quot;)
+
+# Date arithmetic
+tomorrow = today + timedelta(days=1)
+week_ago = now - timedelta(weeks=1)
+in_2_hours = now + timedelta(hours=2)
+
+# Date comparisons
+if birthday &lt; today:
+    print(&quot;Birthday has passed this year&quot;)
+</code></pre>
+<h3 id="time-module">time Module</h3>
+<pre><code class="language-python">import time
+
+# Current timestamp
+timestamp = time.time()
+
+# Sleep/pause execution
+time.sleep(2)  # Pause for 2 seconds
+
+# Measure execution time
+start_time = time.time()
+# ... some operation ...
+end_time = time.time()
+elapsed = end_time - start_time
+</code></pre>
+<h2 id="error-handling-best-practices">Error Handling Best Practices</h2>
+<h3 id="specific-exception-handling">Specific Exception Handling</h3>
+<pre><code class="language-python">def safe_divide(a, b):
+    try:
+        return a / b
+    except TypeError:
+        print(&quot;Both arguments must be numbers&quot;)
+        return None
+    except ZeroDivisionError:
+        print(&quot;Cannot divide by zero&quot;)
+        return None
+    except Exception as e:
+        print(f&quot;Unexpected error: {e}&quot;)
+        return None
+
+def read_config_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print(f&quot;Config file {filename} not found&quot;)
+        return {}
+    except json.JSONDecodeError as e:
+        print(f&quot;Invalid JSON in config file: {e}&quot;)
+        return {}
+    except PermissionError:
+        print(f&quot;Permission denied reading {filename}&quot;)
+        return {}
+</code></pre>
+<h2 id="common-patterns">Common Patterns</h2>
+<h3 id="singleton-pattern">Singleton Pattern</h3>
+<pre><code class="language-python">class Singleton:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+</code></pre>
+<h3 id="factory-pattern">Factory Pattern</h3>
+<pre><code class="language-python">class Animal:
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return &quot;Woof!&quot;
+
+class Cat(Animal):
+    def speak(self):
+        return &quot;Meow!&quot;
+
+def create_animal(animal_type):
+    animals = {
+        'dog': Dog,
+        'cat': Cat
+    }
+    return animals.get(animal_type.lower(), Animal)()
+</code></pre>
+<h2 id="performance-tips">Performance Tips</h2>
+<ol>
+<li><strong>Use built-in functions</strong>: <code>sum()</code>, <code>max()</code>, <code>min()</code> are optimized</li>
+<li><strong>List comprehensions</strong>: Generally faster than equivalent loops</li>
+<li><strong>Use <code>join()</code> for string concatenation</strong>: Instead of <code>+=</code> in loops</li>
+<li><strong>Use <code>set</code> for membership testing</strong>: O(1) vs O(n) for lists</li>
+<li><strong>Use <code>collections.defaultdict</code></strong>: Avoid checking if keys exist</li>
+<li><strong>Use generators</strong>: For memory-efficient iteration over large datasets</li>
+<li><strong>Profile your code</strong>: Use <code>cProfile</code> and <code>timeit</code></li>
+</ol>
+<h2 id="type-hints-and-annotations">Type Hints and Annotations</h2>
+<h3 id="basic-type-hints">Basic Type Hints</h3>
+<pre><code class="language-python">from typing import List, Dict, Optional, Union, Callable, Tuple
+
+# Function with type hints
+def greet(name: str, age: int) -&gt; str:
+    return f&quot;Hello {name}, you are {age} years old&quot;
+
+# Variable annotations
+count: int = 0
+names: List[str] = [&quot;Alice&quot;, &quot;Bob&quot;]
+scores: Dict[str, float] = {&quot;Alice&quot;: 95.5, &quot;Bob&quot;: 87.2}
+
+# Optional and Union types
+def find_user(user_id: int) -&gt; Optional[str]:
+    # Returns string or None
+    return users.get(user_id)
+
+def process_data(data: Union[str, int]) -&gt; str:
+    # Accepts string or int
+    return str(data).upper()
+
+# Function type hints
+def apply_operation(func: Callable[[int, int], int], x: int, y: int) -&gt; int:
+    return func(x, y)
+
+# Generic types
+from typing import TypeVar
+T = TypeVar('T')
+
+def first_item(items: List[T]) -&gt; Optional[T]:
+    return items[0] if items else None
+</code></pre>
+<h3 id="advanced-type-hints">Advanced Type Hints</h3>
+<pre><code class="language-python">from typing import Protocol, Literal, Final
+
+# Protocol for structural typing
+class Drawable(Protocol):
+    def draw(self) -&gt; None: ...
+
+# Literal types
+def set_mode(mode: Literal['read', 'write', 'append']) -&gt; None:
+    pass
+
+# Final variables (constants)
+API_KEY: Final[str] = &quot;secret-key&quot;
+
+# Class with type hints
+class User:
+    def __init__(self, name: str, email: str) -&gt; None:
+        self.name = name
+        self.email = email
+
+    def get_info(self) -&gt; Dict[str, str]:
+        return {&quot;name&quot;: self.name, &quot;email&quot;: self.email}
+</code></pre>
+<h2 id="dataclasses">Dataclasses</h2>
+<h3 id="basic-dataclasses">Basic Dataclasses</h3>
+<pre><code class="language-python">from dataclasses import dataclass, field
+from typing import List
+
+@dataclass
+class Person:
+    name: str
+    age: int
+    email: str = &quot;&quot;  # Default value
+
+    def greet(self) -&gt; str:
+        return f&quot;Hello, I'm {self.name}&quot;
+
+# Usage
+person = Person(&quot;Alice&quot;, 30, &quot;alice@example.com&quot;)
+print(person.name)  # Alice
+
+# With post-init processing
+@dataclass
+class Rectangle:
+    width: float
+    height: float
+    area: float = field(init=False)  # Computed field
+
+    def __post_init__(self):
+        self.area = self.width * self.height
+
+# Frozen dataclass (immutable)
+@dataclass(frozen=True)
+class Point:
+    x: float
+    y: float
+
+# With default factory
+@dataclass
+class Team:
+    name: str
+    members: List[str] = field(default_factory=list)
+</code></pre>
+<h2 id="async-programming">Async Programming</h2>
+<h3 id="basic-asyncawait">Basic Async/Await</h3>
+<pre><code class="language-python">import asyncio
+import aiohttp
+from typing import List
+
+# Async function
+async def fetch_data(url: str) -&gt; str:
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text()
+
+# Running async code
+async def main():
+    data = await fetch_data(&quot;https://api.example.com&quot;)
+    print(data)
+
+# Run the main function
+asyncio.run(main())
+
+# Concurrent execution
+async def fetch_multiple(urls: List[str]) -&gt; List[str]:
+    tasks = [fetch_data(url) for url in urls]
+    results = await asyncio.gather(*tasks)
+    return results
+
+# Async generator
+async def async_counter(max_count: int):
+    for i in range(max_count):
+        yield i
+        await asyncio.sleep(0.1)  # Simulate async work
+
+# Using async generator
+async def use_async_generator():
+    async for number in async_counter(5):
+        print(number)
+</code></pre>
+<h2 id="collections-module">Collections Module</h2>
+<h3 id="specialized-data-structures">Specialized Data Structures</h3>
+<pre><code class="language-python">from collections import defaultdict, Counter, deque, namedtuple, OrderedDict
+
+# defaultdict - provides default values for missing keys
+dd = defaultdict(list)
+dd['fruits'].append('apple')  # No KeyError
+dd['fruits'].append('banana')
+
+dd_int = defaultdict(int)
+dd_int['count'] += 1  # Starts at 0
+
+# Counter - count occurrences
+text = &quot;hello world&quot;
+counter = Counter(text)
+print(counter['l'])  # 3
+print(counter.most_common(3))  # [('l', 3), ('o', 2), ...]
+
+# Count items in list
+items = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+item_counts = Counter(items)
+
+# deque - double-ended queue (efficient append/pop from both ends)
+dq = deque([1, 2, 3])
+dq.appendleft(0)     # [0, 1, 2, 3]
+dq.append(4)         # [0, 1, 2, 3, 4]
+dq.popleft()         # [1, 2, 3, 4]
+dq.pop()             # [1, 2, 3]
+
+# Rotating
+dq.rotate(1)         # [3, 1, 2]
+dq.rotate(-1)        # [1, 2, 3]
+
+# OrderedDict - dict that remembers insertion order
+# Note: Since Python 3.7, standard dicts also remember insertion order.
+# OrderedDict is still useful for its move_to_end() method and equality behavior.
+od = OrderedDict()
+od['a'] = 1
+od['b'] = 2
+od['c'] = 3
+
+# namedtuple - immutable classes
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(10, 20)
+print(p.x, p.y)      # 10 20
+</code></pre>
+<h2 id="itertools">Itertools</h2>
+<h3 id="advanced-iteration-patterns">Advanced Iteration Patterns</h3>
+<pre><code class="language-python">import itertools
+
+# Infinite iterators
+counter = itertools.count(10, 2)  # 10, 12, 14, 16, ...
+cycle_data = itertools.cycle(['A', 'B', 'C'])  # A, B, C, A, B, C, ...
+repeated = itertools.repeat('hello', 3)  # 'hello', 'hello', 'hello'
+
+# Finite iterators
+data = [1, 2, 3, 4, 5]
+
+# Chain multiple iterables
+chained = itertools.chain([1, 2], [3, 4], [5, 6])  # 1, 2, 3, 4, 5, 6
+
+# Combinations and permutations
+combos = list(itertools.combinations([1, 2, 3], 2))  # [(1, 2), (1, 3), (2, 3)]
+perms = list(itertools.permutations([1, 2, 3], 2))   # [(1, 2), (1, 3), (2, 1), ...]
+
+# Groupby
+data = [('a', 1), ('a', 2), ('b', 3), ('b', 4), ('c', 5)]
+for key, group in itertools.groupby(data, key=lambda x: x[0]):
+    print(f&quot;{key}: {list(group)}&quot;)
+
+# Take while condition is true
+numbers = [1, 3, 5, 8, 9, 11, 13]
+odds = list(itertools.takewhile(lambda x: x % 2 == 1, numbers))  # [1, 3, 5]
+
+# Drop while condition is true
+rest = list(itertools.dropwhile(lambda x: x % 2 == 1, numbers))  # [8, 9, 11, 13]
+
+# Product (cartesian product)
+colors = ['red', 'blue']
+sizes = ['S', 'M', 'L']
+variants = list(itertools.product(colors, sizes))
+# [('red', 'S'), ('red', 'M'), ('red', 'L'), ('blue', 'S'), ...]
+</code></pre>
+<h2 id="pathlib-modern-file-handling">Pathlib (Modern File Handling)</h2>
+<h3 id="path-operations">Path Operations</h3>
+<pre><code class="language-python">from pathlib import Path
+import os
+
+# Creating paths
+current_dir = Path.cwd()
+home_dir = Path.home()
+file_path = Path(&quot;data/file.txt&quot;)
+absolute_path = Path(&quot;/usr/local/bin/python&quot;)
+
+# Path manipulation
+file_path = Path(&quot;documents/projects/my_project/data.txt&quot;)
+print(file_path.parent)        # documents/projects/my_project
+print(file_path.name)          # data.txt
+print(file_path.stem)          # data
+print(file_path.suffix)        # .txt
+print(file_path.parts)         # ('documents', 'projects', 'my_project', 'data.txt')
+
+# Joining paths
+project_dir = Path(&quot;projects&quot;)
+config_file = project_dir / &quot;config&quot; / &quot;settings.json&quot;
+
+# File operations
+if file_path.exists():
+    content = file_path.read_text()
+    lines = file_path.read_text().splitlines()
+
+# Write to file
+output_path = Path(&quot;output.txt&quot;)
+output_path.write_text(&quot;Hello, World!&quot;)
+
+# Directory operations
+data_dir = Path(&quot;data&quot;)
+data_dir.mkdir(parents=True, exist_ok=True)  # Create directory
+
+# List directory contents
+for item in data_dir.iterdir():
+    if item.is_file():
+        print(f&quot;File: {item.name}&quot;)
+    elif item.is_dir():
+        print(f&quot;Directory: {item.name}&quot;)
+
+# Glob patterns
+python_files = list(Path(&quot;.&quot;).glob(&quot;*.py&quot;))
+all_python_files = list(Path(&quot;.&quot;).rglob(&quot;*.py&quot;))  # Recursive
+</code></pre>
+<h2 id="logging">Logging</h2>
+<h3 id="basic-logging">Basic Logging</h3>
+<pre><code class="language-python">import logging
+
+# Basic configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('app.log'),
+        logging.StreamHandler()
+    ]
+)
+
+# Create logger
+logger = logging.getLogger(__name__)
+
+# Log levels
+logger.debug(&quot;Debug message&quot;)     # Not shown with INFO level
+logger.info(&quot;Info message&quot;)
+logger.warning(&quot;Warning message&quot;)
+logger.error(&quot;Error message&quot;)
+logger.critical(&quot;Critical message&quot;)
+
+# Logging with variables
+name = &quot;Alice&quot;
+age = 30
+logger.info(f&quot;User {name} is {age} years old&quot;)
+
+# Exception logging
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    logger.exception(&quot;Division by zero occurred&quot;)  # Includes traceback
+</code></pre>
+<h3 id="advanced-logging">Advanced Logging</h3>
+<pre><code class="language-python">import logging.config
+
+# Dictionary configuration
+LOGGING_CONFIG = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'app.log',
+            'maxBytes': 1024*1024*5,  # 5MB
+            'backupCount': 3,
+            'formatter': 'standard',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard',
+        },
+    },
+    'root': {
+        'handlers': ['file', 'console'],
+        'level': 'INFO',
+    }
+}
+
+logging.config.dictConfig(LOGGING_CONFIG)
+logger = logging.getLogger(__name__)
+</code></pre>
+<h2 id="command-line-arguments">Command Line Arguments</h2>
+<h3 id="using-argparse">Using argparse</h3>
+<pre><code class="language-python">import argparse
+
+def main():
+    parser = argparse.ArgumentParser(description='Process some files.')
+
+    # Positional arguments
+    parser.add_argument('filename', help='Input filename')
+
+    # Optional arguments
+    parser.add_argument('-o', '--output', help='Output filename')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose output')
+    parser.add_argument('--count', type=int, default=1, help='Number of times to process')
+    parser.add_argument('--format', choices=['json', 'csv', 'xml'], default='json')
+
+    # Parse arguments
+    args = parser.parse_args()
+
+    print(f&quot;Input file: {args.filename}&quot;)
+    if args.output:
+        print(f&quot;Output file: {args.output}&quot;)
+    if args.verbose:
+        print(&quot;Verbose mode enabled&quot;)
+    print(f&quot;Processing {args.count} times in {args.format} format&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+
+# Usage examples:
+# python script.py input.txt
+# python script.py input.txt -o output.txt --verbose --count 3 --format csv
+</code></pre>
+<h2 id="testing">Testing</h2>
+<h3 id="using-unittest">Using unittest</h3>
+<pre><code class="language-python">import unittest
+from mymodule import Calculator
+
+class TestCalculator(unittest.TestCase):
+
+    def setUp(self):
+        &quot;&quot;&quot;Set up test fixtures before each test method.&quot;&quot;&quot;
+        self.calc = Calculator()
+
+    def test_add(self):
+        &quot;&quot;&quot;Test addition method.&quot;&quot;&quot;
+        result = self.calc.add(2, 3)
+        self.assertEqual(result, 5)
+
+    def test_divide_by_zero(self):
+        &quot;&quot;&quot;Test division by zero raises exception.&quot;&quot;&quot;
+        with self.assertRaises(ValueError):
+            self.calc.divide(10, 0)
+
+    def test_multiple_operations(self):
+        &quot;&quot;&quot;Test multiple operations.&quot;&quot;&quot;
+        self.assertEqual(self.calc.add(2, 3), 5)
+        self.assertEqual(self.calc.subtract(10, 4), 6)
+        self.assertEqual(self.calc.multiply(3, 7), 21)
+
+    def tearDown(self):
+        &quot;&quot;&quot;Clean up after each test method.&quot;&quot;&quot;
+        pass
+
+# Run tests
+if __name__ == '__main__':
+    unittest.main()
+
+# Or run from the command line:
+# python -m unittest discover
+
+# Common assertions
+# self.assertEqual(a, b)      # a == b
+# self.assertNotEqual(a, b)   # a != b
+# self.assertTrue(x)          # bool(x) is True
+# self.assertFalse(x)         # bool(x) is False
+# self.assertIs(a, b)         # a is b
+# self.assertIsNot(a, b)      # a is not b
+# self.assertIsNone(x)        # x is None
+# self.assertIn(a, b)         # a in b
+# self.assertGreater(a, b)    # a &gt; b
+# self.assertRaises(exc, fun, *args)
+</code></pre>
+<h3 id="using-pytest-alternative">Using pytest (Alternative)</h3>
+<pre><code class="language-python">import pytest
+from mymodule import Calculator
+
+# Fixture for test setup
+@pytest.fixture
+def calculator():
+    return Calculator()
+
+def test_add(calculator):
+    assert calculator.add(2, 3) == 5
+
+def test_divide_by_zero(calculator):
+    with pytest.raises(ValueError):
+        calculator.divide(10, 0)
+
+# Parametrized tests
+@pytest.mark.parametrize(&quot;a,b,expected&quot;, [
+    (2, 3, 5),
+    (1, 1, 2),
+    (-1, 1, 0),
+    (0, 0, 0),
+])
+def test_add_parametrized(calculator, a, b, expected):
+    assert calculator.add(a, b) == expected
+
+# Run with: pytest test_file.py
+</code></pre>
+<h2 id="virtual-environments-and-package-management">Virtual Environments and Package Management</h2>
+<h3 id="creating-virtual-environments">Creating Virtual Environments</h3>
+<pre><code class="language-bash"># Using venv (built-in)
+python -m venv myenv
+source myenv/bin/activate  # Linux/Mac
+myenv\Scripts\activate     # Windows
+deactivate                 # Exit virtual environment
+
+# Using virtualenv
+pip install virtualenv
+virtualenv myenv
+source myenv/bin/activate
+
+# Using conda
+conda create --name myenv python=3.9
+conda activate myenv
+conda deactivate
+</code></pre>
+<h3 id="package-management">Package Management</h3>
+<pre><code class="language-bash"># Install packages
+pip install requests
+pip install requests==2.28.0  # Specific version
+pip install requests&gt;=2.25.0  # Minimum version
+
+# Install from requirements file
+pip install -r requirements.txt
+
+# Create requirements file
+pip freeze &gt; requirements.txt
+
+# Install in development mode
+pip install -e .
+
+# Upgrade packages
+pip install --upgrade requests
+pip list --outdated
+</code></pre>
+<h3 id="requirementstxt-example">requirements.txt example</h3>
+<pre><code>requests==2.28.0
+pandas&gt;=1.4.0
+numpy&gt;=1.21.0,&lt;2.0.0
+pytest&gt;=7.0.0
+black==22.6.0
+</code></pre>
+<h2 id="common-third-party-libraries">Common Third-Party Libraries</h2>
+<h3 id="requests-http-client">Requests (HTTP Client)</h3>
+<pre><code class="language-python">import requests
+import json
+
+# GET request
+response = requests.get('https://api.github.com/users/octocat')
+if response.status_code == 200:
+    data = response.json()
+    print(data['name'])
+
+# POST request
+payload = {'key1': 'value1', 'key2': 'value2'}
+response = requests.post('https://httpbin.org/post', json=payload)
+
+# With headers and authentication
+headers = {'Authorization': 'Bearer token123'}
+response = requests.get('https://api.example.com/data', headers=headers)
+
+# Session for multiple requests
+session = requests.Session()
+session.headers.update({'User-Agent': 'MyApp/1.0'})
+response = session.get('https://api.example.com')
+</code></pre>
+<h3 id="basic-data-analysis-pandas">Basic Data Analysis (Pandas)</h3>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+
+# Create DataFrame
+data = {
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'city': ['NYC', 'LA', 'Chicago']
+}
+df = pd.DataFrame(data)
+
+# Read from files
+df = pd.read_csv('data.csv')
+df = pd.read_json('data.json')
+df = pd.read_excel('data.xlsx')
+
+# Basic operations
+print(df.head())        # First 5 rows
+print(df.info())        # Data info
+print(df.describe())    # Statistics
+
+# Selecting data
+ages = df['age']        # Single column
+subset = df[['name', 'age']]  # Multiple columns
+filtered = df[df['age'] &gt; 25]  # Filter rows
+
+# Save data
+df.to_csv('output.csv', index=False)
+df.to_json('output.json')
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Follow PEP 8</strong>: Python style guide</li>
+<li><strong>Use meaningful variable names</strong>: <code>user_count</code> not <code>uc</code></li>
+<li><strong>Write docstrings</strong>: Document functions and classes</li>
+<li><strong>Use type hints</strong>: Help with code clarity and tools</li>
+<li><strong>Handle exceptions gracefully</strong>: Don't use bare <code>except:</code></li>
+<li><strong>Use context managers</strong>: For resource management</li>
+<li><strong>Keep functions small</strong>: Single responsibility principle</li>
+<li><strong>Use virtual environments</strong>: Isolate project dependencies</li>
+<li><strong>Test your code</strong>: Write unit tests</li>
+<li><strong>Use version control</strong>: Git for tracking changes</li>
+<li><strong>Use pathlib</strong>: Instead of os.path for file operations</li>
+<li><strong>Prefer f-strings</strong>: For string formatting in Python 3.6+</li>
+<li><strong>Use dataclasses</strong>: For simple data containers</li>
+<li><strong>Use async/await</strong>: For I/O-bound operations</li>
+<li><strong>Profile before optimizing</strong>: Use cProfile, timeit, or py-spy</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

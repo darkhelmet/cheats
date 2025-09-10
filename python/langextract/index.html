@@ -1,0 +1,2479 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../langchain/">
+      
+      
+        <link rel="next" href="../matplotlib/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>LangExtract - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#langextract" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LangExtract
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-basic-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Basic Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-document-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Document Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-model-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Model Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-source-grounding-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Source Grounding &amp; Visualization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-complex-schema-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Complex Schema Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-custom-output-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Output Parsers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-medical-report-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Medical Report Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-legal-document-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Legal Document Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-customer-feedback-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Customer Feedback Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-research-paper-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Research Paper Processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-with-pandas-for-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. With Pandas for Data Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-with-langchain-for-rag-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. With LangChain for RAG Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-with-fastapi-for-api-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. With FastAPI for API Services
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-efficient-example-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Efficient Example Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-chunking-strategy-for-long-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Chunking Strategy for Long Documents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-caching-and-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Caching and Rate Limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling and Debugging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-robust-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Robust Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validation-and-quality-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validation and Quality Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-debugging-and-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Debugging and Inspection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-example-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Example Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-model-selection-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Model Selection Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-output-quality-assurance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Output Quality Assurance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-basic-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Basic Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-document-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Document Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-model-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Model Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-source-grounding-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Source Grounding &amp; Visualization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-complex-schema-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Complex Schema Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-custom-output-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Output Parsers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-medical-report-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Medical Report Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-legal-document-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Legal Document Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-customer-feedback-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Customer Feedback Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-research-paper-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Research Paper Processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-with-pandas-for-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. With Pandas for Data Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-with-langchain-for-rag-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. With LangChain for RAG Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-with-fastapi-for-api-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. With FastAPI for API Services
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-efficient-example-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Efficient Example Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-chunking-strategy-for-long-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Chunking Strategy for Long Documents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-caching-and-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Caching and Rate Limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling and Debugging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-robust-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Robust Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validation-and-quality-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validation and Quality Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-debugging-and-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Debugging and Inspection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-example-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Example Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-model-selection-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Model Selection Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-output-quality-assurance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Output Quality Assurance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="langextract">LangExtract</h1>
+<p>LangExtract is Google's open-source Python library for extracting structured information from unstructured text using Large Language Models (LLMs). It provides precise source grounding, interactive visualizations, and supports multiple model providers.</p>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash"># Basic installation
+pip install langextract
+
+# For development (from source)
+git clone https://github.com/google/langextract.git
+cd langextract
+pip install -e .
+</code></pre>
+<h2 id="quick-start">Quick Start</h2>
+<pre><code class="language-python">import langextract as lx
+
+# Basic extraction
+result = lx.extract(
+    text_or_documents=&quot;Your unstructured text here...&quot;,
+    prompt_description=&quot;Extract names, dates, and locations&quot;,
+    examples=[
+        {&quot;input&quot;: &quot;John visited Paris on May 15th&quot;, 
+         &quot;output&quot;: {&quot;names&quot;: [&quot;John&quot;], &quot;places&quot;: [&quot;Paris&quot;], &quot;dates&quot;: [&quot;May 15th&quot;]}}
+    ],
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+
+# Access results
+print(result.extractions)
+print(result.visualize())  # Interactive HTML visualization
+</code></pre>
+<h2 id="core-components">Core Components</h2>
+<h3 id="1-basic-extraction">1. Basic Extraction</h3>
+<pre><code class="language-python">import langextract as lx
+
+# Simple extraction with few-shot examples
+result = lx.extract(
+    text_or_documents=input_text,
+    prompt_description=&quot;Extract character names and their emotions&quot;,
+    examples=[
+        {
+            &quot;input&quot;: &quot;Alice felt happy about the good news&quot;,
+            &quot;output&quot;: {
+                &quot;characters&quot;: [{&quot;name&quot;: &quot;Alice&quot;, &quot;emotion&quot;: &quot;happy&quot;}]
+            }
+        }
+    ],
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+
+# Check extraction results
+for extraction in result.extractions:
+    print(f&quot;Text: {extraction.text}&quot;)
+    print(f&quot;Data: {extraction.data}&quot;)
+    print(f&quot;Source spans: {extraction.source_spans}&quot;)
+</code></pre>
+<h3 id="2-document-processing">2. Document Processing</h3>
+<pre><code class="language-python"># Process multiple documents
+documents = [
+    {&quot;text&quot;: &quot;Document 1 content...&quot;, &quot;metadata&quot;: {&quot;source&quot;: &quot;doc1.txt&quot;}},
+    {&quot;text&quot;: &quot;Document 2 content...&quot;, &quot;metadata&quot;: {&quot;source&quot;: &quot;doc2.txt&quot;}},
+]
+
+result = lx.extract(
+    text_or_documents=documents,
+    prompt_description=&quot;Extract key findings and recommendations&quot;,
+    examples=[...],
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+</code></pre>
+<h3 id="3-model-configuration">3. Model Configuration</h3>
+<pre><code class="language-python"># Using different models
+result = lx.extract(
+    text_or_documents=text,
+    prompt_description=prompt,
+    examples=examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;,  # Recommended for speed
+    # model_id=&quot;gemini-2.0-pro&quot;,      # For complex reasoning
+    # model_id=&quot;gpt-4o-mini&quot;,         # OpenAI alternative
+)
+
+# Configure model parameters
+result = lx.extract(
+    text_or_documents=text,
+    prompt_description=prompt,
+    examples=examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;,
+    generation_config={
+        &quot;temperature&quot;: 0.1,
+        &quot;max_output_tokens&quot;: 8192,
+        &quot;top_p&quot;: 0.95
+    }
+)
+</code></pre>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="1-source-grounding-visualization">1. Source Grounding &amp; Visualization</h3>
+<pre><code class="language-python"># Extract with precise source tracking
+result = lx.extract(
+    text_or_documents=long_text,
+    prompt_description=&quot;Extract medical conditions and treatments&quot;,
+    examples=[...],
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+
+# Generate interactive visualization
+html_viz = result.visualize()
+
+# Save visualization to file
+with open(&quot;extraction_results.html&quot;, &quot;w&quot;) as f:
+    f.write(html_viz)
+
+# Access source spans for each extraction
+for extraction in result.extractions:
+    for entity in extraction.data.get(&quot;entities&quot;, []):
+        spans = extraction.source_spans.get(entity[&quot;id&quot;], [])
+        print(f&quot;Entity: {entity['text']} found at positions: {spans}&quot;)
+</code></pre>
+<h3 id="2-complex-schema-extraction">2. Complex Schema Extraction</h3>
+<pre><code class="language-python"># Define complex extraction schema
+medical_examples = [
+    {
+        &quot;input&quot;: &quot;Patient John Smith, 45, diagnosed with hypertension. Prescribed lisinopril 10mg daily.&quot;,
+        &quot;output&quot;: {
+            &quot;patient&quot;: {
+                &quot;name&quot;: &quot;John Smith&quot;,
+                &quot;age&quot;: 45,
+                &quot;conditions&quot;: [&quot;hypertension&quot;],
+                &quot;medications&quot;: [
+                    {
+                        &quot;name&quot;: &quot;lisinopril&quot;,
+                        &quot;dosage&quot;: &quot;10mg&quot;,
+                        &quot;frequency&quot;: &quot;daily&quot;
+                    }
+                ]
+            }
+        }
+    }
+]
+
+result = lx.extract(
+    text_or_documents=medical_report,
+    prompt_description=&quot;Extract patient information, conditions, and medications&quot;,
+    examples=medical_examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+</code></pre>
+<h3 id="3-batch-processing">3. Batch Processing</h3>
+<pre><code class="language-python"># Process multiple documents efficiently
+large_document_set = [
+    {&quot;text&quot;: doc1_text, &quot;metadata&quot;: {&quot;source&quot;: &quot;report1.pdf&quot;}},
+    {&quot;text&quot;: doc2_text, &quot;metadata&quot;: {&quot;source&quot;: &quot;report2.pdf&quot;}},
+    # ... more documents
+]
+
+# Parallel processing for large datasets
+result = lx.extract(
+    text_or_documents=large_document_set,
+    prompt_description=&quot;Extract key metrics and insights&quot;,
+    examples=examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;,
+    max_workers=4  # Control parallel processing
+)
+
+# Process results per document
+for doc_result in result.extractions:
+    source = doc_result.metadata.get(&quot;source&quot;, &quot;unknown&quot;)
+    print(f&quot;Results from {source}: {doc_result.data}&quot;)
+</code></pre>
+<h3 id="4-custom-output-parsers">4. Custom Output Parsers</h3>
+<pre><code class="language-python"># Define custom parsing logic
+def parse_financial_data(extraction_result):
+    &quot;&quot;&quot;Custom parser for financial documents&quot;&quot;&quot;
+    parsed_data = {}
+    for extraction in extraction_result.extractions:
+        # Custom processing logic
+        parsed_data[extraction.metadata.get(&quot;source&quot;)] = {
+            &quot;revenue&quot;: extraction.data.get(&quot;revenue&quot;),
+            &quot;expenses&quot;: extraction.data.get(&quot;expenses&quot;),
+            &quot;profit&quot;: extraction.data.get(&quot;profit&quot;)
+        }
+    return parsed_data
+
+# Use custom parser
+result = lx.extract(
+    text_or_documents=financial_reports,
+    prompt_description=&quot;Extract revenue, expenses, and profit figures&quot;,
+    examples=financial_examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+
+parsed_results = parse_financial_data(result)
+</code></pre>
+<h2 id="common-use-cases">Common Use Cases</h2>
+<h3 id="1-medical-report-processing">1. Medical Report Processing</h3>
+<pre><code class="language-python">medical_examples = [
+    {
+        &quot;input&quot;: &quot;Patient presents with chest pain. ECG shows normal sinus rhythm. Blood pressure 140/90.&quot;,
+        &quot;output&quot;: {
+            &quot;symptoms&quot;: [&quot;chest pain&quot;],
+            &quot;tests&quot;: [
+                {&quot;name&quot;: &quot;ECG&quot;, &quot;result&quot;: &quot;normal sinus rhythm&quot;},
+                {&quot;name&quot;: &quot;blood pressure&quot;, &quot;result&quot;: &quot;140/90&quot;}
+            ],
+            &quot;assessment&quot;: &quot;hypertensive&quot;
+        }
+    }
+]
+
+result = lx.extract(
+    text_or_documents=medical_notes,
+    prompt_description=&quot;Extract symptoms, test results, and clinical assessments&quot;,
+    examples=medical_examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+</code></pre>
+<h3 id="2-legal-document-analysis">2. Legal Document Analysis</h3>
+<pre><code class="language-python">legal_examples = [
+    {
+        &quot;input&quot;: &quot;The agreement between ABC Corp and XYZ Inc, dated January 15, 2024, stipulates a payment of $50,000.&quot;,
+        &quot;output&quot;: {
+            &quot;parties&quot;: [&quot;ABC Corp&quot;, &quot;XYZ Inc&quot;],
+            &quot;date&quot;: &quot;January 15, 2024&quot;,
+            &quot;financial_terms&quot;: [{&quot;amount&quot;: &quot;$50,000&quot;, &quot;type&quot;: &quot;payment&quot;}],
+            &quot;document_type&quot;: &quot;agreement&quot;
+        }
+    }
+]
+
+result = lx.extract(
+    text_or_documents=legal_documents,
+    prompt_description=&quot;Extract parties, dates, financial terms, and document types&quot;,
+    examples=legal_examples,
+    model_id=&quot;gemini-2.0-pro&quot;  # Use Pro for complex legal reasoning
+)
+</code></pre>
+<h3 id="3-customer-feedback-analysis">3. Customer Feedback Analysis</h3>
+<pre><code class="language-python">feedback_examples = [
+    {
+        &quot;input&quot;: &quot;The product quality is excellent but shipping was slow. Customer service was very helpful.&quot;,
+        &quot;output&quot;: {
+            &quot;sentiment&quot;: &quot;mixed&quot;,
+            &quot;aspects&quot;: [
+                {&quot;category&quot;: &quot;product_quality&quot;, &quot;sentiment&quot;: &quot;positive&quot;, &quot;text&quot;: &quot;excellent&quot;},
+                {&quot;category&quot;: &quot;shipping&quot;, &quot;sentiment&quot;: &quot;negative&quot;, &quot;text&quot;: &quot;slow&quot;},
+                {&quot;category&quot;: &quot;customer_service&quot;, &quot;sentiment&quot;: &quot;positive&quot;, &quot;text&quot;: &quot;very helpful&quot;}
+            ]
+        }
+    }
+]
+
+result = lx.extract(
+    text_or_documents=customer_reviews,
+    prompt_description=&quot;Extract sentiment and specific aspects from customer feedback&quot;,
+    examples=feedback_examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+</code></pre>
+<h3 id="4-research-paper-processing">4. Research Paper Processing</h3>
+<pre><code class="language-python">research_examples = [
+    {
+        &quot;input&quot;: &quot;We conducted a randomized controlled trial with 200 participants. Results showed 85% efficacy (p&lt;0.05).&quot;,
+        &quot;output&quot;: {
+            &quot;study_design&quot;: &quot;randomized controlled trial&quot;,
+            &quot;sample_size&quot;: 200,
+            &quot;key_findings&quot;: [
+                {&quot;metric&quot;: &quot;efficacy&quot;, &quot;value&quot;: &quot;85%&quot;, &quot;significance&quot;: &quot;p&lt;0.05&quot;}
+            ],
+            &quot;study_type&quot;: &quot;clinical trial&quot;
+        }
+    }
+]
+
+result = lx.extract(
+    text_or_documents=research_papers,
+    prompt_description=&quot;Extract study methodology, sample sizes, and key findings&quot;,
+    examples=research_examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+</code></pre>
+<h2 id="integration-patterns">Integration Patterns</h2>
+<h3 id="1-with-pandas-for-data-analysis">1. With Pandas for Data Analysis</h3>
+<pre><code class="language-python">import pandas as pd
+import langextract as lx
+
+# Extract structured data
+result = lx.extract(
+    text_or_documents=documents,
+    prompt_description=&quot;Extract financial metrics&quot;,
+    examples=examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+
+# Convert to DataFrame
+data_rows = []
+for extraction in result.extractions:
+    for metric in extraction.data.get(&quot;metrics&quot;, []):
+        data_rows.append({
+            &quot;source&quot;: extraction.metadata.get(&quot;source&quot;),
+            &quot;metric_name&quot;: metric[&quot;name&quot;],
+            &quot;value&quot;: metric[&quot;value&quot;],
+            &quot;period&quot;: metric.get(&quot;period&quot;)
+        })
+
+df = pd.DataFrame(data_rows)
+print(df.groupby(&quot;metric_name&quot;)[&quot;value&quot;].mean())
+</code></pre>
+<h3 id="2-with-langchain-for-rag-systems">2. With LangChain for RAG Systems</h3>
+<pre><code class="language-python">import langextract as lx
+from langchain.vectorstores import Chroma
+from langchain.embeddings import OpenAIEmbeddings
+
+# Extract structured data first
+extraction_result = lx.extract(
+    text_or_documents=documents,
+    prompt_description=&quot;Extract key concepts and definitions&quot;,
+    examples=examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+
+# Create vector store from extracted data
+texts = []
+metadatas = []
+
+for extraction in extraction_result.extractions:
+    for concept in extraction.data.get(&quot;concepts&quot;, []):
+        texts.append(f&quot;{concept['term']}: {concept['definition']}&quot;)
+        metadatas.append({
+            &quot;source&quot;: extraction.metadata.get(&quot;source&quot;),
+            &quot;term&quot;: concept[&quot;term&quot;],
+            &quot;source_spans&quot;: extraction.source_spans.get(concept[&quot;id&quot;], [])
+        })
+
+vectorstore = Chroma.from_texts(
+    texts=texts,
+    metadatas=metadatas,
+    embedding=OpenAIEmbeddings()
+)
+</code></pre>
+<h3 id="3-with-fastapi-for-api-services">3. With FastAPI for API Services</h3>
+<pre><code class="language-python">from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import langextract as lx
+
+app = FastAPI()
+
+class ExtractionRequest(BaseModel):
+    text: str
+    task_description: str
+    examples: list
+
+class ExtractionResponse(BaseModel):
+    extractions: list
+    visualization_html: str
+
+@app.post(&quot;/extract&quot;, response_model=ExtractionResponse)
+async def extract_information(request: ExtractionRequest):
+    try:
+        result = lx.extract(
+            text_or_documents=request.text,
+            prompt_description=request.task_description,
+            examples=request.examples,
+            model_id=&quot;gemini-2.0-flash-exp&quot;
+        )
+
+        return ExtractionResponse(
+            extractions=[ext.data for ext in result.extractions],
+            visualization_html=result.visualize()
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="1-efficient-example-selection">1. Efficient Example Selection</h3>
+<pre><code class="language-python"># Use minimal but representative examples
+efficient_examples = [
+    {
+        &quot;input&quot;: &quot;Short representative text&quot;,
+        &quot;output&quot;: {&quot;key_field&quot;: &quot;value&quot;}
+    },
+    # Limit to 3-5 high-quality examples
+]
+
+# Avoid overly complex output schemas
+result = lx.extract(
+    text_or_documents=text,
+    prompt_description=&quot;Clear, specific task description&quot;,
+    examples=efficient_examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;  # Faster for most tasks
+)
+</code></pre>
+<h3 id="2-chunking-strategy-for-long-documents">2. Chunking Strategy for Long Documents</h3>
+<pre><code class="language-python">def chunk_document(text, max_chunk_size=8000):
+    &quot;&quot;&quot;Split document into overlapping chunks&quot;&quot;&quot;
+    chunks = []
+    words = text.split()
+
+    for i in range(0, len(words), max_chunk_size - 200):  # 200 word overlap
+        chunk = &quot; &quot;.join(words[i:i + max_chunk_size])
+        chunks.append(chunk)
+
+    return chunks
+
+# Process long documents efficiently
+long_text = &quot;Very long document content...&quot;
+chunks = chunk_document(long_text)
+
+results = []
+for chunk in chunks:
+    result = lx.extract(
+        text_or_documents=chunk,
+        prompt_description=prompt,
+        examples=examples,
+        model_id=&quot;gemini-2.0-flash-exp&quot;
+    )
+    results.append(result)
+</code></pre>
+<h3 id="3-caching-and-rate-limiting">3. Caching and Rate Limiting</h3>
+<pre><code class="language-python">import time
+from functools import lru_cache
+import hashlib
+
+@lru_cache(maxsize=100)
+def cached_extract(text_hash, prompt, examples_str, model_id):
+    &quot;&quot;&quot;Cache extraction results for identical inputs&quot;&quot;&quot;
+    return lx.extract(
+        text_or_documents=text,
+        prompt_description=prompt,
+        examples=eval(examples_str),  # Be careful with eval in production
+        model_id=model_id
+    )
+
+def extract_with_rate_limit(text, prompt, examples, model_id, delay=1.0):
+    &quot;&quot;&quot;Add rate limiting between API calls&quot;&quot;&quot;
+    text_hash = hashlib.md5(text.encode()).hexdigest()
+    examples_str = str(examples)
+
+    result = cached_extract(text_hash, prompt, examples_str, model_id)
+    time.sleep(delay)  # Rate limiting
+    return result
+</code></pre>
+<h2 id="error-handling-and-debugging">Error Handling and Debugging</h2>
+<h3 id="1-robust-error-handling">1. Robust Error Handling</h3>
+<pre><code class="language-python">import langextract as lx
+from typing import Optional, List
+
+def safe_extract(
+    text: str, 
+    prompt: str, 
+    examples: List[dict],
+    model_id: str = &quot;gemini-2.0-flash-exp&quot;,
+    max_retries: int = 3
+) -&gt; Optional[lx.ExtractionResult]:
+    &quot;&quot;&quot;Extract with error handling and retries&quot;&quot;&quot;
+
+    for attempt in range(max_retries):
+        try:
+            result = lx.extract(
+                text_or_documents=text,
+                prompt_description=prompt,
+                examples=examples,
+                model_id=model_id
+            )
+            return result
+
+        except Exception as e:
+            print(f&quot;Attempt {attempt + 1} failed: {str(e)}&quot;)
+            if attempt == max_retries - 1:
+                print(f&quot;All {max_retries} attempts failed&quot;)
+                return None
+            time.sleep(2 ** attempt)  # Exponential backoff
+
+    return None
+
+# Usage
+result = safe_extract(text, prompt, examples)
+if result:
+    print(&quot;Extraction successful&quot;)
+    print(result.extractions)
+else:
+    print(&quot;Extraction failed after all retries&quot;)
+</code></pre>
+<h3 id="2-validation-and-quality-checks">2. Validation and Quality Checks</h3>
+<pre><code class="language-python">def validate_extraction_result(result: lx.ExtractionResult, expected_fields: List[str]) -&gt; bool:
+    &quot;&quot;&quot;Validate extraction results&quot;&quot;&quot;
+    if not result or not result.extractions:
+        return False
+
+    for extraction in result.extractions:
+        if not extraction.data:
+            return False
+
+        # Check for expected fields
+        for field in expected_fields:
+            if field not in extraction.data:
+                print(f&quot;Missing field: {field}&quot;)
+                return False
+
+    return True
+
+# Usage
+result = lx.extract(...)
+is_valid = validate_extraction_result(result, [&quot;entities&quot;, &quot;relationships&quot;])
+
+if not is_valid:
+    print(&quot;Extraction result validation failed&quot;)
+</code></pre>
+<h3 id="3-debugging-and-inspection">3. Debugging and Inspection</h3>
+<pre><code class="language-python">def debug_extraction(result: lx.ExtractionResult):
+    &quot;&quot;&quot;Debug extraction results&quot;&quot;&quot;
+    print(f&quot;Number of extractions: {len(result.extractions)}&quot;)
+
+    for i, extraction in enumerate(result.extractions):
+        print(f&quot;\nExtraction {i + 1}:&quot;)
+        print(f&quot;  Text length: {len(extraction.text)}&quot;)
+        print(f&quot;  Data keys: {list(extraction.data.keys())}&quot;)
+        print(f&quot;  Source spans: {len(extraction.source_spans)}&quot;)
+        print(f&quot;  Metadata: {extraction.metadata}&quot;)
+
+# Usage
+result = lx.extract(...)
+debug_extraction(result)
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-example-design">1. Example Design</h3>
+<pre><code class="language-python"># ✅ Good: Clear, specific examples
+good_examples = [
+    {
+        &quot;input&quot;: &quot;Dr. Smith prescribed aspirin 81mg daily for cardiovascular protection&quot;,
+        &quot;output&quot;: {
+            &quot;physician&quot;: &quot;Dr. Smith&quot;,
+            &quot;medication&quot;: {
+                &quot;name&quot;: &quot;aspirin&quot;,
+                &quot;dose&quot;: &quot;81mg&quot;,
+                &quot;frequency&quot;: &quot;daily&quot;,
+                &quot;indication&quot;: &quot;cardiovascular protection&quot;
+            }
+        }
+    }
+]
+
+# ❌ Avoid: Vague or inconsistent examples
+bad_examples = [
+    {
+        &quot;input&quot;: &quot;Some text&quot;,
+        &quot;output&quot;: {&quot;stuff&quot;: &quot;things&quot;}
+    }
+]
+</code></pre>
+<h3 id="2-prompt-engineering">2. Prompt Engineering</h3>
+<pre><code class="language-python"># ✅ Good: Specific, actionable prompts
+good_prompt = &quot;Extract medication names, dosages, frequencies, and indications from clinical notes. Include the prescribing physician if mentioned.&quot;
+
+# ❌ Avoid: Vague prompts
+bad_prompt = &quot;Extract medical information&quot;
+
+# Use the good prompt
+result = lx.extract(
+    text_or_documents=clinical_notes,
+    prompt_description=good_prompt,
+    examples=good_examples,
+    model_id=&quot;gemini-2.0-flash-exp&quot;
+)
+</code></pre>
+<h3 id="3-model-selection-guidelines">3. Model Selection Guidelines</h3>
+<pre><code class="language-python"># Choose model based on task complexity
+def select_model(task_complexity: str) -&gt; str:
+    model_map = {
+        &quot;simple&quot;: &quot;gemini-2.0-flash-exp&quot;,      # Fast, cost-effective
+        &quot;moderate&quot;: &quot;gemini-2.0-flash-exp&quot;,    # Good balance
+        &quot;complex&quot;: &quot;gemini-2.0-pro&quot;,           # Deep reasoning
+        &quot;specialized&quot;: &quot;gemini-2.0-pro&quot;        # Domain expertise
+    }
+    return model_map.get(task_complexity, &quot;gemini-2.0-flash-exp&quot;)
+
+# Usage
+model_id = select_model(&quot;moderate&quot;)
+result = lx.extract(
+    text_or_documents=text,
+    prompt_description=prompt,
+    examples=examples,
+    model_id=model_id
+)
+</code></pre>
+<h3 id="4-output-quality-assurance">4. Output Quality Assurance</h3>
+<pre><code class="language-python">def ensure_output_quality(result: lx.ExtractionResult) -&gt; bool:
+    &quot;&quot;&quot;Ensure extraction output meets quality standards&quot;&quot;&quot;
+    quality_checks = {
+        &quot;has_extractions&quot;: len(result.extractions) &gt; 0,
+        &quot;has_source_spans&quot;: all(
+            len(ext.source_spans) &gt; 0 for ext in result.extractions
+        ),
+        &quot;data_not_empty&quot;: all(
+            ext.data for ext in result.extractions
+        )
+    }
+
+    passed_checks = sum(quality_checks.values())
+    total_checks = len(quality_checks)
+
+    print(f&quot;Quality score: {passed_checks}/{total_checks}&quot;)
+    return passed_checks == total_checks
+
+# Usage
+result = lx.extract(...)
+if ensure_output_quality(result):
+    print(&quot;High quality extraction&quot;)
+else:
+    print(&quot;Consider refining examples or prompt&quot;)
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li>
+<p><strong>Empty Extractions</strong>
+   <code>python
+   # Check input text length and examples
+   if not result.extractions:
+       print(f"Input length: {len(text)} characters")
+       print(f"Number of examples: {len(examples)}")
+       # Try simpler examples or clearer prompt</code></p>
+</li>
+<li>
+<p><strong>Inconsistent Output Format</strong>
+   <code>python
+   # Ensure examples follow consistent schema
+   # Use more specific prompt descriptions
+   # Consider using fewer but higher-quality examples</code></p>
+</li>
+<li>
+<p><strong>Missing Source Spans</strong>
+   <code>python
+   # Verify text preprocessing doesn't remove character positions
+   # Check if extraction entities exist in source text</code></p>
+</li>
+<li>
+<p><strong>API Rate Limits</strong>
+   <code>python
+   # Implement exponential backoff
+   # Use caching for repeated requests
+   # Consider batch processing</code></p>
+</li>
+</ol>
+<h3 id="debugging-checklist">Debugging Checklist</h3>
+<ul>
+<li>[ ] Examples follow consistent format</li>
+<li>[ ] Prompt is specific and actionable</li>
+<li>[ ] Input text is well-formatted</li>
+<li>[ ] Model selection matches task complexity</li>
+<li>[ ] API credentials are properly configured</li>
+<li>[ ] Rate limiting is implemented for production use</li>
+</ul>
+<hr />
+<p><em>For the latest updates and detailed documentation, visit the <a href="https://github.com/google/langextract">LangExtract GitHub repository</a>.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

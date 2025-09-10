@@ -1,0 +1,2782 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../protobuf/">
+      
+      
+        <link rel="next" href="../vim-lazyvim/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Ripgrep (rg) - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ripgrep-rg" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ripgrep (rg)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Syntax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Behavior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-automatic-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable Automatic Filtering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-search-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Search Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Search Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expressions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-regex-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Regex Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-filtering-and-type-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Filtering and Type Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Filtering and Type Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glob-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glob Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom File Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-formatting-and-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Formatting and Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Formatting and Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-output-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Output Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-and-surrounding-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context and Surrounding Lines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-and-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column and Statistics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-replacement-and-substitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Replacement and Substitution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Replacement and Substitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Replacement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capture-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture Groups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whole-line-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whole Line Replacement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-modification-with-external-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Modification (with external tools)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#color-and-visual-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color and Visual Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color and Visual Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#color-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Colors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-for-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration File for Colors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-tips-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips and Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Tips and Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speed-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-and-resource-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory and Resource Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-file-and-binary-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Large File and Binary Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-preprocessor-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example preprocessor script:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-expression-engine-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expression Engine Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiline-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiline Search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editor-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editor Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-command-combinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Command Combinations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Command Combinations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-administration" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Administration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-gotchas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting and Gotchas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting and Gotchas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platform-specific-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform-Specific Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-specific-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project-specific Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#most-useful-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Most Useful Flags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#essential-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Syntax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Behavior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-automatic-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable Automatic Filtering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-search-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Search Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Search Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expressions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-regex-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Regex Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-filtering-and-type-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Filtering and Type Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Filtering and Type Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glob-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glob Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom File Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-formatting-and-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Formatting and Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Formatting and Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-output-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Output Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-and-surrounding-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context and Surrounding Lines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-and-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column and Statistics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-replacement-and-substitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Replacement and Substitution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Replacement and Substitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Replacement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capture-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture Groups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whole-line-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whole Line Replacement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-modification-with-external-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Modification (with external tools)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#color-and-visual-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color and Visual Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color and Visual Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#color-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Colors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-for-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration File for Colors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-tips-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips and Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Tips and Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speed-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-and-resource-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory and Resource Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-file-and-binary-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Large File and Binary Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-preprocessor-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example preprocessor script:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-expression-engine-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expression Engine Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiline-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiline Search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editor-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editor Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-command-combinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Command Combinations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Command Combinations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-administration" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Administration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-gotchas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting and Gotchas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting and Gotchas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platform-specific-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform-Specific Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-specific-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project-specific Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#most-useful-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Most Useful Flags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#essential-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ripgrep-rg">Ripgrep (rg)</h1>
+<p><strong>ripgrep</strong> is a line-oriented search tool that recursively searches the current directory for a regex pattern. It's written in Rust and is significantly faster than grep, ag, and other alternatives while respecting <code>.gitignore</code> rules by default.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="installation">Installation</h3>
+<pre><code class="language-bash"># macOS (Homebrew)
+brew install ripgrep
+
+# Ubuntu/Debian
+sudo apt-get install ripgrep
+
+# Fedora
+sudo dnf install ripgrep
+
+# Arch Linux
+sudo pacman -S ripgrep
+
+# Windows (Chocolatey)
+choco install ripgrep
+
+# Windows (Scoop)
+scoop install ripgrep
+
+# From source (requires Rust)
+cargo install ripgrep
+</code></pre>
+<h3 id="basic-syntax">Basic Syntax</h3>
+<pre><code class="language-bash">rg &lt;pattern&gt; [path]                    # Search for pattern in current directory
+rg &quot;hello world&quot;                       # Search for exact phrase
+rg hello README.md                     # Search in specific file
+rg hello /path/to/directory           # Search in specific directory
+</code></pre>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="default-behavior">Default Behavior</h3>
+<ul>
+<li><strong>Recursive</strong>: Searches all subdirectories by default</li>
+<li><strong>Gitignore-aware</strong>: Respects <code>.gitignore</code>, <code>.ignore</code>, and <code>.rgignore</code> files</li>
+<li><strong>Binary file filtering</strong>: Skips binary files automatically</li>
+<li><strong>Hidden file filtering</strong>: Ignores hidden files and directories</li>
+<li><strong>Unicode support</strong>: Full Unicode support with proper handling</li>
+</ul>
+<h3 id="disable-automatic-filtering">Disable Automatic Filtering</h3>
+<pre><code class="language-bash">rg -uuu pattern                       # Disable all filtering (gitignore, hidden, binary)
+rg -u pattern                         # Disable gitignore filtering
+rg -uu pattern                        # Also search hidden files
+rg --no-ignore pattern                # Disable gitignore filtering
+rg --hidden pattern                   # Search hidden files
+rg -a pattern                         # Search binary files as text
+</code></pre>
+<h2 id="common-search-patterns">Common Search Patterns</h2>
+<h3 id="basic-patterns">Basic Patterns</h3>
+<pre><code class="language-bash">rg &quot;exact phrase&quot;                     # Exact phrase search
+rg word                               # Single word search
+rg -i case                           # Case-insensitive search
+rg -S smart                          # Smart case (case-insensitive unless pattern has uppercase)
+rg -w function                       # Word boundary search
+rg -F &quot;literal.string&quot;               # Fixed string (no regex)
+</code></pre>
+<h3 id="regular-expressions">Regular Expressions</h3>
+<pre><code class="language-bash">rg &quot;func.*main&quot;                      # Any characters between func and main
+rg &quot;^import&quot;                         # Lines starting with import
+rg &quot;error$&quot;                          # Lines ending with error
+rg &quot;\d{3}-\d{4}&quot;                     # Phone number pattern (XXX-XXXX)
+rg &quot;TODO|FIXME|BUG&quot;                  # Multiple patterns (OR)
+rg &quot;\w+@\w+\.\w+&quot;                    # Basic email pattern
+</code></pre>
+<h3 id="advanced-regex-features">Advanced Regex Features</h3>
+<pre><code class="language-bash"># Use PCRE2 engine for advanced features
+rg -P &quot;(?&lt;=func\s)\w+&quot;               # Positive lookbehind
+rg -P &quot;(\w+)\1&quot;                      # Backreferences
+rg -P &quot;\b\w+(?=\s+error)&quot;            # Positive lookahead
+
+# Multiline patterns
+rg -U &quot;function.*\{.*\}&quot;             # Multiline function pattern
+rg -U &quot;struct.*\{[^}]*field&quot;         # Struct with specific field
+</code></pre>
+<h2 id="file-filtering-and-type-selection">File Filtering and Type Selection</h2>
+<h3 id="file-types">File Types</h3>
+<pre><code class="language-bash"># List all available file types
+rg --type-list
+
+# Search specific file types
+rg pattern -tpy                      # Python files only
+rg pattern -tjs                      # JavaScript files only
+rg pattern -trust                    # Rust files only
+rg pattern -tc                       # C files only
+
+# Exclude file types
+rg pattern -Trust                    # Exclude Rust files
+rg pattern -Tjs                      # Exclude JavaScript files
+rg pattern --type-not rust           # Alternative syntax
+</code></pre>
+<h3 id="glob-patterns">Glob Patterns</h3>
+<pre><code class="language-bash"># Include files matching pattern
+rg pattern -g &quot;*.toml&quot;               # TOML files only
+rg pattern -g &quot;*.{py,pyx}&quot;           # Python files
+rg pattern -g &quot;test_*.py&quot;            # Test files
+
+# Exclude files matching pattern
+rg pattern -g &quot;!*.min.js&quot;            # Exclude minified JS
+rg pattern -g &quot;!node_modules/*&quot;      # Exclude node_modules
+rg pattern -g &quot;!*.log&quot;               # Exclude log files
+
+# Multiple glob patterns
+rg pattern -g &quot;*.rs&quot; -g &quot;!target/*&quot;  # Rust files, exclude target directory
+</code></pre>
+<h3 id="custom-file-types">Custom File Types</h3>
+<pre><code class="language-bash"># Define custom file type
+rg pattern --type-add 'web:*.{html,css,js}' -tweb
+
+# Make persistent with alias
+alias rg=&quot;rg --type-add 'web:*.{html,css,js}'&quot;
+
+# Using configuration file
+echo &quot;--type-add=web:*.{html,css,js}&quot; &gt;&gt; ~/.config/ripgrep/rc
+export RIPGREP_CONFIG_PATH=&quot;$HOME/.config/ripgrep/rc&quot;
+</code></pre>
+<h2 id="output-formatting-and-options">Output Formatting and Options</h2>
+<h3 id="basic-output-control">Basic Output Control</h3>
+<pre><code class="language-bash">rg pattern -n                        # Show line numbers (default)
+rg pattern -N                        # Don't show line numbers
+rg pattern -H                        # Show file names (default when multiple files)
+rg pattern --no-filename             # Don't show file names
+rg pattern -c                        # Count matching lines only
+rg pattern --count-matches           # Count individual matches
+</code></pre>
+<h3 id="context-and-surrounding-lines">Context and Surrounding Lines</h3>
+<pre><code class="language-bash">rg pattern -A 3                      # Show 3 lines after match
+rg pattern -B 2                      # Show 2 lines before match
+rg pattern -C 2                      # Show 2 lines before and after
+rg pattern --context 2               # Alternative syntax for -C
+</code></pre>
+<h3 id="output-modes">Output Modes</h3>
+<pre><code class="language-bash">rg pattern -l                        # List files with matches only
+rg pattern --files-with-matches      # Alternative syntax
+rg pattern --files-without-match     # List files without matches
+rg pattern -o                        # Show only matching parts
+rg pattern --only-matching           # Alternative syntax
+rg pattern -v                        # Show non-matching lines (invert match)
+</code></pre>
+<h3 id="column-and-statistics">Column and Statistics</h3>
+<pre><code class="language-bash">rg pattern --column                  # Show column numbers
+rg pattern --stats                   # Show search statistics
+rg pattern --debug                   # Show debug information
+rg pattern --trace                   # Show trace information
+</code></pre>
+<h2 id="text-replacement-and-substitution">Text Replacement and Substitution</h2>
+<h3 id="basic-replacement">Basic Replacement</h3>
+<pre><code class="language-bash"># Show what replacements would look like (no file modification)
+rg &quot;fast&quot; -r &quot;FAST&quot; README.md        # Replace fast with FAST
+rg &quot;fast&quot; --replace &quot;FAST&quot;           # Alternative syntax
+</code></pre>
+<h3 id="capture-groups">Capture Groups</h3>
+<pre><code class="language-bash"># Using numbered capture groups
+rg &quot;fast\s+(\w+)&quot; -r &quot;fast-$1&quot;       # fast word -&gt; fast-word
+
+# Using named capture groups
+rg &quot;fast\s+(?P&lt;word&gt;\w+)&quot; -r &quot;fast-$word&quot;
+</code></pre>
+<h3 id="whole-line-replacement">Whole Line Replacement</h3>
+<pre><code class="language-bash">rg &quot;^.*error.*$&quot; -r &quot;ERROR LINE&quot;     # Replace entire lines containing error
+</code></pre>
+<h3 id="file-modification-with-external-tools">File Modification (with external tools)</h3>
+<pre><code class="language-bash"># GNU sed (Linux)
+rg foo -l | xargs sed -i 's/foo/bar/g'
+
+# BSD sed (macOS)
+rg foo -l | xargs sed -i '' 's/foo/bar/g'
+
+# Handle filenames with spaces
+rg foo -l -0 | xargs -0 sed -i 's/foo/bar/g'
+</code></pre>
+<h2 id="color-and-visual-customization">Color and Visual Customization</h2>
+<h3 id="color-control">Color Control</h3>
+<pre><code class="language-bash">rg pattern --color never             # Disable colors
+rg pattern --color always            # Force colors
+rg pattern --color auto              # Automatic (default)
+rg pattern --color ansi              # Use ANSI colors only
+</code></pre>
+<h3 id="custom-colors">Custom Colors</h3>
+<pre><code class="language-bash"># Individual color settings
+rg pattern --colors 'match:fg:red'
+rg pattern --colors 'path:fg:green'
+rg pattern --colors 'line:fg:yellow'
+rg pattern --colors 'column:fg:blue'
+
+# Multiple color settings
+rg pattern \
+  --colors 'match:fg:white' \
+  --colors 'match:bg:blue' \
+  --colors 'match:style:bold'
+
+# RGB colors
+rg pattern --colors 'match:fg:255,0,0'   # Bright red
+rg pattern --colors 'match:bg:0x33,0x66,0xFF'  # Hex colors
+
+# Clear default styles first (recommended)
+rg pattern \
+  --colors 'match:none' \
+  --colors 'match:fg:blue'
+</code></pre>
+<h3 id="configuration-file-for-colors">Configuration File for Colors</h3>
+<pre><code class="language-bash"># ~/.config/ripgrep/rc
+--colors=line:fg:yellow
+--colors=line:style:bold
+--colors=path:fg:green
+--colors=path:style:bold
+--colors=match:fg:black
+--colors=match:bg:yellow
+--colors=match:style:nobold
+
+# Use configuration
+export RIPGREP_CONFIG_PATH=&quot;$HOME/.config/ripgrep/rc&quot;
+</code></pre>
+<h2 id="performance-tips-and-best-practices">Performance Tips and Best Practices</h2>
+<h3 id="speed-optimization">Speed Optimization</h3>
+<pre><code class="language-bash"># Use fixed strings when possible (faster than regex)
+rg -F &quot;exact string&quot;                 # Much faster for literal searches
+
+# Limit search scope
+rg pattern src/                      # Search specific directory
+rg pattern -trs                     # Limit to Rust files
+
+# Use word boundaries for whole words
+rg -w function                       # Faster than &quot;\\bfunction\\b&quot;
+
+# Smart case by default
+rg -S pattern                        # Case insensitive unless uppercase in pattern
+</code></pre>
+<h3 id="memory-and-resource-control">Memory and Resource Control</h3>
+<pre><code class="language-bash"># Limit line length to prevent huge output
+rg pattern --max-columns 150
+rg pattern --max-columns-preview     # Show preview of long lines
+
+# Limit file size to search
+rg pattern --max-filesize 1M         # Skip files larger than 1MB
+
+# Control number of threads
+rg pattern -j 4                      # Use 4 threads
+rg pattern --threads 1               # Single-threaded
+
+# Memory mapping control
+rg pattern --mmap                    # Force memory mapping
+rg pattern --no-mmap                 # Disable memory mapping
+</code></pre>
+<h3 id="large-file-and-binary-handling">Large File and Binary Handling</h3>
+<pre><code class="language-bash"># Search compressed files
+rg pattern -z                        # Search gzip, bzip2, xz, lzma, lz4, brotli, zstd
+
+# Handle encoding
+rg pattern --encoding utf8           # Force UTF-8
+rg pattern --encoding none           # No encoding (binary search)
+
+# Binary file handling
+rg pattern -a                        # Search binary files as text
+rg pattern --binary                  # Show binary matches
+</code></pre>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="preprocessing">Preprocessing</h3>
+<pre><code class="language-bash"># Use preprocessor for special file types (e.g., PDFs)
+rg pattern --pre ./preprocess.sh
+
+# Conditional preprocessing with glob
+rg pattern --pre ./preprocess.sh --pre-glob '*.pdf'
+</code></pre>
+<h3 id="example-preprocessor-script">Example preprocessor script:</h3>
+<pre><code class="language-bash">#!/bin/sh
+# preprocess.sh
+case &quot;$1&quot; in
+*.pdf)
+  if [ -s &quot;$1&quot; ]; then
+    exec pdftotext &quot;$1&quot; -
+  else
+    exec cat
+  fi
+  ;;
+*)
+  exec cat
+  ;;
+esac
+</code></pre>
+<h3 id="regular-expression-engine-control">Regular Expression Engine Control</h3>
+<pre><code class="language-bash"># Default engine (fast, limited features)
+rg pattern                           # Default Rust regex engine
+
+# PCRE2 engine (slower, more features)
+rg -P pattern                        # Enable lookarounds, backreferences
+rg -P --no-pcre2-unicode pattern     # Disable Unicode for speed
+
+# Engine size limits
+rg pattern --regex-size-limit 1G     # Increase regex compilation size
+rg pattern --dfa-size-limit 1G       # Increase DFA cache size
+</code></pre>
+<h3 id="multiline-search">Multiline Search</h3>
+<pre><code class="language-bash">rg -U &quot;function.*{.*return.*}&quot;       # Search across line boundaries
+rg -U --multiline-dotall &quot;start.*end&quot; # . matches newlines too
+</code></pre>
+<h2 id="integration-with-other-tools">Integration with Other Tools</h2>
+<h3 id="shell-integration">Shell Integration</h3>
+<pre><code class="language-bash"># Generate shell completions
+rg --generate complete-bash &gt; ~/.local/share/bash-completion/completions/rg
+rg --generate complete-zsh &gt; ~/.zsh/completions/_rg
+rg --generate complete-fish &gt; ~/.config/fish/completions/rg.fish
+
+# Generate man page
+rg --generate man | man -l -
+</code></pre>
+<h3 id="editor-integration">Editor Integration</h3>
+<pre><code class="language-bash"># Vim/Neovim grepprg
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
+# VS Code search with ripgrep
+&quot;search.useRipgrep&quot;: true
+
+# Emacs
+(setq counsel-rg-base-command &quot;rg -i -M 120 --no-heading --line-number --color never %s&quot;)
+</code></pre>
+<h3 id="pipeline-usage">Pipeline Usage</h3>
+<pre><code class="language-bash"># Find and process files
+rg -l &quot;TODO&quot; | head -5              # First 5 files with TODO
+rg -l &quot;pattern&quot; | wc -l             # Count files with pattern
+rg -c &quot;error&quot; | sort -t: -k2 -nr    # Sort by match count
+
+# Combining with other tools
+rg &quot;class.*:&quot; --only-matching | sort | uniq -c  # Count class definitions
+rg &quot;import.*from&quot; -o | awk '{print $3}' | sort | uniq  # List import sources
+</code></pre>
+<h2 id="common-command-combinations">Common Command Combinations</h2>
+<h3 id="development-workflow">Development Workflow</h3>
+<pre><code class="language-bash"># Find TODOs and FIXMEs in code
+rg &quot;(TODO|FIXME|BUG|HACK|XXX)&quot; -n
+
+# Search for functions/methods
+rg &quot;(def|function|fn)\s+\w+&quot; -tpy -tjs -trust
+
+# Find unused imports (basic)
+rg &quot;^import.*&quot; --only-matching | sort | uniq -c | awk '$1==1'
+
+# Search for potential security issues
+rg -i &quot;(password|secret|key|token).*=&quot; -tpy -tjs
+
+# Find large functions (rough estimate)
+rg -U &quot;^(def|function|fn).*\{&quot; -A 50 | rg -c &quot;^}&quot; | awk -F: '$2&gt;30'
+</code></pre>
+<h3 id="system-administration">System Administration</h3>
+<pre><code class="language-bash"># Search log files
+rg &quot;ERROR|FATAL&quot; /var/log/ -tlog
+
+# Find configuration issues
+rg -i &quot;(error|fail|exception)&quot; /etc/ -g &quot;*.conf&quot; -g &quot;*.cfg&quot;
+
+# Process and network searches
+rg &quot;:80\b&quot; /etc/ -n                 # Find port 80 references
+rg &quot;127\.0\.0\.1&quot; /etc/ -n          # Find localhost references
+</code></pre>
+<h3 id="data-analysis">Data Analysis</h3>
+<pre><code class="language-bash"># Count occurrences
+rg &quot;pattern&quot; -c | awk -F: '{sum+=$2} END {print sum}'
+
+# Extract structured data
+rg &quot;\b\d{4}-\d{2}-\d{2}\b&quot; -o      # Extract dates
+rg &quot;\b[\w.-]+@[\w.-]+\.\w+\b&quot; -o   # Extract emails
+rg &quot;\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b&quot; -o  # Extract IP addresses
+</code></pre>
+<h2 id="troubleshooting-and-gotchas">Troubleshooting and Gotchas</h2>
+<h3 id="common-issues">Common Issues</h3>
+<pre><code class="language-bash"># Pattern not found due to gitignore
+rg pattern --no-ignore              # Disable gitignore rules
+
+# Searching binary files
+rg pattern -a                       # Force text mode
+
+# Too many matches
+rg pattern --max-count 10           # Limit matches per file
+
+# Permission denied errors
+rg pattern 2&gt;/dev/null              # Suppress error messages
+</code></pre>
+<h3 id="performance-issues">Performance Issues</h3>
+<pre><code class="language-bash"># Slow searches in large repositories
+rg pattern --max-filesize 1M        # Skip large files
+rg pattern -j 1                     # Use single thread
+rg pattern --no-mmap                # Disable memory mapping
+
+# Memory issues with large files
+rg pattern --max-columns 100        # Limit line length
+rg pattern --multiline-dotall false # Disable multiline optimizations
+</code></pre>
+<h3 id="platform-specific-issues">Platform-Specific Issues</h3>
+<pre><code class="language-bash"># Windows path issues (Cygwin)
+MSYS_NO_PATHCONV=1 rg &quot;/pattern&quot;
+
+# PowerShell encoding issues
+$OutputEncoding = [System.Text.UTF8Encoding]::new()
+</code></pre>
+<h2 id="configuration-files">Configuration Files</h2>
+<h3 id="global-configuration">Global Configuration</h3>
+<p>Create <code>~/.config/ripgrep/rc</code>:</p>
+<pre><code class="language-bash"># Default options
+--smart-case
+--hidden
+--max-columns=150
+--max-columns-preview
+
+# Custom file types
+--type-add=web:*.{html,css,js,jsx,ts,tsx}
+--type-add=config:*.{json,yaml,yml,toml,ini}
+
+# Color settings
+--colors=line:fg:yellow
+--colors=path:fg:green
+--colors=match:bg:blue
+--colors=match:fg:white
+
+# Exclusions
+--glob=!.git/*
+--glob=!node_modules/*
+--glob=!target/*
+</code></pre>
+<p>Set environment variable:</p>
+<pre><code class="language-bash">export RIPGREP_CONFIG_PATH=&quot;$HOME/.config/ripgrep/rc&quot;
+</code></pre>
+<h3 id="project-specific-configuration">Project-specific Configuration</h3>
+<p>Create <code>.rgignore</code> in project root:</p>
+<pre><code class="language-bash"># Ignore build artifacts
+target/
+build/
+dist/
+
+# Ignore dependencies
+node_modules/
+vendor/
+
+# Ignore logs
+*.log
+logs/
+</code></pre>
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="most-useful-flags">Most Useful Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-i</code></td>
+<td>Case insensitive</td>
+</tr>
+<tr>
+<td><code>-S</code></td>
+<td>Smart case</td>
+</tr>
+<tr>
+<td><code>-w</code></td>
+<td>Word boundaries</td>
+</tr>
+<tr>
+<td><code>-F</code></td>
+<td>Fixed strings (literal)</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>Invert match</td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>Count matches</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>List files with matches</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>Line numbers</td>
+</tr>
+<tr>
+<td><code>-A/B/C</code></td>
+<td>Context lines</td>
+</tr>
+<tr>
+<td><code>-t&lt;type&gt;</code></td>
+<td>File type filter</td>
+</tr>
+<tr>
+<td><code>-g</code></td>
+<td>Glob pattern</td>
+</tr>
+<tr>
+<td><code>--hidden</code></td>
+<td>Search hidden files</td>
+</tr>
+<tr>
+<td><code>--no-ignore</code></td>
+<td>Ignore .gitignore</td>
+</tr>
+<tr>
+<td><code>-u/-uu/-uuu</code></td>
+<td>Reduce filtering</td>
+</tr>
+</tbody>
+</table>
+<h3 id="essential-patterns">Essential Patterns</h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\b\w+\b</code></td>
+<td>Whole words</td>
+</tr>
+<tr>
+<td><code>^\s*$</code></td>
+<td>Empty lines</td>
+</tr>
+<tr>
+<td><code>\d+</code></td>
+<td>Numbers</td>
+</tr>
+<tr>
+<td><code>[A-Z_]+</code></td>
+<td>Constants</td>
+</tr>
+<tr>
+<td><code>https?://\S+</code></td>
+<td>URLs</td>
+</tr>
+<tr>
+<td><code>\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z\|a-z]{2,}\b</code></td>
+<td>Emails</td>
+</tr>
+</tbody>
+</table>
+<p>This cheat sheet covers the most important ripgrep features and usage patterns. For exhaustive documentation, use <code>rg --help</code> or generate the man page with <code>rg --generate man</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

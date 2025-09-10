@@ -1,0 +1,2746 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tensorflow/">
+      
+      
+        <link rel="next" href="../transformers/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>TorchVision - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#torchvision" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TorchVision
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Transforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Transforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-trained-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-trained Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Segmentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-interpretability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Interpretability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-opencv" class="md-nav__link">
+    <span class="md-ellipsis">
+      With OpenCV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-matplotlib-for-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Matplotlib for Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-selection-and-hyperparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection and Hyperparameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Transforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Transforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-trained-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-trained Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Segmentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-interpretability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Interpretability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Other Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-opencv" class="md-nav__link">
+    <span class="md-ellipsis">
+      With OpenCV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-matplotlib-for-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Matplotlib for Visualization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-selection-and-hyperparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection and Hyperparameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="torchvision">TorchVision</h1>
+<p>TorchVision is PyTorch's computer vision library, providing datasets, model architectures, and common image transformations for computer vision tasks. It includes pre-trained models, data loading utilities, and transforms for efficient computer vision pipelines.</p>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash"># Basic installation with PyTorch
+pip install torch torchvision
+
+# With CUDA support (check PyTorch website for correct version)
+pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/cu118
+
+# Development version
+pip install git+https://github.com/pytorch/vision.git
+
+# With additional dependencies
+pip install torchvision pillow matplotlib opencv-python
+</code></pre>
+<h2 id="basic-setup">Basic Setup</h2>
+<pre><code class="language-python">import torch
+import torchvision
+import torchvision.transforms as transforms
+import torchvision.datasets as datasets
+import torchvision.models as models
+from torchvision.utils import make_grid, save_image
+from torch.utils.data import DataLoader
+import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
+
+# Check versions
+print(f&quot;TorchVision version: {torchvision.__version__}&quot;)
+print(f&quot;PyTorch version: {torch.__version__}&quot;)
+</code></pre>
+<h2 id="core-functionality">Core Functionality</h2>
+<h3 id="image-transforms">Image Transforms</h3>
+<pre><code class="language-python"># Basic transforms
+transform = transforms.Compose([
+    transforms.Resize(256),                    # Resize to 256x256
+    transforms.CenterCrop(224),               # Center crop to 224x224
+    transforms.ToTensor(),                    # Convert PIL to tensor [0,1]
+    transforms.Normalize(                     # Normalize with ImageNet stats
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+
+# Data augmentation transforms
+train_transform = transforms.Compose([
+    transforms.RandomResizedCrop(224),         # Random crop and resize
+    transforms.RandomHorizontalFlip(p=0.5),   # Random horizontal flip
+    transforms.ColorJitter(                   # Random color changes
+        brightness=0.2,
+        contrast=0.2,
+        saturation=0.2,
+        hue=0.1
+    ),
+    transforms.RandomRotation(10),            # Random rotation ±10 degrees
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+
+# Validation/test transforms (no augmentation)
+val_transform = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+
+# Apply transforms to an image
+image = Image.open(&quot;path/to/image.jpg&quot;)
+transformed_image = transform(image)
+print(f&quot;Original size: {image.size}&quot;)
+print(f&quot;Transformed shape: {transformed_image.shape}&quot;)  # [C, H, W]
+</code></pre>
+<h3 id="advanced-transforms">Advanced Transforms</h3>
+<pre><code class="language-python"># Geometric transforms
+geometric_transforms = transforms.Compose([
+    transforms.RandomAffine(
+        degrees=15,                           # Rotation
+        translate=(0.1, 0.1),                # Translation
+        scale=(0.8, 1.2),                    # Scale
+        shear=10                             # Shear
+    ),
+    transforms.RandomPerspective(
+        distortion_scale=0.2,
+        p=0.5
+    ),
+    transforms.ElasticTransform(alpha=250.0, sigma=5.0)  # Elastic deformation
+])
+
+# Advanced color transforms
+color_transforms = transforms.Compose([
+    transforms.RandomAutocontrast(p=0.5),
+    transforms.RandomEqualize(p=0.5),
+    transforms.RandomPosterize(bits=2, p=0.5),
+    transforms.RandomSolarize(threshold=128, p=0.5),
+    transforms.RandomAdjustSharpness(sharpness_factor=2, p=0.5)
+])
+
+# Cutout/Erasing augmentation
+erase_transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.RandomErasing(
+        p=0.5,
+        scale=(0.02, 0.33),
+        ratio=(0.3, 3.3),
+        value=0
+    )
+])
+
+# Mix multiple transforms
+strong_augment = transforms.Compose([
+    transforms.RandomResizedCrop(224),
+    transforms.RandomHorizontalFlip(),
+    color_transforms,
+    transforms.ToTensor(),
+    transforms.RandomErasing(p=0.25),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+</code></pre>
+<h3 id="built-in-datasets">Built-in Datasets</h3>
+<pre><code class="language-python"># CIFAR-10 dataset
+cifar10_train = datasets.CIFAR10(
+    root='./data',
+    train=True,
+    download=True,
+    transform=train_transform
+)
+
+cifar10_test = datasets.CIFAR10(
+    root='./data',
+    train=False,
+    download=True,
+    transform=val_transform
+)
+
+# ImageNet dataset (requires downloaded data)
+imagenet_train = datasets.ImageNet(
+    root='./data/imagenet',
+    split='train',
+    transform=train_transform
+)
+
+# COCO dataset
+coco_train = datasets.CocoDetection(
+    root='./data/coco/train2017',
+    annFile='./data/coco/annotations/instances_train2017.json',
+    transform=transforms.ToTensor()
+)
+
+# Custom dataset from folder structure
+custom_dataset = datasets.ImageFolder(
+    root='./data/custom',  # Folder with subdirectories for each class
+    transform=train_transform
+)
+
+# Data loaders
+train_loader = DataLoader(
+    cifar10_train,
+    batch_size=32,
+    shuffle=True,
+    num_workers=4,
+    pin_memory=True
+)
+
+test_loader = DataLoader(
+    cifar10_test,
+    batch_size=32,
+    shuffle=False,
+    num_workers=4,
+    pin_memory=True
+)
+
+# Dataset info
+print(f&quot;Training samples: {len(cifar10_train)}&quot;)
+print(f&quot;Test samples: {len(cifar10_test)}&quot;)
+print(f&quot;Classes: {cifar10_train.classes}&quot;)
+print(f&quot;Number of classes: {len(cifar10_train.classes)}&quot;)
+</code></pre>
+<h3 id="pre-trained-models">Pre-trained Models</h3>
+<pre><code class="language-python"># Image Classification Models
+resnet50 = models.resnet50(pretrained=True)
+resnet101 = models.resnet101(weights=models.ResNet101_Weights.IMAGENET1K_V1)
+
+# Vision Transformers
+vit_b_16 = models.vit_b_16(weights=models.ViT_B_16_Weights.IMAGENET1K_V1)
+vit_l_16 = models.vit_l_16(weights=models.ViT_L_16_Weights.IMAGENET1K_V1)
+
+# EfficientNet models
+efficientnet_b0 = models.efficientnet_b0(weights=models.EfficientNet_B0_Weights.IMAGENET1K_V1)
+efficientnet_b7 = models.efficientnet_b7(weights=models.EfficientNet_B7_Weights.IMAGENET1K_V1)
+
+# ConvNext models
+convnext_tiny = models.convnext_tiny(weights=models.ConvNeXt_Tiny_Weights.IMAGENET1K_V1)
+convnext_base = models.convnext_base(weights=models.ConvNeXt_Base_Weights.IMAGENET1K_V1)
+
+# Object Detection Models
+fasterrcnn_resnet50 = models.detection.fasterrcnn_resnet50_fpn(
+    weights=models.detection.FasterRCNN_ResNet50_FPN_Weights.COCO_V1
+)
+
+# Semantic Segmentation Models
+deeplabv3_resnet50 = models.segmentation.deeplabv3_resnet50(
+    weights=models.segmentation.DeepLabV3_ResNet50_Weights.COCO_WITH_VOC_LABELS_V1
+)
+
+# Set models to evaluation mode
+resnet50.eval()
+
+# Modify models for different number of classes
+num_classes = 10  # CIFAR-10 has 10 classes
+resnet50.fc = torch.nn.Linear(resnet50.fc.in_features, num_classes)
+
+print(f&quot;Model: {resnet50.__class__.__name__}&quot;)
+print(f&quot;Number of parameters: {sum(p.numel() for p in resnet50.parameters()):,}&quot;)
+</code></pre>
+<h2 id="common-use-cases">Common Use Cases</h2>
+<h3 id="image-classification">Image Classification</h3>
+<pre><code class="language-python">import torch.nn as nn
+import torch.optim as optim
+from torchvision import models, transforms, datasets
+
+class ImageClassifier:
+    def __init__(self, num_classes=10, model_name='resnet50', pretrained=True):
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+        # Load pre-trained model
+        if model_name == 'resnet50':
+            self.model = models.resnet50(pretrained=pretrained)
+            self.model.fc = nn.Linear(self.model.fc.in_features, num_classes)
+        elif model_name == 'vit_b_16':
+            self.model = models.vit_b_16(pretrained=pretrained)
+            self.model.heads.head = nn.Linear(self.model.heads.head.in_features, num_classes)
+
+        self.model.to(self.device)
+
+        # Loss and optimizer
+        self.criterion = nn.CrossEntropyLoss()
+        self.optimizer = optim.Adam(self.model.parameters(), lr=0.001)
+        self.scheduler = optim.lr_scheduler.StepLR(self.optimizer, step_size=7, gamma=0.1)
+
+    def train_epoch(self, train_loader):
+        self.model.train()
+        running_loss = 0.0
+        correct = 0
+        total = 0
+
+        for batch_idx, (data, target) in enumerate(train_loader):
+            data, target = data.to(self.device), target.to(self.device)
+
+            self.optimizer.zero_grad()
+            output = self.model(data)
+            loss = self.criterion(output, target)
+            loss.backward()
+            self.optimizer.step()
+
+            running_loss += loss.item()
+            _, predicted = torch.max(output.data, 1)
+            total += target.size(0)
+            correct += (predicted == target).sum().item()
+
+            if batch_idx % 100 == 0:
+                print(f'Batch {batch_idx}, Loss: {loss.item():.6f}')
+
+        accuracy = 100 * correct / total
+        avg_loss = running_loss / len(train_loader)
+        return avg_loss, accuracy
+
+    def evaluate(self, test_loader):
+        self.model.eval()
+        test_loss = 0.0
+        correct = 0
+        total = 0
+
+        with torch.no_grad():
+            for data, target in test_loader:
+                data, target = data.to(self.device), target.to(self.device)
+                output = self.model(data)
+                test_loss += self.criterion(output, target).item()
+
+                _, predicted = torch.max(output.data, 1)
+                total += target.size(0)
+                correct += (predicted == target).sum().item()
+
+        accuracy = 100 * correct / total
+        avg_loss = test_loss / len(test_loader)
+        return avg_loss, accuracy
+
+    def predict(self, image_path, transform, class_names):
+        self.model.eval()
+
+        # Load and transform image
+        image = Image.open(image_path)
+        image_tensor = transform(image).unsqueeze(0).to(self.device)
+
+        with torch.no_grad():
+            output = self.model(image_tensor)
+            probabilities = torch.nn.functional.softmax(output[0], dim=0)
+            predicted_class = torch.argmax(probabilities).item()
+            confidence = probabilities[predicted_class].item()
+
+        return class_names[predicted_class], confidence, probabilities
+
+# Usage example
+classifier = ImageClassifier(num_classes=10, model_name='resnet50')
+
+# Training loop
+for epoch in range(10):
+    train_loss, train_acc = classifier.train_epoch(train_loader)
+    test_loss, test_acc = classifier.evaluate(test_loader)
+    classifier.scheduler.step()
+
+    print(f'Epoch {epoch+1}/10:')
+    print(f'  Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%')
+    print(f'  Test Loss: {test_loss:.4f}, Test Acc: {test_acc:.2f}%')
+
+# Single image prediction
+class_names = cifar10_train.classes
+prediction, confidence, probs = classifier.predict(
+    'path/to/image.jpg', 
+    val_transform, 
+    class_names
+)
+print(f&quot;Prediction: {prediction} (Confidence: {confidence:.3f})&quot;)
+</code></pre>
+<h3 id="transfer-learning">Transfer Learning</h3>
+<pre><code class="language-python">def create_transfer_learning_model(num_classes, freeze_features=True):
+    &quot;&quot;&quot;Create a transfer learning model from pre-trained ResNet&quot;&quot;&quot;
+
+    # Load pre-trained model
+    model = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
+
+    # Freeze feature extraction layers (optional)
+    if freeze_features:
+        for param in model.parameters():
+            param.requires_grad = False
+
+    # Replace final classification layer
+    num_features = model.fc.in_features
+    model.fc = nn.Sequential(
+        nn.Dropout(0.5),
+        nn.Linear(num_features, 512),
+        nn.ReLU(),
+        nn.Dropout(0.5),
+        nn.Linear(512, num_classes)
+    )
+
+    return model
+
+def fine_tune_model(model, train_loader, val_loader, num_epochs=25):
+    &quot;&quot;&quot;Fine-tune a transfer learning model&quot;&quot;&quot;
+
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model.to(device)
+
+    # Different learning rates for different parts
+    feature_params = []
+    classifier_params = []
+
+    for name, param in model.named_parameters():
+        if 'fc' in name:
+            classifier_params.append(param)
+        else:
+            feature_params.append(param)
+
+    # Optimizer with different learning rates
+    optimizer = optim.Adam([
+        {'params': feature_params, 'lr': 1e-4},
+        {'params': classifier_params, 'lr': 1e-3}
+    ])
+
+    criterion = nn.CrossEntropyLoss()
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=3)
+
+    best_acc = 0.0
+    train_losses, val_losses = [], []
+    train_accuracies, val_accuracies = [], []
+
+    for epoch in range(num_epochs):
+        # Training phase
+        model.train()
+        running_loss = 0.0
+        correct = 0
+        total = 0
+
+        for inputs, labels in train_loader:
+            inputs, labels = inputs.to(device), labels.to(device)
+
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            running_loss += loss.item()
+            _, predicted = torch.max(outputs, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+
+        train_loss = running_loss / len(train_loader)
+        train_acc = 100 * correct / total
+
+        # Validation phase
+        model.eval()
+        val_running_loss = 0.0
+        val_correct = 0
+        val_total = 0
+
+        with torch.no_grad():
+            for inputs, labels in val_loader:
+                inputs, labels = inputs.to(device), labels.to(device)
+                outputs = model(inputs)
+                loss = criterion(outputs, labels)
+
+                val_running_loss += loss.item()
+                _, predicted = torch.max(outputs, 1)
+                val_total += labels.size(0)
+                val_correct += (predicted == labels).sum().item()
+
+        val_loss = val_running_loss / len(val_loader)
+        val_acc = 100 * val_correct / val_total
+
+        scheduler.step(val_loss)
+
+        # Save best model
+        if val_acc &gt; best_acc:
+            best_acc = val_acc
+            torch.save(model.state_dict(), 'best_model.pth')
+
+        # Store metrics
+        train_losses.append(train_loss)
+        val_losses.append(val_loss)
+        train_accuracies.append(train_acc)
+        val_accuracies.append(val_acc)
+
+        print(f'Epoch {epoch+1}/{num_epochs}:')
+        print(f'  Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%')
+        print(f'  Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.2f}%')
+
+    return model, (train_losses, val_losses, train_accuracies, val_accuracies)
+
+# Usage
+model = create_transfer_learning_model(num_classes=10, freeze_features=False)
+model, metrics = fine_tune_model(model, train_loader, test_loader)
+</code></pre>
+<h3 id="object-detection">Object Detection</h3>
+<pre><code class="language-python">import torchvision.transforms as T
+from torchvision.models.detection import fasterrcnn_resnet50_fpn
+from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
+
+class ObjectDetector:
+    def __init__(self, num_classes=91):  # COCO has 80 classes + background
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+        # Load pre-trained Faster R-CNN model
+        self.model = fasterrcnn_resnet50_fpn(pretrained=True)
+
+        # Replace classifier head for custom number of classes
+        in_features = self.model.roi_heads.box_predictor.cls_score.in_features
+        self.model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
+
+        self.model.to(self.device)
+
+        # COCO class names (for visualization)
+        self.coco_names = [
+            'background', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
+            'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign',
+            'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
+            'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag',
+            'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite',
+            'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket',
+            'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana',
+            'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza',
+            'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table',
+            'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone',
+            'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock',
+            'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
+        ]
+
+    def predict(self, image_path, threshold=0.5):
+        &quot;&quot;&quot;Perform object detection on an image&quot;&quot;&quot;
+        self.model.eval()
+
+        # Load and transform image
+        image = Image.open(image_path).convert('RGB')
+        transform = T.Compose([T.ToTensor()])
+        image_tensor = transform(image).unsqueeze(0).to(self.device)
+
+        with torch.no_grad():
+            predictions = self.model(image_tensor)
+
+        # Filter predictions by confidence threshold
+        boxes = predictions[0]['boxes'][predictions[0]['scores'] &gt; threshold]
+        labels = predictions[0]['labels'][predictions[0]['scores'] &gt; threshold]
+        scores = predictions[0]['scores'][predictions[0]['scores'] &gt; threshold]
+
+        results = []
+        for box, label, score in zip(boxes, labels, scores):
+            results.append({
+                'box': box.cpu().numpy(),
+                'label': self.coco_names[label.item()],
+                'score': score.item()
+            })
+
+        return results
+
+    def visualize_predictions(self, image_path, predictions, save_path=None):
+        &quot;&quot;&quot;Visualize object detection results&quot;&quot;&quot;
+        import matplotlib.pyplot as plt
+        import matplotlib.patches as patches
+
+        image = Image.open(image_path)
+
+        fig, ax = plt.subplots(1, 1, figsize=(12, 8))
+        ax.imshow(image)
+
+        for pred in predictions:
+            box = pred['box']
+            label = pred['label']
+            score = pred['score']
+
+            # Create rectangle patch
+            rect = patches.Rectangle(
+                (box[0], box[1]),
+                box[2] - box[0],
+                box[3] - box[1],
+                linewidth=2,
+                edgecolor='red',
+                facecolor='none'
+            )
+
+            ax.add_patch(rect)
+            ax.text(
+                box[0], box[1] - 10,
+                f'{label}: {score:.2f}',
+                fontsize=12,
+                color='red',
+                bbox=dict(boxstyle='round', facecolor='white', alpha=0.8)
+            )
+
+        ax.set_xlim(0, image.width)
+        ax.set_ylim(image.height, 0)
+        ax.axis('off')
+
+        if save_path:
+            plt.savefig(save_path, bbox_inches='tight', dpi=300)
+        plt.show()
+
+# Usage
+detector = ObjectDetector()
+predictions = detector.predict('path/to/image.jpg', threshold=0.5)
+
+print(f&quot;Found {len(predictions)} objects:&quot;)
+for pred in predictions:
+    print(f&quot;  {pred['label']}: {pred['score']:.3f}&quot;)
+
+detector.visualize_predictions('path/to/image.jpg', predictions)
+</code></pre>
+<h3 id="image-segmentation">Image Segmentation</h3>
+<pre><code class="language-python">from torchvision.models.segmentation import deeplabv3_resnet50
+
+class SemanticSegmentation:
+    def __init__(self, num_classes=21):  # PASCAL VOC has 20 classes + background
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+        # Load pre-trained DeepLabV3 model
+        self.model = deeplabv3_resnet50(pretrained=True)
+
+        # Replace classifier for custom number of classes
+        self.model.classifier[4] = nn.Conv2d(256, num_classes, kernel_size=1)
+        self.model.aux_classifier[4] = nn.Conv2d(256, num_classes, kernel_size=1)
+
+        self.model.to(self.device)
+
+        # PASCAL VOC class names
+        self.class_names = [
+            'background', 'aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus',
+            'car', 'cat', 'chair', 'cow', 'dining table', 'dog', 'horse', 'motorbike',
+            'person', 'potted plant', 'sheep', 'sofa', 'train', 'tv monitor'
+        ]
+
+        # Color palette for visualization
+        self.palette = [
+            [0, 0, 0], [128, 0, 0], [0, 128, 0], [128, 128, 0], [0, 0, 128],
+            [128, 0, 128], [0, 128, 128], [128, 128, 128], [64, 0, 0], [192, 0, 0],
+            [64, 128, 0], [192, 128, 0], [64, 0, 128], [192, 0, 128], [64, 128, 128],
+            [192, 128, 128], [0, 64, 0], [128, 64, 0], [0, 192, 0], [128, 192, 0],
+            [0, 64, 128]
+        ]
+
+    def segment(self, image_path):
+        &quot;&quot;&quot;Perform semantic segmentation on an image&quot;&quot;&quot;
+        self.model.eval()
+
+        # Load and transform image
+        image = Image.open(image_path).convert('RGB')
+        transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]
+            )
+        ])
+
+        input_tensor = transform(image).unsqueeze(0).to(self.device)
+
+        with torch.no_grad():
+            output = self.model(input_tensor)['out']
+            output_predictions = output.argmax(1)
+
+        # Convert to numpy
+        mask = output_predictions.squeeze().cpu().numpy()
+
+        return image, mask
+
+    def visualize_segmentation(self, image, mask, alpha=0.7):
+        &quot;&quot;&quot;Visualize segmentation results&quot;&quot;&quot;
+        import matplotlib.pyplot as plt
+
+        # Create colored mask
+        colored_mask = np.zeros((*mask.shape, 3), dtype=np.uint8)
+        for class_id in range(len(self.class_names)):
+            colored_mask[mask == class_id] = self.palette[class_id]
+
+        # Plot
+        fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+        axes[0].imshow(image)
+        axes[0].set_title('Original Image')
+        axes[0].axis('off')
+
+        axes[1].imshow(colored_mask)
+        axes[1].set_title('Segmentation Mask')
+        axes[1].axis('off')
+
+        # Overlay
+        axes[2].imshow(image)
+        axes[2].imshow(colored_mask, alpha=alpha)
+        axes[2].set_title('Overlay')
+        axes[2].axis('off')
+
+        plt.tight_layout()
+        plt.show()
+
+    def get_class_statistics(self, mask):
+        &quot;&quot;&quot;Get statistics about segmented classes&quot;&quot;&quot;
+        unique_classes, counts = np.unique(mask, return_counts=True)
+        total_pixels = mask.size
+
+        stats = []
+        for class_id, count in zip(unique_classes, counts):
+            if class_id &lt; len(self.class_names):
+                percentage = (count / total_pixels) * 100
+                stats.append({
+                    'class': self.class_names[class_id],
+                    'pixels': count,
+                    'percentage': percentage
+                })
+
+        return sorted(stats, key=lambda x: x['percentage'], reverse=True)
+
+# Usage
+segmenter = SemanticSegmentation()
+image, mask = segmenter.segment('path/to/image.jpg')
+
+# Visualize results
+segmenter.visualize_segmentation(image, mask)
+
+# Get statistics
+stats = segmenter.get_class_statistics(mask)
+print(&quot;Class distribution:&quot;)
+for stat in stats:
+    if stat['percentage'] &gt; 1.0:  # Only show classes with &gt;1% coverage
+        print(f&quot;  {stat['class']}: {stat['percentage']:.1f}%&quot;)
+</code></pre>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="custom-datasets">Custom Datasets</h3>
+<pre><code class="language-python">import os
+import json
+from torch.utils.data import Dataset
+
+class CustomImageDataset(Dataset):
+    def __init__(self, root_dir, annotation_file, transform=None):
+        self.root_dir = root_dir
+        self.transform = transform
+
+        # Load annotations
+        with open(annotation_file, 'r') as f:
+            self.annotations = json.load(f)
+
+        self.image_paths = list(self.annotations.keys())
+
+    def __len__(self):
+        return len(self.image_paths)
+
+    def __getitem__(self, idx):
+        img_path = os.path.join(self.root_dir, self.image_paths[idx])
+        image = Image.open(img_path).convert('RGB')
+
+        # Get label from annotations
+        label = self.annotations[self.image_paths[idx]]['label']
+
+        if self.transform:
+            image = self.transform(image)
+
+        return image, label
+
+class CocoStyleDataset(Dataset):
+    &quot;&quot;&quot;Dataset for COCO-style object detection annotations&quot;&quot;&quot;
+
+    def __init__(self, root_dir, annotation_file, transform=None):
+        self.root_dir = root_dir
+        self.transform = transform
+
+        with open(annotation_file, 'r') as f:
+            self.coco = json.load(f)
+
+        # Create mappings
+        self.image_id_to_path = {img['id']: img['file_name'] for img in self.coco['images']}
+        self.category_id_to_name = {cat['id']: cat['name'] for cat in self.coco['categories']}
+
+        # Group annotations by image
+        self.image_annotations = {}
+        for ann in self.coco['annotations']:
+            img_id = ann['image_id']
+            if img_id not in self.image_annotations:
+                self.image_annotations[img_id] = []
+            self.image_annotations[img_id].append(ann)
+
+        self.image_ids = list(self.image_id_to_path.keys())
+
+    def __len__(self):
+        return len(self.image_ids)
+
+    def __getitem__(self, idx):
+        img_id = self.image_ids[idx]
+        img_path = os.path.join(self.root_dir, self.image_id_to_path[img_id])
+
+        # Load image
+        image = Image.open(img_path).convert('RGB')
+
+        # Get annotations for this image
+        annotations = self.image_annotations.get(img_id, [])
+
+        # Extract boxes and labels
+        boxes = []
+        labels = []
+
+        for ann in annotations:
+            x, y, w, h = ann['bbox']
+            boxes.append([x, y, x + w, y + h])
+            labels.append(ann['category_id'])
+
+        # Convert to tensors
+        boxes = torch.tensor(boxes, dtype=torch.float32)
+        labels = torch.tensor(labels, dtype=torch.int64)
+
+        target = {
+            'boxes': boxes,
+            'labels': labels,
+            'image_id': torch.tensor(img_id)
+        }
+
+        if self.transform:
+            image = self.transform(image)
+
+        return image, target
+
+# Data loading utilities
+def create_data_loaders(train_dataset, val_dataset, batch_size=32, num_workers=4):
+    &quot;&quot;&quot;Create data loaders with proper collate function for object detection&quot;&quot;&quot;
+
+    def collate_fn(batch):
+        return tuple(zip(*batch))
+
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=num_workers,
+        collate_fn=collate_fn,
+        pin_memory=True
+    )
+
+    val_loader = DataLoader(
+        val_dataset,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=num_workers,
+        collate_fn=collate_fn,
+        pin_memory=True
+    )
+
+    return train_loader, val_loader
+
+# Usage
+train_dataset = CustomImageDataset(
+    root_dir='./data/train',
+    annotation_file='./data/train_annotations.json',
+    transform=train_transform
+)
+
+val_dataset = CustomImageDataset(
+    root_dir='./data/val',
+    annotation_file='./data/val_annotations.json',
+    transform=val_transform
+)
+
+train_loader, val_loader = create_data_loaders(train_dataset, val_dataset)
+</code></pre>
+<h3 id="model-interpretability">Model Interpretability</h3>
+<pre><code class="language-python">from torchvision.models.feature_extraction import create_feature_extractor
+import torch.nn.functional as F
+
+class GradCAM:
+    def __init__(self, model, target_layer):
+        self.model = model
+        self.target_layer = target_layer
+        self.gradients = None
+        self.activations = None
+
+        # Register hooks
+        target_layer.register_forward_hook(self.save_activation)
+        target_layer.register_backward_hook(self.save_gradient)
+
+    def save_activation(self, module, input, output):
+        self.activations = output
+
+    def save_gradient(self, module, grad_input, grad_output):
+        self.gradients = grad_output[0]
+
+    def generate_cam(self, input_image, class_idx):
+        self.model.eval()
+
+        # Forward pass
+        output = self.model(input_image)
+
+        # Backward pass
+        self.model.zero_grad()
+        class_score = output[:, class_idx]
+        class_score.backward()
+
+        # Generate CAM
+        gradients = self.gradients[0]  # Remove batch dimension
+        activations = self.activations[0]  # Remove batch dimension
+
+        # Global average pooling of gradients
+        weights = torch.mean(gradients, dim=(1, 2))
+
+        # Weighted combination of activation maps
+        cam = torch.zeros(activations.shape[1:], dtype=torch.float32)
+        for i, w in enumerate(weights):
+            cam += w * activations[i]
+
+        # Apply ReLU and normalize
+        cam = F.relu(cam)
+        cam = cam / torch.max(cam)
+
+        return cam
+
+def visualize_gradcam(model, image_path, target_class, transform):
+    &quot;&quot;&quot;Visualize GradCAM for a specific class&quot;&quot;&quot;
+    import matplotlib.pyplot as plt
+    import cv2
+
+    # Load and transform image
+    image = Image.open(image_path).convert('RGB')
+    input_tensor = transform(image).unsqueeze(0)
+
+    # Create GradCAM
+    target_layer = model.layer4[-1].conv2  # ResNet50 example
+    grad_cam = GradCAM(model, target_layer)
+
+    # Generate CAM
+    cam = grad_cam.generate_cam(input_tensor, target_class)
+
+    # Resize CAM to image size
+    cam_resized = cv2.resize(cam.numpy(), (image.width, image.height))
+
+    # Visualize
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+    axes[0].imshow(image)
+    axes[0].set_title('Original Image')
+    axes[0].axis('off')
+
+    axes[1].imshow(cam_resized, cmap='jet')
+    axes[1].set_title('GradCAM')
+    axes[1].axis('off')
+
+    # Overlay
+    axes[2].imshow(image)
+    axes[2].imshow(cam_resized, cmap='jet', alpha=0.4)
+    axes[2].set_title('Overlay')
+    axes[2].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+# Feature visualization
+def visualize_feature_maps(model, image_path, layer_name, transform, max_channels=16):
+    &quot;&quot;&quot;Visualize feature maps from a specific layer&quot;&quot;&quot;
+
+    # Extract features
+    feature_extractor = create_feature_extractor(model, return_nodes=[layer_name])
+
+    # Load and transform image
+    image = Image.open(image_path).convert('RGB')
+    input_tensor = transform(image).unsqueeze(0)
+
+    # Get features
+    with torch.no_grad():
+        features = feature_extractor(input_tensor)[layer_name]
+
+    # Visualize feature maps
+    features = features[0]  # Remove batch dimension
+    n_channels = min(max_channels, features.shape[0])
+
+    fig, axes = plt.subplots(4, 4, figsize=(12, 12))
+    axes = axes.ravel()
+
+    for i in range(n_channels):
+        feature_map = features[i].cpu().numpy()
+        axes[i].imshow(feature_map, cmap='viridis')
+        axes[i].set_title(f'Channel {i}')
+        axes[i].axis('off')
+
+    # Hide unused subplots
+    for i in range(n_channels, 16):
+        axes[i].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+# Usage
+model = models.resnet50(pretrained=True)
+visualize_gradcam(model, 'path/to/image.jpg', target_class=281, transform=val_transform)  # 281 is 'tabby cat' in ImageNet
+visualize_feature_maps(model, 'path/to/image.jpg', 'layer4.0.conv1', val_transform)
+</code></pre>
+<h2 id="integration-with-other-libraries">Integration with Other Libraries</h2>
+<h3 id="with-opencv">With OpenCV</h3>
+<pre><code class="language-python">import cv2
+import numpy as np
+
+def opencv_to_tensor(cv_image):
+    &quot;&quot;&quot;Convert OpenCV image to PyTorch tensor&quot;&quot;&quot;
+    # OpenCV uses BGR, convert to RGB
+    rgb_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB)
+
+    # Convert to PIL Image then apply transforms
+    pil_image = Image.fromarray(rgb_image)
+    transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
+
+    return transform(pil_image).unsqueeze(0)
+
+def tensor_to_opencv(tensor):
+    &quot;&quot;&quot;Convert PyTorch tensor to OpenCV image&quot;&quot;&quot;
+    # Denormalize
+    mean = torch.tensor([0.485, 0.456, 0.406]).view(3, 1, 1)
+    std = torch.tensor([0.229, 0.224, 0.225]).view(3, 1, 1)
+    tensor = tensor * std + mean
+
+    # Clamp values and convert to numpy
+    tensor = torch.clamp(tensor, 0, 1)
+    image = tensor.squeeze().permute(1, 2, 0).numpy()
+    image = (image * 255).astype(np.uint8)
+
+    # Convert RGB to BGR for OpenCV
+    return cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+
+# Real-time inference with webcam
+def real_time_classification(model_path, class_names):
+    # Load model
+    model = models.resnet50(pretrained=False)
+    model.fc = nn.Linear(model.fc.in_features, len(class_names))
+    model.load_state_dict(torch.load(model_path))
+    model.eval()
+
+    cap = cv2.VideoCapture(0)
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        # Classify frame
+        input_tensor = opencv_to_tensor(frame)
+        with torch.no_grad():
+            outputs = model(input_tensor)
+            probabilities = F.softmax(outputs[0], dim=0)
+            confidence, predicted = torch.max(probabilities, 0)
+
+        # Draw prediction on frame
+        text = f&quot;{class_names[predicted]}: {confidence:.3f}&quot;
+        cv2.putText(frame, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+
+        cv2.imshow('Classification', frame)
+
+        if cv2.waitKey(1) &amp; 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+</code></pre>
+<h3 id="with-matplotlib-for-visualization">With Matplotlib for Visualization</h3>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+from torchvision.utils import make_grid
+
+def visualize_batch(data_loader, class_names, num_images=8):
+    &quot;&quot;&quot;Visualize a batch of images with labels&quot;&quot;&quot;
+
+    # Get a batch
+    data_iter = iter(data_loader)
+    images, labels = next(data_iter)
+
+    # Create grid
+    grid = make_grid(images[:num_images], nrow=4, normalize=True, 
+                     mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+    # Convert to numpy
+    npimg = grid.numpy()
+
+    # Plot
+    plt.figure(figsize=(12, 8))
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    plt.axis('off')
+
+    # Add labels
+    for i in range(num_images):
+        plt.text(i * (npimg.shape[2] // 4) + 20, 20, 
+                class_names[labels[i]], 
+                fontsize=12, color='white',
+                bbox=dict(boxstyle='round', facecolor='black', alpha=0.7))
+
+    plt.tight_layout()
+    plt.show()
+
+def plot_training_curves(train_losses, val_losses, train_accs, val_accs):
+    &quot;&quot;&quot;Plot training and validation curves&quot;&quot;&quot;
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+
+    # Loss curves
+    ax1.plot(train_losses, label='Training Loss', color='blue')
+    ax1.plot(val_losses, label='Validation Loss', color='red')
+    ax1.set_xlabel('Epoch')
+    ax1.set_ylabel('Loss')
+    ax1.set_title('Training and Validation Loss')
+    ax1.legend()
+    ax1.grid(True)
+
+    # Accuracy curves
+    ax2.plot(train_accs, label='Training Accuracy', color='blue')
+    ax2.plot(val_accs, label='Validation Accuracy', color='red')
+    ax2.set_xlabel('Epoch')
+    ax2.set_ylabel('Accuracy (%)')
+    ax2.set_title('Training and Validation Accuracy')
+    ax2.legend()
+    ax2.grid(True)
+
+    plt.tight_layout()
+    plt.show()
+
+# Visualize model predictions
+def visualize_predictions(model, test_loader, class_names, num_images=8, device='cpu'):
+    &quot;&quot;&quot;Visualize model predictions vs ground truth&quot;&quot;&quot;
+
+    model.eval()
+    images, labels = next(iter(test_loader))
+    images = images[:num_images].to(device)
+    labels = labels[:num_images]
+
+    with torch.no_grad():
+        outputs = model(images)
+        _, predicted = torch.max(outputs, 1)
+
+    # Create grid
+    images = images.cpu()
+    grid = make_grid(images, nrow=4, normalize=True,
+                     mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+    # Plot
+    plt.figure(figsize=(15, 10))
+    plt.imshow(np.transpose(grid.numpy(), (1, 2, 0)))
+    plt.axis('off')
+
+    # Add predictions and ground truth
+    for i in range(num_images):
+        pred_name = class_names[predicted[i]]
+        true_name = class_names[labels[i]]
+
+        color = 'green' if predicted[i] == labels[i] else 'red'
+
+        plt.text(i % 4 * (grid.shape[2] // 4) + 10, 
+                (i // 4) * (grid.shape[1] // 2) + 30,
+                f'True: {true_name}\nPred: {pred_name}',
+                fontsize=10, color=color,
+                bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))
+
+    plt.tight_layout()
+    plt.show()
+
+# Usage
+visualize_batch(train_loader, cifar10_train.classes)
+plot_training_curves(train_losses, val_losses, train_accs, val_accs)
+visualize_predictions(model, test_loader, cifar10_test.classes)
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<pre><code class="language-python"># 1. Use appropriate image sizes
+# Smaller images for faster training, larger for better accuracy
+resize_transforms = {
+    'fast': transforms.Resize(224),      # Standard size
+    'balanced': transforms.Resize(256),   # Slightly larger
+    'quality': transforms.Resize(384)     # High resolution
+}
+
+# 2. Efficient data loading
+def create_efficient_dataloader(dataset, batch_size=32):
+    return DataLoader(
+        dataset,
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=min(8, os.cpu_count()),  # Use available CPUs
+        pin_memory=True,                     # Faster GPU transfer
+        persistent_workers=True,             # Keep workers alive
+        prefetch_factor=2                    # Prefetch batches
+    )
+
+# 3. Mixed precision training
+from torch.cuda.amp import autocast, GradScaler
+
+def train_with_mixed_precision(model, train_loader, optimizer, criterion, device):
+    scaler = GradScaler()
+    model.train()
+
+    for batch_idx, (data, target) in enumerate(train_loader):
+        data, target = data.to(device), target.to(device)
+
+        optimizer.zero_grad()
+
+        # Use autocast for forward pass
+        with autocast():
+            output = model(data)
+            loss = criterion(output, target)
+
+        # Scale loss and backward pass
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
+
+# 4. Memory-efficient transforms
+memory_efficient_transforms = transforms.Compose([
+    transforms.Resize(256, antialias=True),      # Use antialiasing for better quality
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+</code></pre>
+<h3 id="model-selection-and-hyperparameters">Model Selection and Hyperparameters</h3>
+<pre><code class="language-python"># Model recommendations by use case
+model_recommendations = {
+    'fast_inference': {
+        'model': 'mobilenet_v3_small',
+        'input_size': 224,
+        'batch_size': 64
+    },
+    'balanced': {
+        'model': 'resnet50',
+        'input_size': 224,
+        'batch_size': 32
+    },
+    'high_accuracy': {
+        'model': 'efficientnet_b7',
+        'input_size': 600,
+        'batch_size': 8
+    },
+    'transfer_learning': {
+        'model': 'resnet50',
+        'input_size': 224,
+        'freeze_epochs': 5,
+        'total_epochs': 20
+    }
+}
+
+# Hyperparameter suggestions
+def get_hyperparameters(dataset_size, num_classes):
+    if dataset_size &lt; 1000:
+        return {
+            'learning_rate': 0.001,
+            'batch_size': 16,
+            'epochs': 50,
+            'weight_decay': 1e-4
+        }
+    elif dataset_size &lt; 10000:
+        return {
+            'learning_rate': 0.01,
+            'batch_size': 32,
+            'epochs': 30,
+            'weight_decay': 1e-3
+        }
+    else:
+        return {
+            'learning_rate': 0.1,
+            'batch_size': 64,
+            'epochs': 100,
+            'weight_decay': 1e-4
+        }
+</code></pre>
+<p>This comprehensive cheat sheet covers the essential aspects of TorchVision for computer vision tasks. The library provides excellent integration with PyTorch, extensive pre-trained models, and powerful data augmentation capabilities, making it ideal for both research and production computer vision applications.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

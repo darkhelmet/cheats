@@ -1,0 +1,2275 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../numpy/">
+      
+      
+        <link rel="next" href="../pillow/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Pandas - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pandas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pandas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-1d" class="md-nav__link">
+    <span class="md-ellipsis">
+      Series (1D)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataframe-2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataFrame (2D)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Input/Output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Input/Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframe-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataFrame Inspection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DataFrame Inspection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Stats
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#row-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Row Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boolean Indexing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Manipulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Manipulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addingmodifying-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding/Modifying Columns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropping-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dropping Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-missing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Missing Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-aggregation-and-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Aggregation and Grouping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Aggregation and Grouping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupby-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      GroupBy Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Transformation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Transformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apply Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datetime Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merging-and-joining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merging and Joining
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Merging and Joining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concatenation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reshaping-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reshaping Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reshaping Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pivot-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pivot Tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#melt-wide-to-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      Melt (Wide to Long)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackunstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack/Unstack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rolling Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resampling-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resampling (Time Series)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      MultiIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-1d" class="md-nav__link">
+    <span class="md-ellipsis">
+      Series (1D)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataframe-2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataFrame (2D)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Input/Output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Input/Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframe-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataFrame Inspection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DataFrame Inspection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Stats
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#row-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Row Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boolean Indexing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Manipulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Manipulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addingmodifying-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding/Modifying Columns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropping-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dropping Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-missing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Missing Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-aggregation-and-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Aggregation and Grouping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Aggregation and Grouping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupby-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      GroupBy Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Transformation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Transformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apply Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datetime Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merging-and-joining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merging and Joining
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Merging and Joining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concatenation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reshaping-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reshaping Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reshaping Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pivot-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pivot Tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#melt-wide-to-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      Melt (Wide to Long)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackunstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack/Unstack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rolling Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resampling-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resampling (Time Series)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      MultiIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pandas">Pandas</h1>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">pip install pandas
+</code></pre>
+<h2 id="import">Import</h2>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+</code></pre>
+<h2 id="data-structures">Data Structures</h2>
+<h3 id="series-1d">Series (1D)</h3>
+<pre><code class="language-python"># From list
+s = pd.Series([1, 2, 3, 4])
+
+# With custom index
+s = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
+
+# From dictionary
+s = pd.Series({'a': 1, 'b': 2, 'c': 3})
+</code></pre>
+<h3 id="dataframe-2d">DataFrame (2D)</h3>
+<pre><code class="language-python"># From dictionary
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'city': ['NYC', 'LA', 'Chicago']
+})
+
+# From list of dictionaries
+df = pd.DataFrame([
+    {'name': 'Alice', 'age': 25},
+    {'name': 'Bob', 'age': 30}
+])
+
+# From NumPy array
+df = pd.DataFrame(np.random.randn(4, 3), columns=['A', 'B', 'C'])
+</code></pre>
+<h2 id="data-inputoutput">Data Input/Output</h2>
+<h3 id="reading-data">Reading Data</h3>
+<pre><code class="language-python"># CSV files
+df = pd.read_csv('file.csv')
+df = pd.read_csv('file.csv', index_col=0)  # use first column as index
+df = pd.read_csv('file.csv', sep=';')      # custom separator
+
+# Excel files
+df = pd.read_excel('file.xlsx')
+df = pd.read_excel('file.xlsx', sheet_name='Sheet1')
+
+# JSON
+df = pd.read_json('file.json')
+
+# SQL
+df = pd.read_sql('SELECT * FROM table', connection)
+
+# Parquet
+df = pd.read_parquet('file.parquet')
+</code></pre>
+<h3 id="writing-data">Writing Data</h3>
+<pre><code class="language-python">df.to_csv('output.csv', index=False)
+df.to_excel('output.xlsx', index=False)
+df.to_json('output.json')
+df.to_parquet('output.parquet')
+</code></pre>
+<h2 id="dataframe-inspection">DataFrame Inspection</h2>
+<h3 id="basic-info">Basic Info</h3>
+<pre><code class="language-python">df.head()              # first 5 rows
+df.tail(3)             # last 3 rows
+df.info()              # data types and memory usage
+df.describe()          # summary statistics
+df.shape               # (rows, columns)
+df.columns             # column names
+df.index               # row indices
+df.dtypes              # data types
+</code></pre>
+<h3 id="quick-stats">Quick Stats</h3>
+<pre><code class="language-python">df.nunique()           # unique values per column
+df.isnull().sum()      # count of missing values
+df.value_counts()      # frequency counts (Series)
+df['col'].value_counts()  # frequency counts for column
+</code></pre>
+<h2 id="data-selection">Data Selection</h2>
+<h3 id="column-selection">Column Selection</h3>
+<pre><code class="language-python">df['name']             # single column (Series)
+df[['name', 'age']]    # multiple columns (DataFrame)
+df.name                # single column (attribute access)
+</code></pre>
+<h3 id="row-selection">Row Selection</h3>
+<pre><code class="language-python">df.iloc[0]             # first row by position
+df.iloc[0:3]           # first 3 rows
+df.loc['row_name']     # row by label
+df.loc[0:2, 'name':'age']  # rows and columns by label
+</code></pre>
+<h3 id="boolean-indexing">Boolean Indexing</h3>
+<pre><code class="language-python">df[df['age'] &gt; 30]                    # rows where age &gt; 30
+df[df['name'].isin(['Alice', 'Bob'])] # rows where name in list
+df[(df['age'] &gt; 25) &amp; (df['age'] &lt; 35)]  # multiple conditions
+df.query('age &gt; 30 and city == &quot;NYC&quot;')  # query string
+</code></pre>
+<h2 id="data-manipulation">Data Manipulation</h2>
+<h3 id="addingmodifying-columns">Adding/Modifying Columns</h3>
+<pre><code class="language-python">df['new_col'] = 0                    # add column with constant
+df['age_squared'] = df['age'] ** 2   # derived column
+df['full_name'] = df['first'] + ' ' + df['last']  # string concatenation
+df.assign(new_col=df['age'] * 2)     # add column (returns new DataFrame)
+</code></pre>
+<h3 id="dropping-data">Dropping Data</h3>
+<pre><code class="language-python">df.drop('column_name', axis=1)       # drop column
+df.drop(['col1', 'col2'], axis=1)    # drop multiple columns
+df.drop(0, axis=0)                   # drop row by index
+df.dropna()                          # drop rows with NaN
+df.dropna(axis=1)                    # drop columns with NaN
+df.drop_duplicates()                 # remove duplicate rows
+</code></pre>
+<h3 id="handling-missing-data">Handling Missing Data</h3>
+<pre><code class="language-python">df.isnull()                          # boolean mask of NaN values
+df.notnull()                         # boolean mask of non-NaN values
+df.fillna(0)                         # fill NaN with 0
+df.fillna(method='ffill')            # forward fill
+df.fillna(method='bfill')            # backward fill
+df.fillna(df.mean())                 # fill with column means
+df.interpolate()                     # interpolate missing values
+</code></pre>
+<h2 id="data-aggregation-and-grouping">Data Aggregation and Grouping</h2>
+<h3 id="basic-aggregation">Basic Aggregation</h3>
+<pre><code class="language-python">df.sum()               # sum of each column
+df.mean()              # mean of each column
+df.median()            # median
+df.std()               # standard deviation
+df.min(), df.max()     # min/max
+df.count()             # non-null count
+</code></pre>
+<h3 id="groupby-operations">GroupBy Operations</h3>
+<pre><code class="language-python"># Group by single column
+df.groupby('category').mean()
+df.groupby('category')['value'].sum()
+
+# Group by multiple columns
+df.groupby(['cat1', 'cat2']).agg({
+    'value1': 'sum',
+    'value2': 'mean'
+})
+
+# Apply custom functions
+df.groupby('category').apply(lambda x: x.max() - x.min())
+
+# Multiple aggregations
+df.groupby('category').agg(['sum', 'mean', 'count'])
+</code></pre>
+<h2 id="data-transformation">Data Transformation</h2>
+<h3 id="apply-functions">Apply Functions</h3>
+<pre><code class="language-python">df['col'].apply(lambda x: x * 2)     # apply to Series
+df.apply(lambda x: x.max() - x.min(), axis=1)  # apply to rows
+df.apply(np.sum, axis=0)             # apply to columns
+</code></pre>
+<h3 id="string-operations">String Operations</h3>
+<pre><code class="language-python">df['name'].str.upper()               # uppercase
+df['name'].str.lower()               # lowercase
+df['name'].str.len()                 # length
+df['name'].str.contains('pattern')   # contains pattern
+df['name'].str.replace('old', 'new') # replace
+df['name'].str.split(',')            # split string
+df['name'].str.extract('(\d+)')      # extract with regex
+</code></pre>
+<h3 id="datetime-operations">Datetime Operations</h3>
+<pre><code class="language-python">df['date'] = pd.to_datetime(df['date'])  # convert to datetime
+df['date'].dt.year                       # extract year
+df['date'].dt.month                      # extract month
+df['date'].dt.dayofweek                  # day of week (0=Monday)
+df['date'].dt.strftime('%Y-%m')          # format as string
+</code></pre>
+<h2 id="merging-and-joining">Merging and Joining</h2>
+<h3 id="concatenation">Concatenation</h3>
+<pre><code class="language-python">pd.concat([df1, df2])                # vertical concatenation
+pd.concat([df1, df2], axis=1)        # horizontal concatenation
+pd.concat([df1, df2], ignore_index=True)  # reset index
+</code></pre>
+<h3 id="merging">Merging</h3>
+<pre><code class="language-python"># Inner join (default)
+pd.merge(df1, df2, on='key')
+
+# Left join
+pd.merge(df1, df2, on='key', how='left')
+
+# Outer join
+pd.merge(df1, df2, on='key', how='outer')
+
+# Multiple keys
+pd.merge(df1, df2, on=['key1', 'key2'])
+
+# Different column names
+pd.merge(df1, df2, left_on='key1', right_on='key2')
+</code></pre>
+<h2 id="reshaping-data">Reshaping Data</h2>
+<h3 id="pivot-tables">Pivot Tables</h3>
+<pre><code class="language-python"># Basic pivot
+df.pivot(index='date', columns='category', values='value')
+
+# Pivot table with aggregation
+df.pivot_table(
+    values='value',
+    index='date',
+    columns='category',
+    aggfunc='sum'
+)
+</code></pre>
+<h3 id="melt-wide-to-long">Melt (Wide to Long)</h3>
+<pre><code class="language-python">df.melt(
+    id_vars=['id', 'name'],          # columns to keep
+    value_vars=['col1', 'col2'],     # columns to melt
+    var_name='variable',             # name for variable column
+    value_name='value'               # name for value column
+)
+</code></pre>
+<h3 id="stackunstack">Stack/Unstack</h3>
+<pre><code class="language-python">df.stack()                           # pivot columns to rows
+df.unstack()                         # pivot rows to columns
+df.unstack(level=0)                  # unstack specific level
+</code></pre>
+<h2 id="sorting">Sorting</h2>
+<pre><code class="language-python">df.sort_values('column')             # sort by single column
+df.sort_values(['col1', 'col2'])     # sort by multiple columns
+df.sort_values('col', ascending=False)  # descending order
+df.sort_index()                      # sort by index
+df.nlargest(5, 'column')            # top 5 values
+df.nsmallest(5, 'column')           # bottom 5 values
+</code></pre>
+<h2 id="advanced-operations">Advanced Operations</h2>
+<h3 id="rolling-windows">Rolling Windows</h3>
+<pre><code class="language-python">df['value'].rolling(window=3).mean()     # 3-period moving average
+df['value'].rolling(window=7).sum()      # 7-period rolling sum
+df['value'].expanding().mean()           # expanding window mean
+</code></pre>
+<h3 id="resampling-time-series">Resampling (Time Series)</h3>
+<pre><code class="language-python"># Resample daily to monthly
+df.resample('M').mean()
+df.resample('Q').sum()                   # quarterly
+df.resample('W').last()                  # weekly, last value
+</code></pre>
+<h3 id="multiindex">MultiIndex</h3>
+<pre><code class="language-python"># Create MultiIndex
+df.set_index(['col1', 'col2'])
+
+# Access MultiIndex data
+df.loc[('level1', 'level2')]
+df.xs('level1', level=0)
+
+# Reset MultiIndex
+df.reset_index()
+</code></pre>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<pre><code class="language-python"># Use categorical data for repeated strings
+df['category'] = df['category'].astype('category')
+
+# Use appropriate data types
+df['int_col'] = df['int_col'].astype('int32')  # smaller int type
+df['float_col'] = df['float_col'].astype('float32')
+
+# Use chaining for multiple operations
+(df
+ .dropna()
+ .groupby('category')
+ .sum()
+ .sort_values('value', ascending=False)
+)
+</code></pre>
+<h2 id="common-patterns">Common Patterns</h2>
+<h3 id="conditional-logic">Conditional Logic</h3>
+<pre><code class="language-python"># np.where for simple conditions
+df['new_col'] = np.where(df['age'] &gt; 30, 'Senior', 'Junior')
+
+# np.select for multiple conditions
+conditions = [df['age'] &lt; 25, df['age'] &lt; 40, df['age'] &gt;= 40]
+choices = ['Young', 'Middle', 'Senior']
+df['age_group'] = np.select(conditions, choices)
+</code></pre>
+<h3 id="window-functions">Window Functions</h3>
+<pre><code class="language-python">df['rank'] = df['value'].rank()
+df['pct_rank'] = df['value'].rank(pct=True)
+df['cumsum'] = df['value'].cumsum()
+df['lag'] = df['value'].shift(1)        # previous value
+df['lead'] = df['value'].shift(-1)      # next value
+</code></pre>
+<h3 id="memory-usage">Memory Usage</h3>
+<pre><code class="language-python">df.memory_usage(deep=True)              # memory usage by column
+df.info(memory_usage='deep')            # detailed memory info
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
