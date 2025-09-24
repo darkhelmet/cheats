@@ -1,0 +1,3080 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../sentence-transformers/">
+      
+      
+        <link rel="next" href="../tensorflow/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>SQLAlchemy Cheat Sheet - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sqlalchemy-cheat-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQLAlchemy Cheat Sheet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SQLAlchemy Cheat Sheet
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SQLAlchemy Cheat Sheet
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declarative-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declarative Base
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-with-table-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model with Table Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#column-types-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Types &amp; Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Column Types & Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-column-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Column Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints-and-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constraints and Indexes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-to-many" class="md-nav__link">
+    <span class="md-ellipsis">
+      One-to-Many
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#many-to-many" class="md-nav__link">
+    <span class="md-ellipsis">
+      Many-to-Many
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association-object-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Association Object Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-referential" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Referential
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Session Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-session-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Session Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Async Sessions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crud-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRUD Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRUD Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordering-and-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordering and Limiting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subqueries-and-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subqueries and CTEs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins-eager-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joins &amp; Eager Loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins & Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicit-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicit Joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eager Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lazy Loading Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Querying
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Querying">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-sql-and-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raw SQL and Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrations-with-alembic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrations with Alembic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrations with Alembic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-migration-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Migration Script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-migrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Migrations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-management_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-gotchas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Gotchas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declarative-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declarative Base
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-with-table-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model with Table Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#column-types-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Types &amp; Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Column Types & Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-column-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Column Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints-and-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constraints and Indexes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-to-many" class="md-nav__link">
+    <span class="md-ellipsis">
+      One-to-Many
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#many-to-many" class="md-nav__link">
+    <span class="md-ellipsis">
+      Many-to-Many
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association-object-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Association Object Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-referential" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Referential
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Session Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-session-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Session Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Async Sessions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crud-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRUD Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRUD Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordering-and-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordering and Limiting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subqueries-and-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subqueries and CTEs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins-eager-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joins &amp; Eager Loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins & Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicit-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicit Joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eager Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lazy Loading Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Querying
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Querying">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-sql-and-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raw SQL and Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrations-with-alembic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrations with Alembic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrations with Alembic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-migration-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Migration Script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-migrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Migrations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-management_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-gotchas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Gotchas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="sqlalchemy-cheat-sheet">SQLAlchemy Cheat Sheet</h1>
+<p>A comprehensive reference for SQLAlchemy 2.0+ ORM and Core functionality, covering models, sessions, queries, and migrations.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#basic-setup">Basic Setup</a></li>
+<li><a href="#model-definition">Model Definition</a></li>
+<li><a href="#column-types--constraints">Column Types &amp; Constraints</a></li>
+<li><a href="#relationships">Relationships</a></li>
+<li><a href="#session-management">Session Management</a></li>
+<li><a href="#crud-operations">CRUD Operations</a></li>
+<li><a href="#query-patterns">Query Patterns</a></li>
+<li><a href="#joins--eager-loading">Joins &amp; Eager Loading</a></li>
+<li><a href="#advanced-querying">Advanced Querying</a></li>
+<li><a href="#migrations-with-alembic">Migrations with Alembic</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+</ul>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<pre><code class="language-python"># Installation
+pip install sqlalchemy[asyncio] alembic
+
+# Basic setup
+from sqlalchemy import create_engine
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
+
+class Base(DeclarativeBase):
+    pass
+
+# Create engine and session
+engine = create_engine(&quot;sqlite:///example.db&quot;, echo=True)
+SessionLocal = sessionmaker(bind=engine)
+
+# Create tables
+Base.metadata.create_all(engine)
+
+# Use session
+with SessionLocal() as session:
+    # Your database operations here
+    session.commit()
+</code></pre>
+<hr />
+<h2 id="basic-setup">Basic Setup</h2>
+<h3 id="database-connection">Database Connection</h3>
+<pre><code class="language-python">from sqlalchemy import create_engine
+from sqlalchemy.orm import DeclarativeBase
+
+# SQLite
+engine = create_engine(&quot;sqlite:///database.db&quot;, echo=True)
+
+# PostgreSQL
+engine = create_engine(&quot;postgresql://user:password@localhost/dbname&quot;)
+
+# MySQL
+engine = create_engine(&quot;mysql+pymysql://user:password@localhost/dbname&quot;)
+
+# Connection with pool settings
+engine = create_engine(
+    &quot;postgresql://user:pass@localhost/db&quot;,
+    pool_size=20,
+    max_overflow=0,
+    pool_pre_ping=True,
+    echo=False
+)
+</code></pre>
+<h3 id="declarative-base">Declarative Base</h3>
+<pre><code class="language-python"># Modern SQLAlchemy 2.0+ approach
+from sqlalchemy.orm import DeclarativeBase
+
+class Base(DeclarativeBase):
+    pass
+
+# Alternative with type annotations
+from typing import Any
+from sqlalchemy import MetaData
+from sqlalchemy.orm import DeclarativeBase
+
+class Base(DeclarativeBase):
+    metadata: MetaData
+    type_annotation_map = {
+        str: String(50)  # Default string length
+    }
+</code></pre>
+<hr />
+<h2 id="model-definition">Model Definition</h2>
+<h3 id="basic-model">Basic Model</h3>
+<pre><code class="language-python">from typing import Optional
+from sqlalchemy import String, Integer, DateTime, func
+from sqlalchemy.orm import Mapped, mapped_column
+
+class User(Base):
+    __tablename__ = &quot;users&quot;
+
+    # Primary key
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    # Required fields
+    username: Mapped[str] = mapped_column(String(50), unique=True)
+    email: Mapped[str] = mapped_column(String(100))
+
+    # Optional fields
+    full_name: Mapped[Optional[str]] = mapped_column(String(100))
+
+    # Timestamps
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, server_default=func.now()
+    )
+    updated_at: Mapped[Optional[datetime]] = mapped_column(
+        DateTime, onupdate=func.now()
+    )
+
+    def __repr__(self) -&gt; str:
+        return f&quot;User(id={self.id}, username='{self.username}')&quot;
+</code></pre>
+<h3 id="model-with-table-configuration">Model with Table Configuration</h3>
+<pre><code class="language-python">class Product(Base):
+    __tablename__ = &quot;products&quot;
+
+    # Table arguments
+    __table_args__ = (
+        UniqueConstraint('name', 'category_id'),
+        CheckConstraint('price &gt; 0'),
+        Index('idx_category_price', 'category_id', 'price'),
+        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(100))
+    price: Mapped[Decimal] = mapped_column(Numeric(10, 2))
+    category_id: Mapped[int] = mapped_column(ForeignKey(&quot;categories.id&quot;))
+</code></pre>
+<hr />
+<h2 id="column-types-constraints">Column Types &amp; Constraints</h2>
+<h3 id="common-column-types">Common Column Types</h3>
+<pre><code class="language-python">from sqlalchemy import (
+    String, Text, Integer, BigInteger, Float, Numeric,
+    Boolean, Date, DateTime, Time, JSON, LargeBinary
+)
+from decimal import Decimal
+import datetime
+
+class Example(Base):
+    __tablename__ = &quot;examples&quot;
+
+    # Integers
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    big_id: Mapped[int] = mapped_column(BigInteger)
+
+    # Strings
+    name: Mapped[str] = mapped_column(String(50))
+    description: Mapped[Optional[str]] = mapped_column(Text)
+
+    # Numbers
+    price: Mapped[Decimal] = mapped_column(Numeric(10, 2))
+    rating: Mapped[float] = mapped_column(Float)
+
+    # Boolean
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+
+    # Dates and times
+    birth_date: Mapped[date] = mapped_column(Date)
+    created_at: Mapped[datetime] = mapped_column(DateTime)
+    login_time: Mapped[time] = mapped_column(Time)
+
+    # JSON (PostgreSQL, MySQL 5.7+, SQLite 3.38+)
+    metadata: Mapped[dict] = mapped_column(JSON)
+
+    # Binary data
+    file_data: Mapped[bytes] = mapped_column(LargeBinary)
+</code></pre>
+<h3 id="constraints-and-indexes">Constraints and Indexes</h3>
+<pre><code class="language-python">from sqlalchemy import CheckConstraint, UniqueConstraint, Index
+
+class User(Base):
+    __tablename__ = &quot;users&quot;
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    # Column-level constraints
+    username: Mapped[str] = mapped_column(
+        String(50),
+        unique=True,
+        nullable=False,
+        index=True
+    )
+
+    age: Mapped[int] = mapped_column(
+        Integer,
+        CheckConstraint('age &gt;= 0'),
+        default=0
+    )
+
+    # Table-level constraints
+    __table_args__ = (
+        UniqueConstraint('email', 'username'),
+        CheckConstraint('age BETWEEN 0 AND 150'),
+        Index('idx_user_created', 'created_at'),
+        Index('idx_user_multi', 'username', 'email'),
+    )
+</code></pre>
+<hr />
+<h2 id="relationships">Relationships</h2>
+<h3 id="one-to-many">One-to-Many</h3>
+<pre><code class="language-python">from typing import List
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
+
+class User(Base):
+    __tablename__ = &quot;users&quot;
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(String(50))
+
+    # One user has many posts
+    posts: Mapped[List[&quot;Post&quot;]] = relationship(
+        back_populates=&quot;author&quot;,
+        cascade=&quot;all, delete-orphan&quot;
+    )
+
+class Post(Base):
+    __tablename__ = &quot;posts&quot;
+    id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str] = mapped_column(String(100))
+    user_id: Mapped[int] = mapped_column(ForeignKey(&quot;users.id&quot;))
+
+    # Many posts belong to one user
+    author: Mapped[&quot;User&quot;] = relationship(back_populates=&quot;posts&quot;)
+</code></pre>
+<h3 id="many-to-many">Many-to-Many</h3>
+<pre><code class="language-python">from sqlalchemy import Table, Column
+
+# Association table
+post_tags = Table(
+    &quot;post_tags&quot;,
+    Base.metadata,
+    Column(&quot;post_id&quot;, ForeignKey(&quot;posts.id&quot;), primary_key=True),
+    Column(&quot;tag_id&quot;, ForeignKey(&quot;tags.id&quot;), primary_key=True)
+)
+
+class Post(Base):
+    __tablename__ = &quot;posts&quot;
+    id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str] = mapped_column(String(100))
+
+    # Many-to-many with tags
+    tags: Mapped[List[&quot;Tag&quot;]] = relationship(
+        secondary=post_tags,
+        back_populates=&quot;posts&quot;
+    )
+
+class Tag(Base):
+    __tablename__ = &quot;tags&quot;
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+
+    posts: Mapped[List[&quot;Post&quot;]] = relationship(
+        secondary=post_tags,
+        back_populates=&quot;tags&quot;
+    )
+</code></pre>
+<h3 id="association-object-pattern">Association Object Pattern</h3>
+<pre><code class="language-python">class PostTag(Base):
+    __tablename__ = &quot;post_tags&quot;
+
+    post_id: Mapped[int] = mapped_column(ForeignKey(&quot;posts.id&quot;), primary_key=True)
+    tag_id: Mapped[int] = mapped_column(ForeignKey(&quot;tags.id&quot;), primary_key=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=func.now())
+
+    # Relationships to parent objects
+    post: Mapped[&quot;Post&quot;] = relationship(back_populates=&quot;tag_associations&quot;)
+    tag: Mapped[&quot;Tag&quot;] = relationship(back_populates=&quot;post_associations&quot;)
+
+class Post(Base):
+    __tablename__ = &quot;posts&quot;
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    # Direct many-to-many (read-only)
+    tags: Mapped[List[&quot;Tag&quot;]] = relationship(
+        secondary=&quot;post_tags&quot;,
+        viewonly=True
+    )
+
+    # Association object access
+    tag_associations: Mapped[List[&quot;PostTag&quot;]] = relationship(
+        back_populates=&quot;post&quot;
+    )
+</code></pre>
+<h3 id="self-referential">Self-Referential</h3>
+<pre><code class="language-python">class Category(Base):
+    __tablename__ = &quot;categories&quot;
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+    parent_id: Mapped[Optional[int]] = mapped_column(ForeignKey(&quot;categories.id&quot;))
+
+    # Self-referential relationship
+    parent: Mapped[Optional[&quot;Category&quot;]] = relationship(
+        &quot;Category&quot;,
+        remote_side=[id],
+        back_populates=&quot;children&quot;
+    )
+    children: Mapped[List[&quot;Category&quot;]] = relationship(
+        &quot;Category&quot;,
+        back_populates=&quot;parent&quot;
+    )
+</code></pre>
+<hr />
+<h2 id="session-management">Session Management</h2>
+<h3 id="basic-session-usage">Basic Session Usage</h3>
+<pre><code class="language-python">from sqlalchemy.orm import sessionmaker, Session
+
+# Create session factory
+SessionLocal = sessionmaker(bind=engine)
+
+# Context manager (recommended)
+def get_user_by_id(user_id: int):
+    with SessionLocal() as session:
+        user = session.get(User, user_id)
+        return user
+
+# Manual session management
+def create_user(username: str):
+    session = SessionLocal()
+    try:
+        user = User(username=username)
+        session.add(user)
+        session.commit()
+        return user
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+</code></pre>
+<h3 id="session-configuration">Session Configuration</h3>
+<pre><code class="language-python"># Session with custom configuration
+SessionLocal = sessionmaker(
+    bind=engine,
+    expire_on_commit=False,  # Keep objects accessible after commit
+    autoflush=True,          # Auto-flush before queries
+    autocommit=False         # Manual transaction control
+)
+
+# Scoped sessions (thread-local)
+from sqlalchemy.orm import scoped_session
+
+SessionLocal = scoped_session(sessionmaker(bind=engine))
+
+# Usage
+session = SessionLocal()
+# ... use session
+SessionLocal.remove()  # Clean up
+</code></pre>
+<h3 id="async-sessions">Async Sessions</h3>
+<pre><code class="language-python">from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
+
+# Async engine
+async_engine = create_async_engine(
+    &quot;postgresql+asyncpg://user:pass@localhost/db&quot;,
+    echo=True
+)
+
+# Async session factory
+AsyncSessionLocal = async_sessionmaker(
+    bind=async_engine,
+    expire_on_commit=False
+)
+
+# Async usage
+async def create_user_async(username: str):
+    async with AsyncSessionLocal() as session:
+        async with session.begin():
+            user = User(username=username)
+            session.add(user)
+            # Auto-commit on exit
+        return user
+</code></pre>
+<hr />
+<h2 id="crud-operations">CRUD Operations</h2>
+<h3 id="create">Create</h3>
+<pre><code class="language-python"># Single object
+def create_user(session: Session, username: str, email: str):
+    user = User(username=username, email=email)
+    session.add(user)
+    session.commit()
+    session.refresh(user)  # Get auto-generated fields
+    return user
+
+# Multiple objects
+def create_users_bulk(session: Session, user_data: List[dict]):
+    users = [User(**data) for data in user_data]
+    session.add_all(users)
+    session.commit()
+    return users
+
+# Bulk insert (more efficient)
+def bulk_insert_users(session: Session, user_data: List[dict]):
+    session.execute(
+        insert(User).values(user_data)
+    )
+    session.commit()
+</code></pre>
+<h3 id="read">Read</h3>
+<pre><code class="language-python"># Get by primary key
+def get_user(session: Session, user_id: int):
+    return session.get(User, user_id)
+
+# Get first matching record
+def get_user_by_username(session: Session, username: str):
+    stmt = select(User).where(User.username == username)
+    return session.scalar(stmt)
+
+# Modern approach with select()
+from sqlalchemy import select
+
+def get_user_by_email(session: Session, email: str):
+    stmt = select(User).where(User.email == email)
+    return session.scalar(stmt)
+
+# Get all with conditions
+def get_active_users(session: Session):
+    stmt = select(User).where(User.is_active == True)
+    return session.scalars(stmt).all()
+
+# Paginated results
+def get_users_paginated(session: Session, page: int, per_page: int):
+    stmt = (
+        select(User)
+        .offset((page - 1) * per_page)
+        .limit(per_page)
+    )
+    return session.scalars(stmt).all()
+</code></pre>
+<h3 id="update">Update</h3>
+<pre><code class="language-python"># Update single object
+def update_user(session: Session, user_id: int, **kwargs):
+    user = session.get(User, user_id)
+    if user:
+        for key, value in kwargs.items():
+            setattr(user, key, value)
+        session.commit()
+        return user
+    return None
+
+# Bulk update
+from sqlalchemy import update
+
+def deactivate_old_users(session: Session, cutoff_date: date):
+    stmt = (
+        update(User)
+        .where(User.last_login &lt; cutoff_date)
+        .values(is_active=False)
+    )
+    result = session.execute(stmt)
+    session.commit()
+    return result.rowcount
+</code></pre>
+<h3 id="delete">Delete</h3>
+<pre><code class="language-python"># Delete single object
+def delete_user(session: Session, user_id: int):
+    user = session.get(User, user_id)
+    if user:
+        session.delete(user)
+        session.commit()
+        return True
+    return False
+
+# Bulk delete
+from sqlalchemy import delete
+
+def delete_inactive_users(session: Session):
+    stmt = delete(User).where(User.is_active == False)
+    result = session.execute(stmt)
+    session.commit()
+    return result.rowcount
+</code></pre>
+<hr />
+<h2 id="query-patterns">Query Patterns</h2>
+<h3 id="basic-filtering">Basic Filtering</h3>
+<pre><code class="language-python">from sqlalchemy import select, and_, or_, not_
+
+# Simple conditions
+stmt = select(User).where(User.age &gt; 18)
+stmt = select(User).where(User.username.like('%john%'))
+stmt = select(User).where(User.email.in_(['a@b.com', 'c@d.com']))
+
+# Multiple conditions
+stmt = select(User).where(
+    and_(
+        User.age &gt;= 18,
+        User.is_active == True,
+        User.email.like('%@gmail.com')
+    )
+)
+
+# OR conditions
+stmt = select(User).where(
+    or_(
+        User.username == 'admin',
+        User.role == 'superuser'
+    )
+)
+
+# NOT conditions
+stmt = select(User).where(not_(User.is_deleted))
+</code></pre>
+<h3 id="ordering-and-limiting">Ordering and Limiting</h3>
+<pre><code class="language-python"># Order by
+stmt = select(User).order_by(User.created_at.desc())
+stmt = select(User).order_by(User.last_name, User.first_name)
+
+# Limit and offset
+stmt = select(User).limit(10).offset(20)
+
+# Distinct
+stmt = select(User.city).distinct()
+
+# First, one, or scalar
+user = session.scalars(stmt).first()  # First or None
+user = session.scalars(stmt).one()    # Exactly one or error
+users = session.scalars(stmt).all()   # All results
+</code></pre>
+<h3 id="aggregations">Aggregations</h3>
+<pre><code class="language-python">from sqlalchemy import func, desc
+
+# Count
+stmt = select(func.count(User.id))
+total_users = session.scalar(stmt)
+
+# Group by with aggregates
+stmt = (
+    select(User.city, func.count(User.id).label('user_count'))
+    .group_by(User.city)
+    .order_by(desc('user_count'))
+)
+
+# Having clause
+stmt = (
+    select(User.city, func.count(User.id).label('user_count'))
+    .group_by(User.city)
+    .having(func.count(User.id) &gt; 5)
+)
+</code></pre>
+<h3 id="subqueries-and-ctes">Subqueries and CTEs</h3>
+<pre><code class="language-python"># Subquery
+subq = select(func.avg(User.age)).scalar_subquery()
+stmt = select(User).where(User.age &gt; subq)
+
+# Correlated subquery
+subq = (
+    select(func.count(Post.id))
+    .where(Post.user_id == User.id)
+    .scalar_subquery()
+)
+stmt = select(User).where(subq &gt; 5)
+
+# Common Table Expression (CTE)
+cte = select(User.city, func.count().label('cnt')).group_by(User.city).cte()
+stmt = select(cte).where(cte.c.cnt &gt; 10)
+</code></pre>
+<hr />
+<h2 id="joins-eager-loading">Joins &amp; Eager Loading</h2>
+<h3 id="explicit-joins">Explicit Joins</h3>
+<pre><code class="language-python"># Inner join
+stmt = (
+    select(User, Post)
+    .join(Post, User.id == Post.user_id)
+    .where(Post.published == True)
+)
+
+# Left outer join
+stmt = (
+    select(User)
+    .outerjoin(Post)
+    .where(Post.id.is_(None))  # Users with no posts
+)
+
+# Multiple joins
+stmt = (
+    select(User, Post, Category)
+    .join(Post)
+    .join(Category, Post.category_id == Category.id)
+)
+</code></pre>
+<h3 id="eager-loading">Eager Loading</h3>
+<pre><code class="language-python">from sqlalchemy.orm import selectinload, joinedload, contains_eager
+
+# Select IN loading (separate query)
+stmt = select(User).options(selectinload(User.posts))
+
+# Joined loading (single query)
+stmt = select(User).options(joinedload(User.posts))
+
+# Nested relationships
+stmt = select(User).options(
+    selectinload(User.posts).selectinload(Post.comments)
+)
+
+# With explicit join
+stmt = (
+    select(User)
+    .join(User.posts)
+    .options(contains_eager(User.posts))
+    .where(Post.published == True)
+)
+</code></pre>
+<h3 id="lazy-loading-control">Lazy Loading Control</h3>
+<pre><code class="language-python"># Relationship configuration
+class User(Base):
+    posts: Mapped[List[&quot;Post&quot;]] = relationship(
+        lazy='selectin',  # Always use selectin loading
+        # Other options: 'joined', 'subquery', 'raise', 'noload'
+    )
+
+# Query-level control
+from sqlalchemy.orm import lazyload, noload, raiseload
+
+stmt = select(User).options(
+    lazyload(User.posts),     # Force lazy loading
+    noload(User.profile),     # Don't load at all
+    raiseload(User.settings)  # Raise error if accessed
+)
+</code></pre>
+<hr />
+<h2 id="advanced-querying">Advanced Querying</h2>
+<h3 id="window-functions">Window Functions</h3>
+<pre><code class="language-python">from sqlalchemy import func
+
+# Row number
+stmt = select(
+    User.username,
+    func.row_number().over(
+        order_by=User.created_at
+    ).label('row_num')
+)
+
+# Ranking
+stmt = select(
+    User.username,
+    User.score,
+    func.rank().over(
+        order_by=User.score.desc()
+    ).label('rank')
+)
+
+# Partition by
+stmt = select(
+    User.username,
+    User.department,
+    func.avg(User.salary).over(
+        partition_by=User.department
+    ).label('dept_avg_salary')
+)
+</code></pre>
+<h3 id="raw-sql-and-text">Raw SQL and Text</h3>
+<pre><code class="language-python">from sqlalchemy import text
+
+# Raw SQL query
+stmt = text(&quot;SELECT * FROM users WHERE age &gt; :age&quot;)
+result = session.execute(stmt, {'age': 18})
+
+# Mixed SQL and ORM
+stmt = select(User).where(text(&quot;age &gt; :age&quot;)).params(age=18)
+
+# Complex expressions
+stmt = select(User).where(
+    text(&quot;extract(year from created_at) = :year&quot;)
+).params(year=2023)
+</code></pre>
+<h3 id="dynamic-queries">Dynamic Queries</h3>
+<pre><code class="language-python">def build_user_query(session: Session, **filters):
+    stmt = select(User)
+
+    if name := filters.get('name'):
+        stmt = stmt.where(User.name.like(f'%{name}%'))
+
+    if min_age := filters.get('min_age'):
+        stmt = stmt.where(User.age &gt;= min_age)
+
+    if cities := filters.get('cities'):
+        stmt = stmt.where(User.city.in_(cities))
+
+    if order_by := filters.get('order_by'):
+        if order_by == 'name':
+            stmt = stmt.order_by(User.name)
+        elif order_by == 'age':
+            stmt = stmt.order_by(User.age.desc())
+
+    return session.scalars(stmt).all()
+</code></pre>
+<hr />
+<h2 id="migrations-with-alembic">Migrations with Alembic</h2>
+<h3 id="setup">Setup</h3>
+<pre><code class="language-bash"># Initialize Alembic
+alembic init alembic
+
+# Configure alembic.ini
+sqlalchemy.url = sqlite:///database.db
+</code></pre>
+<pre><code class="language-python"># alembic/env.py configuration
+from myapp.models import Base
+
+target_metadata = Base.metadata
+
+def run_migrations_offline():
+    url = config.get_main_option(&quot;sqlalchemy.url&quot;)
+    context.configure(
+        url=url,
+        target_metadata=target_metadata,
+        literal_binds=True,
+        dialect_opts={&quot;paramstyle&quot;: &quot;named&quot;}
+    )
+    with context.begin_transaction():
+        context.run_migrations()
+
+def run_migrations_online():
+    connectable = engine_from_config(
+        config.get_section(config.config_ini_section),
+        prefix=&quot;sqlalchemy.&quot;,
+        poolclass=pool.NullPool,
+    )
+    with connectable.connect() as connection:
+        context.configure(
+            connection=connection,
+            target_metadata=target_metadata
+        )
+        with context.begin_transaction():
+            context.run_migrations()
+</code></pre>
+<h3 id="migration-commands">Migration Commands</h3>
+<pre><code class="language-bash"># Generate migration
+alembic revision --autogenerate -m &quot;Add user table&quot;
+
+# Apply migrations
+alembic upgrade head
+alembic upgrade +1        # Upgrade one revision
+alembic upgrade ae10      # Upgrade to specific revision
+
+# Downgrade
+alembic downgrade -1      # Downgrade one revision
+alembic downgrade base    # Downgrade to beginning
+
+# Show current revision
+alembic current
+
+# Show migration history
+alembic history
+
+# Check if any new operations would be detected
+alembic check
+</code></pre>
+<h3 id="manual-migration-script">Manual Migration Script</h3>
+<pre><code class="language-python">&quot;&quot;&quot;Add user table
+
+Revision ID: abc123
+Revises: def456
+Create Date: 2024-01-01 10:00:00.000000
+&quot;&quot;&quot;
+
+from alembic import op
+import sqlalchemy as sa
+
+# revision identifiers
+revision = 'abc123'
+down_revision = 'def456'
+branch_labels = None
+depends_on = None
+
+def upgrade():
+    op.create_table(
+        'users',
+        sa.Column('id', sa.Integer(), primary_key=True),
+        sa.Column('username', sa.String(50), nullable=False),
+        sa.Column('email', sa.String(100), nullable=False),
+        sa.Column('created_at', sa.DateTime(), server_default=sa.func.now())
+    )
+
+    op.create_index('ix_users_username', 'users', ['username'])
+    op.create_unique_constraint('uq_users_email', 'users', ['email'])
+
+def downgrade():
+    op.drop_constraint('uq_users_email', 'users', type_='unique')
+    op.drop_index('ix_users_username', 'users')
+    op.drop_table('users')
+</code></pre>
+<h3 id="data-migrations">Data Migrations</h3>
+<pre><code class="language-python">from alembic import op
+from sqlalchemy import text
+
+def upgrade():
+    # Schema change
+    op.add_column('users', sa.Column('full_name', sa.String(100)))
+
+    # Data migration
+    connection = op.get_bind()
+    connection.execute(
+        text(&quot;UPDATE users SET full_name = first_name || ' ' || last_name&quot;)
+    )
+
+def downgrade():
+    op.drop_column('users', 'full_name')
+</code></pre>
+<hr />
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="session-management_1">Session Management</h3>
+<pre><code class="language-python"># ✅ Good: Use context managers
+def get_user_posts(user_id: int):
+    with SessionLocal() as session:
+        stmt = (
+            select(User)
+            .options(selectinload(User.posts))
+            .where(User.id == user_id)
+        )
+        return session.scalar(stmt)
+
+# ✅ Good: Dependency injection pattern
+def create_user(session: Session, username: str) -&gt; User:
+    user = User(username=username)
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    return user
+
+# ❌ Bad: Long-lived sessions
+global_session = SessionLocal()  # Don't do this
+</code></pre>
+<h3 id="query-optimization">Query Optimization</h3>
+<pre><code class="language-python"># ✅ Good: Use selectinload for one-to-many
+stmt = select(User).options(selectinload(User.posts))
+
+# ✅ Good: Use joinedload for many-to-one
+stmt = select(Post).options(joinedload(Post.author))
+
+# ✅ Good: Load only needed columns
+stmt = select(User.id, User.username).where(User.is_active == True)
+
+# ✅ Good: Use bulk operations for large datasets
+session.execute(
+    update(User).where(User.last_login &lt; cutoff).values(is_active=False)
+)
+
+# ❌ Bad: N+1 queries
+users = session.scalars(select(User)).all()
+for user in users:
+    print(user.posts)  # Triggers separate query for each user
+</code></pre>
+<h3 id="model-design">Model Design</h3>
+<pre><code class="language-python"># ✅ Good: Use type hints and proper defaults
+class User(Base):
+    __tablename__ = &quot;users&quot;
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(String(50), unique=True)
+    is_active: Mapped[bool] = mapped_column(default=True)
+    created_at: Mapped[datetime] = mapped_column(server_default=func.now())
+
+    def __repr__(self) -&gt; str:
+        return f&quot;User(id={self.id}, username='{self.username}')&quot;
+
+# ✅ Good: Use appropriate relationship loading
+class User(Base):
+    posts: Mapped[List[&quot;Post&quot;]] = relationship(
+        back_populates=&quot;author&quot;,
+        lazy=&quot;selectin&quot;,  # Efficient for one-to-many
+        cascade=&quot;all, delete-orphan&quot;
+    )
+
+# ✅ Good: Index frequently queried columns
+class Post(Base):
+    __tablename__ = &quot;posts&quot;
+    __table_args__ = (
+        Index('idx_post_user_created', 'user_id', 'created_at'),
+        Index('idx_post_status', 'status'),
+    )
+</code></pre>
+<h3 id="error-handling">Error Handling</h3>
+<pre><code class="language-python">from sqlalchemy.exc import IntegrityError, NoResultFound
+
+def create_user_safe(session: Session, username: str, email: str):
+    try:
+        user = User(username=username, email=email)
+        session.add(user)
+        session.commit()
+        return user, None
+    except IntegrityError as e:
+        session.rollback()
+        if 'username' in str(e):
+            return None, &quot;Username already exists&quot;
+        elif 'email' in str(e):
+            return None, &quot;Email already exists&quot;
+        return None, &quot;Database constraint error&quot;
+    except Exception as e:
+        session.rollback()
+        return None, f&quot;Unexpected error: {str(e)}&quot;
+
+def get_user_or_404(session: Session, user_id: int):
+    user = session.get(User, user_id)
+    if not user:
+        raise NoResultFound(f&quot;User {user_id} not found&quot;)
+    return user
+</code></pre>
+<h3 id="testing-patterns">Testing Patterns</h3>
+<pre><code class="language-python">import pytest
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+@pytest.fixture
+def db_session():
+    # Use in-memory SQLite for tests
+    engine = create_engine(&quot;sqlite:///:memory:&quot;, echo=False)
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+
+    session = Session()
+    try:
+        yield session
+    finally:
+        session.close()
+
+def test_create_user(db_session):
+    user = User(username=&quot;testuser&quot;, email=&quot;test@example.com&quot;)
+    db_session.add(user)
+    db_session.commit()
+
+    assert user.id is not None
+    assert user.username == &quot;testuser&quot;
+
+    # Test retrieval
+    retrieved = db_session.get(User, user.id)
+    assert retrieved.username == &quot;testuser&quot;
+</code></pre>
+<hr />
+<h2 id="common-gotchas">Common Gotchas</h2>
+<ul>
+<li><strong>Expired objects after commit</strong>: Use <code>expire_on_commit=False</code> or <code>session.refresh(obj)</code></li>
+<li><strong>N+1 queries</strong>: Use eager loading (<code>selectinload</code>, <code>joinedload</code>)</li>
+<li><strong>Session scope</strong>: Always use context managers or proper cleanup</li>
+<li><strong>Timezone-aware datetimes</strong>: Use <code>timezone=True</code> for DateTime columns</li>
+<li><strong>Bulk operations</strong>: Use <code>bulk_insert_mappings()</code> for large datasets</li>
+<li><strong>Connection pooling</strong>: Configure pool settings for production</li>
+<li><strong>Migration conflicts</strong>: Always review auto-generated migrations</li>
+<li><strong>Relationship loading</strong>: Choose appropriate <code>lazy</code> loading strategies</li>
+</ul>
+<p>This cheat sheet covers the essential SQLAlchemy patterns for modern Python applications. For async usage, replace <code>Session</code> with <code>AsyncSession</code> and add <code>async</code>/<code>await</code> keywords as needed.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
