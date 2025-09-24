@@ -23,6 +23,7 @@ A collection of quick reference guides and cheat sheets for various programming 
 - [LangChain](docs/python/langchain.md) - Framework for building LLM-powered applications
 - [TorchVision](docs/python/torchvision.md) - Computer vision utilities and pre-trained models
 - [Pillow](docs/python/pillow.md) - Python Image Library for image processing
+- [SQLAlchemy](docs/python/sqlalchemy.md) - Database ORM with models, sessions, queries, and migrations
 - [Inquirer](docs/python/inquirer.md) - Interactive command-line prompts and user interfaces
 
 ### Machine Learning & Data Science
