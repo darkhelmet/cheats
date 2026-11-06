@@ -41,6 +41,7 @@ Welcome to the cheat sheets collection - a comprehensive set of quick reference 
 
 ### Operating Systems
 - [Bottlerocket OS](os/bottlerocket.md) - Container-optimized Linux OS with AWS SSM, containerd management, and security best practices
+- [ZFS](os/zfs.md) - Storage pools, datasets, snapshots, replication, and maintenance
 
 ### Tools & Editors
 - [Protocol Buffers](tools/protobuf.md) - Schema definition and code generation with protoc compiler

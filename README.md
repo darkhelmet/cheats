@@ -36,6 +36,9 @@ A collection of quick reference guides and cheat sheets for various programming 
 ### GPU Computing
 - [CUDA](docs/gpu/cuda.md) - Comprehensive CUDA C/C++ programming reference for GPU computing
 
+### Operating Systems & Storage
+- [ZFS](docs/os/zfs.md) - Storage pools, datasets, snapshots, replication, and maintenance
+
 ### Tools
 - [Protocol Buffers](docs/tools/protobuf.md) - Schema definition and code generation with protoc compiler
 - [ripgrep](docs/tools/ripgrep.md) - Fast text search tool with regex support
