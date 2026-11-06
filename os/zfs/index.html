@@ -1,0 +1,1527 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../bottlerocket/">
+      
+      
+        <link rel="next" href="../../python/inquirer/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>ZFS - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#zfs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ZFS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Sheets Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning-algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gpu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/nextjs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/react/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bottlerocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bottlerocket OS Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ZFS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ZFS
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-pools-and-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspect Pools and Datasets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a Pool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets-and-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasets and Properties
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshots-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snapshots and Recovery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-and-receive-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Send and Receive (Backups)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintenance-and-disk-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance and Disk Replacement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expand-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expand Storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-and-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Export and Import
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#destructive-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Destructive Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/inquirer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Inquirer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangChain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/langextract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LangExtract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/nltk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLTK (Natural Language Toolkit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NumPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pillow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pillow (PIL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/polars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/scipy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SciPy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/seaborn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/sentence-transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sentence-Transformers (UKPLab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQLAlchemy Cheat Sheet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/torchvision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TorchVision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/transformers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformers (Hugging Face)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/protobuf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol Buffers (protobuf)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ripgrep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ripgrep (rg)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim-lazyvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim/Neovim with LazyVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-pools-and-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspect Pools and Datasets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a Pool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets-and-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasets and Properties
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshots-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snapshots and Recovery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-and-receive-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Send and Receive (Backups)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintenance-and-disk-replacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance and Disk Replacement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expand-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expand Storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-and-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Export and Import
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#destructive-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Destructive Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="zfs">ZFS</h1>
+<p>Quick reference for OpenZFS pool and filesystem administration. Examples use a pool named <code>tank</code>, a dataset named <code>tank/data</code>, and Linux persistent disk paths. Replace these with your own names and devices. Run administrative commands as root or with <code>sudo</code>; installation and device naming vary by operating system.</p>
+<h2 id="core-concepts">Core Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pool (<code>zpool</code>)</td>
+<td>Storage assembled from one or more virtual devices</td>
+</tr>
+<tr>
+<td>Vdev</td>
+<td>A disk, mirror, or RAIDZ group; losing any top-level data vdev loses the pool</td>
+</tr>
+<tr>
+<td>Dataset (<code>zfs</code>)</td>
+<td>A filesystem, volume, snapshot, or other ZFS-managed object</td>
+</tr>
+<tr>
+<td>Zvol</td>
+<td>A dataset exposed as a block device</td>
+</tr>
+<tr>
+<td>Snapshot</td>
+<td>Read-only point-in-time view that retains blocks as live data changes</td>
+</tr>
+<tr>
+<td>Clone</td>
+<td>Writable dataset initially sharing blocks with a snapshot</td>
+</tr>
+<tr>
+<td>Scrub</td>
+<td>Reads allocated data, verifies checksums, and repairs from redundant copies when possible</td>
+</tr>
+<tr>
+<td>Resilver</td>
+<td>Rebuilds missing or outdated data on a replacement or reattached device</td>
+</tr>
+</tbody>
+</table>
+<p>Mirrors survive all but one disk failing <strong>within each mirror</strong>. RAIDZ1, RAIDZ2, and RAIDZ3 tolerate one, two, and three disk failures respectively within each RAIDZ vdev. Redundancy and snapshots do not replace an independent backup.</p>
+<h2 id="inspect-pools-and-datasets">Inspect Pools and Datasets</h2>
+<pre><code class="language-bash">zpool list                              # Pool capacity and health
+zpool status -v                         # Device state and data errors
+zpool status -P tank                    # Full device paths
+zpool iostat -v tank 2                  # Per-vdev I/O every two seconds
+zpool history tank                     # Administrative command history
+zpool get all tank                     # Pool properties
+
+zfs list                               # Filesystem and volume usage
+zfs list -r tank                        # Include child datasets
+zfs list -t snapshot -r tank            # Snapshots
+zfs list -o name,used,avail,refer,mountpoint
+zfs get compression,compressratio,mountpoint tank/data
+zfs get -r -o name,property,value,source compression tank
+</code></pre>
+<p><code>USED</code> includes space charged to descendants and snapshots; <code>REFER</code> is the data referenced by that dataset. Deleting a file may not free pool space while snapshots still reference its blocks. Pool capacity and dataset available space differ because of redundancy, reservations, quotas, and internal overhead.</p>
+<h2 id="create-a-pool">Create a Pool</h2>
+<p><strong>Pool creation overwrites the selected devices.</strong> Verify disk identities first. The following layouts are alternatives, not a sequence. Use persistent device identifiers rather than <code>/dev/sdX</code> names on Linux.</p>
+<pre><code class="language-bash"># Preview a two-disk mirror without creating it
+zpool create -n -o ashift=12 tank mirror \
+  /dev/disk/by-id/DISK_A /dev/disk/by-id/DISK_B
+
+# Create the mirror; enable compression for its datasets
+zpool create -o ashift=12 -O compression=lz4 -m /tank tank mirror \
+  /dev/disk/by-id/DISK_A /dev/disk/by-id/DISK_B
+
+# Alternative: four-disk RAIDZ2 (two parity disks)
+zpool create -o ashift=12 -O compression=lz4 -m /tank tank raidz2 \
+  /dev/disk/by-id/DISK_A /dev/disk/by-id/DISK_B \
+  /dev/disk/by-id/DISK_C /dev/disk/by-id/DISK_D
+</code></pre>
+<p><code>ashift=12</code> uses 4 KiB sectors; choose an appropriate value for the devices before creating the vdev. Avoid <code>-f</code> unless you understand why ZFS rejected the devices.</p>
+<h2 id="datasets-and-properties">Datasets and Properties</h2>
+<pre><code class="language-bash">zfs create tank/data
+zfs create -p tank/projects/app         # Create missing parent datasets
+zfs create -o mountpoint=/srv/backups tank/backups
+zfs rename tank/projects/app tank/projects/service
+
+zfs set compression=lz4 tank/data       # Applies to newly written blocks
+zfs set atime=off tank/data             # Disable access-time updates
+zfs set recordsize=1M tank/backups      # Large sequential files; new files
+zfs set quota=500G tank/data            # Limit dataset + descendants + snapshots
+zfs set refquota=400G tank/data         # Limit live dataset, excluding snapshots/children
+zfs set reservation=100G tank/data      # Guarantee space for this dataset tree
+zfs set quota=none tank/data            # Remove quota
+zfs inherit compression tank/data      # Return to inherited/default property
+
+zfs mount tank/data
+zfs unmount tank/data
+zfs mount -a                           # Mount eligible ZFS filesystems
+
+zfs create -V 20G tank/vm-disk          # Create a block volume (zvol)
+</code></pre>
+<p>Properties normally inherit from parent datasets unless overridden. Tune <code>recordsize</code> to the workload; it is a maximum filesystem block size, not a disk sector size. Keep free pool capacity for healthy write performance. Avoid enabling deduplication without measuring its memory and storage costs.</p>
+<h2 id="snapshots-and-recovery">Snapshots and Recovery</h2>
+<pre><code class="language-bash">zfs snapshot tank/data@before-update
+zfs snapshot -r tank@daily              # Snapshot pool root and all descendants
+zfs list -t snapshot -o name,creation,used,refer -s creation
+zfs diff tank/data@before-update tank/data
+
+# Read or copy individual files from a mounted filesystem snapshot
+ls /tank/data/.zfs/snapshot/before-update/
+cp /tank/data/.zfs/snapshot/before-update/report.txt /tmp/report-restored.txt
+
+# Create a writable copy without changing the original dataset
+zfs clone tank/data@before-update tank/data-recovery
+
+# Prevent a snapshot from being deleted until its hold is released
+zfs hold keep tank/data@before-update
+zfs holds tank/data@before-update
+zfs release keep tank/data@before-update
+</code></pre>
+<p>The <code>.zfs</code> directory is hidden from directory listings by default but can be accessed directly. Use the dataset's actual mountpoint. Coordinate snapshots with databases or applications when application-consistent backups are required.</p>
+<pre><code class="language-bash"># DESTRUCTIVE: discard changes since the latest snapshot
+zfs rollback tank/data@before-update
+
+# Preview deletion, then delete a snapshot when it is no longer needed
+zfs destroy -nv tank/data@before-update
+zfs destroy tank/data@before-update
+</code></pre>
+<p>Rollback requires the most recent snapshot unless newer snapshots are removed. <code>zfs rollback -r</code> destroys newer snapshots and bookmarks; avoid it unless that loss is intended. A clone depends on its origin snapshot, which cannot normally be deleted while the clone exists.</p>
+<h2 id="send-and-receive-backups">Send and Receive (Backups)</h2>
+<p>These examples assume an existing second pool named <code>backup</code>. The initial destination dataset <code>backup/data</code> must not already exist. <code>-u</code> receives without mounting.</p>
+<pre><code class="language-bash"># Initial full backup
+zfs snapshot tank/data@backup-1
+zfs send tank/data@backup-1 | zfs receive -u backup/data
+
+# Incremental backup: destination must retain the matching base snapshot
+zfs snapshot tank/data@backup-2
+zfs send -i tank/data@backup-1 tank/data@backup-2 | zfs receive -u backup/data
+
+# Estimate stream size without sending data
+zfs send -nPv -i tank/data@backup-1 tank/data@backup-2
+
+# Remote backup; receiving account needs ZFS receive permissions
+zfs send tank/data@backup-2 | ssh backup-host zfs receive -u backup/remote-data
+
+# Replicate a dataset tree, properties, and snapshots through this snapshot
+zfs snapshot -r tank/projects@backup-1
+zfs send -R tank/projects@backup-1 | zfs receive -u backup/projects
+</code></pre>
+<p>Keep the backup destination unchanged between incremental receives. <code>-i</code> sends the difference between two snapshots; <code>-I</code> also includes intermediate snapshots. Do not add <code>zfs receive -F</code> casually: it can roll back destination changes and, for replication streams, destroy destination snapshots and filesystems absent from the source. In Bash backup scripts, use <code>set -o pipefail</code> so sender failures are not masked by the receiver's exit status.</p>
+<h2 id="maintenance-and-disk-replacement">Maintenance and Disk Replacement</h2>
+<pre><code class="language-bash">zpool scrub tank                        # Start checksum verification/repair
+zpool status tank                       # Monitor scrub or resilver progress
+zpool scrub -s tank                     # Stop a running scrub
+
+# Replace a failed disk with one of sufficient capacity
+zpool replace tank /dev/disk/by-id/OLD_DISK /dev/disk/by-id/NEW_DISK
+zpool status tank                       # Wait for resilver to complete
+
+# Temporarily take a disk offline, then return it
+zpool offline tank /dev/disk/by-id/DISK_A
+zpool online tank /dev/disk/by-id/DISK_A
+
+# Clear recorded device errors AFTER diagnosing and fixing their cause
+zpool clear tank
+</code></pre>
+<p>Check remaining redundancy before offlining a device. Schedule periodic scrubs and monitor their results. <code>zpool clear</code> does not repair corrupted files; permanent data errors may require restoration from backup.</p>
+<h2 id="expand-storage">Expand Storage</h2>
+<pre><code class="language-bash"># Add a second mirrored vdev: permanently changes the pool layout
+zpool add -n tank mirror /dev/disk/by-id/DISK_C /dev/disk/by-id/DISK_D
+zpool add tank mirror /dev/disk/by-id/DISK_C /dev/disk/by-id/DISK_D
+
+# Turn an existing single-disk vdev into a mirror
+zpool attach tank /dev/disk/by-id/DISK_A /dev/disk/by-id/DISK_B
+
+# Expand a device after its underlying storage has grown
+zpool online -e tank /dev/disk/by-id/DISK_A
+</code></pre>
+<p><code>add</code> adds a top-level vdev; <code>attach</code> adds a mirror member. Adding a single unmirrored data disk to a redundant pool makes that disk a single point of failure. Do not assume an added vdev can be removed. When replacing disks with larger ones, all members of a mirror or RAIDZ vdev must grow before its extra capacity becomes available. RAIDZ expansion support depends on the OpenZFS version and enabled features.</p>
+<h2 id="export-and-import">Export and Import</h2>
+<pre><code class="language-bash">zpool export tank                       # Unmount and release pool for transfer
+zpool import                           # List pools available to import
+zpool import tank                      # Import an exported pool
+zpool import -d /dev/disk/by-id tank     # Search a specific device directory
+zpool import -N -o readonly=on tank      # Inspect without mounting or writing
+zpool import -R /mnt/recovery tank      # Alternative import with temporary mount root
+</code></pre>
+<p>Import examples are alternatives. Never import a pool for writing on two hosts at once. Do not force an import until you have confirmed the previous host no longer has access. Pool feature upgrades can prevent older systems from importing the pool.</p>
+<h2 id="destructive-operations">Destructive Operations</h2>
+<pre><code class="language-bash"># Preview recursive dataset deletion
+zfs destroy -nvr tank/old-data
+
+# DESTRUCTIVE: delete dataset, children, and their snapshots
+zfs destroy -r tank/old-data
+
+# DESTRUCTIVE: destroy the entire pool
+zpool destroy tank
+</code></pre>
+<p>Verify names, backups, and dependencies before deletion. Lowercase <code>-r</code> recursively deletes descendants; uppercase <code>-R</code> can also destroy dependent clones outside that dataset tree.</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://openzfs.github.io/openzfs-docs/">OpenZFS documentation</a></li>
+<li><a href="https://openzfs.github.io/openzfs-docs/man/index.html">OpenZFS manual pages</a></li>
+<li>Local manuals: <code>man zpool</code>, <code>man zfs</code>, <code>man zfsprops</code>, <code>man zpoolprops</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
